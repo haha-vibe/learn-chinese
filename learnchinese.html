@@ -3897,14 +3897,13 @@ function backHome() {
   score,
   mode,
   level: levelSel.value,
+  time: new Date(),
   wrongWords: [...wrongSet]
 });
 
 
-  // 🔑 自动排序（分数高在前）
-  records.sort((a, b) => b.score - a.score);
-
-  if (records.length > 20) records = records.slice(0, 20);
+  // 歷史紀錄：依完成順序保留，僅留最近 20 筆
+  if (records.length > 20) records = records.slice(-20);
 
   test.classList.add("hidden");
   const sb = document.getElementById('scoreBar');
@@ -3914,6 +3913,12 @@ function backHome() {
   renderStudentProgress(currentStudent);   // reflect mastery just earned this session
 }
 
+const MODE_LABEL = { practice: '練習', quiz: '測驗' };
+function fmtSessionTime(d) {
+  if (!(d instanceof Date) || isNaN(d)) return '';
+  const p = n => String(n).padStart(2, '0');
+  return `${p(d.getMonth() + 1)}/${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
 function renderRanking() {
   if (records.length === 0) {
     rankingDiv.innerHTML = "";
@@ -3921,9 +3926,16 @@ function renderRanking() {
   }
 
   rankingDiv.innerHTML =
-    "<h3>班級成績排行榜</h3>" +
+    "<h3>最近練習紀錄（最多 20 筆）</h3>" +
     records
-      .map((r, i) => `${i + 1}. ${r.student} ｜ ${r.score} 分`)
+      .slice()
+      .reverse()                       // 最新的在最上方
+      .map(r => {
+        const t = fmtSessionTime(r.time);
+        const meta = [MODE_LABEL[r.mode] || r.mode, t].filter(Boolean).join(' ');
+        return `${htmlEsc(r.student)} ｜ ${r.score} 分` +
+               (meta ? ` ｜ <span style="color:#888;font-size:13px;">${meta}</span>` : '');
+      })
       .join("<br>");
 }
 
