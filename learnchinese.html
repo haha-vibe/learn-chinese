@@ -1,0 +1,4740 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>認漢字 Character Learning</title>
+<style>
+  body { font-family: system-ui; padding: 20px; }
+  .hidden { display: none; }
+  .word { font-size: 200px; text-align: center; margin: 50px 0;font-family: "KaiTi", "標楷體", "STKaiti", "DFKai-SB", serif; color: #1a4fd8; /* 藍色 */}
+  button { padding: 10px 18px; margin: 6px; font-size: 16px; }
+  select, input { font-size: 16px; margin: 4px 0; }
+  .panel { margin-top: 10px; font-size: 16px; }
+  .wrong { color: #b00020; }
+  .rank { margin-top: 20px; }
+
+  /* ── hint panel ── */
+  .hint-panel{max-width:660px;margin:8px auto;padding:12px 18px;background:#eef2ff;border-radius:10px;text-align:left;line-height:1.7;max-height:46vh;overflow-y:auto;}
+  .hint-pinyin{font-size:26px;color:#1a4fd8;font-style:italic;letter-spacing:3px;margin-bottom:4px;}
+  .hint-defs{font-size:15px;margin-bottom:8px;}
+  .hint-en{color:#222;}
+  .hint-zh-gloss{font-size:17px;color:#444;font-weight:600;margin-bottom:6px;}
+  .hint-rank{display:inline-block;font-size:12px;color:#8a6d1f;background:#fff4d6;border:1px solid #e8d28a;border-radius:10px;padding:1px 10px;margin-bottom:8px;}
+  .hint-examples{border-top:1px solid #c5cff8;padding-top:8px;margin-top:6px;}
+  .hint-ex-title{font-size:12px;color:#777;margin-bottom:4px;letter-spacing:1px;}
+  .hint-example{margin:5px 0;font-size:14px;}
+  .ex-phrase{font-family:"KaiTi","標楷體","STKaiti","DFKai-SB",serif;font-size:20px;font-weight:bold;color:#1a1a1a;}
+  .ex-level{font-size:11px;color:#1a7a3a;background:#e3f6e8;border-radius:8px;padding:0 6px;margin-left:5px;vertical-align:middle;}
+  .ex-py{color:#1a4fd8;font-style:italic;margin:0 6px;font-size:13px;}
+  .ex-en{color:#444;}
+  .ex-sep{color:#aaa;margin:0 2px;}
+  /* ── audio ── */
+  #speakBtn{background:#fff4e6;border:1.5px solid #e67e22;color:#b9610f;font-size:18px;padding:8px 22px;border-radius:10px;}
+  #speakBtn:active{background:#fde3c4;}
+  /* clickable example phrase → plays audio; dotted underline + speaker cue */
+  .ex-clickable{cursor:pointer;border-bottom:1.5px dotted #6b8cff;border-radius:3px;}
+  .ex-clickable::after{content:"🔈";font-size:11px;margin-left:2px;opacity:.45;}
+  .ex-clickable:hover{color:#1a4fd8;background:#e9efff;}
+  .ex-clickable:hover::after{opacity:1;}
+  #hintBtn{background:#e8f0fe;border:1px solid #1a4fd8;color:#1a4fd8;}
+  #dictStatus{font-size:14px;margin-left:6px;}
+  .hint-tagged-def{font-size:13px;color:#555;margin-top:3px;}
+  .hint-tags{margin:2px 0 6px;font-size:18px;letter-spacing:2px;}
+  .hint-tags span{cursor:default;}
+  #scoreBar{position:fixed;top:0;left:0;right:0;display:flex;justify-content:center;gap:24px;padding:10px 16px;background:rgba(255,255,255,0.96);box-shadow:0 2px 10px rgba(0,0,0,0.12);z-index:200;}
+  #scoreBar button{font-size:36px;padding:14px 52px;margin:0;}
+  #scoreBar #sbCorrect{background:#d4edda;border:2px solid #28a745;color:#155724;}
+  #scoreBar #sbWrong{background:#f8d7da;border:2px solid #dc3545;color:#721c24;}
+  #scoreBar kbd{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:44px;font-family:monospace;background:linear-gradient(to bottom,#f7f7f7,#ddd);border:1px solid #aaa;border-bottom:3px solid #888;border-radius:5px;box-shadow:0 2px 4px rgba(0,0,0,0.25);margin-left:10px;vertical-align:middle;gap:1px;}
+  #scoreBar kbd .k-shift{font-size:12px;line-height:1;color:#555;}
+  #scoreBar kbd .k-base{font-size:12px;line-height:1;color:#555;}
+  #scoreBar kbd .k-em{font-size:19px;font-weight:bold;color:#111;}
+  #progressInd{font-size:22px;color:#444;align-self:center;min-width:110px;text-align:center;}
+
+  /* ── judge feedback flash ── */
+  @keyframes flash-good-anim{0%{opacity:.35;background:#28a745}100%{opacity:0;background:#28a745}}
+  @keyframes flash-bad-anim {0%{opacity:.35;background:#dc3545}100%{opacity:0;background:#dc3545}}
+  #flashOverlay{position:fixed;inset:0;pointer-events:none;z-index:198;opacity:0;}
+  #flashOverlay.flash-good{animation:flash-good-anim .3s ease-out forwards;}
+  #flashOverlay.flash-bad {animation:flash-bad-anim  .3s ease-out forwards;}
+
+  /* ── settings page layout ── */
+  .setup-card{max-width:560px;margin:0 auto;}
+  .setup-row{display:flex;align-items:center;gap:12px;margin:10px 0;}
+  .setup-label{min-width:72px;font-size:15px;color:#555;text-align:right;flex-shrink:0;}
+  .seg-group{display:inline-flex;border:1.5px solid #bbb;border-radius:8px;overflow:hidden;}
+  .seg-btn{flex:1;padding:7px 14px;font-size:14px;border:none;border-right:1px solid #bbb;background:#f5f5f5;cursor:pointer;white-space:nowrap;}
+  .seg-btn:last-child{border-right:none;}
+  .seg-btn.active{background:#1a4fd8;color:#fff;}
+  .seg-mini .seg-btn{padding:4px 10px;font-size:13px;}
+  .slider-row{display:flex;align-items:center;gap:10px;flex:1;}
+  .slider-row input[type=range]{flex:1;height:6px;accent-color:#1a4fd8;}
+  .slider-val{min-width:36px;text-align:left;font-size:15px;font-weight:bold;color:#1a4fd8;}
+  .setup-divider{border:none;border-top:1px solid #ddd;margin:18px 0;}
+  #startBtn{display:block;width:100%;max-width:360px;margin:20px auto 0;padding:18px 0;font-size:26px;font-weight:bold;background:#1a4fd8;color:#fff;border:none;border-radius:12px;cursor:pointer;letter-spacing:4px;box-shadow:0 4px 14px rgba(26,79,216,.35);}
+  #startBtn:hover{background:#1542b8;}
+  .setup-dict{font-size:14px;color:#555;margin:14px 0;}
+
+  /* ── in-session hint control ── */
+  #hintVisCtrl{text-align:center;margin:4px 0 8px;}
+  /* ── known-student sliding bar (setup page) ── */
+  .student-bar{display:flex;gap:8px;overflow-x:auto;max-width:560px;margin:2px auto 6px;padding:4px 2px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
+  .student-bar::-webkit-scrollbar{height:6px;}
+  .student-bar::-webkit-scrollbar-thumb{background:#ccd;border-radius:3px;}
+  .student-bar:empty{display:none;}
+  .student-chip{flex:0 0 auto;white-space:nowrap;padding:6px 14px;margin:0;font-size:14px;border:1.5px solid #bbb;border-radius:18px;background:#f5f5f5;color:#333;cursor:pointer;}
+  .student-chip:hover{border-color:#1a4fd8;color:#1a4fd8;}
+  .student-chip.active{background:#1a4fd8;border-color:#1a4fd8;color:#fff;}
+  .student-empty{flex:0 0 auto;font-size:13px;color:#999;padding:6px 2px;}
+
+  /* ── student mastery progress (setup page) ── */
+  #studentProgress{max-width:560px;margin:6px auto 0;}
+  #studentProgress:empty{display:none;}
+  .prog-title{font-size:13px;color:#666;margin:4px 0 6px;}
+  .prog-row{display:flex;align-items:center;gap:10px;margin:8px 0;}
+  .prog-lvl{min-width:52px;font-size:14px;font-weight:600;color:#444;text-align:right;}
+  .prog-pair{flex:1;display:flex;flex-direction:column;gap:3px;}
+  .prog-line{display:flex;align-items:center;gap:8px;}
+  .prog-tag{min-width:30px;font-size:11px;color:#777;}
+  .prog-bar{flex:1;height:11px;background:#eee;border-radius:6px;overflow:hidden;}
+  .prog-fill{display:block;height:100%;border-radius:6px;transition:width .3s;}
+  .prog-fill.prog-p{background:linear-gradient(90deg,#34c759,#1a7a3a);}   /* practice = green */
+  .prog-fill.prog-t{background:linear-gradient(90deg,#4a90e2,#1a4fd8);}   /* test = blue */
+  .prog-num{min-width:92px;font-size:12px;color:#444;text-align:left;}
+  .prog-detail{margin-top:10px;font-size:13px;}
+  .prog-detail summary{cursor:pointer;color:#b00020;}
+  .weak-chips{margin-top:6px;}
+  .weak-chip{display:inline-block;background:#fff3f3;border:1px solid #f0c0c0;border-radius:8px;padding:2px 8px;margin:2px;}
+  .weak-chip .wc-char{font-family:"KaiTi","標楷體","STKaiti","DFKai-SB",serif;font-size:18px;color:#1a1a1a;}
+  .weak-chip small{color:#b00020;font-size:11px;margin-left:4px;}
+  /* ── practice-mode live mastery projection bar ── */
+  #practiceProgress{display:flex;align-items:center;gap:10px;max-width:560px;margin:0 auto 16px;font-size:13px;color:#555;}
+  .pp-label{min-width:78px;text-align:right;}
+  .pp-bar{flex:1;height:13px;background:#eee;border-radius:6px;overflow:hidden;display:flex;}
+  .pp-base{height:100%;background:#1a7a3a;}                       /* practice-learned at session start */
+  .pp-proj{height:100%;background:repeating-linear-gradient(45deg,#8ad9a6,#8ad9a6 5px,#bdeccd 5px,#bdeccd 10px);}  /* newly practice-learned this session */
+  .pp-num{min-width:132px;font-size:12px;color:#444;text-align:left;}
+
+  /* ── always-on detail under the character (practice mode): gloss + 繁/簡 counterpart ── */
+  #charDetail{margin:-18px 0 10px;}
+  #charGloss{text-align:center;font-size:22px;font-weight:600;color:#444;}
+  #charAlt{text-align:center;font-size:15px;color:#555;margin-top:2px;}
+  #charAlt .alt-char{font-family:"KaiTi","標楷體","STKaiti","DFKai-SB",serif;font-size:22px;font-weight:bold;color:#1a1a1a;}
+
+  /* ── hint: counterpart script ── */
+  .hint-alt{font-size:15px;color:#333;margin-bottom:4px;}
+  .hint-alt .alt-char{font-family:"KaiTi","標楷體","STKaiti","DFKai-SB",serif;font-size:22px;font-weight:bold;}
+
+  /* ── quiz mode ── */
+  #quizArea{max-width:660px;margin:10px auto;text-align:center;}
+  #quizPinyin{font-size:22px;padding:6px 12px;width:240px;text-align:center;border:2px solid #ccd;border-radius:8px;}
+  #quizPinyin.good{border-color:#28a745;background:#d4edda;}
+  #quizPinyin.bad{border-color:#dc3545;background:#f8d7da;}
+  #quizCorrectPy{font-size:18px;color:#1a4fd8;font-style:italic;margin-left:10px;}
+  .quiz-opt{display:block;width:100%;max-width:560px;margin:6px auto;padding:10px 14px;font-size:16px;text-align:left;background:#fff;border:2px solid #ccd;border-radius:8px;cursor:pointer;}
+  .quiz-opt.sel{border-color:#1a4fd8;background:#eef2ff;}
+  .quiz-opt.correct{border-color:#28a745;background:#d4edda;}
+  .quiz-opt.incorrect{border-color:#dc3545;background:#f8d7da;}
+  .quiz-opt .opt-num{display:inline-block;width:22px;color:#888;font-family:monospace;}
+
+  /* ── session summary ── */
+  #summary{max-width:660px;margin:20px auto;text-align:center;}
+  #summaryStats{font-size:20px;margin:14px 0;line-height:1.8;}
+  #summaryMissed{text-align:left;background:#fff7f7;border:1px solid #f0c0c0;border-radius:10px;padding:10px 16px;margin:14px 0;}
+  .missed-row{display:flex;align-items:center;gap:14px;padding:6px 0;border-bottom:1px dashed #eee;}
+  .missed-row:last-child{border-bottom:none;}
+  .missed-char{font-family:"KaiTi","標楷體","STKaiti","DFKai-SB",serif;font-size:34px;color:#b00020;min-width:44px;}
+  .missed-py{font-style:italic;color:#1a4fd8;min-width:90px;}
+  .missed-def{color:#444;font-size:14px;flex:1;}
+</style>
+</head>
+<body>
+
+<h1 style="text-align:center;">認漢字 Character Learning</h1>
+
+<!-- hidden selects keep JS compatibility; seg-groups / sliders are visual controls -->
+<select id="mode"        style="display:none"><option value="practice" selected>練習</option><option value="quiz">測驗</option></select>
+<select id="level"       style="display:none"><option value="L12" selected>L1–L2</option><option value="L3">L3</option><option value="L4">L4</option><option value="L5">L5</option></select>
+<select id="script"      style="display:none"><option value="simp" selected>簡體</option><option value="trad">繁體</option></select>
+<select id="orderMode"   style="display:none"><option value="random" selected>隨機</option><option value="seq">順序</option><option value="weak">弱字優先</option></select>
+<select id="sessionSize" style="display:none"><option value="20">20</option><option value="50" selected>50</option><option value="100">100</option><option value="all">全部</option></select>
+<select id="hintVis"     style="display:none"><option value="tap" selected>點擊</option><option value="delay">延遲</option><option value="always">始終</option><option value="off">關閉</option></select>
+<select id="audioMode"   style="display:none"><option value="manual" selected>手動</option><option value="auto">自動</option><option value="off">關閉</option></select>
+<input type="checkbox" id="maskAdult" checked style="display:none">
+
+<!-- 设置页 -->
+<div id="setup">
+  <div class="setup-card">
+    <div class="setup-row">
+      <span class="setup-label">學生</span>
+      <input id="studentId" autocomplete="off" placeholder="輸入姓名（或從下方選擇）" oninput="onStudentIdInput(this.value)" style="font-size:16px;padding:6px 10px;border:1.5px solid #bbb;border-radius:8px;flex:1;">
+    </div>
+
+    <div id="studentBar" class="student-bar"></div>
+
+    <div id="studentProgress"></div>
+
+    <div class="setup-row">
+      <span class="setup-label">模式</span>
+      <div class="seg-group" data-for="mode">
+        <button class="seg-btn active" data-value="practice">練習</button>
+        <button class="seg-btn" data-value="quiz">測驗</button>
+      </div>
+    </div>
+
+    <div class="setup-row">
+      <span class="setup-label">字表</span>
+      <div class="seg-group" data-for="level">
+        <button class="seg-btn active" data-value="L12">L1–L2</button>
+        <button class="seg-btn" data-value="L3">L3</button>
+        <button class="seg-btn" data-value="L4">L4</button>
+        <button class="seg-btn" data-value="L5">L5</button>
+      </div>
+    </div>
+
+    <div class="setup-row">
+      <span class="setup-label">開始序號</span>
+      <input id="startIndex" type="number" min="1" placeholder="從第 1 個字" style="font-size:15px;padding:6px 10px;border:1.5px solid #bbb;border-radius:8px;width:140px;">
+    </div>
+
+    <div class="setup-row">
+      <span class="setup-label">字形</span>
+      <div class="seg-group" data-for="script">
+        <button class="seg-btn active" data-value="simp">簡體</button>
+        <button class="seg-btn" data-value="trad">繁體</button>
+      </div>
+    </div>
+
+    <hr class="setup-divider">
+
+    <div class="setup-row" id="randomRow">
+      <span class="setup-label">練習順序</span>
+      <div class="seg-group" data-for="orderMode">
+        <button class="seg-btn active" data-value="random">隨機</button>
+        <button class="seg-btn" data-value="seq">順序</button>
+        <button class="seg-btn" data-value="weak">弱字優先</button>
+      </div>
+    </div>
+
+    <div class="setup-row" id="sessionRow">
+      <span class="setup-label">每次字數</span>
+      <div class="slider-row">
+        <input type="range" id="sessionSizeSlider" min="0" max="3" step="1" value="1">
+        <span class="slider-val" id="sessionSizeLabel">50</span>
+      </div>
+    </div>
+
+    <div class="setup-row" id="hintVisRow">
+      <span class="setup-label">提示</span>
+      <div class="seg-group" data-for="hintVis">
+        <button class="seg-btn active" data-value="tap">點擊</button>
+        <button class="seg-btn" data-value="delay">延遲3秒</button>
+        <button class="seg-btn" data-value="always">始終</button>
+        <button class="seg-btn" data-value="off">關閉</button>
+      </div>
+    </div>
+
+    <div class="setup-row" id="audioRow">
+      <span class="setup-label">🔊 朗讀</span>
+      <div class="seg-group" data-for="audioMode">
+        <button class="seg-btn active" data-value="manual">手動</button>
+        <button class="seg-btn" data-value="auto">自動</button>
+        <button class="seg-btn" data-value="off">關閉</button>
+      </div>
+      <small id="audioUnavail" style="color:#c0392b;display:none;margin-left:8px;">瀏覽器無中文語音</small>
+    </div>
+
+    <hr class="setup-divider">
+
+    <div class="setup-dict">
+      📖 字典：<span id="dictStatus">未載入</span>
+      <input type="file" id="dictFile" accept=".json" multiple style="display:none" onchange="onDictFileSelected(event)">
+      <span id="dictManual" style="display:none">
+        &nbsp;<button id="selectFileBtn" onclick="document.getElementById('dictFile').click()" style="font-size:13px;padding:4px 10px;">選擇 JSON 檔</button>
+        <small id="dictHint" style="color:#888;display:block;margin-top:3px;">請選取 tps-dictionary.json 與 cedict-supplement.json 兩個檔案。</small>
+      </span>
+    </div>
+
+    <button id="startBtn" onclick="start()">開　始</button>
+  </div>
+</div>
+
+<!-- 測試頁 -->
+<div id="scoreBar" class="hidden" style="display:none">
+  <button id="sbWrong"   onclick="markWrong()">+0 <kbd><span class="k-shift">_</span><span class="k-base k-em">-</span></kbd></button>
+  <button id="sbCorrect" onclick="markCorrect()">+1 <kbd><span class="k-shift k-em">+</span><span class="k-base">=</span></kbd></button>
+  <span id="progressInd"></span>
+</div>
+
+<div id="flashOverlay"></div>
+
+<div id="test" class="hidden" style="padding-top:90px">
+  <div id="practiceProgress" class="hidden"></div>
+
+  <div class="word" id="word"></div>
+
+  <div id="charDetail">
+    <div id="charGloss" class="hidden"></div>
+    <div id="charAlt" class="hidden"></div>
+  </div>
+
+  <div id="audioCtrl" class="hidden" style="text-align:center;margin:-10px 0 8px;">
+    <button id="speakBtn" onclick="speakCurrent()">🔊 朗讀 <small>(P)</small></button>
+  </div>
+
+  <div id="hintVisCtrl" class="hidden">
+    <small style="color:#888;">提示：</small>
+    <div class="seg-group seg-mini" style="display:inline-flex;margin-left:4px;">
+      <button class="seg-btn active" data-value="tap" onclick="setHintVisMid(this,'tap')">點擊</button>
+      <button class="seg-btn" data-value="delay" onclick="setHintVisMid(this,'delay')">延遲</button>
+      <button class="seg-btn" data-value="always" onclick="setHintVisMid(this,'always')">始終</button>
+      <button class="seg-btn" data-value="off" onclick="setHintVisMid(this,'off')">關閉</button>
+    </div>
+  </div>
+
+  <button id="hintBtn" class="hidden" onclick="toggleHint()">💡 提示</button>
+  <div id="hintPanel" class="hint-panel hidden"></div>
+
+  <div id="quizArea" class="hidden">
+    <p>
+      拼音：<input id="quizPinyin" placeholder="如 ma1" autocomplete="off">
+      <span id="quizCorrectPy"></span>
+    </p>
+    <div id="quizOpts"></div>
+    <button id="quizSubmit" onclick="submitQuiz()">確認 ⏎</button>
+  </div>
+
+  <div class="panel">
+    分數：<span id="score">0</span>
+  </div>
+
+  <div class="panel wrong">
+    不計分的字：<span id="wrongWords"></span>
+  </div>
+
+  <button onclick="undo()">返回上個字 <small>⌫</small></button>
+</div>
+
+<!-- 練習結果 -->
+<div id="summary" class="hidden">
+  <h2>練習結果</h2>
+  <div id="summaryStats"></div>
+  <div id="summaryMissed"></div>
+  <button id="reviewBtn" onclick="reviewMissed()">複習錯字</button>
+  <button onclick="closeSummary()">返回主頁面</button>
+</div>
+
+<!-- 排行榜 -->
+<div id="ranking" class="rank"></div>
+
+
+<script>
+// ===== 示例字表（使用时替换为完整版本）=====
+const WORDS = {
+L12:[
+  { simp: "八", trad: "八" },
+  { simp: "把", trad: "把" },
+  { simp: "爸", trad: "爸" },
+  { simp: "白", trad: "白" },
+  { simp: "百", trad: "百" },
+  { simp: "班", trad: "班" },
+  { simp: "办", trad: "辦" },
+  { simp: "半", trad: "半" },
+  { simp: "包", trad: "包" },
+  { simp: "饱", trad: "飽" },
+  { simp: "北", trad: "北" },
+  { simp: "贝", trad: "貝" },
+  { simp: "被", trad: "被" },
+  { simp: "本", trad: "本" },
+  { simp: "比", trad: "比" },
+  { simp: "边", trad: "邊" },
+  { simp: "别", trad: "别" },
+  { simp: "不", trad: "不" },
+  { simp: "才", trad: "才" },
+  { simp: "草", trad: "草" },
+  { simp: "册", trad: "冊" },
+  { simp: "长", trad: "長" },
+  { simp: "厂", trad: "廠" },
+  { simp: "吵", trad: "吵" },
+  { simp: "车", trad: "車" },
+  { simp: "成", trad: "成" },
+  { simp: "吃", trad: "吃" },
+  { simp: "尺", trad: "尺" },
+  { simp: "虫", trad: "蟲" },
+  { simp: "出", trad: "出" },
+  { simp: "穿", trad: "穿" },
+  { simp: "船", trad: "船" },
+  { simp: "窗", trad: "窗" },
+  { simp: "床", trad: "床" },
+  { simp: "春", trad: "春" },
+  { simp: "次", trad: "次" },
+  { simp: "从", trad: "從" },
+  { simp: "打", trad: "打" },
+  { simp: "大", trad: "大" },
+  { simp: "但", trad: "但" },
+  { simp: "当", trad: "當" },
+  { simp: "刀", trad: "刀" },
+  { simp: "到", trad: "到" },
+  { simp: "道", trad: "道" },
+  { simp: "的", trad: "的" },
+  { simp: "灯", trad: "燈" },
+  { simp: "地", trad: "地" },
+  { simp: "点", trad: "點" },
+  { simp: "电", trad: "電" },
+  { simp: "东", trad: "東" },
+  { simp: "冬", trad: "冬" },
+  { simp: "动", trad: "動" },
+  { simp: "都", trad: "都" },
+  { simp: "豆", trad: "豆" },
+  { simp: "对", trad: "對" },
+  { simp: "多", trad: "多" },
+  { simp: "儿", trad: "兒" },
+  { simp: "耳", trad: "耳" },
+  { simp: "二", trad: "二" },
+  { simp: "发", trad: "發" },
+  { simp: "反", trad: "反" },
+  { simp: "饭", trad: "飯" },
+  { simp: "方", trad: "方" },
+  { simp: "放", trad: "放" },
+  { simp: "飞", trad: "飛" },
+  { simp: "分", trad: "分" },
+  { simp: "风", trad: "風" },
+  { simp: "干", trad: "幹" },
+  { simp: "高", trad: "高" },
+  { simp: "哥", trad: "哥" },
+  { simp: "个", trad: "個" },
+  { simp: "给", trad: "給" },
+  { simp: "更", trad: "更" },
+  { simp: "工", trad: "工" },
+  { simp: "公", trad: "公" },
+  { simp: "共", trad: "共" },
+  { simp: "狗", trad: "狗" },
+  { simp: "瓜", trad: "瓜" },
+  { simp: "关", trad: "關" },
+  { simp: "光", trad: "光" },
+  { simp: "广", trad: "廣" },
+  { simp: "国", trad: "國" },
+  { simp: "果", trad: "果" },
+  { simp: "过", trad: "過" },
+  { simp: "孩", trad: "孩" },
+  { simp: "海", trad: "海" },
+  { simp: "好", trad: "好" },
+  { simp: "合", trad: "合" },
+  { simp: "和", trad: "和" },
+  { simp: "河", trad: "河" },
+  { simp: "很", trad: "很" },
+  { simp: "红", trad: "紅" },
+  { simp: "后", trad: "後" },
+  { simp: "花", trad: "花" },
+  { simp: "画", trad: "畫" },
+  { simp: "话", trad: "話" },
+  { simp: "还", trad: "還" },
+  { simp: "回", trad: "回" },
+  { simp: "会", trad: "會" },
+  { simp: "火", trad: "火" },
+  { simp: "机", trad: "機" },
+  { simp: "几", trad: "幾" },
+  { simp: "己", trad: "己" },
+  { simp: "加", trad: "加" },
+  { simp: "家", trad: "家" },
+  { simp: "见", trad: "見" },
+  { simp: "江", trad: "江" },
+  { simp: "交", trad: "交" },
+  { simp: "叫", trad: "叫" },
+  { simp: "姐", trad: "姐" },
+  { simp: "巾", trad: "巾" },
+  { simp: "今", trad: "今" },
+  { simp: "金", trad: "金" },
+  { simp: "进", trad: "進" },
+  { simp: "京", trad: "京" },
+  { simp: "经", trad: "經" },
+  { simp: "九", trad: "九" },
+  { simp: "就", trad: "就" },
+  { simp: "军", trad: "軍" },
+  { simp: "开", trad: "開" },
+  { simp: "看", trad: "看" },
+  { simp: "可", trad: "可" },
+  { simp: "课", trad: "課" },
+  { simp: "口", trad: "口" },
+  { simp: "哭", trad: "哭" },
+  { simp: "快", trad: "快" },
+  { simp: "来", trad: "來" },
+  { simp: "老", trad: "老" },
+  { simp: "乐", trad: "樂" },
+  { simp: "里", trad: "裡" },
+  { simp: "力", trad: "力" },
+  { simp: "立", trad: "立" },
+  { simp: "脸", trad: "臉" },
+  { simp: "两", trad: "兩" },
+  { simp: "亮", trad: "亮" },
+  { simp: "了", trad: "了" },
+  { simp: "林", trad: "林" },
+  { simp: "六", trad: "六" },
+  { simp: "妈", trad: "媽" },
+  { simp: "马", trad: "馬" },
+  { simp: "猫", trad: "貓" },
+  { simp: "毛", trad: "毛" },
+  { simp: "没", trad: "没" },
+  { simp: "每", trad: "每" },
+  { simp: "美", trad: "美" },
+  { simp: "妹", trad: "妹" },
+  { simp: "门", trad: "門" },
+  { simp: "们", trad: "們" },
+  { simp: "米", trad: "米" },
+  { simp: "面", trad: "面" },
+  { simp: "民", trad: "民" },
+  { simp: "明", trad: "明" },
+  { simp: "木", trad: "木" },
+  { simp: "目", trad: "目" },
+  { simp: "那", trad: "那" },
+  { simp: "奶", trad: "奶" },
+  { simp: "你", trad: "你" },
+  { simp: "年", trad: "年" },
+  { simp: "鸟", trad: "鳥" },
+  { simp: "牛", trad: "牛" },
+  { simp: "农", trad: "農" },
+  { simp: "女", trad: "女" },
+  { simp: "胖", trad: "胖" },
+  { simp: "跑", trad: "跑" },
+  { simp: "朋", trad: "朋" },
+  { simp: "皮", trad: "皮" },
+  { simp: "片", trad: "片" },
+  { simp: "票", trad: "票" },
+  { simp: "平", trad: "平" },
+  { simp: "七", trad: "七" },
+  { simp: "奇", trad: "奇" },
+  { simp: "起", trad: "起" },
+  { simp: "气", trad: "氣" },
+  { simp: "千", trad: "千" },
+  { simp: "前", trad: "前" },
+  { simp: "青", trad: "青" },
+  { simp: "秋", trad: "秋" },
+  { simp: "去", trad: "去" },
+  { simp: "全", trad: "全" },
+  { simp: "然", trad: "然" },
+  { simp: "让", trad: "讓" },
+  { simp: "人", trad: "人" },
+  { simp: "日", trad: "日" },
+  { simp: "三", trad: "三" },
+  { simp: "山", trad: "山" },
+  { simp: "上", trad: "上" },
+  { simp: "少", trad: "少" },
+  { simp: "舌", trad: "舌" },
+  { simp: "身", trad: "身" },
+  { simp: "生", trad: "生" },
+  { simp: "声", trad: "聲" },
+  { simp: "师", trad: "師" },
+  { simp: "十", trad: "十" },
+  { simp: "什", trad: "什" },
+  { simp: "石", trad: "石" },
+  { simp: "时", trad: "時" },
+  { simp: "市", trad: "市" },
+  { simp: "是", trad: "是" },
+  { simp: "手", trad: "手" },
+  { simp: "书", trad: "書" },
+  { simp: "树", trad: "樹" },
+  { simp: "双", trad: "雙" },
+  { simp: "谁", trad: "誰" },
+  { simp: "水", trad: "水" },
+  { simp: "说", trad: "說" },
+  { simp: "四", trad: "四" },
+  { simp: "岁", trad: "歲" },
+  { simp: "他", trad: "他" },
+  { simp: "她", trad: "她" },
+  { simp: "台", trad: "台" },
+  { simp: "太", trad: "太" },
+  { simp: "天", trad: "天" },
+  { simp: "田", trad: "田" },
+  { simp: "条", trad: "條" },
+  { simp: "跳", trad: "跳" },
+  { simp: "听", trad: "聽" },
+  { simp: "同", trad: "同" },
+  { simp: "头", trad: "頭" },
+  { simp: "土", trad: "土" },
+  { simp: "外", trad: "外" },
+  { simp: "玩", trad: "玩" },
+  { simp: "晚", trad: "晚" },
+  { simp: "万", trad: "萬" },
+  { simp: "王", trad: "王" },
+  { simp: "网", trad: "網" },
+  { simp: "为", trad: "為" },
+  { simp: "卫", trad: "衛" },
+  { simp: "文", trad: "文" },
+  { simp: "问", trad: "問" },
+  { simp: "我", trad: "我" },
+  { simp: "五", trad: "五" },
+  { simp: "午", trad: "午" },
+  { simp: "西", trad: "西" },
+  { simp: "习", trad: "習" },
+  { simp: "洗", trad: "洗" },
+  { simp: "下", trad: "下" },
+  { simp: "先", trad: "先" },
+  { simp: "现", trad: "現" },
+  { simp: "向", trad: "向" },
+  { simp: "小", trad: "小" },
+  { simp: "校", trad: "校" },
+  { simp: "笑", trad: "笑" },
+  { simp: "些", trad: "些" },
+  { simp: "心", trad: "心" },
+  { simp: "兴", trad: "興" },
+  { simp: "星", trad: "星" },
+  { simp: "行", trad: "行" },
+  { simp: "学", trad: "學" },
+  { simp: "雪", trad: "雪" },
+  { simp: "牙", trad: "牙" },
+  { simp: "羊", trad: "羊" },
+  { simp: "阳", trad: "陽" },
+  { simp: "样", trad: "樣" },
+  { simp: "要", trad: "要" },
+  { simp: "爷", trad: "爺" },
+  { simp: "也", trad: "也" },
+  { simp: "业", trad: "業" },
+  { simp: "叶", trad: "葉" },
+  { simp: "页", trad: "頁" },
+  { simp: "一", trad: "一" },
+  { simp: "衣", trad: "衣" },
+  { simp: "医", trad: "醫" },
+  { simp: "以", trad: "以" },
+  { simp: "因", trad: "因" },
+  { simp: "喝", trad: "喝" },
+  { simp: "音", trad: "音" },
+  { simp: "用", trad: "用" },
+  { simp: "有", trad: "有" },
+  { simp: "又", trad: "又" },
+  { simp: "鱼", trad: "魚" },
+  { simp: "羽", trad: "羽" },
+  { simp: "雨", trad: "雨" },
+  { simp: "语", trad: "語" },
+  { simp: "元", trad: "元" },
+  { simp: "月", trad: "月" },
+  { simp: "云", trad: "雲" },
+  { simp: "再", trad: "再" },
+  { simp: "在", trad: "在" },
+  { simp: "早", trad: "早" },
+  { simp: "站", trad: "站" },
+  { simp: "找", trad: "找" },
+  { simp: "这", trad: "這" },
+  { simp: "真", trad: "真" },
+  { simp: "正", trad: "正" },
+  { simp: "知", trad: "知" },
+  { simp: "直", trad: "直" },
+  { simp: "只", trad: "只" },
+  { simp: "中", trad: "中" },
+  { simp: "竹", trad: "竹" },
+  { simp: "主", trad: "主" },
+  { simp: "住", trad: "住" },
+  { simp: "桌", trad: "桌" },
+  { simp: "着", trad: "著" },
+  { simp: "子", trad: "子" },
+  { simp: "字", trad: "字" },
+  { simp: "自", trad: "自" },
+  { simp: "走", trad: "走" },
+  { simp: "作", trad: "作" },
+  { simp: "坐", trad: "坐" },
+  { simp: "做", trad: "做" },
+  { simp: "唱", trad: "唱" },
+  { simp: "宝", trad: "寶" },
+  { simp: "汉", trad: "漢" },
+  { simp: "森", trad: "森" },
+  { simp: "旁", trad: "旁" },
+  { simp: "谢", trad: "謝" },
+  { simp: "园", trad: "園" },
+  { simp: "晴", trad: "晴" },
+  { simp: "澡", trad: "澡" },
+  { simp: "错", trad: "錯" },
+  { simp: "块", trad: "塊" },
+  { simp: "男", trad: "男" },
+  { simp: "室", trad: "室" },
+  { simp: "坏", trad: "壞" },
+  { simp: "假", trad: "假" },
+  { simp: "练", trad: "練" },
+  { simp: "歌", trad: "歌" },
+  { simp: "读", trad: "讀" },
+  { simp: "户", trad: "户" },
+  { simp: "绿", trad: "綠" },
+  { simp: "咱", trad: "咱" },
+  { simp: "睡", trad: "睡" },
+  { simp: "店", trad: "店" },
+  { simp: "蛋", trad: "蛋" },
+  { simp: "鸡", trad: "雞" },
+  { simp: "姓", trad: "姓" },
+  { simp: "蓝", trad: "藍" },
+  { simp: "能", trad: "能" },
+  { simp: "而", trad: "而" },
+  { simp: "得", trad: "得" },
+  { simp: "种", trad: "種" },
+  { simp: "产", trad: "產" },
+  { simp: "所", trad: "所" },
+  { simp: "之", trad: "之" },
+  { simp: "理", trad: "理" },
+  { simp: "体", trad: "體" },
+  { simp: "定", trad: "定" },
+  { simp: "实", trad: "實" },
+  { simp: "如", trad: "如" },
+  { simp: "么", trad: "麼" },
+  { simp: "物", trad: "物" },
+  { simp: "法", trad: "法" },
+  { simp: "化", trad: "化" },
+  { simp: "等", trad: "等" },
+  { simp: "部", trad: "部" },
+  { simp: "义", trad: "義" },
+  { simp: "事", trad: "事" },
+  { simp: "社", trad: "社" },
+  { simp: "它", trad: "它" },
+  { simp: "其", trad: "其" },
+  { simp: "想", trad: "想" },
+  { simp: "意", trad: "意" },
+  { simp: "重", trad: "重" },
+  { simp: "使", trad: "使" },
+  { simp: "度", trad: "度" },
+  { simp: "相", trad: "相" },
+  { simp: "情", trad: "情" },
+  { simp: "间", trad: "間" },
+  { simp: "活", trad: "活" },
+  { simp: "者", trad: "者" },
+  { simp: "应", trad: "應" },
+  { simp: "表", trad: "表" },
+  { simp: "展", trad: "展" },
+  { simp: "系", trad: "系" },
+  { simp: "代", trad: "代" },
+  { simp: "各", trad: "各" },
+  { simp: "教", trad: "教" },
+  { simp: "新", trad: "新" },
+  { simp: "内", trad: "内" },
+  { simp: "变", trad: "變" },
+  { simp: "原", trad: "原" },
+  { simp: "结", trad: "結" },
+  { simp: "利", trad: "利" },
+  { simp: "已", trad: "已" },
+  { simp: "最", trad: "最" },
+  { simp: "政", trad: "政" },
+  { simp: "特", trad: "特" },
+  { simp: "建", trad: "建" },
+  { simp: "常", trad: "常" },
+  { simp: "第", trad: "第" },
+  { simp: "思", trad: "思" },
+  { simp: "提", trad: "提" },
+  { simp: "或", trad: "或" },
+  { simp: "通", trad: "通" },
+  { simp: "解", trad: "解" },
+  { simp: "位", trad: "位" },
+  { simp: "论", trad: "論" },
+  { simp: "观", trad: "觀" },
+  { simp: "基", trad: "基" },
+  { simp: "期", trad: "期" },
+  { simp: "术", trad: "術" },
+  { simp: "济", trad: "濟" },
+  { simp: "认", trad: "認" },
+  { simp: "员", trad: "員" },
+  { simp: "数", trad: "數" },
+  { simp: "级", trad: "級" },
+  { simp: "题", trad: "題" },
+  { simp: "感", trad: "感" },
+  { simp: "科", trad: "科" },
+  { simp: "指", trad: "指" },
+  { simp: "世", trad: "世" },
+  { simp: "必", trad: "必" },
+  { simp: "接", trad: "接" },
+  { simp: "总", trad: "總" },
+  { simp: "场", trad: "場" },
+  { simp: "流", trad: "流" },
+  { simp: "决", trad: "決" },
+  { simp: "色", trad: "色" },
+  { simp: "处", trad: "處" },
+  { simp: "路", trad: "路" },
+  { simp: "运", trad: "運" },
+  { simp: "任", trad: "任" },
+  { simp: "治", trad: "治" },
+  { simp: "神", trad: "神" },
+  { simp: "求", trad: "求" },
+  { simp: "件", trad: "件" },
+  { simp: "组", trad: "組" },
+  { simp: "根", trad: "根" },
+  { simp: "将", trad: "將" },
+  { simp: "改", trad: "改" },
+  { simp: "导", trad: "導" },
+  { simp: "眼", trad: "眼" },
+  { simp: "识", trad: "識" },
+  { simp: "计", trad: "計" },
+  { simp: "界", trad: "界" },
+  { simp: "取", trad: "取" },
+  { simp: "设", trad: "設" },
+  { simp: "完", trad: "完" },
+  { simp: "究", trad: "究" },
+  { simp: "信", trad: "信" },
+  { simp: "名", trad: "名" },
+  { simp: "便", trad: "便" },
+  { simp: "育", trad: "育" },
+  { simp: "带", trad: "帶" },
+  { simp: "研", trad: "研" },
+  { simp: "领", trad: "領" },
+  { simp: "较", trad: "較" },
+  { simp: "张", trad: "張" },
+  { simp: "许", trad: "許" },
+  { simp: "步", trad: "步" },
+  { simp: "往", trad: "往" },
+  { simp: "调", trad: "調" },
+  { simp: "务", trad: "務" },
+  { simp: "呢", trad: "呢" },
+  { simp: "难", trad: "難" },
+  { simp: "确", trad: "確" },
+  { simp: "劳", trad: "勞" },
+  { simp: "收", trad: "收" },
+  { simp: "候", trad: "候" },
+  { simp: "需", trad: "需" },
+  { simp: "南", trad: "南" },
+  { simp: "清", trad: "清" },
+  { simp: "影", trad: "影" },
+  { simp: "切", trad: "切" },
+  { simp: "且", trad: "且" },
+  { simp: "志", trad: "志" },
+  { simp: "热", trad: "熱" },
+  { simp: "联", trad: "聯" },
+  { simp: "安", trad: "安" },
+  { simp: "极", trad: "極" },
+  { simp: "单", trad: "單" },
+  { simp: "商", trad: "商" },
+  { simp: "技", trad: "技" },
+  { simp: "深", trad: "深" },
+  { simp: "验", trad: "驗" },
+  { simp: "增", trad: "增" },
+  { simp: "记", trad: "記" },
+  { simp: "近", trad: "近" },
+  { simp: "言", trad: "言" },
+  { simp: "整", trad: "整" },
+  { simp: "精", trad: "精" },
+  { simp: "集", trad: "集" },
+  { simp: "空", trad: "空" },
+  { simp: "连", trad: "連" },
+  { simp: "报", trad: "報" },
+  { simp: "觉", trad: "覺" },
+  { simp: "响", trad: "響" },
+  { simp: "怎", trad: "怎" },
+  { simp: "病", trad: "病" },
+  { simp: "图", trad: "圖" },
+  { simp: "况", trad: "況" },
+  { simp: "例", trad: "例" },
+  { simp: "消", trad: "消" },
+  { simp: "容", trad: "容" },
+  { simp: "史", trad: "史" },
+  { simp: "非", trad: "非" },
+  { simp: "离", trad: "離" },
+  { simp: "节", trad: "節" },
+  { simp: "亲", trad: "親" },
+  { simp: "族", trad: "族" },
+  { simp: "满", trad: "滿" },
+  { simp: "何", trad: "何" },
+  { simp: "克", trad: "克" },
+  { simp: "始", trad: "始" },
+  { simp: "态", trad: "態" },
+  { simp: "艺", trad: "藝" },
+  { simp: "望", trad: "望" },
+  { simp: "须", trad: "須" },
+  { simp: "该", trad: "該" },
+  { simp: "复", trad: "複" },
+  { simp: "爱", trad: "愛" },
+  { simp: "按", trad: "按" },
+  { simp: "巴", trad: "巴" },
+  { simp: "吧", trad: "吧" },
+  { simp: "般", trad: "般" },
+  { simp: "保", trad: "保" },
+  { simp: "备", trad: "備" },
+  { simp: "鼻", trad: "鼻" },
+  { simp: "兵", trad: "兵" },
+  { simp: "并", trad: "並" },
+  { simp: "波", trad: "波" },
+  { simp: "布", trad: "布" },
+  { simp: "材", trad: "材" },
+  { simp: "采", trad: "采" },
+  { simp: "参", trad: "參" },
+  { simp: "测", trad: "測" },
+  { simp: "层", trad: "層" },
+  { simp: "曾", trad: "曾" },
+  { simp: "查", trad: "查" },
+  { simp: "察", trad: "察" },
+  { simp: "差", trad: "差" },
+  { simp: "沉", trad: "沉" },
+  { simp: "陈", trad: "陳" },
+  { simp: "称", trad: "稱" },
+  { simp: "城", trad: "城" },
+  { simp: "程", trad: "程" },
+  { simp: "持", trad: "持" },
+  { simp: "冲", trad: "冲" },
+  { simp: "充", trad: "充" },
+  { simp: "初", trad: "初" },
+  { simp: "除", trad: "除" },
+  { simp: "础", trad: "礎" },
+  { simp: "传", trad: "傳" },
+  { simp: "创", trad: "創" },
+  { simp: "此", trad: "此" },
+  { simp: "村", trad: "村" },
+  { simp: "存", trad: "存" },
+  { simp: "达", trad: "達" },
+  { simp: "待", trad: "待" },
+  { simp: "倒", trad: "倒" },
+  { simp: "德", trad: "德" },
+  { simp: "低", trad: "低" },
+  { simp: "敌", trad: "敵" },
+  { simp: "底", trad: "底" },
+  { simp: "帝", trad: "帝" },
+  { simp: "斗", trad: "鬥" },
+  { simp: "独", trad: "獨" },
+  { simp: "肚", trad: "肚" },
+  { simp: "段", trad: "段" },
+  { simp: "断", trad: "斷" },
+  { simp: "队", trad: "隊" },
+  { simp: "朵", trad: "朵" },
+  { simp: "尔", trad: "爾" },
+  { simp: "范", trad: "範" },
+  { simp: "房", trad: "房" },
+  { simp: "费", trad: "費" },
+  { simp: "封", trad: "封" },
+  { simp: "否", trad: "否" },
+  { simp: "夫", trad: "夫" },
+  { simp: "服", trad: "服" },
+  { simp: "府", trad: "府" },
+  { simp: "富", trad: "富" },
+  { simp: "刚", trad: "剛" },
+  { simp: "告", trad: "告" },
+  { simp: "格", trad: "格" },
+  { simp: "跟", trad: "跟" },
+  { simp: "功", trad: "功" },
+  { simp: "供", trad: "供" },
+  { simp: "构", trad: "構" },
+  { simp: "够", trad: "够" },
+  { simp: "古", trad: "古" },
+  { simp: "固", trad: "固" },
+  { simp: "故", trad: "故" },
+  { simp: "官", trad: "官" },
+  { simp: "管", trad: "管" },
+  { simp: "规", trad: "規" },
+  { simp: "害", trad: "害" },
+  { simp: "含", trad: "含" },
+  { simp: "号", trad: "號" },
+  { simp: "黑", trad: "黑" },
+  { simp: "乎", trad: "乎" },
+  { simp: "互", trad: "互" },
+  { simp: "护", trad: "護" },
+  { simp: "划", trad: "劃" },
+  { simp: "华", trad: "華" },
+  { simp: "环", trad: "環" },
+  { simp: "黄", trad: "黄" },
+  { simp: "获", trad: "獲" },
+  { simp: "击", trad: "擊" },
+  { simp: "积", trad: "積" },
+  { simp: "激", trad: "激" },
+  { simp: "及", trad: "及" },
+  { simp: "即", trad: "即" },
+  { simp: "急", trad: "急" },
+  { simp: "纪", trad: "紀" },
+  { simp: "际", trad: "際" },
+  { simp: "既", trad: "既" },
+  { simp: "价", trad: "價" },
+  { simp: "坚", trad: "堅" },
+  { simp: "简", trad: "簡" },
+  { simp: "渐", trad: "漸" },
+  { simp: "讲", trad: "講" },
+  { simp: "降", trad: "降" },
+  { simp: "角", trad: "角" },
+  { simp: "阶", trad: "階" },
+  { simp: "仅", trad: "僅" },
+  { simp: "紧", trad: "緊" },
+  { simp: "尽", trad: "盡" },
+  { simp: "境", trad: "境" },
+  { simp: "居", trad: "居" },
+  { simp: "局", trad: "局" },
+  { simp: "举", trad: "舉" },
+  { simp: "句", trad: "句" },
+  { simp: "具", trad: "具" },
+  { simp: "剧", trad: "劇" },
+  { simp: "据", trad: "據" },
+  { simp: "绝", trad: "絕" },
+  { simp: "均", trad: "均" },
+  { simp: "抗", trad: "抗" },
+  { simp: "考", trad: "考" },
+  { simp: "靠", trad: "靠" },
+  { simp: "刻", trad: "刻" },
+  { simp: "客", trad: "客" },
+  { simp: "苦", trad: "苦" },
+  { simp: "裤", trad: "褲" },
+  { simp: "括", trad: "括" },
+  { simp: "拉", trad: "拉" },
+  { simp: "类", trad: "類" },
+  { simp: "李", trad: "李" },
+  { simp: "历", trad: "曆" },
+  { simp: "良", trad: "良" },
+  { simp: "量", trad: "量" },
+  { simp: "料", trad: "料" },
+  { simp: "列", trad: "列" },
+  { simp: "另", trad: "另" },
+  { simp: "令", trad: "令" },
+  { simp: "留", trad: "留" },
+  { simp: "罗", trad: "羅" },
+  { simp: "落", trad: "落" },
+  { simp: "律", trad: "律" },
+  { simp: "率", trad: "率" },
+  { simp: "吗", trad: "嗎" },
+  { simp: "密", trad: "密" },
+  { simp: "命", trad: "命" },
+  { simp: "模", trad: "模" },
+  { simp: "末", trad: "末" },
+  { simp: "某", trad: "某" },
+  { simp: "母", trad: "母" },
+  { simp: "拿", trad: "拿" },
+  { simp: "哪", trad: "哪" },
+  { simp: "脑", trad: "腦" },
+  { simp: "念", trad: "念" },
+  { simp: "排", trad: "排" },
+  { simp: "派", trad: "派" },
+  { simp: "配", trad: "配" },
+  { simp: "批", trad: "批" },
+  { simp: "品", trad: "品" },
+  { simp: "坡", trad: "坡" },
+  { simp: "破", trad: "破" },
+  { simp: "普", trad: "普" },
+  { simp: "企", trad: "企" },
+  { simp: "器", trad: "器" },
+  { simp: "钱", trad: "錢" },
+  { simp: "强", trad: "强" },
+  { simp: "轻", trad: "輕" },
+  { simp: "请", trad: "請" },
+  { simp: "穷", trad: "窮" },
+  { simp: "球", trad: "球" },
+  { simp: "区", trad: "區" },
+  { simp: "曲", trad: "曲" },
+  { simp: "权", trad: "權" },
+  { simp: "却", trad: "却" },
+  { simp: "群", trad: "群" },
+  { simp: "仍", trad: "仍" },
+  { simp: "入", trad: "入" },
+  { simp: "善", trad: "善" },
+  { simp: "射", trad: "射" },
+  { simp: "甚", trad: "甚" },
+  { simp: "失", trad: "失" },
+  { simp: "施", trad: "施" },
+  { simp: "食", trad: "食" },
+  { simp: "士", trad: "士" },
+  { simp: "示", trad: "示" },
+  { simp: "式", trad: "式" },
+  { simp: "似", trad: "似" },
+  { simp: "势", trad: "勢" },
+  { simp: "视", trad: "視" },
+  { simp: "适", trad: "適" },
+  { simp: "首", trad: "首" },
+  { simp: "受", trad: "受" },
+  { simp: "属", trad: "屬" },
+  { simp: "述", trad: "述" },
+  { simp: "司", trad: "司" },
+  { simp: "斯", trad: "斯" },
+  { simp: "死", trad: "死" },
+  { simp: "苏", trad: "蘇" },
+  { simp: "素", trad: "素" },
+  { simp: "速", trad: "速" },
+  { simp: "算", trad: "算" },
+  { simp: "虽", trad: "雖" },
+  { simp: "随", trad: "隨" },
+  { simp: "谈", trad: "談" },
+  { simp: "铁", trad: "鐵" },
+  { simp: "统", trad: "統" },
+  { simp: "投", trad: "投" },
+  { simp: "突", trad: "突" },
+  { simp: "团", trad: "團" },
+  { simp: "推", trad: "推" },
+  { simp: "蛙", trad: "蛙" },
+  { simp: "微", trad: "微" },
+  { simp: "围", trad: "圍" },
+  { simp: "维", trad: "維" },
+  { simp: "委", trad: "委" },
+  { simp: "未", trad: "未" },
+  { simp: "温", trad: "温" },
+  { simp: "无", trad: "無" },
+  { simp: "武", trad: "武" },
+  { simp: "舞", trad: "舞" },
+  { simp: "吸", trad: "吸" },
+  { simp: "息", trad: "息" },
+  { simp: "戏", trad: "戲" },
+  { simp: "细", trad: "細" },
+  { simp: "显", trad: "顯" },
+  { simp: "县", trad: "縣" },
+  { simp: "限", trad: "限" },
+  { simp: "线", trad: "線" },
+  { simp: "乡", trad: "鄉" },
+  { simp: "项", trad: "項" },
+  { simp: "象", trad: "象" },
+  { simp: "像", trad: "像" },
+  { simp: "效", trad: "效" },
+  { simp: "写", trad: "寫" },
+  { simp: "形", trad: "形" },
+  { simp: "型", trad: "型" },
+  { simp: "性", trad: "性" },
+  { simp: "修", trad: "修" },
+  { simp: "续", trad: "續" },
+  { simp: "选", trad: "選" },
+  { simp: "血", trad: "血" },
+  { simp: "压", trad: "壓" },
+  { simp: "亚", trad: "亞" },
+  { simp: "呀", trad: "呀" },
+  { simp: "严", trad: "嚴" },
+  { simp: "演", trad: "演" },
+  { simp: "洋", trad: "洋" },
+  { simp: "养", trad: "養" },
+  { simp: "夜", trad: "夜" },
+  { simp: "依", trad: "依" },
+  { simp: "议", trad: "議" },
+  { simp: "异", trad: "異" },
+  { simp: "易", trad: "易" },
+  { simp: "益", trad: "益" },
+  { simp: "引", trad: "引" },
+  { simp: "英", trad: "英" },
+  { simp: "营", trad: "營" },
+  { simp: "优", trad: "優" },
+  { simp: "由", trad: "由" },
+  { simp: "油", trad: "油" },
+  { simp: "于", trad: "於" },
+  { simp: "余", trad: "餘" },
+  { simp: "与", trad: "與" },
+  { simp: "源", trad: "源" },
+  { simp: "远", trad: "遠" },
+  { simp: "院", trad: "院" },
+  { simp: "约", trad: "約" },
+  { simp: "越", trad: "越" },
+  { simp: "杂", trad: "雜" },
+  { simp: "造", trad: "造" },
+  { simp: "则", trad: "則" },
+  { simp: "占", trad: "佔" },
+  { simp: "照", trad: "照" },
+  { simp: "争", trad: "爭" },
+  { simp: "征", trad: "征" },
+  { simp: "证", trad: "證" },
+  { simp: "支", trad: "支" },
+  { simp: "织", trad: "織" },
+  { simp: "值", trad: "值" },
+  { simp: "职", trad: "職" },
+  { simp: "植", trad: "植" },
+  { simp: "止", trad: "止" },
+  { simp: "至", trad: "至" },
+  { simp: "制", trad: "制" },
+  { simp: "质", trad: "質" },
+  { simp: "致", trad: "致" },
+  { simp: "置", trad: "置" },
+  { simp: "终", trad: "終" },
+  { simp: "众", trad: "眾" },
+  { simp: "周", trad: "周" },
+  { simp: "逐", trad: "逐" },
+  { simp: "助", trad: "助" },
+  { simp: "注", trad: "注" },
+  { simp: "著", trad: "著" },
+  { simp: "专", trad: "專" },
+  { simp: "转", trad: "轉" },
+  { simp: "装", trad: "裝" },
+  { simp: "状", trad: "狀" },
+  { simp: "准", trad: "准" },
+  { simp: "资", trad: "資" },
+  { simp: "足", trad: "足" },
+  { simp: "昨", trad: "昨" }
+],
+L3:[
+  { simp: "阿", trad: "阿" },
+  { simp: "啊", trad: "啊" },
+  { simp: "哎", trad: "哎" },
+  { simp: "挨", trad: "挨" },
+  { simp: "碍", trad: "礙" },
+  { simp: "岸", trad: "岸" },
+  { simp: "案", trad: "案" },
+  { simp: "暗", trad: "暗" },
+  { simp: "奥", trad: "奥" },
+  { simp: "罢", trad: "罷" },
+  { simp: "摆", trad: "擺" },
+  { simp: "败", trad: "敗" },
+  { simp: "搬", trad: "搬" },
+  { simp: "板", trad: "板" },
+  { simp: "伴", trad: "伴" },
+  { simp: "帮", trad: "幫" },
+  { simp: "胞", trad: "胞" },
+  { simp: "抱", trad: "抱" },
+  { simp: "暴", trad: "暴" },
+  { simp: "爆", trad: "爆" },
+  { simp: "杯", trad: "杯" },
+  { simp: "悲", trad: "悲" },
+  { simp: "背", trad: "背" },
+  { simp: "倍", trad: "倍" },
+  { simp: "辈", trad: "輩" },
+  { simp: "奔", trad: "奔" },
+  { simp: "逼", trad: "逼" },
+  { simp: "彼", trad: "彼" },
+  { simp: "笔", trad: "筆" },
+  { simp: "毕", trad: "畢" },
+  { simp: "闭", trad: "閉" },
+  { simp: "壁", trad: "壁" },
+  { simp: "避", trad: "避" },
+  { simp: "编", trad: "編" },
+  { simp: "遍", trad: "遍" },
+  { simp: "辩", trad: "辯" },
+  { simp: "标", trad: "標" },
+  { simp: "宾", trad: "賓" },
+  { simp: "冰", trad: "冰" },
+  { simp: "剥", trad: "剝" },
+  { simp: "播", trad: "播" },
+  { simp: "伯", trad: "伯" },
+  { simp: "勃", trad: "勃" },
+  { simp: "博", trad: "博" },
+  { simp: "补", trad: "補" },
+  { simp: "擦", trad: "擦" },
+  { simp: "财", trad: "財" },
+  { simp: "裁", trad: "裁" },
+  { simp: "彩", trad: "彩" },
+  { simp: "菜", trad: "菜" },
+  { simp: "餐", trad: "餐" },
+  { simp: "残", trad: "殘" },
+  { simp: "藏", trad: "藏" },
+  { simp: "操", trad: "操" },
+  { simp: "曹", trad: "曹" },
+  { simp: "侧", trad: "側" },
+  { simp: "茶", trad: "茶" },
+  { simp: "柴", trad: "柴" },
+  { simp: "昌", trad: "昌" },
+  { simp: "尝", trad: "嘗" },
+  { simp: "倡", trad: "倡" },
+  { simp: "超", trad: "超" },
+  { simp: "朝", trad: "朝" },
+  { simp: "潮", trad: "潮" },
+  { simp: "彻", trad: "徹" },
+  { simp: "晨", trad: "晨" },
+  { simp: "旗", trad: "旗" },
+  { simp: "承", trad: "承" },
+  { simp: "迟", trad: "遲" },
+  { simp: "赤", trad: "赤" },
+  { simp: "翅", trad: "翅" },
+  { simp: "抽", trad: "抽" },
+  { simp: "储", trad: "儲" },
+  { simp: "楚", trad: "楚" },
+  { simp: "畜", trad: "畜" },
+  { simp: "触", trad: "觸" },
+  { simp: "川", trad: "川" },
+  { simp: "吹", trad: "吹" },
+  { simp: "垂", trad: "垂" },
+  { simp: "纯", trad: "純" },
+  { simp: "词", trad: "詞" },
+  { simp: "辞", trad: "辭" },
+  { simp: "磁", trad: "磁" },
+  { simp: "刺", trad: "刺" },
+  { simp: "聪", trad: "聰" },
+  { simp: "粗", trad: "粗" },
+  { simp: "促", trad: "促" },
+  { simp: "催", trad: "催" },
+  { simp: "措", trad: "措" },
+  { simp: "搭", trad: "搭" },
+  { simp: "答", trad: "答" },
+  { simp: "袋", trad: "袋" },
+  { simp: "戴", trad: "戴" },
+  { simp: "丹", trad: "丹" },
+  { simp: "担", trad: "擔" },
+  { simp: "旦", trad: "旦" },
+  { simp: "淡", trad: "淡" },
+  { simp: "弹", trad: "彈" },
+  { simp: "荡", trad: "蕩" },
+  { simp: "岛", trad: "島" },
+  { simp: "蹈", trad: "蹈" },
+  { simp: "登", trad: "登" },
+  { simp: "抵", trad: "抵" },
+  { simp: "弟", trad: "弟" },
+  { simp: "典", trad: "典" },
+  { simp: "掉", trad: "掉" },
+  { simp: "爹", trad: "爹" },
+  { simp: "丁", trad: "丁" },
+  { simp: "顶", trad: "頂" },
+  { simp: "订", trad: "訂" },
+  { simp: "丢", trad: "丢" },
+  { simp: "懂", trad: "懂" },
+  { simp: "冻", trad: "凍" },
+  { simp: "洞", trad: "洞" },
+  { simp: "抖", trad: "抖" },
+  { simp: "督", trad: "督" },
+  { simp: "毒", trad: "毒" },
+  { simp: "杜", trad: "杜" },
+  { simp: "端", trad: "端" },
+  { simp: "短", trad: "短" },
+  { simp: "吨", trad: "噸" },
+  { simp: "盾", trad: "盾" },
+  { simp: "顿", trad: "頓" },
+  { simp: "夺", trad: "奪" },
+  { simp: "躲", trad: "躲" },
+  { simp: "俄", trad: "俄" },
+  { simp: "额", trad: "額" },
+  { simp: "恶", trad: "惡" },
+  { simp: "饿", trad: "餓" },
+  { simp: "恩", trad: "恩" },
+  { simp: "番", trad: "番" },
+  { simp: "翻", trad: "翻" },
+  { simp: "凡", trad: "凡" },
+  { simp: "烦", trad: "煩" },
+  { simp: "繁", trad: "繁" },
+  { simp: "犯", trad: "犯" },
+  { simp: "泛", trad: "泛" },
+  { simp: "芳", trad: "芳" },
+  { simp: "防", trad: "防" },
+  { simp: "仿", trad: "仿" },
+  { simp: "访", trad: "訪" },
+  { simp: "纺", trad: "紡" },
+  { simp: "肥", trad: "肥" },
+  { simp: "肺", trad: "肺" },
+  { simp: "废", trad: "廢" },
+  { simp: "纷", trad: "紛" },
+  { simp: "粉", trad: "粉" },
+  { simp: "份", trad: "份" },
+  { simp: "奋", trad: "奮" },
+  { simp: "丰", trad: "豐" },
+  { simp: "峰", trad: "峰" },
+  { simp: "锋", trad: "鋒" },
+  { simp: "蜂", trad: "蜂" },
+  { simp: "奉", trad: "奉" },
+  { simp: "佛", trad: "佛" },
+  { simp: "肤", trad: "膚" },
+  { simp: "伏", trad: "伏" },
+  { simp: "扶", trad: "扶" },
+  { simp: "符", trad: "符" },
+  { simp: "幅", trad: "幅" },
+  { simp: "福", trad: "福" },
+  { simp: "辅", trad: "輔" },
+  { simp: "父", trad: "父" },
+  { simp: "付", trad: "付" },
+  { simp: "负", trad: "負" },
+  { simp: "妇", trad: "婦" },
+  { simp: "附", trad: "附" },
+  { simp: "副", trad: "副" },
+  { simp: "傅", trad: "傅" },
+  { simp: "腹", trad: "腹" },
+  { simp: "盖", trad: "蓋" },
+  { simp: "概", trad: "概" },
+  { simp: "甘", trad: "甘" },
+  { simp: "杆", trad: "杆" },
+  { simp: "赶", trad: "趕" },
+  { simp: "敢", trad: "敢" },
+  { simp: "纲", trad: "綱" },
+  { simp: "钢", trad: "鋼" },
+  { simp: "搞", trad: "搞" },
+  { simp: "耕", trad: "耕" },
+  { simp: "攻", trad: "攻" },
+  { simp: "宫", trad: "宫" },
+  { simp: "巩", trad: "鞏" },
+  { simp: "沟", trad: "溝" },
+  { simp: "购", trad: "購" },
+  { simp: "孤", trad: "孤" },
+  { simp: "姑", trad: "姑" },
+  { simp: "谷", trad: "谷" },
+  { simp: "股", trad: "股" },
+  { simp: "骨", trad: "骨" },
+  { simp: "鼓", trad: "鼓" },
+  { simp: "顾", trad: "顧" },
+  { simp: "挂", trad: "掛" },
+  { simp: "怪", trad: "怪" },
+  { simp: "馆", trad: "館" },
+  { simp: "贯", trad: "貫" },
+  { simp: "惯", trad: "慣" },
+  { simp: "灌", trad: "灌" },
+  { simp: "归", trad: "歸" },
+  { simp: "轨", trad: "軌" },
+  { simp: "鬼", trad: "鬼" },
+  { simp: "贵", trad: "貴" },
+  { simp: "桂", trad: "桂" },
+  { simp: "郭", trad: "郭" },
+  { simp: "锅", trad: "鍋" },
+  { simp: "哈", trad: "哈" },
+  { simp: "寒", trad: "寒" },
+  { simp: "喊", trad: "喊" },
+  { simp: "航", trad: "航" },
+  { simp: "毫", trad: "毫" },
+  { simp: "耗", trad: "耗" },
+  { simp: "呵", trad: "呵" },
+  { simp: "阴", trad: "陰" },
+  { simp: "荷", trad: "荷" },
+  { simp: "核", trad: "核" },
+  { simp: "贺", trad: "賀" },
+  { simp: "恒", trad: "恒" },
+  { simp: "横", trad: "横" },
+  { simp: "宏", trad: "宏" },
+  { simp: "洪", trad: "洪" },
+  { simp: "猴", trad: "猴" },
+  { simp: "厚", trad: "厚" },
+  { simp: "呼", trad: "呼" },
+  { simp: "忽", trad: "忽" },
+  { simp: "胡", trad: "胡" },
+  { simp: "湖", trad: "湖" },
+  { simp: "虎", trad: "虎" },
+  { simp: "怀", trad: "懷" },
+  { simp: "欢", trad: "歡" },
+  { simp: "缓", trad: "緩" },
+  { simp: "幻", trad: "幻" },
+  { simp: "换", trad: "換" },
+  { simp: "患", trad: "患" },
+  { simp: "荒", trad: "荒" },
+  { simp: "慌", trad: "慌" },
+  { simp: "皇", trad: "皇" },
+  { simp: "灰", trad: "灰" },
+  { simp: "挥", trad: "揮" },
+  { simp: "毁", trad: "毁" },
+  { simp: "汇", trad: "匯" },
+  { simp: "绘", trad: "繪" },
+  { simp: "婚", trad: "婚" },
+  { simp: "混", trad: "混" },
+  { simp: "伙", trad: "夥" },
+  { simp: "货", trad: "貨" },
+  { simp: "肌", trad: "肌" },
+  { simp: "吉", trad: "吉" },
+  { simp: "疾", trad: "疾" },
+  { simp: "辑", trad: "輯" },
+  { simp: "挤", trad: "擠" },
+  { simp: "季", trad: "季" },
+  { simp: "剂", trad: "劑" },
+  { simp: "迹", trad: "跡" },
+  { simp: "继", trad: "繼" },
+  { simp: "寄", trad: "寄" },
+  { simp: "绩", trad: "績" },
+  { simp: "甲", trad: "甲" },
+  { simp: "驾", trad: "駕" },
+  { simp: "架", trad: "架" },
+  { simp: "尖", trad: "尖" },
+  { simp: "监", trad: "監" },
+  { simp: "兼", trad: "兼" },
+  { simp: "检", trad: "檢" },
+  { simp: "减", trad: "減" },
+  { simp: "剪", trad: "剪" },
+  { simp: "健", trad: "健" },
+  { simp: "践", trad: "踐" },
+  { simp: "鉴", trad: "鑒" },
+  { simp: "箭", trad: "箭" },
+  { simp: "奖", trad: "獎" },
+  { simp: "蒋", trad: "蔣" },
+  { simp: "焦", trad: "焦" },
+  { simp: "脚", trad: "腳" },
+  { simp: "揭", trad: "揭" },
+  { simp: "街", trad: "街" },
+  { simp: "杰", trad: "傑" },
+  { simp: "洁", trad: "潔" },
+  { simp: "介", trad: "介" },
+  { simp: "借", trad: "借" },
+  { simp: "斤", trad: "斤" },
+  { simp: "津", trad: "津" },
+  { simp: "劲", trad: "勁" },
+  { simp: "禁", trad: "禁" },
+  { simp: "惊", trad: "驚" },
+  { simp: "晶", trad: "晶" },
+  { simp: "睛", trad: "睛" },
+  { simp: "景", trad: "景" },
+  { simp: "警", trad: "警" },
+  { simp: "径", trad: "徑" },
+  { simp: "净", trad: "淨" },
+  { simp: "竞", trad: "競" },
+  { simp: "竟", trad: "竟" },
+  { simp: "静", trad: "靜" },
+  { simp: "镜", trad: "鏡" },
+  { simp: "纠", trad: "糾" },
+  { simp: "久", trad: "久" },
+  { simp: "酒", trad: "酒" },
+  { simp: "旧", trad: "舊" },
+  { simp: "救", trad: "救" },
+  { simp: "巨", trad: "巨" },
+  { simp: "拒", trad: "拒" },
+  { simp: "距", trad: "距" },
+  { simp: "聚", trad: "聚" },
+  { simp: "卷", trad: "卷" },
+  { simp: "君", trad: "君" },
+  { simp: "菌", trad: "菌" },
+  { simp: "卡", trad: "卡" },
+  { simp: "刊", trad: "刊" },
+  { simp: "康", trad: "康" },
+  { simp: "棵", trad: "棵" },
+  { simp: "壳", trad: "殼" },
+  { simp: "肯", trad: "肯" },
+  { simp: "孔", trad: "孔" },
+  { simp: "控", trad: "控" },
+  { simp: "扣", trad: "扣" },
+  { simp: "库", trad: "庫" },
+  { simp: "跨", trad: "跨" },
+  { simp: "宽", trad: "寬" },
+  { simp: "款", trad: "款" },
+  { simp: "狂", trad: "狂" },
+  { simp: "矿", trad: "礦" },
+  { simp: "昆", trad: "昆" },
+  { simp: "困", trad: "困" },
+  { simp: "扩", trad: "擴" },
+  { simp: "啦", trad: "啦" },
+  { simp: "赖", trad: "賴" },
+  { simp: "兰", trad: "蘭" },
+  { simp: "览", trad: "覽" },
+  { simp: "郎", trad: "郎" },
+  { simp: "狼", trad: "狼" },
+  { simp: "浪", trad: "浪" },
+  { simp: "勒", trad: "勒" },
+  { simp: "雷", trad: "雷" },
+  { simp: "泪", trad: "淚" },
+  { simp: "累", trad: "累" },
+  { simp: "冷", trad: "冷" },
+  { simp: "厘", trad: "厘" },
+  { simp: "黎", trad: "黎" },
+  { simp: "礼", trad: "禮" },
+  { simp: "丽", trad: "麗" },
+  { simp: "隶", trad: "隸" },
+  { simp: "粒", trad: "粒" },
+  { simp: "怜", trad: "憐" },
+  { simp: "炼", trad: "煉" },
+  { simp: "恋", trad: "戀" },
+  { simp: "凉", trad: "涼" },
+  { simp: "粮", trad: "糧" },
+  { simp: "俩", trad: "倆" },
+  { simp: "辆", trad: "輛" },
+  { simp: "疗", trad: "療" },
+  { simp: "烈", trad: "烈" },
+  { simp: "裂", trad: "裂" },
+  { simp: "临", trad: "臨" },
+  { simp: "灵", trad: "靈" },
+  { simp: "铃", trad: "鈴" },
+  { simp: "零", trad: "零" },
+  { simp: "刘", trad: "劉" },
+  { simp: "硫", trad: "硫" },
+  { simp: "柳", trad: "柳" },
+  { simp: "龙", trad: "龍" },
+  { simp: "隆", trad: "隆" },
+  { simp: "楼", trad: "樓" },
+  { simp: "炉", trad: "爐" },
+  { simp: "鲁", trad: "魯" },
+  { simp: "陆", trad: "陸" },
+  { simp: "录", trad: "錄" },
+  { simp: "露", trad: "露" },
+  { simp: "卵", trad: "卵" },
+  { simp: "乱", trad: "亂" },
+  { simp: "伦", trad: "倫" },
+  { simp: "轮", trad: "輪" },
+  { simp: "逻", trad: "邏" },
+  { simp: "洛", trad: "洛" },
+  { simp: "旅", trad: "旅" },
+  { simp: "虑", trad: "慮" },
+  { simp: "略", trad: "略" },
+  { simp: "麻", trad: "麻" },
+  { simp: "码", trad: "碼" },
+  { simp: "嘛", trad: "嘛" },
+  { simp: "买", trad: "買" },
+  { simp: "卖", trad: "賣" },
+  { simp: "漫", trad: "漫" },
+  { simp: "慢", trad: "慢" },
+  { simp: "忙", trad: "忙" },
+  { simp: "矛", trad: "矛" },
+  { simp: "冒", trad: "冒" },
+  { simp: "帽", trad: "帽" },
+  { simp: "眉", trad: "眉" },
+  { simp: "梅", trad: "梅" },
+  { simp: "蒙", trad: "蒙" },
+  { simp: "猛", trad: "猛" },
+  { simp: "梦", trad: "夢" },
+  { simp: "迷", trad: "迷" },
+  { simp: "秘", trad: "秘" },
+  { simp: "蜜", trad: "蜜" },
+  { simp: "棉", trad: "棉" },
+  { simp: "免", trad: "免" },
+  { simp: "苗", trad: "苗" },
+  { simp: "描", trad: "描" },
+  { simp: "秒", trad: "秒" },
+  { simp: "庙", trad: "廟" },
+  { simp: "灭", trad: "滅" },
+  { simp: "敏", trad: "敏" },
+  { simp: "鸣", trad: "鳴" },
+  { simp: "摸", trad: "摸" },
+  { simp: "膜", trad: "膜" },
+  { simp: "摩", trad: "摩" },
+  { simp: "莫", trad: "莫" },
+  { simp: "漠", trad: "漠" },
+  { simp: "默", trad: "默" },
+  { simp: "谋", trad: "謀" },
+  { simp: "牧", trad: "牧" },
+  { simp: "幕", trad: "幕" },
+  { simp: "纳", trad: "納" },
+  { simp: "乃", trad: "乃" },
+  { simp: "闹", trad: "鬧" },
+  { simp: "尼", trad: "尼" },
+  { simp: "泥", trad: "泥" },
+  { simp: "娘", trad: "娘" },
+  { simp: "您", trad: "您" },
+  { simp: "宁", trad: "寧" },
+  { simp: "凝", trad: "凝" },
+  { simp: "扭", trad: "扭" },
+  { simp: "浓", trad: "濃" },
+  { simp: "弄", trad: "弄" },
+  { simp: "奴", trad: "奴" },
+  { simp: "努", trad: "努" },
+  { simp: "暖", trad: "暖" },
+  { simp: "欧", trad: "歐" },
+  { simp: "偶", trad: "偶" },
+  { simp: "爬", trad: "爬" },
+  { simp: "怕", trad: "怕" },
+  { simp: "拍", trad: "拍" },
+  { simp: "盘", trad: "盤" },
+  { simp: "判", trad: "判" },
+  { simp: "膀", trad: "膀" },
+  { simp: "泡", trad: "泡" },
+  { simp: "陪", trad: "陪" },
+  { simp: "培", trad: "培" },
+  { simp: "喷", trad: "噴" },
+  { simp: "碰", trad: "碰" },
+  { simp: "疲", trad: "疲" },
+  { simp: "辟", trad: "辟" },
+  { simp: "偏", trad: "偏" },
+  { simp: "篇", trad: "篇" },
+  { simp: "骗", trad: "騙" },
+  { simp: "漂", trad: "漂" },
+  { simp: "贫", trad: "貧" },
+  { simp: "频", trad: "頻" },
+  { simp: "评", trad: "評" },
+  { simp: "凭", trad: "憑" },
+  { simp: "瓶", trad: "瓶" },
+  { simp: "泼", trad: "潑" },
+  { simp: "婆", trad: "婆" },
+  { simp: "迫", trad: "迫" },
+  { simp: "朴", trad: "樸" },
+  { simp: "妻", trad: "妻" },
+  { simp: "齐", trad: "齊" },
+  { simp: "骑", trad: "騎" },
+  { simp: "汽", trad: "汽" },
+  { simp: "恰", trad: "恰" },
+  { simp: "迁", trad: "遷" },
+  { simp: "牵", trad: "牽" },
+  { simp: "签", trad: "簽" },
+  { simp: "潜", trad: "潛" },
+  { simp: "浅", trad: "淺" },
+  { simp: "枪", trad: "槍" },
+  { simp: "腔", trad: "腔" },
+  { simp: "墙", trad: "牆" },
+  { simp: "敲", trad: "敲" },
+  { simp: "桥", trad: "橋" },
+  { simp: "巧", trad: "巧" },
+  { simp: "侵", trad: "侵" },
+  { simp: "秦", trad: "秦" },
+  { simp: "琴", trad: "琴" },
+  { simp: "勤", trad: "勤" },
+  { simp: "氢", trad: "氫" },
+  { simp: "倾", trad: "傾" },
+  { simp: "庆", trad: "慶" },
+  { simp: "趋", trad: "趨" },
+  { simp: "趣", trad: "趣" },
+  { simp: "圈", trad: "圈" },
+  { simp: "泉", trad: "泉" },
+  { simp: "劝", trad: "勸" },
+  { simp: "缺", trad: "缺" },
+  { simp: "燃", trad: "燃" },
+  { simp: "染", trad: "染" },
+  { simp: "壤", trad: "壤" },
+  { simp: "扰", trad: "擾" },
+  { simp: "仁", trad: "仁" },
+  { simp: "荣", trad: "榮" },
+  { simp: "溶", trad: "溶" },
+  { simp: "融", trad: "融" },
+  { simp: "柔", trad: "柔" },
+  { simp: "肉", trad: "肉" },
+  { simp: "乳", trad: "乳" },
+  { simp: "锐", trad: "銳" },
+  { simp: "润", trad: "潤" },
+  { simp: "若", trad: "若" },
+  { simp: "弱", trad: "弱" },
+  { simp: "撒", trad: "撒" },
+  { simp: "萨", trad: "薩" },
+  { simp: "塞", trad: "塞" },
+  { simp: "赛", trad: "賽" },
+  { simp: "散", trad: "散" },
+  { simp: "丧", trad: "喪" },
+  { simp: "嫂", trad: "嫂" },
+  { simp: "杀", trad: "殺" },
+  { simp: "沙", trad: "沙" },
+  { simp: "啥", trad: "啥" },
+  { simp: "闪", trad: "閃" },
+  { simp: "扇", trad: "扇" },
+  { simp: "伤", trad: "傷" },
+  { simp: "赏", trad: "賞" },
+  { simp: "尚", trad: "尚" },
+  { simp: "烧", trad: "燒" },
+  { simp: "绍", trad: "紹" },
+  { simp: "蛇", trad: "蛇" },
+  { simp: "舍", trad: "舍" },
+  { simp: "涉", trad: "涉" },
+  { simp: "摄", trad: "攝" },
+  { simp: "伸", trad: "伸" },
+  { simp: "审", trad: "審" },
+  { simp: "升", trad: "升" },
+  { simp: "绳", trad: "繩" },
+  { simp: "省", trad: "省" },
+  { simp: "圣", trad: "聖" },
+  { simp: "胜", trad: "勝" },
+  { simp: "盛", trad: "盛" },
+  { simp: "剩", trad: "剩" },
+  { simp: "诗", trad: "詩" },
+  { simp: "湿", trad: "濕" },
+  { simp: "拾", trad: "拾" },
+  { simp: "氏", trad: "氏" },
+  { simp: "饰", trad: "飾" },
+  { simp: "试", trad: "試" },
+  { simp: "释", trad: "釋" },
+  { simp: "守", trad: "守" },
+  { simp: "授", trad: "授" },
+  { simp: "售", trad: "售" },
+  { simp: "瘦", trad: "瘦" },
+  { simp: "叔", trad: "叔" },
+  { simp: "殊", trad: "殊" },
+  { simp: "舒", trad: "舒" },
+  { simp: "输", trad: "輸" },
+  { simp: "熟", trad: "熟" },
+  { simp: "鼠", trad: "鼠" },
+  { simp: "束", trad: "束" },
+  { simp: "刷", trad: "刷" },
+  { simp: "衰", trad: "衰" },
+  { simp: "税", trad: "税" },
+  { simp: "顺", trad: "順" },
+  { simp: "丝", trad: "絲" },
+  { simp: "私", trad: "私" },
+  { simp: "松", trad: "松" },
+  { simp: "宋", trad: "宋" },
+  { simp: "送", trad: "送" },
+  { simp: "俗", trad: "俗" },
+  { simp: "诉", trad: "訴" },
+  { simp: "酸", trad: "酸" },
+  { simp: "孙", trad: "孫" },
+  { simp: "损", trad: "損" },
+  { simp: "缩", trad: "縮" },
+  { simp: "索", trad: "索" },
+  { simp: "抬", trad: "抬" },
+  { simp: "坦", trad: "坦" },
+  { simp: "叹", trad: "歎" },
+  { simp: "探", trad: "探" },
+  { simp: "碳", trad: "碳" },
+  { simp: "汤", trad: "湯" },
+  { simp: "唐", trad: "唐" },
+  { simp: "堂", trad: "堂" },
+  { simp: "糖", trad: "糖" },
+  { simp: "躺", trad: "躺" },
+  { simp: "陶", trad: "陶" },
+  { simp: "讨", trad: "討" },
+  { simp: "套", trad: "套" },
+  { simp: "疼", trad: "疼" },
+  { simp: "腾", trad: "騰" },
+  { simp: "梯", trad: "梯" },
+  { simp: "替", trad: "替" },
+  { simp: "添", trad: "添" },
+  { simp: "甜", trad: "甜" },
+  { simp: "填", trad: "填" },
+  { simp: "庭", trad: "庭" },
+  { simp: "停", trad: "停" },
+  { simp: "挺", trad: "挺" },
+  { simp: "童", trad: "童" },
+  { simp: "痛", trad: "痛" },
+  { simp: "透", trad: "透" },
+  { simp: "徒", trad: "徒" },
+  { simp: "途", trad: "途" },
+  { simp: "涂", trad: "塗" },
+  { simp: "腿", trad: "腿" },
+  { simp: "退", trad: "退" },
+  { simp: "托", trad: "托" },
+  { simp: "脱", trad: "脱" },
+  { simp: "挖", trad: "挖" },
+  { simp: "瓦", trad: "瓦" },
+  { simp: "湾", trad: "灣" },
+  { simp: "碗", trad: "碗" },
+  { simp: "亡", trad: "亡" },
+  { simp: "忘", trad: "忘" },
+  { simp: "危", trad: "危" },
+  { simp: "威", trad: "威" },
+  { simp: "唯", trad: "唯" },
+  { simp: "伟", trad: "偉" },
+  { simp: "伪", trad: "偽" },
+  { simp: "尾", trad: "尾" },
+  { simp: "味", trad: "味" },
+  { simp: "胃", trad: "胃" },
+  { simp: "谓", trad: "謂" },
+  { simp: "喂", trad: "喂" },
+  { simp: "慰", trad: "慰" },
+  { simp: "闻", trad: "聞" },
+  { simp: "稳", trad: "穩" },
+  { simp: "握", trad: "握" },
+  { simp: "乌", trad: "烏" },
+  { simp: "屋", trad: "屋" },
+  { simp: "吴", trad: "吳" },
+  { simp: "误", trad: "誤" },
+  { simp: "希", trad: "希" },
+  { simp: "析", trad: "析" },
+  { simp: "牺", trad: "犧" },
+  { simp: "悉", trad: "悉" },
+  { simp: "惜", trad: "惜" },
+  { simp: "稀", trad: "稀" },
+  { simp: "席", trad: "席" },
+  { simp: "喜", trad: "喜" },
+  { simp: "吓", trad: "嚇" },
+  { simp: "夏", trad: "夏" },
+  { simp: "仙", trad: "仙" },
+  { simp: "纤", trad: "纖" },
+  { simp: "鲜", trad: "鮮" },
+  { simp: "险", trad: "險" },
+  { simp: "宪", trad: "憲" },
+  { simp: "陷", trad: "陷" },
+  { simp: "献", trad: "獻" },
+  { simp: "香", trad: "香" },
+  { simp: "详", trad: "詳" },
+  { simp: "祥", trad: "祥" },
+  { simp: "销", trad: "銷" },
+  { simp: "协", trad: "協" },
+  { simp: "斜", trad: "斜" },
+  { simp: "鞋", trad: "鞋" },
+  { simp: "械", trad: "械" },
+  { simp: "辛", trad: "辛" },
+  { simp: "欣", trad: "欣" },
+  { simp: "刑", trad: "刑" },
+  { simp: "醒", trad: "醒" },
+  { simp: "幸", trad: "幸" },
+  { simp: "兄", trad: "兄" },
+  { simp: "胸", trad: "胸" },
+  { simp: "雄", trad: "雄" },
+  { simp: "熊", trad: "熊" },
+  { simp: "休", trad: "休" },
+  { simp: "宿", trad: "宿" },
+  { simp: "秀", trad: "秀" },
+  { simp: "袖", trad: "袖" },
+  { simp: "虚", trad: "虛" },
+  { simp: "徐", trad: "徐" },
+  { simp: "序", trad: "序" },
+  { simp: "绪", trad: "緒" },
+  { simp: "宣", trad: "宣" },
+  { simp: "旋", trad: "旋" },
+  { simp: "削", trad: "削" },
+  { simp: "寻", trad: "尋" },
+  { simp: "循", trad: "循" },
+  { simp: "训", trad: "訓" },
+  { simp: "讯", trad: "訊" },
+  { simp: "迅", trad: "迅" },
+  { simp: "芽", trad: "芽" },
+  { simp: "雅", trad: "雅" },
+  { simp: "烟", trad: "煙" },
+  { simp: "延", trad: "延" },
+  { simp: "岩", trad: "岩" },
+  { simp: "炎", trad: "炎" },
+  { simp: "沿", trad: "沿" },
+  { simp: "盐", trad: "鹽" },
+  { simp: "颜", trad: "顏" },
+  { simp: "厌", trad: "厭" },
+  { simp: "央", trad: "央" },
+  { simp: "扬", trad: "揚" },
+  { simp: "杨", trad: "楊" },
+  { simp: "氧", trad: "氧" },
+  { simp: "腰", trad: "腰" },
+  { simp: "摇", trad: "摇" },
+  { simp: "咬", trad: "咬" },
+  { simp: "药", trad: "藥" },
+  { simp: "野", trad: "野" },
+  { simp: "液", trad: "液" },
+  { simp: "伊", trad: "伊" },
+  { simp: "仪", trad: "儀" },
+  { simp: "宜", trad: "宜" },
+  { simp: "移", trad: "移" },
+  { simp: "遗", trad: "遺" },
+  { simp: "疑", trad: "疑" },
+  { simp: "乙", trad: "乙" },
+  { simp: "椅", trad: "椅" },
+  { simp: "亿", trad: "億" },
+  { simp: "亦", trad: "亦" },
+  { simp: "抑", trad: "抑" },
+  { simp: "役", trad: "役" },
+  { simp: "译", trad: "譯" },
+  { simp: "姻", trad: "姻" },
+  { simp: "银", trad: "銀" },
+  { simp: "隐", trad: "隱" },
+  { simp: "印", trad: "印" },
+  { simp: "迎", trad: "迎" },
+  { simp: "映", trad: "映" },
+  { simp: "硬", trad: "硬" },
+  { simp: "永", trad: "永" },
+  { simp: "勇", trad: "勇" },
+  { simp: "悠", trad: "悠" },
+  { simp: "尤", trad: "尤" },
+  { simp: "邮", trad: "郵" },
+  { simp: "犹", trad: "猶" },
+  { simp: "游", trad: "遊" },
+  { simp: "友", trad: "友" },
+  { simp: "右", trad: "右" },
+  { simp: "幼", trad: "幼" },
+  { simp: "予", trad: "予" },
+  { simp: "宇", trad: "宇" },
+  { simp: "玉", trad: "玉" },
+  { simp: "预", trad: "預" },
+  { simp: "域", trad: "域" },
+  { simp: "欲", trad: "欲" },
+  { simp: "遇", trad: "遇" },
+  { simp: "愈", trad: "愈" },
+  { simp: "圆", trad: "圓" },
+  { simp: "缘", trad: "緣" },
+  { simp: "愿", trad: "願" },
+  { simp: "阅", trad: "閱" },
+  { simp: "跃", trad: "躍" },
+  { simp: "允", trad: "允" },
+  { simp: "载", trad: "載" },
+  { simp: "赞", trad: "贊" },
+  { simp: "脏", trad: "髒" },
+  { simp: "遭", trad: "遭" },
+  { simp: "责", trad: "責" },
+  { simp: "择", trad: "擇" },
+  { simp: "泽", trad: "澤" },
+  { simp: "炸", trad: "炸" },
+  { simp: "章", trad: "章" },
+  { simp: "涨", trad: "漲" },
+  { simp: "掌", trad: "掌" },
+  { simp: "障", trad: "障" },
+  { simp: "招", trad: "招" },
+  { simp: "召", trad: "召" },
+  { simp: "赵", trad: "趙" },
+  { simp: "折", trad: "折" },
+  { simp: "哲", trad: "哲" },
+  { simp: "针", trad: "針" },
+  { simp: "珍", trad: "珍" },
+  { simp: "阵", trad: "陣" },
+  { simp: "振", trad: "振" },
+  { simp: "震", trad: "震" },
+  { simp: "镇", trad: "鎮" },
+  { simp: "蒸", trad: "蒸" },
+  { simp: "郑", trad: "鄭" },
+  { simp: "症", trad: "症" },
+  { simp: "枝", trad: "枝" },
+  { simp: "执", trad: "執" },
+  { simp: "殖", trad: "殖" },
+  { simp: "纸", trad: "紙" },
+  { simp: "秩", trad: "秩" },
+  { simp: "智", trad: "智" },
+  { simp: "忠", trad: "忠" },
+  { simp: "钟", trad: "鐘" },
+  { simp: "州", trad: "州" },
+  { simp: "洲", trad: "洲" },
+  { simp: "宙", trad: "宙" },
+  { simp: "朱", trad: "朱" },
+  { simp: "珠", trad: "珠" },
+  { simp: "株", trad: "株" },
+  { simp: "诸", trad: "諸" },
+  { simp: "猪", trad: "豬" },
+  { simp: "柱", trad: "柱" },
+  { simp: "祝", trad: "祝" },
+  { simp: "筑", trad: "築" },
+  { simp: "抓", trad: "抓" },
+  { simp: "庄", trad: "莊" },
+  { simp: "壮", trad: "壯" },
+  { simp: "撞", trad: "撞" },
+  { simp: "追", trad: "追" },
+  { simp: "捉", trad: "捉" },
+  { simp: "姿", trad: "姿" },
+  { simp: "宗", trad: "宗" },
+  { simp: "综", trad: "綜" },
+  { simp: "纵", trad: "縱" },
+  { simp: "奏", trad: "奏" },
+  { simp: "租", trad: "租" },
+  { simp: "阻", trad: "阻" },
+  { simp: "祖", trad: "祖" },
+  { simp: "嘴", trad: "嘴" },
+  { simp: "罪", trad: "罪" },
+  { simp: "醉", trad: "醉" },
+  { simp: "左", trad: "左" },
+  { simp: "座", trad: "座" },
+  { simp: "策", trad: "策" }
+],
+L4:[
+  { simp: "恐", trad: "恐" },
+  { simp: "隔", trad: "隔" },
+  { simp: "麦", trad: "麥" },
+  { simp: "薄", trad: "薄" },
+  { simp: "乏", trad: "乏" },
+  { simp: "挑", trad: "挑" },
+  { simp: "汗", trad: "汗" },
+  { simp: "尊", trad: "尊" },
+  { simp: "牌", trad: "牌" },
+  { simp: "抢", trad: "搶" },
+  { simp: "软", trad: "軟" },
+  { simp: "港", trad: "港" },
+  { simp: "捕", trad: "捕" },
+  { simp: "诚", trad: "誠" },
+  { simp: "炮", trad: "炮" },
+  { simp: "敬", trad: "敬" },
+  { simp: "版", trad: "版" },
+  { simp: "忍", trad: "忍" },
+  { simp: "启", trad: "啟" },
+  { simp: "脉", trad: "脈" },
+  { simp: "浮", trad: "浮" },
+  { simp: "煤", trad: "煤" },
+  { simp: "堆", trad: "堆" },
+  { simp: "扎", trad: "紮" },
+  { simp: "貌", trad: "貌" },
+  { simp: "逃", trad: "逃" },
+  { simp: "呈", trad: "呈" },
+  { simp: "战", trad: "戰" },
+  { simp: "忆", trad: "憶" },
+  { simp: "怒", trad: "怒" },
+  { simp: "插", trad: "插" },
+  { simp: "龄", trad: "齡" },
+  { simp: "池", trad: "池" },
+  { simp: "伍", trad: "伍" },
+  { simp: "拥", trad: "擁" },
+  { simp: "乘", trad: "乘" },
+  { simp: "贡", trad: "貢" },
+  { simp: "糊", trad: "糊" },
+  { simp: "梁", trad: "梁" },
+  { simp: "丈", trad: "丈" },
+  { simp: "钻", trad: "鑽" },
+  { simp: "磨", trad: "磨" },
+  { simp: "井", trad: "井" },
+  { simp: "艰", trad: "艱" },
+  { simp: "键", trad: "鍵" },
+  { simp: "绕", trad: "繞" },
+  { simp: "污", trad: "汙" },
+  { simp: "阔", trad: "闊" },
+  { simp: "胆", trad: "膽" },
+  { simp: "渡", trad: "渡" },
+  { simp: "崇", trad: "崇" },
+  { simp: "玻", trad: "玻" },
+  { simp: "碎", trad: "碎" },
+  { simp: "贸", trad: "貿" },
+  { simp: "耐", trad: "耐" },
+  { simp: "届", trad: "屆" },
+  { simp: "币", trad: "幣" },
+  { simp: "弃", trad: "棄" },
+  { simp: "悄", trad: "悄" },
+  { simp: "享", trad: "享" },
+  { simp: "塑", trad: "塑" },
+  { simp: "铜", trad: "銅" },
+  { simp: "拖", trad: "拖" },
+  { simp: "稍", trad: "稍" },
+  { simp: "哩", trad: "哩" },
+  { simp: "妙", trad: "妙" },
+  { simp: "肩", trad: "肩" },
+  { simp: "偷", trad: "偷" },
+  { simp: "灾", trad: "災" },
+  { simp: "恢", trad: "恢" },
+  { simp: "违", trad: "違" },
+  { simp: "拜", trad: "拜" },
+  { simp: "颗", trad: "顆" },
+  { simp: "滑", trad: "滑" },
+  { simp: "递", trad: "遞" },
+  { simp: "璃", trad: "璃" },
+  { simp: "恨", trad: "恨" },
+  { simp: "骂", trad: "罵" },
+  { simp: "贴", trad: "貼" },
+  { simp: "紫", trad: "紫" },
+  { simp: "仰", trad: "仰" },
+  { simp: "腐", trad: "腐" },
+  { simp: "割", trad: "割" },
+  { simp: "呆", trad: "呆" },
+  { simp: "励", trad: "勵" },
+  { simp: "拔", trad: "拔" },
+  { simp: "滴", trad: "滴" },
+  { simp: "革", trad: "革" },
+  { simp: "遵", trad: "遵" },
+  { simp: "滚", trad: "滾" },
+  { simp: "厅", trad: "廳" },
+  { simp: "塔", trad: "塔" },
+  { simp: "弯", trad: "彎" },
+  { simp: "晓", trad: "曉" },
+  { simp: "愤", trad: "憤" },
+  { simp: "瞧", trad: "瞧" },
+  { simp: "箱", trad: "箱" },
+  { simp: "扑", trad: "撲" },
+  { simp: "暂", trad: "暫" },
+  { simp: "盆", trad: "盆" },
+  { simp: "辉", trad: "輝" },
+  { simp: "朗", trad: "朗" },
+  { simp: "牲", trad: "牲" },
+  { simp: "肃", trad: "肅" },
+  { simp: "雾", trad: "霧" },
+  { simp: "冠", trad: "冠" },
+  { simp: "仔", trad: "仔" },
+  { simp: "悟", trad: "悟" },
+  { simp: "飘", trad: "飄" },
+  { simp: "邻", trad: "鄰" },
+  { simp: "扫", trad: "掃" },
+  { simp: "肠", trad: "腸" },
+  { simp: "援", trad: "援" },
+  { simp: "墨", trad: "墨" },
+  { simp: "埋", trad: "埋" },
+  { simp: "粘", trad: "粘" },
+  { simp: "吐", trad: "吐" },
+  { simp: "估", trad: "估" },
+  { simp: "稻", trad: "稻" },
+  { simp: "烂", trad: "爛" },
+  { simp: "昏", trad: "昏" },
+  { simp: "夹", trad: "夾" },
+  { simp: "闲", trad: "閑" },
+  { simp: "亏", trad: "虧" },
+  { simp: "佳", trad: "佳" },
+  { simp: "饮", trad: "飲" },
+  { simp: "凤", trad: "鳳" },
+  { simp: "缝", trad: "縫" },
+  { simp: "疏", trad: "疏" },
+  { simp: "厉", trad: "厲" },
+  { simp: "截", trad: "截" },
+  { simp: "拨", trad: "撥" },
+  { simp: "雕", trad: "雕" },
+  { simp: "瑞", trad: "瑞" },
+  { simp: "莲", trad: "蓮" },
+  { simp: "邦", trad: "邦" },
+  { simp: "贷", trad: "貸" },
+  { simp: "寿", trad: "壽" },
+  { simp: "毅", trad: "毅" },
+  { simp: "屈", trad: "屈" },
+  { simp: "猎", trad: "獵" },
+  { simp: "氯", trad: "氯" },
+  { simp: "狠", trad: "狠" },
+  { simp: "岗", trad: "崗" },
+  { simp: "饲", trad: "飼" },
+  { simp: "皆", trad: "皆" },
+  { simp: "罚", trad: "罰" },
+  { simp: "桃", trad: "桃" },
+  { simp: "胶", trad: "膠" },
+  { simp: "偿", trad: "償" },
+  { simp: "袭", trad: "襲" },
+  { simp: "串", trad: "串" },
+  { simp: "申", trad: "申" },
+  { simp: "窝", trad: "窩" },
+  { simp: "踏", trad: "踏" },
+  { simp: "邓", trad: "鄧" },
+  { simp: "溜", trad: "溜" },
+  { simp: "驻", trad: "駐" },
+  { simp: "渔", trad: "漁" },
+  { simp: "臣", trad: "臣" },
+  { simp: "埃", trad: "埃" },
+  { simp: "辐", trad: "輻" },
+  { simp: "闷", trad: "悶" },
+  { simp: "耀", trad: "耀" },
+  { simp: "辨", trad: "辨" },
+  { simp: "燕", trad: "燕" },
+  { simp: "颇", trad: "頗" },
+  { simp: "债", trad: "債" },
+  { simp: "魂", trad: "魂" },
+  { simp: "匆", trad: "匆" },
+  { simp: "旺", trad: "旺" },
+  { simp: "吞", trad: "吞" },
+  { simp: "屏", trad: "屏" },
+  { simp: "掩", trad: "掩" },
+  { simp: "涌", trad: "湧" },
+  { simp: "袁", trad: "袁" },
+  { simp: "岭", trad: "嶺" },
+  { simp: "拟", trad: "擬" },
+  { simp: "慧", trad: "慧" },
+  { simp: "匀", trad: "匀" },
+  { simp: "娃", trad: "娃" },
+  { simp: "筒", trad: "筒" },
+  { simp: "豪", trad: "豪" },
+  { simp: "籍", trad: "籍" },
+  { simp: "轰", trad: "轟" },
+  { simp: "尘", trad: "塵" },
+  { simp: "帐", trad: "帳" },
+  { simp: "钠", trad: "鈉" },
+  { simp: "牢", trad: "牢" },
+  { simp: "肿", trad: "腫" },
+  { simp: "盲", trad: "盲" },
+  { simp: "腊", trad: "臘" },
+  { simp: "返", trad: "返" },
+  { simp: "寺", trad: "寺" },
+  { simp: "沈", trad: "沈" },
+  { simp: "纹", trad: "紋" },
+  { simp: "泰", trad: "泰" },
+  { simp: "盟", trad: "盟" },
+  { simp: "丛", trad: "叢" },
+  { simp: "忧", trad: "憂" },
+  { simp: "魏", trad: "魏" },
+  { simp: "肖", trad: "肖" },
+  { simp: "悬", trad: "懸" },
+  { simp: "旱", trad: "旱" },
+  { simp: "晋", trad: "晉" },
+  { simp: "祭", trad: "祭" },
+  { simp: "誉", trad: "譽" },
+  { simp: "谱", trad: "譜" },
+  { simp: "狭", trad: "狹" },
+  { simp: "驱", trad: "驅" },
+  { simp: "冯", trad: "馮" },
+  { simp: "脂", trad: "脂" },
+  { simp: "斥", trad: "斥" },
+  { simp: "栽", trad: "栽" },
+  { simp: "仗", trad: "仗" },
+  { simp: "墓", trad: "墓" },
+  { simp: "舅", trad: "舅" },
+  { simp: "碱", trad: "碱" },
+  { simp: "兽", trad: "獸" },
+  { simp: "锁", trad: "鎖" },
+  { simp: "臂", trad: "臂" },
+  { simp: "溪", trad: "溪" },
+  { simp: "伐", trad: "伐" },
+  { simp: "汪", trad: "汪" },
+  { simp: "筹", trad: "籌" },
+  { simp: "幽", trad: "幽" },
+  { simp: "渗", trad: "滲" },
+  { simp: "诱", trad: "誘" },
+  { simp: "抚", trad: "撫" },
+  { simp: "磷", trad: "磷" },
+  { simp: "逆", trad: "逆" },
+  { simp: "惠", trad: "惠" },
+  { simp: "诺", trad: "諾" },
+  { simp: "郁", trad: "鬱" },
+  { simp: "脊", trad: "脊" },
+  { simp: "魔", trad: "魔" },
+  { simp: "蓄", trad: "蓄" },
+  { simp: "塘", trad: "塘" },
+  { simp: "廷", trad: "廷" },
+  { simp: "胎", trad: "胎" },
+  { simp: "肢", trad: "肢" },
+  { simp: "翠", trad: "翠" },
+  { simp: "赫", trad: "赫" },
+  { simp: "尿", trad: "尿" },
+  { simp: "轴", trad: "軸" },
+  { simp: "锦", trad: "錦" },
+  { simp: "剑", trad: "劍" },
+  { simp: "翼", trad: "翼" },
+  { simp: "曼", trad: "曼" },
+  { simp: "姆", trad: "姆" },
+  { simp: "匠", trad: "匠" },
+  { simp: "盈", trad: "盈" },
+  { simp: "覆", trad: "覆" },
+  { simp: "腺", trad: "腺" },
+  { simp: "鞭", trad: "鞭" },
+  { simp: "掘", trad: "掘" },
+  { simp: "赋", trad: "賦" },
+  { simp: "哼", trad: "哼" },
+  { simp: "兔", trad: "兔" },
+  { simp: "藻", trad: "藻" },
+  { simp: "谐", trad: "諧" },
+  { simp: "侦", trad: "偵" },
+  { simp: "睁", trad: "睜" },
+  { simp: "茫", trad: "茫" },
+  { simp: "拼", trad: "拼" },
+  { simp: "炭", trad: "炭" },
+  { simp: "弦", trad: "弦" },
+  { simp: "滋", trad: "滋" },
+  { simp: "锻", trad: "鍛" },
+  { simp: "脆", trad: "脆" },
+  { simp: "党", trad: "黨" },
+  { simp: "卢", trad: "盧" },
+  { simp: "萌", trad: "萌" },
+  { simp: "氮", trad: "氮" },
+  { simp: "葬", trad: "葬" },
+  { simp: "渠", trad: "渠" },
+  { simp: "斑", trad: "斑" },
+  { simp: "浩", trad: "浩" },
+  { simp: "盒", trad: "盒" },
+  { simp: "扮", trad: "扮" },
+  { simp: "颈", trad: "頸" },
+  { simp: "玲", trad: "玲" },
+  { simp: "桑", trad: "桑" },
+  { simp: "盗", trad: "盗" },
+  { simp: "戒", trad: "戒" },
+  { simp: "凌", trad: "凌" },
+  { simp: "堡", trad: "堡" },
+  { simp: "嚷", trad: "嚷" },
+  { simp: "茂", trad: "茂" },
+  { simp: "吊", trad: "吊" },
+  { simp: "愁", trad: "愁" },
+  { simp: "巡", trad: "巡" },
+  { simp: "寸", trad: "寸" },
+  { simp: "惑", trad: "惑" },
+  { simp: "昂", trad: "昂" },
+  { simp: "阐", trad: "闡" },
+  { simp: "纬", trad: "緯" },
+  { simp: "逢", trad: "逢" },
+  { simp: "披", trad: "披" },
+  { simp: "恼", trad: "惱" },
+  { simp: "萄", trad: "萄" },
+  { simp: "迈", trad: "邁" },
+  { simp: "坛", trad: "壇" },
+  { simp: "姨", trad: "姨" },
+  { simp: "肾", trad: "腎" },
+  { simp: "仲", trad: "仲" },
+  { simp: "邀", trad: "邀" },
+  { simp: "莱", trad: "莱" },
+  { simp: "辽", trad: "遼" },
+  { simp: "阀", trad: "閥" },
+  { simp: "猜", trad: "猜" },
+  { simp: "弥", trad: "彌" },
+  { simp: "韩", trad: "韓" },
+  { simp: "臭", trad: "臭" },
+  { simp: "脖", trad: "脖" },
+  { simp: "掏", trad: "掏" },
+  { simp: "燥", trad: "燥" },
+  { simp: "蚁", trad: "蟻" },
+  { simp: "鸿", trad: "鴻" },
+  { simp: "芦", trad: "蘆" },
+  { simp: "漏", trad: "漏" },
+  { simp: "凯", trad: "凱" },
+  { simp: "踪", trad: "蹤" },
+  { simp: "氛", trad: "氛" },
+  { simp: "摘", trad: "摘" },
+  { simp: "蔡", trad: "蔡" },
+  { simp: "扔", trad: "扔" },
+  { simp: "硝", trad: "硝" },
+  { simp: "氨", trad: "氨" },
+  { simp: "愉", trad: "愉" },
+  { simp: "矮", trad: "矮" },
+  { simp: "嘉", trad: "嘉" },
+  { simp: "泄", trad: "泄" },
+  { simp: "叉", trad: "叉" },
+  { simp: "渴", trad: "渴" },
+  { simp: "囊", trad: "囊" },
+  { simp: "菊", trad: "菊" },
+  { simp: "歇", trad: "歇" },
+  { simp: "嘻", trad: "嘻" },
+  { simp: "雇", trad: "雇" },
+  { simp: "跌", trad: "跌" },
+  { simp: "夕", trad: "夕" },
+  { simp: "螺", trad: "螺" },
+  { simp: "贮", trad: "貯" },
+  { simp: "淀", trad: "澱" },
+  { simp: "贪", trad: "貪" },
+  { simp: "庞", trad: "龐" },
+  { simp: "涛", trad: "濤" },
+  { simp: "玛", trad: "瑪" },
+  { simp: "拆", trad: "拆" },
+  { simp: "绵", trad: "綿" },
+  { simp: "贾", trad: "賈" },
+  { simp: "贤", trad: "賢" },
+  { simp: "糟", trad: "糟" },
+  { simp: "鹿", trad: "鹿" },
+  { simp: "霸", trad: "霸" },
+  { simp: "匹", trad: "匹" },
+  { simp: "挡", trad: "擋" },
+  { simp: "咳", trad: "咳" },
+  { simp: "雀", trad: "雀" },
+  { simp: "赴", trad: "赴" },
+  { simp: "咽", trad: "咽" },
+  { simp: "鹰", trad: "鷹" },
+  { simp: "嘿", trad: "嘿" },
+  { simp: "函", trad: "函" },
+  { simp: "堪", trad: "堪" },
+  { simp: "嗓", trad: "嗓" },
+  { simp: "蹲", trad: "蹲" },
+  { simp: "辖", trad: "轄" },
+  { simp: "钾", trad: "鉀" },
+  { simp: "尸", trad: "屍" },
+  { simp: "胚", trad: "胚" },
+  { simp: "悔", trad: "悔" },
+  { simp: "雌", trad: "雌" },
+  { simp: "惩", trad: "懲" },
+  { simp: "篮", trad: "籃" },
+  { simp: "链", trad: "鏈" },
+  { simp: "摔", trad: "摔" },
+  { simp: "遂", trad: "遂" },
+  { simp: "叠", trad: "疊" },
+  { simp: "霍", trad: "霍" },
+  { simp: "侯", trad: "侯" },
+  { simp: "洒", trad: "灑" },
+  { simp: "纽", trad: "紐" },
+  { simp: "娜", trad: "娜" },
+  { simp: "闯", trad: "闖" },
+  { simp: "盼", trad: "盼" },
+  { simp: "叛", trad: "叛" },
+  { simp: "履", trad: "履" },
+  { simp: "霞", trad: "霞" },
+  { simp: "菲", trad: "菲" },
+  { simp: "瞬", trad: "瞬" },
+  { simp: "砍", trad: "砍" },
+  { simp: "敦", trad: "敦" },
+  { simp: "儒", trad: "儒" },
+  { simp: "拓", trad: "拓" },
+  { simp: "僧", trad: "僧" },
+  { simp: "芬", trad: "芬" },
+  { simp: "俺", trad: "俺" },
+  { simp: "慈", trad: "慈" },
+  { simp: "萧", trad: "蕭" },
+  { simp: "蛮", trad: "蠻" },
+  { simp: "郊", trad: "郊" },
+  { simp: "缠", trad: "纏" },
+  { simp: "吾", trad: "吾" },
+  { simp: "咕", trad: "咕" },
+  { simp: "堵", trad: "堵" },
+  { simp: "卜", trad: "蔔" },
+  { simp: "扁", trad: "扁" },
+  { simp: "寡", trad: "寡" },
+  { simp: "驰", trad: "馳" },
+  { simp: "桶", trad: "桶" },
+  { simp: "晒", trad: "曬" },
+  { simp: "慕", trad: "慕" },
+  { simp: "栏", trad: "欄" },
+  { simp: "谊", trad: "誼" },
+  { simp: "哇", trad: "哇" },
+  { simp: "隙", trad: "隙" },
+  { simp: "孝", trad: "孝" },
+  { simp: "押", trad: "押" },
+  { simp: "竖", trad: "豎" },
+  { simp: "欠", trad: "欠" },
+  { simp: "衫", trad: "衫" },
+  { simp: "旬", trad: "旬" },
+  { simp: "韵", trad: "韻" },
+  { simp: "孕", trad: "孕" },
+  { simp: "穆", trad: "穆" },
+  { simp: "硅", trad: "矽" },
+  { simp: "湘", trad: "湘" },
+  { simp: "澳", trad: "澳" },
+  { simp: "羞", trad: "羞" },
+  { simp: "惧", trad: "懼" },
+  { simp: "慨", trad: "慨" },
+  { simp: "穴", trad: "穴" },
+  { simp: "捞", trad: "撈" },
+  { simp: "棍", trad: "棍" },
+  { simp: "炕", trad: "炕" },
+  { simp: "窄", trad: "窄" },
+  { simp: "俱", trad: "俱" },
+  { simp: "爽", trad: "爽" },
+  { simp: "鹅", trad: "鵝" },
+  { simp: "巢", trad: "巢" },
+  { simp: "绒", trad: "絨" },
+  { simp: "疫", trad: "疫" },
+  { simp: "茎", trad: "莖" },
+  { simp: "苹", trad: "蘋" },
+  { simp: "捧", trad: "捧" },
+  { simp: "忌", trad: "忌" },
+  { simp: "搏", trad: "搏" },
+  { simp: "躯", trad: "軀" },
+  { simp: "惹", trad: "惹" },
+  { simp: "岂", trad: "豈" },
+  { simp: "艾", trad: "艾" },
+  { simp: "拦", trad: "攔" },
+  { simp: "趁", trad: "趁" },
+  { simp: "缚", trad: "縛" },
+  { simp: "祸", trad: "禍" },
+  { simp: "橡", trad: "橡" },
+  { simp: "碧", trad: "碧" },
+  { simp: "卑", trad: "卑" },
+  { simp: "饼", trad: "餅" },
+  { simp: "蔬", trad: "蔬" },
+  { simp: "灶", trad: "灶" },
+  { simp: "赔", trad: "賠" },
+  { simp: "颠", trad: "顛" },
+  { simp: "曰", trad: "曰" },
+  { simp: "媒", trad: "媒" },
+  { simp: "衬", trad: "襯" },
+  { simp: "哑", trad: "啞" },
+  { simp: "艇", trad: "艇" },
+  { simp: "裸", trad: "裸" },
+  { simp: "岳", trad: "嶽" },
+  { simp: "嫌", trad: "嫌" },
+  { simp: "梨", trad: "梨" },
+  { simp: "傲", trad: "傲" },
+  { simp: "傻", trad: "傻" },
+  { simp: "铅", trad: "鉛" },
+  { simp: "懒", trad: "懶" },
+  { simp: "挽", trad: "挽" },
+  { simp: "刮", trad: "刮" },
+  { simp: "档", trad: "檔" },
+  { simp: "掀", trad: "掀" },
+  { simp: "哗", trad: "嘩" },
+  { simp: "颂", trad: "頌" },
+  { simp: "沸", trad: "沸" },
+  { simp: "愚", trad: "愚" },
+  { simp: "秧", trad: "秧" },
+  { simp: "屁", trad: "屁" },
+  { simp: "嘱", trad: "囑" },
+  { simp: "垫", trad: "墊" },
+  { simp: "堤", trad: "堤" },
+  { simp: "晕", trad: "暈" },
+  { simp: "凳", trad: "凳" },
+  { simp: "址", trad: "址" },
+  { simp: "踢", trad: "踢" },
+  { simp: "稚", trad: "稚" },
+  { simp: "蝶", trad: "蝶" },
+  { simp: "账", trad: "賬" },
+  { simp: "茅", trad: "茅" },
+  { simp: "哨", trad: "哨" },
+  { simp: "抄", trad: "抄" },
+  { simp: "弓", trad: "弓" },
+  { simp: "稼", trad: "稼" },
+  { simp: "泳", trad: "泳" },
+  { simp: "蜡", trad: "蠟" },
+  { simp: "吻", trad: "吻" },
+  { simp: "沾", trad: "沾" },
+  { simp: "绣", trad: "繡" },
+  { simp: "谨", trad: "謹" },
+  { simp: "厨", trad: "廚" },
+  { simp: "拐", trad: "拐" },
+  { simp: "宴", trad: "宴" },
+  { simp: "衷", trad: "衷" },
+  { simp: "戚", trad: "戚" },
+  { simp: "碑", trad: "碑" },
+  { simp: "煮", trad: "煮" },
+  { simp: "翁", trad: "翁" },
+  { simp: "倘", trad: "倘" },
+  { simp: "恳", trad: "懇" },
+  { simp: "趟", trad: "趟" },
+  { simp: "胳", trad: "胳" },
+  { simp: "罐", trad: "罐" },
+  { simp: "裙", trad: "裙" },
+  { simp: "奠", trad: "奠" },
+  { simp: "驴", trad: "驢" },
+  { simp: "撕", trad: "撕" },
+  { simp: "滥", trad: "濫" },
+  { simp: "骄", trad: "驕" },
+  { simp: "煌", trad: "煌" },
+  { simp: "冤", trad: "冤" },
+  { simp: "瞎", trad: "瞎" },
+  { simp: "倦", trad: "倦" },
+  { simp: "愧", trad: "愧" },
+  { simp: "聊", trad: "聊" },
+  { simp: "侨", trad: "僑" },
+  { simp: "谅", trad: "諒" },
+  { simp: "廊", trad: "廊" },
+  { simp: "溉", trad: "溉" },
+  { simp: "铸", trad: "鑄" },
+  { simp: "拢", trad: "攏" },
+  { simp: "坟", trad: "墳" },
+  { simp: "娱", trad: "娛" },
+  { simp: "歉", trad: "歉" },
+  { simp: "傍", trad: "傍" },
+  { simp: "叭", trad: "叭" },
+  { simp: "鸽", trad: "鴿" },
+  { simp: "谦", trad: "謙" },
+  { simp: "丙", trad: "丙" },
+  { simp: "愣", trad: "愣" },
+  { simp: "朽", trad: "朽" },
+  { simp: "跪", trad: "跪" },
+  { simp: "寓", trad: "寓" },
+  { simp: "捏", trad: "捏" },
+  { simp: "搅", trad: "攪" },
+  { simp: "笨", trad: "笨" },
+  { simp: "榜", trad: "榜" },
+  { simp: "驼", trad: "駝" },
+  { simp: "甩", trad: "甩" },
+  { simp: "逮", trad: "逮" },
+  { simp: "赚", trad: "賺" },
+  { simp: "歼", trad: "殲" },
+  { simp: "僵", trad: "僵" },
+  { simp: "浴", trad: "浴" },
+  { simp: "呐", trad: "吶" },
+  { simp: "咐", trad: "咐" },
+  { simp: "瓷", trad: "瓷" },
+  { simp: "陌", trad: "陌" },
+  { simp: "帘", trad: "簾" },
+  { simp: "摧", trad: "摧" },
+  { simp: "赢", trad: "贏" },
+  { simp: "裹", trad: "裹" },
+  { simp: "卸", trad: "卸" },
+  { simp: "膊", trad: "膊" },
+  { simp: "饶", trad: "饒" },
+  { simp: "寞", trad: "寞" },
+  { simp: "挫", trad: "挫" },
+  { simp: "俯", trad: "俯" },
+  { simp: "桔", trad: "桔" },
+  { simp: "蚊", trad: "蚊" },
+  { simp: "巷", trad: "巷" },
+  { simp: "烛", trad: "燭" },
+  { simp: "踩", trad: "踩" },
+  { simp: "缸", trad: "缸" },
+  { simp: "顷", trad: "頃" },
+  { simp: "砸", trad: "砸" },
+  { simp: "粱", trad: "粱" },
+  { simp: "肝", trad: "肝" },
+  { simp: "歪", trad: "歪" },
+  { simp: "欺", trad: "欺" },
+  { simp: "脾", trad: "脾" },
+  { simp: "抛", trad: "拋" },
+  { simp: "苍", trad: "蒼" },
+  { simp: "稿", trad: "稿" },
+  { simp: "唤", trad: "喚" },
+  { simp: "凶", trad: "凶" },
+  { simp: "齿", trad: "齒" },
+  { simp: "怨", trad: "怨" },
+  { simp: "汁", trad: "汁" },
+  { simp: "蕉", trad: "蕉" },
+  { simp: "淋", trad: "淋" }
+],
+L5:[
+  { simp: "络", trad: "絡" },
+  { simp: "撤", trad: "撤" },
+  { simp: "诊", trad: "診" },
+  { simp: "惨", trad: "慘" },
+  { simp: "浑", trad: "渾" },
+  { simp: "驶", trad: "駛" },
+  { simp: "叙", trad: "敘" },
+  { simp: "嫁", trad: "嫁" },
+  { simp: "哀", trad: "哀" },
+  { simp: "滩", trad: "灘" },
+  { simp: "笼", trad: "籠" },
+  { simp: "拳", trad: "拳" },
+  { simp: "晃", trad: "晃" },
+  { simp: "寂", trad: "寂" },
+  { simp: "仓", trad: "倉" },
+  { simp: "胀", trad: "脹" },
+  { simp: "眠", trad: "眠" },
+  { simp: "劣", trad: "劣" },
+  { simp: "孟", trad: "孟" },
+  { simp: "媳", trad: "媳" },
+  { simp: "抹", trad: "抹" },
+  { simp: "寨", trad: "寨" },
+  { simp: "夸", trad: "誇" },
+  { simp: "卧", trad: "卧" },
+  { simp: "搜", trad: "搜" },
+  { simp: "唇", trad: "唇" },
+  { simp: "枯", trad: "枯" },
+  { simp: "喘", trad: "喘" },
+  { simp: "疆", trad: "疆" },
+  { simp: "婶", trad: "嬸" },
+  { simp: "畅", trad: "暢" },
+  { simp: "葡", trad: "葡" },
+  { simp: "柜", trad: "櫃" },
+  { simp: "顽", trad: "頑" },
+  { simp: "鸭", trad: "鴨" },
+  { simp: "仇", trad: "仇" },
+  { simp: "锡", trad: "錫" },
+  { simp: "骤", trad: "驟" },
+  { simp: "悦", trad: "悦" },
+  { simp: "棒", trad: "棒" },
+  { simp: "诞", trad: "誕" },
+  { simp: "遥", trad: "遙" },
+  { simp: "颤", trad: "顫" },
+  { simp: "扯", trad: "扯" },
+  { simp: "丑", trad: "醜" },
+  { simp: "摊", trad: "攤" },
+  { simp: "柏", trad: "柏" },
+  { simp: "唉", trad: "唉" },
+  { simp: "胁", trad: "脅" },
+  { simp: "捷", trad: "捷" },
+  { simp: "皱", trad: "皺" },
+  { simp: "挣", trad: "掙" },
+  { simp: "陵", trad: "陵" },
+  { simp: "彭", trad: "彭" },
+  { simp: "纱", trad: "紗" },
+  { simp: "董", trad: "董" },
+  { simp: "勾", trad: "勾" },
+  { simp: "佩", trad: "佩" },
+  { simp: "妥", trad: "妥" },
+  { simp: "署", trad: "署" },
+  { simp: "瞪", trad: "瞪" },
+  { simp: "妨", trad: "妨" },
+  { simp: "酷", trad: "酷" },
+  { simp: "棚", trad: "棚" },
+  { simp: "浸", trad: "浸" },
+  { simp: "舰", trad: "艦" },
+  { simp: "狱", trad: "獄" },
+  { simp: "御", trad: "禦" },
+  { simp: "裕", trad: "裕" },
+  { simp: "竭", trad: "竭" },
+  { simp: "蚕", trad: "蠶" },
+  { simp: "疯", trad: "瘋" },
+  { simp: "坑", trad: "坑" },
+  { simp: "掠", trad: "掠" },
+  { simp: "冶", trad: "冶" },
+  { simp: "辣", trad: "辣" },
+  { simp: "凑", trad: "湊" },
+  { simp: "婴", trad: "嬰" },
+  { simp: "泌", trad: "泌" },
+  { simp: "痕", trad: "痕" },
+  { simp: "亭", trad: "亭" },
+  { simp: "铝", trad: "鋁" },
+  { simp: "砖", trad: "磚" },
+  { simp: "僚", trad: "僚" },
+  { simp: "耶", trad: "耶" },
+  { simp: "艳", trad: "豔" },
+  { simp: "遮", trad: "遮" },
+  { simp: "慎", trad: "慎" },
+  { simp: "舱", trad: "艙" },
+  { simp: "蚀", trad: "蝕" },
+  { simp: "饥", trad: "饑" },
+  { simp: "询", trad: "詢" },
+  { simp: "嫩", trad: "嫩" },
+  { simp: "豫", trad: "豫" },
+  { simp: "酬", trad: "酬" },
+  { simp: "剖", trad: "剖" },
+  { simp: "哦", trad: "哦" },
+  { simp: "漆", trad: "漆" },
+  { simp: "筋", trad: "筋" },
+  { simp: "垄", trad: "壟" },
+  { simp: "匪", trad: "匪" },
+  { simp: "贞", trad: "貞" },
+  { simp: "丘", trad: "丘" },
+  { simp: "滞", trad: "滯" },
+  { simp: "蓬", trad: "蓬" },
+  { simp: "浙", trad: "浙" },
+  { simp: "潘", trad: "潘" },
+  { simp: "矩", trad: "矩" },
+  { simp: "奸", trad: "奸" },
+  { simp: "浆", trad: "漿" },
+  { simp: "棋", trad: "棋" },
+  { simp: "勉", trad: "勉" },
+  { simp: "钉", trad: "釘" },
+  { simp: "盯", trad: "盯" },
+  { simp: "膨", trad: "膨" },
+  { simp: "葛", trad: "葛" },
+  { simp: "哟", trad: "喲" },
+  { simp: "鄂", trad: "鄂" },
+  { simp: "霜", trad: "霜" },
+  { simp: "畴", trad: "疇" },
+  { simp: "喉", trad: "喉" },
+  { simp: "吕", trad: "吕" },
+  { simp: "霉", trad: "黴" },
+  { simp: "邪", trad: "邪" },
+  { simp: "峡", trad: "峽" },
+  { simp: "辱", trad: "辱" },
+  { simp: "撑", trad: "撐" },
+  { simp: "崖", trad: "崖" },
+  { simp: "宅", trad: "宅" },
+  { simp: "陕", trad: "陝" },
+  { simp: "晰", trad: "晰" },
+  { simp: "奈", trad: "奈" },
+  { simp: "焰", trad: "焰" },
+  { simp: "甫", trad: "甫" },
+  { simp: "攀", trad: "攀" },
+  { simp: "譬", trad: "譬" },
+  { simp: "粪", trad: "糞" },
+  { simp: "殿", trad: "殿" },
+  { simp: "钩", trad: "鉤" },
+  { simp: "逝", trad: "逝" },
+  { simp: "罩", trad: "罩" },
+  { simp: "庸", trad: "庸" },
+  { simp: "窃", trad: "竊" },
+  { simp: "涵", trad: "涵" },
+  { simp: "砂", trad: "砂" },
+  { simp: "泊", trad: "泊" },
+  { simp: "遣", trad: "遣" },
+  { simp: "熔", trad: "熔" },
+  { simp: "廉", trad: "廉" },
+  { simp: "畏", trad: "畏" },
+  { simp: "缴", trad: "繳" },
+  { simp: "钙", trad: "鈣" },
+  { simp: "乔", trad: "喬" },
+  { simp: "萍", trad: "萍" },
+  { simp: "莉", trad: "莉" },
+  { simp: "凄", trad: "淒" },
+  { simp: "卓", trad: "卓" },
+  { simp: "妄", trad: "妄" },
+  { simp: "劫", trad: "劫" },
+  { simp: "阁", trad: "閣" },
+  { simp: "藤", trad: "藤" },
+  { simp: "吟", trad: "吟" },
+  { simp: "杏", trad: "杏" },
+  { simp: "梢", trad: "梢" },
+  { simp: "罕", trad: "罕" },
+  { simp: "滨", trad: "濱" },
+  { simp: "翔", trad: "翔" },
+  { simp: "戈", trad: "戈" },
+  { simp: "抒", trad: "抒" },
+  { simp: "弊", trad: "弊" },
+  { simp: "姜", trad: "薑" },
+  { simp: "拘", trad: "拘" },
+  { simp: "贩", trad: "販" },
+  { simp: "框", trad: "框" },
+  { simp: "喻", trad: "喻" },
+  { simp: "迪", trad: "迪" },
+  { simp: "契", trad: "契" },
+  { simp: "弗", trad: "弗" },
+  { simp: "赌", trad: "賭" },
+  { simp: "哄", trad: "哄" },
+  { simp: "旨", trad: "旨" },
+  { simp: "彪", trad: "彪" },
+  { simp: "俊", trad: "俊" },
+  { simp: "贼", trad: "賊" },
+  { simp: "凹", trad: "凹" },
+  { simp: "帕", trad: "帕" },
+  { simp: "携", trad: "攜" },
+  { simp: "枢", trad: "樞" },
+  { simp: "溃", trad: "潰" },
+  { simp: "枚", trad: "枚" },
+  { simp: "驳", trad: "駁" },
+  { simp: "歧", trad: "歧" },
+  { simp: "颁", trad: "頒" },
+  { simp: "徽", trad: "徽" },
+  { simp: "杠", trad: "杠" },
+  { simp: "叮", trad: "叮" },
+  { simp: "鸦", trad: "鴉" },
+  { simp: "粹", trad: "粹" },
+  { simp: "蕾", trad: "蕾" },
+  { simp: "淑", trad: "淑" },
+  { simp: "逸", trad: "逸" },
+  { simp: "逊", trad: "遜" },
+  { simp: "讼", trad: "訟" },
+  { simp: "衍", trad: "衍" },
+  { simp: "蔽", trad: "蔽" },
+  { simp: "龟", trad: "龜" },
+  { simp: "蒂", trad: "蒂" },
+  { simp: "姚", trad: "姚" },
+  { simp: "恭", trad: "恭" },
+  { simp: "耻", trad: "恥" },
+  { simp: "蕴", trad: "蘊" },
+  { simp: "娇", trad: "嬌" },
+  { simp: "杭", trad: "杭" },
+  { simp: "淮", trad: "淮" },
+  { simp: "萝", trad: "蘿" },
+  { simp: "惟", trad: "惟" },
+  { simp: "瘤", trad: "瘤" },
+  { simp: "蚂", trad: "螞" },
+  { simp: "崔", trad: "崔" },
+  { simp: "髓", trad: "髓" },
+  { simp: "碌", trad: "碌" },
+  { simp: "沫", trad: "沫" },
+  { simp: "帅", trad: "帥" },
+  { simp: "吏", trad: "吏" },
+  { simp: "峻", trad: "峻" },
+  { simp: "昼", trad: "晝" },
+  { simp: "刹", trad: "刹" },
+  { simp: "坝", trad: "壩" },
+  { simp: "栖", trad: "棲" },
+  { simp: "捐", trad: "捐" },
+  { simp: "渊", trad: "淵" },
+  { simp: "淘", trad: "淘" },
+  { simp: "轿", trad: "轎" },
+  { simp: "呜", trad: "嗚" },
+  { simp: "宰", trad: "宰" },
+  { simp: "玄", trad: "玄" },
+  { simp: "券", trad: "券" },
+  { simp: "槽", trad: "槽" },
+  { simp: "咋", trad: "咋" },
+  { simp: "厦", trad: "廈" },
+  { simp: "爪", trad: "爪" },
+  { simp: "屠", trad: "屠" },
+  { simp: "耸", trad: "聳" },
+  { simp: "殷", trad: "殷" },
+  { simp: "矣", trad: "矣" },
+  { simp: "锤", trad: "錘" },
+  { simp: "兹", trad: "兹" },
+  { simp: "坎", trad: "坎" },
+  { simp: "珊", trad: "珊" },
+  { simp: "垦", trad: "墾" },
+  { simp: "兜", trad: "兜" },
+  { simp: "禅", trad: "禪" },
+  { simp: "芝", trad: "芝" },
+  { simp: "吁", trad: "籲" },
+  { simp: "酶", trad: "酶" },
+  { simp: "舆", trad: "輿" },
+  { simp: "惶", trad: "惶" },
+  { simp: "颖", trad: "穎" },
+  { simp: "瞅", trad: "瞅" },
+  { simp: "兆", trad: "兆" },
+  { simp: "咧", trad: "咧" },
+  { simp: "噢", trad: "噢" },
+  { simp: "仆", trad: "僕" },
+  { simp: "醇", trad: "醇" },
+  { simp: "嗯", trad: "嗯" },
+  { simp: "篷", trad: "篷" },
+  { simp: "膝", trad: "膝" },
+  { simp: "肪", trad: "肪" },
+  { simp: "熙", trad: "熙" },
+  { simp: "眨", trad: "眨" },
+  { simp: "屯", trad: "屯" },
+  { simp: "鼎", trad: "鼎" },
+  { simp: "乾", trad: "乾" },
+  { simp: "咸", trad: "鹹" },
+  { simp: "沃", trad: "沃" },
+  { simp: "衔", trad: "銜" },
+  { simp: "俘", trad: "俘" },
+  { simp: "熬", trad: "熬" },
+  { simp: "喇", trad: "喇" },
+  { simp: "芒", trad: "芒" },
+  { simp: "钓", trad: "釣" },
+  { simp: "侍", trad: "侍" },
+  { simp: "禽", trad: "禽" },
+  { simp: "桩", trad: "樁" },
+  { simp: "灿", trad: "燦" },
+  { simp: "吼", trad: "吼" },
+  { simp: "泣", trad: "泣" },
+  { simp: "讽", trad: "諷" },
+  { simp: "凸", trad: "凸" },
+  { simp: "谭", trad: "譚" },
+  { simp: "敞", trad: "敞" },
+  { simp: "聘", trad: "聘" },
+  { simp: "哺", trad: "哺" },
+  { simp: "癌", trad: "癌" },
+  { simp: "浦", trad: "浦" },
+  { simp: "躁", trad: "躁" },
+  { simp: "卿", trad: "卿" },
+  { simp: "勘", trad: "勘" },
+  { simp: "窜", trad: "竄" },
+  { simp: "溢", trad: "溢" },
+  { simp: "舟", trad: "舟" },
+  { simp: "虹", trad: "虹" },
+  { simp: "蛛", trad: "蛛" },
+  { simp: "耍", trad: "耍" },
+  { simp: "饵", trad: "餌" },
+  { simp: "骚", trad: "騷" },
+  { simp: "枣", trad: "棗" },
+  { simp: "浇", trad: "澆" },
+  { simp: "崩", trad: "崩" },
+  { simp: "蹦", trad: "蹦" },
+  { simp: "褐", trad: "褐" },
+  { simp: "俭", trad: "儉" },
+  { simp: "仑", trad: "侖" },
+  { simp: "窟", trad: "窟" },
+  { simp: "陡", trad: "陡" },
+  { simp: "荫", trad: "蔭" },
+  { simp: "嚼", trad: "嚼" },
+  { simp: "钦", trad: "欽" },
+  { simp: "弧", trad: "弧" },
+  { simp: "涡", trad: "渦" },
+  { simp: "潭", trad: "潭" },
+  { simp: "坊", trad: "坊" },
+  { simp: "缔", trad: "締" },
+  { simp: "廓", trad: "廓" },
+  { simp: "佐", trad: "佐" },
+  { simp: "夷", trad: "夷" },
+  { simp: "眯", trad: "眯" },
+  { simp: "枕", trad: "枕" },
+  { simp: "捣", trad: "搗" },
+  { simp: "蹄", trad: "蹄" },
+  { simp: "猩", trad: "猩" },
+  { simp: "狐", trad: "狐" },
+  { simp: "柄", trad: "柄" },
+  { simp: "穗", trad: "穗" },
+  { simp: "伞", trad: "傘" },
+  { simp: "浊", trad: "濁" },
+  { simp: "壶", trad: "壺" },
+  { simp: "冈", trad: "岡" },
+  { simp: "搁", trad: "擱" },
+  { simp: "屑", trad: "屑" },
+  { simp: "谬", trad: "謬" },
+  { simp: "拱", trad: "拱" },
+  { simp: "魁", trad: "魁" },
+  { simp: "祀", trad: "祀" },
+  { simp: "荧", trad: "荧" },
+  { simp: "誓", trad: "誓" },
+  { simp: "斋", trad: "齋" },
+  { simp: "虾", trad: "蝦" },
+  { simp: "绸", trad: "綢" },
+  { simp: "魄", trad: "魄" },
+  { simp: "娟", trad: "娟" },
+  { simp: "姊", trad: "姊" },
+  { simp: "秃", trad: "禿" },
+  { simp: "泻", trad: "瀉" },
+  { simp: "鹏", trad: "鵬" },
+  { simp: "蟹", trad: "蟹" },
+  { simp: "斌", trad: "斌" },
+  { simp: "灼", trad: "灼" },
+  { simp: "扛", trad: "扛" },
+  { simp: "镁", trad: "鎂" },
+  { simp: "瓣", trad: "瓣" },
+  { simp: "艘", trad: "艘" },
+  { simp: "捆", trad: "捆" },
+  { simp: "膏", trad: "膏" },
+  { simp: "苇", trad: "葦" },
+  { simp: "厢", trad: "廂" },
+  { simp: "妮", trad: "妮" },
+  { simp: "蒲", trad: "蒲" },
+  { simp: "啸", trad: "嘯" },
+  { simp: "劈", trad: "劈" },
+  { simp: "滤", trad: "濾" },
+  { simp: "葱", trad: "蔥" },
+  { simp: "栗", trad: "栗" },
+  { simp: "袍", trad: "袍" },
+  { simp: "耽", trad: "耽" },
+  { simp: "痴", trad: "痴" },
+  { simp: "颊", trad: "頰" },
+  { simp: "猿", trad: "猿" },
+  { simp: "沪", trad: "滬" },
+  { simp: "怯", trad: "怯" },
+  { simp: "垒", trad: "壘" },
+  { simp: "芭", trad: "芭" },
+  { simp: "蔑", trad: "蔑" },
+  { simp: "絮", trad: "絮" },
+  { simp: "咯", trad: "咯" },
+  { simp: "笛", trad: "笛" },
+  { simp: "嘲", trad: "嘲" },
+  { simp: "爵", trad: "爵" },
+  { simp: "瞒", trad: "瞞" },
+  { simp: "冀", trad: "冀" },
+  { simp: "赐", trad: "賜" },
+  { simp: "酿", trad: "釀" },
+  { simp: "烫", trad: "燙" },
+  { simp: "惕", trad: "惕" },
+  { simp: "逗", trad: "逗" },
+  { simp: "挪", trad: "挪" },
+  { simp: "吱", trad: "吱" },
+  { simp: "淫", trad: "淫" },
+  { simp: "糕", trad: "糕" },
+  { simp: "剿", trad: "剿" },
+  { simp: "拣", trad: "揀" },
+  { simp: "琼", trad: "瓊" },
+  { simp: "塌", trad: "塌" },
+  { simp: "渣", trad: "渣" },
+  { simp: "澄", trad: "澄" },
+  { simp: "赠", trad: "贈" },
+  { simp: "媚", trad: "媚" },
+  { simp: "荐", trad: "薦" },
+  { simp: "暑", trad: "暑" },
+  { simp: "鹤", trad: "鶴" },
+  { simp: "绅", trad: "紳" },
+  { simp: "讶", trad: "訝" },
+  { simp: "凿", trad: "鑿" },
+  { simp: "烁", trad: "爍" },
+  { simp: "狮", trad: "獅" },
+  { simp: "乒", trad: "乒" },
+  { simp: "薛", trad: "薛" },
+  { simp: "侮", trad: "侮" },
+  { simp: "阎", trad: "閻" },
+  { simp: "嗽", trad: "嗽" },
+  { simp: "朦", trad: "朦" },
+  { simp: "喃", trad: "喃" },
+  { simp: "埔", trad: "埔" },
+  { simp: "蝇", trad: "蠅" },
+  { simp: "锣", trad: "鑼" },
+  { simp: "炒", trad: "炒" },
+  { simp: "娶", trad: "娶" },
+  { simp: "棕", trad: "棕" },
+  { simp: "韧", trad: "韌" },
+  { simp: "礁", trad: "礁" },
+  { simp: "陀", trad: "陀" },
+  { simp: "肆", trad: "肆" },
+  { simp: "乖", trad: "乖" },
+  { simp: "禄", trad: "祿" },
+  { simp: "骆", trad: "駱" },
+  { simp: "驯", trad: "馴" },
+  { simp: "匙", trad: "匙" },
+  { simp: "萎", trad: "萎" },
+  { simp: "舶", trad: "舶" },
+  { simp: "滔", trad: "滔" },
+  { simp: "卤", trad: "鹵" },
+  { simp: "摹", trad: "摹" },
+  { simp: "昔", trad: "昔" },
+  { simp: "陋", trad: "陋" },
+  { simp: "雁", trad: "雁" },
+  { simp: "耿", trad: "耿" },
+  { simp: "裳", trad: "裳" },
+  { simp: "崭", trad: "嶄" },
+  { simp: "妆", trad: "妝" },
+  { simp: "勋", trad: "勳" },
+  { simp: "侣", trad: "侶" },
+  { simp: "闸", trad: "閘" },
+  { simp: "贬", trad: "貶" },
+  { simp: "痰", trad: "痰" },
+  { simp: "喧", trad: "喧" },
+  { simp: "膛", trad: "膛" },
+  { simp: "胧", trad: "朧" },
+  { simp: "辫", trad: "辮" },
+  { simp: "丫", trad: "丫" },
+  { simp: "铀", trad: "鈾" },
+  { simp: "甸", trad: "甸" },
+  { simp: "犁", trad: "犁" },
+  { simp: "幢", trad: "幢" },
+  { simp: "窑", trad: "窯" },
+  { simp: "羡", trad: "羨" },
+  { simp: "坪", trad: "坪" },
+  { simp: "缀", trad: "綴" },
+  { simp: "坤", trad: "坤" },
+  { simp: "汹", trad: "洶" },
+  { simp: "柑", trad: "柑" },
+  { simp: "淹", trad: "淹" },
+  { simp: "杉", trad: "杉" },
+  { simp: "棺", trad: "棺" },
+  { simp: "怖", trad: "怖" },
+  { simp: "腻", trad: "膩" },
+  { simp: "薯", trad: "薯" },
+  { simp: "锈", trad: "鏽" },
+  { simp: "魅", trad: "魅" },
+  { simp: "洽", trad: "洽" },
+  { simp: "诵", trad: "誦" },
+  { simp: "咪", trad: "咪" },
+  { simp: "椎", trad: "椎" },
+  { simp: "畔", trad: "畔" },
+  { simp: "玫", trad: "玫" },
+  { simp: "柿", trad: "柿" },
+  { simp: "帜", trad: "幟" },
+  { simp: "桐", trad: "桐" },
+  { simp: "襟", trad: "襟" },
+  { simp: "筷", trad: "筷" },
+  { simp: "帆", trad: "帆" },
+  { simp: "匈", trad: "匈" },
+  { simp: "嵌", trad: "嵌" },
+  { simp: "梳", trad: "梳" },
+  { simp: "鳞", trad: "鱗" },
+  { simp: "佣", trad: "傭" },
+  { simp: "熄", trad: "熄" },
+  { simp: "砌", trad: "砌" },
+  { simp: "昧", trad: "昧" },
+  { simp: "噪", trad: "噪" },
+  { simp: "簧", trad: "簧" },
+  { simp: "婉", trad: "婉" },
+  { simp: "毯", trad: "毯" },
+  { simp: "孵", trad: "孵" },
+  { simp: "憾", trad: "憾" },
+  { simp: "谎", trad: "謊" },
+  { simp: "坠", trad: "墜" },
+  { simp: "煞", trad: "煞" },
+  { simp: "藉", trad: "藉" },
+  { simp: "嗡", trad: "嗡" },
+  { simp: "绑", trad: "綁" },
+  { simp: "妖", trad: "妖" },
+  { simp: "蝴", trad: "蝴" },
+  { simp: "瑰", trad: "瑰" },
+  { simp: "揉", trad: "揉" },
+  { simp: "苔", trad: "苔" },
+  { simp: "拌", trad: "拌" },
+  { simp: "莹", trad: "瑩" },
+  { simp: "昭", trad: "昭" },
+  { simp: "汰", trad: "汰" },
+  { simp: "拂", trad: "拂" },
+  { simp: "嗅", trad: "嗅" },
+  { simp: "钮", trad: "鈕" },
+  { simp: "鄙", trad: "鄙" },
+  { simp: "撰", trad: "撰" },
+  { simp: "盏", trad: "盞" },
+  { simp: "烘", trad: "烘" },
+  { simp: "谣", trad: "謠" },
+  { simp: "竿", trad: "竿" },
+  { simp: "皖", trad: "皖" },
+  { simp: "锥", trad: "錐" },
+  { simp: "犬", trad: "犬" },
+  { simp: "皂", trad: "皂" },
+  { simp: "蔓", trad: "蔓" },
+  { simp: "蕊", trad: "蕊" },
+  { simp: "疮", trad: "瘡" },
+  { simp: "咒", trad: "咒" },
+  { simp: "僻", trad: "僻" },
+  { simp: "寇", trad: "寇" },
+  { simp: "铭", trad: "銘" },
+  { simp: "薪", trad: "薪" },
+  { simp: "恍", trad: "恍" },
+  { simp: "辰", trad: "辰" },
+  { simp: "祈", trad: "祈" },
+  { simp: "迭", trad: "迭" },
+  { simp: "豁", trad: "豁" },
+  { simp: "斩", trad: "斬" },
+  { simp: "屡", trad: "屢" },
+  { simp: "啼", trad: "啼" },
+  { simp: "椒", trad: "椒" },
+  { simp: "啡", trad: "啡" },
+  { simp: "稽", trad: "稽" },
+  { simp: "烤", trad: "烤" },
+  { simp: "籽", trad: "籽" },
+  { simp: "洼", trad: "窪" },
+  { simp: "榴", trad: "榴" },
+  { simp: "唾", trad: "唾" },
+  { simp: "巫", trad: "巫" },
+  { simp: "乞", trad: "乞" },
+  { simp: "焊", trad: "焊" },
+  { simp: "杖", trad: "杖" },
+  { simp: "贱", trad: "賤" },
+  { simp: "咚", trad: "咚" },
+  { simp: "蜘", trad: "蜘" },
+  { simp: "扒", trad: "扒" },
+  { simp: "隋", trad: "隋" },
+  { simp: "晌", trad: "晌" },
+  { simp: "暮", trad: "暮" },
+  { simp: "涤", trad: "滌" },
+  { simp: "茧", trad: "繭" },
+  { simp: "拴", trad: "拴" },
+  { simp: "闽", trad: "閩" },
+  { simp: "叨", trad: "叨" },
+  { simp: "喳", trad: "喳" },
+  { simp: "腕", trad: "腕" },
+  { simp: "斧", trad: "斧" },
+  { simp: "怔", trad: "怔" },
+  { simp: "咖", trad: "咖" },
+  { simp: "啄", trad: "啄" },
+  { simp: "溯", trad: "溯" },
+  { simp: "踱", trad: "踱" },
+  { simp: "沦", trad: "淪" },
+  { simp: "锄", trad: "鋤" },
+  { simp: "畸", trad: "畸" },
+  { simp: "脓", trad: "膿" },
+  { simp: "疙", trad: "疙" },
+  { simp: "炊", trad: "炊" },
+  { simp: "擅", trad: "擅" },
+  { simp: "粤", trad: "粤" },
+  { simp: "虏", trad: "虜" },
+  { simp: "豹", trad: "豹" },
+  { simp: "榨", trad: "榨" },
+  { simp: "棱", trad: "棱" },
+  { simp: "簇", trad: "簇" },
+  { simp: "莺", trad: "鶯" },
+  { simp: "撇", trad: "撇" },
+  { simp: "绎", trad: "繹" },
+  { simp: "尉", trad: "尉" },
+  { simp: "柬", trad: "柬" },
+  { simp: "涩", trad: "澀" },
+  { simp: "乓", trad: "乓" },
+  { simp: "觅", trad: "覓" },
+  { simp: "茄", trad: "茄" },
+  { simp: "涯", trad: "涯" },
+  { simp: "憎", trad: "憎" },
+  { simp: "蔚", trad: "蔚" },
+  { simp: "挚", trad: "摯" },
+  { simp: "姥", trad: "姥" },
+  { simp: "袄", trad: "襖" },
+  { simp: "捡", trad: "撿" },
+  { simp: "旷", trad: "曠" },
+  { simp: "镶", trad: "鑲" },
+  { simp: "碘", trad: "碘" },
+  { simp: "袜", trad: "襪" },
+  { simp: "丸", trad: "丸" },
+  { simp: "糙", trad: "糙" },
+  { simp: "鲸", trad: "鯨" },
+  { simp: "倚", trad: "倚" },
+  { simp: "矢", trad: "矢" },
+  { simp: "锌", trad: "鋅" },
+  { simp: "褂", trad: "褂" },
+  { simp: "牡", trad: "牡" },
+  { simp: "硕", trad: "碩" },
+  { simp: "憨", trad: "憨" },
+  { simp: "淌", trad: "淌" },
+  { simp: "禾", trad: "禾" },
+  { simp: "荆", trad: "荆" },
+  { simp: "苟", trad: "苟" },
+  { simp: "聋", trad: "聾" },
+  { simp: "潇", trad: "瀟" },
+  { simp: "庐", trad: "廬" },
+  { simp: "煎", trad: "煎" },
+  { simp: "勿", trad: "勿" },
+  { simp: "彬", trad: "彬" },
+  { simp: "醋", trad: "醋" },
+  { simp: "梭", trad: "梭" },
+  { simp: "秉", trad: "秉" },
+  { simp: "嗦", trad: "嗦" },
+  { simp: "掷", trad: "擲" },
+  { simp: "悼", trad: "悼" },
+  { simp: "噜", trad: "嚕" },
+  { simp: "茵", trad: "茵" },
+  { simp: "蓉", trad: "蓉" },
+  { simp: "矫", trad: "矯" },
+  { simp: "憋", trad: "憋" },
+  { simp: "翘", trad: "翹" },
+  { simp: "琢", trad: "琢" },
+  { simp: "挠", trad: "撓" },
+  { simp: "吭", trad: "吭" },
+  { simp: "兑", trad: "兑" },
+  { simp: "蔗", trad: "蔗" },
+  { simp: "瑟", trad: "瑟" },
+  { simp: "痒", trad: "癢" },
+  { simp: "琐", trad: "瑣" },
+  { simp: "槐", trad: "槐" },
+  { simp: "闺", trad: "閨" },
+  { simp: "拧", trad: "擰" },
+  { simp: "彰", trad: "彰" },
+  { simp: "菱", trad: "菱" },
+  { simp: "呕", trad: "嘔" },
+  { simp: "瘩", trad: "瘩" },
+  { simp: "筐", trad: "筐" },
+  { simp: "搂", trad: "摟" },
+  { simp: "焚", trad: "焚" },
+  { simp: "迄", trad: "迄" },
+  { simp: "垮", trad: "垮" },
+  { simp: "缕", trad: "縷" },
+  { simp: "谜", trad: "謎" },
+  { simp: "钥", trad: "鑰" },
+  { simp: "嘟", trad: "嘟" },
+  { simp: "蠢", trad: "蠢" },
+  { simp: "蛤", trad: "蛤" },
+  { simp: "馈", trad: "饋" },
+  { simp: "咨", trad: "諮" },
+  { simp: "敷", trad: "敷" },
+  { simp: "缅", trad: "緬" },
+  { simp: "聂", trad: "聶" },
+  { simp: "宠", trad: "寵" },
+  { simp: "沼", trad: "沼" },
+  { simp: "巍", trad: "巍" },
+  { simp: "榆", trad: "榆" },
+  { simp: "宛", trad: "宛" },
+  { simp: "绷", trad: "繃" },
+  { simp: "眶", trad: "眶" },
+  { simp: "吩", trad: "吩" },
+  { simp: "筛", trad: "篩" },
+  { simp: "菩", trad: "菩" },
+  { simp: "钞", trad: "鈔" },
+  { simp: "诈", trad: "詐" },
+  { simp: "葫", trad: "葫" },
+  { simp: "佃", trad: "佃" },
+  { simp: "酱", trad: "醬" },
+  { simp: "颓", trad: "頹" },
+  { simp: "渺", trad: "渺" },
+  { simp: "揽", trad: "攬" },
+  { simp: "躬", trad: "躬" },
+  { simp: "歹", trad: "歹" },
+  { simp: "焕", trad: "煥" },
+  { simp: "啪", trad: "啪" },
+  { simp: "溅", trad: "濺" },
+  { simp: "栋", trad: "棟" },
+  { simp: "沛", trad: "沛" },
+  { simp: "砚", trad: "硯" },
+  { simp: "囚", trad: "囚" },
+  { simp: "侄", trad: "侄" },
+  { simp: "妃", trad: "妃" },
+  { simp: "氓", trad: "氓" },
+  { simp: "狡", trad: "狡" },
+  { simp: "瞥", trad: "瞥" },
+  { simp: "沁", trad: "沁" },
+  { simp: "揣", trad: "揣" },
+  { simp: "峭", trad: "峭" },
+  { simp: "樱", trad: "櫻" },
+  { simp: "禹", trad: "禹" },
+  { simp: "岔", trad: "岔" },
+  { simp: "暇", trad: "暇" },
+  { simp: "檐", trad: "檐" },
+  { simp: "澜", trad: "瀾" },
+  { simp: "粥", trad: "粥" },
+  { simp: "馏", trad: "餾" },
+  { simp: "嗜", trad: "嗜" },
+  { simp: "铲", trad: "鏟" },
+  { simp: "寅", trad: "寅" },
+  { simp: "剔", trad: "剔" },
+  { simp: "尧", trad: "堯" },
+  { simp: "扼", trad: "扼" },
+  { simp: "赣", trad: "贛" },
+  { simp: "稠", trad: "稠" },
+  { simp: "屿", trad: "嶼" },
+  { simp: "亥", trad: "亥" },
+  { simp: "揪", trad: "揪" },
+  { simp: "窍", trad: "竅" },
+  { simp: "懈", trad: "懈" },
+  { simp: "淤", trad: "淤" },
+  { simp: "鹃", trad: "鵑" },
+  { simp: "卒", trad: "卒" },
+  { simp: "枫", trad: "楓" },
+  { simp: "脯", trad: "脯" },
+  { simp: "莽", trad: "莽" },
+  { simp: "酵", trad: "酵" },
+  { simp: "薇", trad: "薇" },
+  { simp: "弛", trad: "弛" },
+  { simp: "棘", trad: "棘" },
+  { simp: "庚", trad: "庚" },
+  { simp: "蚓", trad: "蚓" },
+  { simp: "绰", trad: "綽" },
+  { simp: "锰", trad: "錳" },
+  { simp: "枉", trad: "枉" },
+  { simp: "俏", trad: "俏" },
+  { simp: "祷", trad: "禱" },
+  { simp: "逛", trad: "逛" },
+  { simp: "茸", trad: "茸" },
+  { simp: "蜀", trad: "蜀" },
+  { simp: "鞍", trad: "鞍" },
+  { simp: "婿", trad: "婿" },
+  { simp: "钧", trad: "鈞" },
+  { simp: "蚯", trad: "蚯" },
+  { simp: "圃", trad: "圃" },
+  { simp: "嚣", trad: "囂" },
+  { simp: "垃", trad: "垃" },
+  { simp: "紊", trad: "紊" },
+  { simp: "鲫", trad: "鯽" },
+  { simp: "叽", trad: "嘰" },
+  { simp: "鲤", trad: "鯉" },
+  { simp: "嘀", trad: "嘀" },
+  { simp: "诬", trad: "誣" },
+  { simp: "哮", trad: "哮" },
+  { simp: "羔", trad: "羔" },
+  { simp: "毡", trad: "氈" },
+  { simp: "勺", trad: "勺" },
+  { simp: "娥", trad: "娥" },
+  { simp: "钝", trad: "鈍" },
+  { simp: "趾", trad: "趾" },
+  { simp: "妒", trad: "妒" },
+  { simp: "锯", trad: "鋸" },
+  { simp: "袱", trad: "袱" },
+  { simp: "咙", trad: "嚨" },
+  { simp: "圾", trad: "圾" },
+  { simp: "刨", trad: "刨" },
+  { simp: "痹", trad: "痹" },
+  { simp: "灸", trad: "灸" },
+  { simp: "绢", trad: "絹" },
+  { simp: "徊", trad: "徊" },
+  { simp: "疤", trad: "疤" },
+  { simp: "扳", trad: "扳" },
+  { simp: "蹬", trad: "蹬" },
+  { simp: "慷", trad: "慷" },
+  { simp: "馒", trad: "饅" },
+  { simp: "哆", trad: "哆" },
+  { simp: "嫉", trad: "嫉" },
+  { simp: "徘", trad: "徘" },
+  { simp: "帖", trad: "帖" },
+  { simp: "堕", trad: "墮" },
+  { simp: "梧", trad: "梧" },
+  { simp: "瀑", trad: "瀑" },
+  { simp: "腮", trad: "腮" },
+  { simp: "腥", trad: "腥" },
+  { simp: "绞", trad: "絞" },
+  { simp: "铺", trad: "鋪" },
+  { simp: "亩", trad: "畝" },
+  { simp: "衡", trad: "衡" }
+]
+};
+
+
+let currentWords = [];
+let mode = "practice";
+let script = "simp";
+
+// ===== 狀態 =====
+let index = 0;
+let score = 0;
+let wrongSet = new Set();
+
+let history = [];
+let records = [];
+let totalJudged = 0;
+
+// simp → word object（全部級別），供錯字顯示與字形對照
+const simpToWord = {};
+for (const k of Object.keys(WORDS)) WORDS[k].forEach(w => { simpToWord[w.simp] = w; });
+
+// ===== 學生進度（per-student，localStorage）=====
+// students = { "<姓名>": { stats: {simp:[seen,wrong]}, mastery: {simp:{p:<count>, t:<count>}} } }
+//   stats   → 弱字優先排序用（沿用）
+//   mastery → 練習(p)/測驗(t) 各自的「正確計數」：答對 +1、答錯 -1，夾在 [-5, 1]。
+//             計數 ≥ 1 → 該模式視為已學會，於隨機/弱字選字中移除（順序模式仍會出現）；
+//             計數越小（越負）→ 在隨機模式出現機率越高。練習與測驗各自獨立。
+const COUNT_MIN = -5, COUNT_MAX = 1;
+let currentStudent = '';
+
+function loadStudents() {
+  try { return JSON.parse(localStorage.getItem('students')) || {}; }
+  catch (e) { return {}; }
+}
+function saveStudents(all) {
+  try { localStorage.setItem('students', JSON.stringify(all)); } catch (e) { /* private mode 忽略 */ }
+}
+function studentRec(name) {
+  return loadStudents()[name] || { stats: {}, mastery: {} };
+}
+function ensureStudent(name) {
+  const all = loadStudents();
+  if (!all[name]) { all[name] = { stats: {}, mastery: {} }; saveStudents(all); }
+}
+function _mutateStudent(fn) {
+  if (!currentStudent) return;
+  const all = loadStudents();
+  const s = all[currentStudent] || { stats: {}, mastery: {} };
+  if (!s.stats) s.stats = {};
+  if (!s.mastery) s.mastery = {};
+  fn(s);
+  all[currentStudent] = s;
+  saveStudents(all);
+}
+
+function loadStats() { return studentRec(currentStudent).stats || {}; }
+function bumpStat(simp, wrong) {
+  _mutateStudent(s => {
+    const e = s.stats[simp] || [0, 0];   // [seen, wrong]
+    e[0]++; if (wrong) e[1]++;
+    s.stats[simp] = e;
+  });
+}
+
+// ── 正確計數（key: 'p' 練習 | 't' 測驗）──
+function countFor(name, simp, key) {
+  const e = (studentRec(name).mastery || {})[simp];
+  return (e && typeof e[key] === 'number') ? e[key] : 0;
+}
+function getCount(simp, key) { return countFor(currentStudent, simp, key); }
+function isLearned(simp, key) { return getCount(simp, key) >= COUNT_MAX; }   // ≥1 → 該模式不再隨機出現
+// 答對/答錯調整計數（夾在 [-5,1]），回傳調整前的值供 undo 還原
+function bumpCount(simp, key, delta) {
+  let prev = 0;
+  _mutateStudent(s => {
+    const e = s.mastery[simp] || {};
+    prev = (typeof e[key] === 'number') ? e[key] : 0;
+    e[key] = Math.max(COUNT_MIN, Math.min(COUNT_MAX, prev + delta));
+    s.mastery[simp] = e;
+  });
+  return prev;
+}
+function setCountRaw(simp, key, val) {
+  _mutateStudent(s => {
+    const e = s.mastery[simp] || {};
+    e[key] = val;
+    s.mastery[simp] = e;
+  });
+}
+
+const htmlEsc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+// Render the known-student picker as a horizontal sliding bar of chips.
+function refreshStudentList() {
+  const bar = document.getElementById('studentBar');
+  if (!bar) return;
+  const names = Object.keys(loadStudents()).sort();
+  const cur   = (document.getElementById('studentId').value || '').trim();
+  bar.innerHTML = '';
+  if (!names.length) {
+    const span = document.createElement('span');
+    span.className = 'student-empty';
+    span.textContent = '尚無學生，輸入姓名以新增';
+    bar.appendChild(span);
+    return;
+  }
+  names.forEach(n => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'student-chip' + (n === cur ? ' active' : '');
+    b.textContent = n;
+    b.onclick = () => pickStudent(n);
+    bar.appendChild(b);
+  });
+}
+function pickStudent(name) {
+  if (!name) return;
+  document.getElementById('studentId').value = name;
+  renderStudentProgress(name);
+  refreshStudentList();      // re-highlight the active chip
+}
+// Typing in the name field: update progress and highlight a matching chip.
+function onStudentIdInput(v) {
+  renderStudentProgress(v);
+  refreshStudentList();
+}
+
+// 各級別進度：練習(p≥1) 與 測驗(t≥1) 兩條獨立進度
+const LEVEL_LABEL = { L12: 'L1–L2', L3: 'L3', L4: 'L4', L5: 'L5' };
+function masteryProgress(name) {
+  const m = studentRec(name).mastery || {};
+  const learned = (simp, key) => { const e = m[simp]; return e && typeof e[key] === 'number' && e[key] >= COUNT_MAX; };
+  return Object.keys(WORDS).map(lvl => {
+    const chars = [...new Set(WORDS[lvl].map(w => w.simp))];
+    const total = chars.length || 1;
+    const practiced = chars.filter(s => learned(s, 'p')).length;
+    const tested    = chars.filter(s => learned(s, 't')).length;
+    return {
+      lvl, total: chars.length,
+      practiced, tested,
+      pPct: Math.round(practiced / total * 100),
+      tPct: Math.round(tested / total * 100)
+    };
+  });
+}
+// 計數為負（需加強）的字，最負者排前；回傳 {simp, p, t}
+function masteryDetail(name) {
+  const m = studentRec(name).mastery || {};
+  const out = [];
+  for (const simp of Object.keys(m)) {
+    const p = typeof m[simp].p === 'number' ? m[simp].p : 0;
+    const t = typeof m[simp].t === 'number' ? m[simp].t : 0;
+    if (p < 0 || t < 0) out.push({ simp, p, t });
+  }
+  out.sort((a, b) => Math.min(a.p, a.t) - Math.min(b.p, b.t));
+  return out;
+}
+
+function renderStudentProgress(name) {
+  const el = document.getElementById('studentProgress');
+  if (!el) return;
+  name = (name || '').trim();
+  if (!name || !loadStudents()[name]) { el.innerHTML = ''; return; }
+  const rows = masteryProgress(name).map(p =>
+    `<div class="prog-row">` +
+      `<span class="prog-lvl">${LEVEL_LABEL[p.lvl] || p.lvl}</span>` +
+      `<span class="prog-pair">` +
+        `<span class="prog-line"><span class="prog-tag">練習</span>` +
+          `<span class="prog-bar"><span class="prog-fill prog-p" style="width:${p.pPct}%"></span></span>` +
+          `<span class="prog-num">${p.practiced}/${p.total}　${p.pPct}%</span></span>` +
+        `<span class="prog-line"><span class="prog-tag">測驗</span>` +
+          `<span class="prog-bar"><span class="prog-fill prog-t" style="width:${p.tPct}%"></span></span>` +
+          `<span class="prog-num">${p.tested}/${p.total}　${p.tPct}%</span></span>` +
+      `</span>` +
+    `</div>`).join('');
+
+  // 詳情：計數為負（答錯較多、需加強）的字
+  const detail = masteryDetail(name);
+  const detailHtml = detail.length
+    ? `<details class="prog-detail" open><summary>需加強：${detail.length} 字（計數為負）</summary>` +
+        `<div class="weak-chips">` + detail.map(d => {
+          const tags = [];
+          if (d.p < 0) tags.push(`練${d.p}`);
+          if (d.t < 0) tags.push(`測${d.t}`);
+          const ch = (simpToWord[d.simp] || {})[scriptSel.value] || d.simp;
+          return `<span class="weak-chip"><span class="wc-char">${ch}</span><small>${tags.join(' ')}</small></span>`;
+        }).join('') + `</div></details>`
+    : '';
+
+  el.innerHTML = `<div class="prog-title">📊 ${name} 學習進度（練習 / 測驗）</div>${rows}${detailHtml}`;
+}
+
+// 練習模式即時進度條：練習計數 ≥1 即「練習學會」。顯示本級基準 + 本次新學會。
+let sessionLevel    = '';
+let sessionBaseP    = new Set();   // simps with practice-count ≥1 at session start (this level)
+function updatePracticeProgress() {
+  const el = document.getElementById('practiceProgress');
+  if (!el) return;
+  if (mode !== 'practice' || !sessionLevel) { el.classList.add('hidden'); return; }
+  const chars = [...new Set(WORDS[sessionLevel].map(w => w.simp))];
+  const total = chars.length || 1;
+  let base = 0, added = 0;
+  for (const s of chars) {
+    if (!isLearned(s, 'p')) continue;              // not practice-learned now
+    if (sessionBaseP.has(s)) base++; else added++;  // already known vs newly learned this session
+  }
+  const basePct = base / total * 100, addPct = added / total * 100;
+  const totPct = Math.round((base + added) / total * 100);
+  el.innerHTML =
+    `<span class="pp-label">${LEVEL_LABEL[sessionLevel] || sessionLevel} 練習</span>` +
+    `<span class="pp-bar"><span class="pp-base" style="width:${basePct}%"></span>` +
+    `<span class="pp-proj" style="width:${addPct}%"></span></span>` +
+    `<span class="pp-num">${base}＋${added}／${total}　${totPct}%</span>`;
+  el.classList.remove('hidden');
+}
+
+// ===== 開始 =====
+function start() {
+  mode = modeSel.value;
+  script = scriptSel.value;
+
+  if (mode === 'quiz' && _dictCount === 0) {
+    alert('測驗模式需要先匯入 CC-CEDICT 字典');
+    return;
+  }
+
+  // 記住學生（依姓名）；空白則用「(未命名)」
+  currentStudent = (document.getElementById('studentId').value || '').trim() || '(未命名)';
+  ensureStudent(currentStudent);
+  refreshStudentList();
+
+  currentWords = [...WORDS[levelSel.value]];
+
+  // 此次計數所對應的模式：練習→p，測驗→t
+  const countKey = mode === 'practice' ? 'p' : 't';
+
+  const order = document.getElementById("orderMode").value;
+  if (order === "random" || order === "weak") {
+    // 移除該模式「已學會」（計數 ≥1）的字；順序模式則保留全部
+    currentWords = currentWords.filter(w => !isLearned(w.simp, countKey));
+    if (currentWords.length === 0) {
+      alert("此學生已學會本級全部字（" + (countKey === 'p' ? '練習' : '測驗') +
+            "隨機／弱字模式不再出現）。\n可改用「順序」模式複習。");
+      return;
+    }
+  }
+  if (order === "random") {
+    // 加權隨機：計數越小（越負）→ 權重越大 → 越可能（提前）出現
+    // 權重 = 1 - 計數（計數 ∈ [-5,0] → 權重 ∈ [1,6]）；Efraimidis–Spirakis 取樣
+    currentWords = currentWords
+      .map(w => ({ w, k: Math.random() ** (1 / (1 - getCount(w.simp, countKey))) }))
+      .sort((a, b) => b.k - a.k)
+      .map(o => o.w);
+  }
+  if (order === "weak") {
+    const stats = loadStats();
+    const weakScore = e => e ? (e[1] + 1) / (e[0] + 2) : 0.5;
+    currentWords.sort((a, b) => weakScore(stats[b.simp]) - weakScore(stats[a.simp]));
+  }
+
+  const startInput = document.getElementById("startIndex").value;
+const startFrom = parseInt(startInput, 10);
+
+if (!isNaN(startFrom) && startFrom > 0) {
+  index = startFrom - 1; // 人看的是 1，程序是 0
+} else {
+  index = 0; // 默认从头
+}
+if (index >= currentWords.length) {
+  alert("開始字序號超出字表範圍，將從第一個字開始");
+  index = 0;
+}
+
+  const sizeVal = document.getElementById("sessionSize").value;
+  if (sizeVal !== "all") {
+    currentWords = currentWords.slice(index, index + parseInt(sizeVal, 10));
+    index = 0;
+  }
+
+  score = 0;
+  wrongSet.clear();
+  history = [];
+  totalJudged = 0;
+  sessionLevel = levelSel.value;
+  // 練習進度條基準：本級此刻已「練習學會」(p≥1) 的字
+  sessionBaseP = new Set(
+    [...new Set(WORDS[sessionLevel].map(w => w.simp))].filter(s => isLearned(s, 'p'))
+  );
+
+  hintVisMode = (mode === 'practice')
+    ? document.getElementById('hintVis').value
+    : 'off';
+  clearHint();
+
+  // Show/sync in-session hint control
+  const hvc = document.getElementById('hintVisCtrl');
+  if (mode === 'practice') {
+    hvc.classList.remove('hidden');
+    hvc.querySelectorAll('.seg-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.value === hintVisMode);
+    });
+  } else {
+    hvc.classList.add('hidden');
+  }
+
+  // 朗讀：僅練習模式提供（測驗不朗讀，以免洩漏答案）
+  audioMode = (mode === 'practice') ? document.getElementById('audioMode').value : 'off';
+  document.getElementById('audioCtrl').classList.toggle('hidden', !audioEnabled());
+
+  // 依模式調整測試頁 UI
+  document.getElementById('quizArea').classList.toggle('hidden', mode !== 'quiz');
+  document.getElementById('sbCorrect').style.display = (mode === 'quiz') ? 'none' : '';
+  document.getElementById('sbWrong').style.display  = (mode === 'quiz') ? 'none' : '';
+
+  setup.classList.add("hidden");
+  document.getElementById('summary').classList.add("hidden");
+  test.classList.remove("hidden");
+  const sb = document.getElementById('scoreBar');
+  sb.classList.remove('hidden'); sb.style.display = '';
+  render();
+}
+
+function render() {
+  if (index >= currentWords.length) return finish();
+  word.innerText = currentWords[index][script];
+  scoreEl.innerText = score;
+  wrongWords.innerText = [...wrongSet].map(s => (simpToWord[s] || {})[script] || s).join("，");
+  document.getElementById('progressInd').textContent = `${index + 1} / ${currentWords.length}`;
+  // 練習模式恆顯示於主字下方（與提示顯示模式無關）：中文簡釋 + 繁/簡對照
+  const cw = currentWords[index];
+  const gloss = ZH_GLOSS[cw.simp];
+  const gEl = document.getElementById('charGloss');
+  if (mode === 'practice' && gloss) {
+    gEl.textContent = `【${gloss}】`;
+    gEl.classList.remove('hidden');
+  } else {
+    gEl.classList.add('hidden');
+  }
+  const aEl = document.getElementById('charAlt');
+  if (mode === 'practice' && cw.trad !== cw.simp) {
+    const label = script === 'simp' ? '繁體' : '簡體';
+    const other = script === 'simp' ? cw.trad : cw.simp;
+    aEl.innerHTML = `${label}：<span class="alt-char">${other}</span>`;
+    aEl.classList.remove('hidden');
+  } else {
+    aEl.classList.add('hidden');
+  }
+  if (mode === 'practice') triggerHint(currentWords[index].simp);
+  else if (mode === 'quiz') renderQuiz(currentWords[index].simp);
+  else clearHint();
+  updatePracticeProgress();
+  // 自動朗讀：僅練習模式（測驗自動朗讀會洩漏答案）
+  if (audioMode === 'auto' && mode === 'practice') speakCurrent();
+}
+
+// DOM refs
+const scoreEl = document.getElementById("score");
+const wrongWords = document.getElementById("wrongWords");
+const rankingDiv = document.getElementById("ranking");
+
+const modeSel = document.getElementById("mode");
+const levelSel = document.getElementById("level");
+const scriptSel = document.getElementById("script");
+
+// ── Segmented-control → hidden-select bridge ──
+document.querySelectorAll('.seg-group[data-for]').forEach(group => {
+  group.querySelectorAll('.seg-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sel = document.getElementById(group.dataset.for);
+      if (!sel) return;
+      sel.value = btn.dataset.value;
+      group.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      sel.dispatchEvent(new Event('change'));
+    });
+  });
+});
+
+// ── Session size slider ──
+const SESSION_VALS   = ['20', '50', '100', 'all'];
+const SESSION_LABELS = ['20', '50', '100', '全部'];
+document.getElementById('sessionSizeSlider').addEventListener('input', function() {
+  const idx = +this.value;
+  document.getElementById('sessionSize').value = SESSION_VALS[idx];
+  document.getElementById('sessionSizeLabel').textContent = SESSION_LABELS[idx];
+});
+
+modeSel.addEventListener("change", () => {
+  const m = modeSel.value;
+  document.getElementById("hintVisRow").style.display  = (m === "practice") ? "" : "none";
+  document.getElementById("audioRow").style.display    = (m === "practice") ? "" : "none";
+});
+
+// ── In-session hint mode switch ──
+function setHintVisMid(btn, val) {
+  hintVisMode = val;
+  document.querySelectorAll('#hintVisCtrl .seg-btn').forEach(b => b.classList.toggle('active', b === btn));
+  if (index < currentWords.length) triggerHint(currentWords[index].simp);
+}
+
+document.addEventListener("keydown", e => {
+  if (document.getElementById("test").classList.contains("hidden")) return;
+  const inInput = e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA";
+  if (e.key === "Backspace" && !inInput) { e.preventDefault(); undo(); return; }
+  if ((e.key === "p" || e.key === "P") && !inInput) { e.preventDefault(); speakCurrent(); return; }
+  if (mode === "quiz") {
+    if (e.key === "Enter") { e.preventDefault(); submitQuiz(); }
+    if (!inInput && /^[1-4]$/.test(e.key) && _quizPhase === "answer") {
+      e.preventDefault(); selectQuizOpt(+e.key - 1);
+    }
+    return;
+  }
+  if (inInput) return;
+  if (e.key === "=" || e.key === "+") { e.preventDefault(); markCorrect(); }
+  if (e.key === "-" || e.key === "_") { e.preventDefault(); markWrong(); }
+  if (e.key === " " && mode === "practice" && hintVisMode !== "always") {
+    e.preventDefault(); toggleHint();
+  }
+});
+
+// ===== 判分 =====
+let _judging = false;
+
+// 調整目前字在當前模式的正確計數（練習→p，測驗→t），
+// 並把調整前的值記在最新的 history snapshot 上，供 undo 還原。
+function applyCount(simp, delta) {
+  const key = mode === 'practice' ? 'p' : 't';
+  const prev = bumpCount(simp, key, delta);
+  const snap = history[history.length - 1];
+  if (snap) snap.rev = { simp, key, prev };
+}
+
+function flashFeedback(good) {
+  const overlay = document.getElementById('flashOverlay');
+  overlay.classList.remove('flash-good', 'flash-bad');
+  void overlay.offsetWidth; // force reflow to restart animation
+  overlay.classList.add(good ? 'flash-good' : 'flash-bad');
+}
+
+function markCorrect() {
+  if (_judging) return;
+  _judging = true;
+  history.push(snapshot());
+  score++;
+  totalJudged++;
+  bumpStat(currentWords[index].simp, false);
+  // 正確計數 +1（練習→p，測驗→t）；記錄調整前值供 undo 還原
+  applyCount(currentWords[index].simp, +1);
+  // 先前答錯、現在答對 → 從「不計分的字」移除（undo 由先前的 snapshot 還原）
+  wrongSet.delete(currentWords[index].simp);
+  flashFeedback(true);
+  setTimeout(() => {
+    _judging = false;
+    index++;
+    render();
+  }, 220);
+}
+
+function markWrong() {
+  if (_judging) return;
+  _judging = true;
+  history.push(snapshot());
+  wrongSet.add(currentWords[index].simp);
+  totalJudged++;
+  bumpStat(currentWords[index].simp, true);
+  applyCount(currentWords[index].simp, -1);   // 正確計數 -1（夾在 [-5,1]）
+  flashFeedback(false);
+
+  // 練習/測驗：答錯的字稍後重現，直到答對
+  const pos = Math.min(index + 5, currentWords.length);
+  currentWords.splice(pos, 0, currentWords[index]);
+
+  setTimeout(() => {
+    _judging = false;
+    index++;
+    render();
+  }, 220);
+}
+
+// ===== 撤销 =====
+function undo() {
+  if (history.length === 0) return;
+  restore(history.pop());
+  render();
+}
+
+// ===== 结束 / 排序 =====
+function finish() {
+  showSummary();
+}
+
+async function showSummary() {
+  test.classList.add("hidden");
+  const sb = document.getElementById('scoreBar');
+  sb.classList.add('hidden'); sb.style.display = 'none';
+  clearHint();
+
+  const missed = [...wrongSet];
+  const acc = totalJudged > 0 ? Math.round(score / totalJudged * 100) : 0;
+  document.getElementById('summaryStats').innerHTML =
+    `共判分 <b>${totalJudged}</b> 次 ｜ 答對 <b>${score}</b> ｜ 錯字 <b>${missed.length}</b> 個 ｜ 正確率 <b>${acc}%</b>`;
+
+  const missedDiv = document.getElementById('summaryMissed');
+  if (missed.length === 0) {
+    missedDiv.innerHTML = '<p style="text-align:center;color:#2a7a2a;">🎉 全部答對，沒有錯字！</p>';
+  } else {
+    const rows = await Promise.all(missed.map(async s => {
+      const w = simpToWord[s] || { simp: s, trad: s };
+      const entry = _db ? await dbGet(s) : null;
+      let py = '', def = '';
+      if (entry && entry.readings && entry.readings.length) {
+        py = entry.readings[0].pinyin;
+        def = cleanDef((entry.readings[0].defs || [])[0] || '');
+      }
+      const zh = ZH_GLOSS[s] ? `【${ZH_GLOSS[s]}】` : '';
+      return `<div class="missed-row">` +
+        `<span class="missed-char">${w[script]}</span>` +
+        `<span class="missed-py">${py}</span>` +
+        `<span class="missed-def">${def}${zh}</span>` +
+        `</div>`;
+    }));
+    missedDiv.innerHTML = rows.join('');
+  }
+  document.getElementById('reviewBtn').disabled = missed.length === 0;
+  document.getElementById('summary').classList.remove('hidden');
+}
+
+function reviewMissed() {
+  const missed = [...wrongSet].map(s => simpToWord[s]).filter(Boolean);
+  if (missed.length === 0) return;
+  // 錯字複習小回合：隨機順序，計分歸零
+  currentWords = missed;
+  for (let i = currentWords.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [currentWords[i], currentWords[j]] = [currentWords[j], currentWords[i]];
+  }
+  index = 0; score = 0; totalJudged = 0;
+  wrongSet.clear(); history = [];
+
+  document.getElementById('summary').classList.add('hidden');
+  test.classList.remove("hidden");
+  const sb = document.getElementById('scoreBar');
+  sb.classList.remove('hidden'); sb.style.display = '';
+  render();
+}
+
+function closeSummary() {
+  document.getElementById('summary').classList.add('hidden');
+  backHome();
+}
+
+function backHome() {
+  const sid = studentId.value || "(未填編號)";
+  records.push({
+  student: sid,
+  score,
+  mode,
+  level: levelSel.value,
+  wrongWords: [...wrongSet]
+});
+
+
+  // 🔑 自动排序（分数高在前）
+  records.sort((a, b) => b.score - a.score);
+
+  if (records.length > 20) records = records.slice(0, 20);
+
+  test.classList.add("hidden");
+  const sb = document.getElementById('scoreBar');
+  sb.classList.add('hidden'); sb.style.display = 'none';
+  setup.classList.remove("hidden");
+  renderRanking();
+  renderStudentProgress(currentStudent);   // reflect mastery just earned this session
+}
+
+function renderRanking() {
+  if (records.length === 0) {
+    rankingDiv.innerHTML = "";
+    return;
+  }
+
+  rankingDiv.innerHTML =
+    "<h3>班級成績排行榜</h3>" +
+    records
+      .map((r, i) => `${i + 1}. ${r.student} ｜ ${r.score} 分`)
+      .join("<br>");
+}
+
+// ===== 快照 =====
+function snapshot() {
+  return {
+    index, score, totalJudged,
+    wrong: new Set(wrongSet),
+    words: currentWords.slice()
+    // .rev = {simp,key,prev} is attached by applyCount() after push (for count undo)
+  };
+}
+
+function restore(s) {
+  index = s.index;
+  score = s.score;
+  totalJudged = s.totalJudged;
+  wrongSet = new Set(s.wrong);
+  currentWords = s.words;
+  if (s.rev) setCountRaw(s.rev.simp, s.rev.key, s.rev.prev);   // revert the count change
+}
+// ===== 字典 & 提示系統 =====
+
+// L1 中文字義（CC-CEDICT 無中文釋義，手工補充）
+const ZH_GLOSS = {
+"八":"数字8","把":"握持；量词","爸":"父亲","白":"白色；清楚","百":"数字100",
+"班":"班级；小组","办":"处理；举办","半":"一半","包":"包裹；包含","饱":"吃足",
+"北":"北方","贝":"贝壳","被":"被动助词；被子","本":"书本；根本","比":"比较",
+"边":"边缘；旁边","别":"分别；不要","不":"否定词","才":"才能；刚才","草":"草地",
+"册":"书册","长":"长；成长","厂":"工厂","吵":"吵闹；争吵","车":"车辆",
+"成":"完成；成为","吃":"进食","尺":"长度单位","虫":"昆虫","出":"外出；出现",
+"穿":"穿着；穿越","船":"船只","窗":"窗户","床":"床铺","春":"春季",
+"次":"次序；次数","从":"从；跟随","打":"击打","大":"大；重要","但":"但是",
+"当":"当时；担任","刀":"刀具","到":"到达","道":"道路；道理","的":"结构助词",
+"灯":"灯具","地":"土地；地方","点":"点；稍微","电":"电力","东":"东方",
+"冬":"冬季","动":"移动","都":"全都","豆":"豆类","对":"正确；面对",
+"多":"多量","儿":"儿子；助词","耳":"耳朵","二":"数字2","发":"头发；发出",
+"反":"相反；反对","饭":"米饭；餐食","方":"方向；方形","放":"放置；释放","飞":"飞翔",
+"分":"分开；分数","风":"风；气流","干":"干燥；做事","高":"高；优秀","哥":"兄长",
+"个":"量词(通用)","给":"给予","更":"更加","工":"工作","公":"公共；公平",
+"共":"共同","狗":"犬类","瓜":"瓜果","关":"关闭；关系","光":"光线",
+"广":"广阔","国":"国家","果":"果实；结果","过":"经过；超过","孩":"孩子",
+"海":"大海","好":"好；喜欢","合":"合并；合适","和":"和平；与","河":"河流",
+"很":"非常","红":"红色","后":"后面；以后","花":"花朵；花费","画":"图画；绘画",
+"话":"语言；说话","还":"还是；归还","回":"返回；回答","会":"能；会议","火":"火焰",
+"机":"机器；机会","几":"几个","己":"自己","加":"增加；加入","家":"家庭",
+"见":"看见；会见","江":"大河","交":"交给；交流","叫":"呼叫；称为","姐":"姐姐",
+"巾":"布巾","今":"今天；现在","金":"黄金；金属","进":"进入；进步","京":"首都",
+"经":"经过；经典","九":"数字9","就":"立即","军":"军队","开":"打开；开始",
+"看":"看；照看","可":"可以","课":"课程","口":"嘴；入口","哭":"哭泣",
+"快":"快速；高兴","来":"到来","老":"年老","乐":"快乐；音乐","里":"里面；里程",
+"力":"力量","立":"站立；建立","脸":"脸部","两":"两个","亮":"明亮",
+"了":"助词；完了","林":"树林","六":"数字6","妈":"母亲","马":"马匹",
+"猫":"猫咪","毛":"毛发","没":"没有","每":"每个","美":"美丽；美国",
+"妹":"妹妹","门":"门；入口","们":"复数助词","米":"大米；米(单位)","面":"面；表面",
+"民":"人民","明":"明亮；明白","木":"木材；树木","目":"眼睛；目的","那":"那个",
+"奶":"奶奶；牛奶","你":"你","年":"年份","鸟":"鸟类","牛":"牛；强壮",
+"农":"农业","女":"女性","胖":"肥胖","跑":"奔跑","朋":"朋友",
+"皮":"皮肤；皮革","片":"薄片","票":"票据","平":"平坦；和平","七":"数字7",
+"奇":"奇怪；奇妙","起":"起来；开始","气":"气体；气息","千":"数字1000","前":"前面；以前",
+"青":"青色；年轻","秋":"秋季","去":"离开；前往","全":"全部；完整","然":"如此；然后",
+"让":"让步；允许","人":"人类","日":"太阳；日期","三":"数字3","山":"山地",
+"上":"上面；上去","少":"少量；年轻","舌":"舌头","身":"身体","生":"出生；生命",
+"声":"声音","师":"老师","十":"数字10","什":"什么","石":"石头",
+"时":"时间","市":"城市；市场","是":"是；正确","手":"手；手艺","书":"书籍",
+"树":"树木","双":"双；一对","谁":"谁(疑问)","水":"水；液体","说":"说话；解释",
+"四":"数字4","岁":"年龄","他":"他(男)","她":"她(女)","台":"台；平台",
+"太":"太；过于","天":"天空；天气","田":"田地","条":"条；细长物","跳":"跳跃",
+"听":"倾听","同":"相同","头":"头部","土":"土地；泥土","外":"外面；外国",
+"玩":"玩耍","晚":"晚上；迟","万":"数字10000","王":"王；统治者","网":"网络",
+"为":"为了；因为","卫":"保卫；卫生","文":"文字；文化","问":"询问","我":"我(自称)",
+"五":"数字5","午":"中午","西":"西方","习":"学习；习惯","洗":"洗涤",
+"下":"下面；下去","先":"先；首先","现":"现在；出现","向":"向；方向","小":"小；年幼",
+"校":"学校","笑":"笑","些":"一些","心":"心；心情","兴":"兴趣；兴奋",
+"星":"星星","行":"行走；行为","学":"学习","雪":"白雪","牙":"牙齿",
+"羊":"羊","阳":"阳光；太阳","样":"样子；方式","要":"需要","爷":"爷爷",
+"也":"也；同样","业":"行业；事业","叶":"叶子","页":"页面","一":"数字1",
+"衣":"衣服","医":"医生；医学","以":"以；用","因":"因为；原因","喝":"喝；饮用",
+"音":"声音；音乐","用":"使用","有":"拥有；存在","又":"又；再次","鱼":"鱼类",
+"羽":"羽毛","雨":"雨水","语":"语言","元":"货币单位","月":"月亮；月份",
+"云":"云朵","再":"再；再次","在":"在；存在","早":"早上","站":"站立；车站",
+"找":"寻找","这":"这个","真":"真实","正":"正确；正在","知":"知道；智慧",
+"直":"直线；直接","只":"只是；量词","中":"中间；中国","竹":"竹子","主":"主要；主人",
+"住":"居住；停住","桌":"桌子","着":"助词；附着","子":"孩子；种子","字":"文字",
+"自":"自己；自由","走":"行走；离开","作":"工作；制作","坐":"坐；乘坐","做":"做；制作",
+"唱":"唱歌","宝":"宝贝；珍贵","汉":"汉族；汉字","森":"森林","旁":"旁边",
+"谢":"感谢","园":"园地；公园","晴":"晴天","澡":"洗澡","错":"错误",
+"块":"块；一块","男":"男性","室":"房间","坏":"坏；破坏","假":"假期；虚假",
+"练":"练习","歌":"歌曲","读":"阅读","户":"家庭；户","绿":"绿色",
+"咱":"我们(口语)","睡":"睡觉","店":"商店","蛋":"蛋；鸡蛋","鸡":"鸡；家禽",
+"姓":"姓氏","蓝":"蓝色","能":"能够","而":"而且；然而","得":"得到；助词",
+"种":"种类；种植","产":"生产；产品","所":"所以；地方","之":"的(文言)","理":"道理；理由",
+"体":"身体；体系","定":"确定；决定","实":"真实；实际","如":"如果；如同","么":"助词",
+"物":"物品","法":"方法；法律","化":"变化；文化","等":"等待；等级","部":"部分；部门",
+"义":"意义；正义","事":"事情","社":"社会；社区","它":"它(非人称)","其":"其他；它的",
+"想":"思考；想要","意":"意思；意义","重":"重量；重要","使":"使用；使者","度":"程度",
+"相":"相互；外貌","情":"感情；情况","间":"中间；时间","活":"生活；活动","者":"…之人",
+"应":"应该；回应","表":"表示；表格","展":"展示","系":"系统；联系","代":"时代；代替",
+"各":"各个；各种","教":"教育","新":"新的","内":"内部；内容","变":"变化",
+"原":"原来；原因","结":"结果；结合","利":"利益；有利","已":"已经","最":"最；极端",
+"政":"政治；政府","特":"特别","建":"建设；建立","常":"经常","第":"序数词前缀",
+"思":"思考","提":"提出；提升","或":"或者","通":"通过；通道","解":"解决；理解",
+"位":"位置；地位","论":"理论；讨论","观":"观察；观点","基":"基础","期":"期间；期望",
+"术":"技术；方法","济":"经济；援助","认":"认识；承认","员":"成员","数":"数字；数量",
+"级":"级别","题":"题目；问题","感":"感觉；感情","科":"科学；学科","指":"手指；指示",
+"世":"世界；世代","必":"必须","接":"接受；连接","总":"总共；总结","场":"场地",
+"流":"流动；流行","决":"决定","色":"颜色","处":"地方；处理","路":"道路",
+"运":"运动；运气","任":"任务；任何","治":"治理；治疗","神":"神；精神","求":"寻求",
+"件":"物件；条件","组":"小组","根":"根；根据","将":"将要；将军","改":"改变",
+"导":"领导；引导","眼":"眼睛","识":"认识；知识","计":"计划；计算","界":"界限；世界",
+"取":"取得","设":"设计；设立","完":"完成；完全","究":"研究","信":"信任；信息",
+"名":"名字；名声","便":"方便","育":"教育；培育","带":"带领；携带","研":"研究",
+"领":"领导；领域","较":"比较","张":"量词；张开","许":"许多；允许","步":"步骤；步行",
+"往":"前往","调":"调查；调整","务":"任务","呢":"语气助词","难":"困难",
+"确":"确实；确定","劳":"劳动","收":"收集；收入","候":"等候；时候","需":"需要",
+"南":"南方","清":"清洁；清楚","影":"影子；电影","切":"切断；一切","且":"而且；暂且",
+"志":"志向；意志","热":"热；热情","联":"联系；联合","安":"安全；安静","极":"极端",
+"单":"单一","商":"商业；商量","技":"技术；技能","深":"深度","验":"经验；验证",
+"增":"增加","记":"记录；记忆","近":"接近","言":"语言；言论","整":"整理；整个",
+"精":"精确；精华","集":"集合","空":"空间；空旷","连":"连接；连续","报":"报告；报纸",
+"觉":"感觉；觉得","响":"响声；影响","怎":"怎么；怎样","病":"疾病","图":"图；地图",
+"况":"情况；状况","例":"例子","消":"消失；消费","容":"容易；包容","史":"历史",
+"非":"非；不是","离":"离开；距离","节":"节日；节点","亲":"亲人","族":"民族",
+"满":"满；满足","何":"何；为何","克":"克服","始":"开始","态":"态度；状态",
+"艺":"艺术","望":"希望；望远","须":"必须","该":"应该","复":"重复；复杂"
+};
+
+// ===== IndexedDB =====
+const DB_NAME = 'ChineseCharDB';
+const DB_VERSION = 10;   // TPS frequency-dictionary format
+let _db = null;
+
+function openDB() {
+  return new Promise((res, rej) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = e => {
+      const d = e.target.result;
+      if (d.objectStoreNames.contains('chars')) d.deleteObjectStore('chars');
+      d.createObjectStore('chars', { keyPath: 'simp' });
+    };
+    req.onsuccess = e => res(e.target.result);
+    req.onerror  = e => rej(e.target.error);
+  });
+}
+
+async function initDB() {
+  try {
+    _db = await openDB();
+    const count = await dbCount();
+    if (count > 0) { updateDictStatus(count); return; }   // already cached
+    // DB empty → try auto-loading the bundled JSON, but only when web-hosted
+    // (browsers block fetch() of local files under file://).
+    if (isWebHosted()) {
+      if (await autoLoadDicts()) return;       // success: status set by storeMerged
+    }
+    // not web-hosted, or auto-load failed/not-found → offer manual file selection
+    showManualLoad();
+  } catch(e) { console.warn('IndexedDB init failed:', e); showManualLoad(); }
+}
+
+function isWebHosted() {
+  return location.protocol === 'http:' || location.protocol === 'https:';
+}
+
+// Reveal the manual JSON file picker (used when auto-load isn't possible or failed).
+function showManualLoad(msg) {
+  const el     = document.getElementById('dictStatus');
+  const manual = document.getElementById('dictManual');
+  const hint   = document.getElementById('dictHint');
+  if (el)     { el.textContent = msg || '未載入'; el.style.color = '#888'; }
+  if (hint)   hint.style.display = '';
+  if (manual) manual.style.display = '';
+}
+
+function dbCount() {
+  return new Promise((res, rej) => {
+    const tx = _db.transaction('chars','readonly');
+    const req = tx.objectStore('chars').count();
+    req.onsuccess = () => res(req.result);
+    req.onerror  = () => rej(req.error);
+  });
+}
+
+function dbGet(simp) {
+  return new Promise(res => {
+    if (!_db) return res(null);
+    const tx = _db.transaction('chars','readonly');
+    const req = tx.objectStore('chars').get(simp);
+    req.onsuccess = () => res(req.result || null);
+    req.onerror  = () => res(null);
+  });
+}
+
+function dbPutAll(records) {
+  return new Promise((res, rej) => {
+    const tx = _db.transaction('chars','readwrite');
+    const store = tx.objectStore('chars');
+    records.forEach(r => store.put(r));
+    tx.oncomplete = res;
+    tx.onerror = () => rej(tx.error);
+  });
+}
+
+let _dictCount = 0;
+
+function updateDictStatus(count) {
+  _dictCount = count;
+  const el        = document.getElementById('dictStatus');
+  const manual    = document.getElementById('dictManual');
+  const selectBtn = document.getElementById('selectFileBtn');
+  const hint      = document.getElementById('dictHint');
+  if (!el) return;
+  if (count > 0) {
+    el.textContent  = `✓ 已快取 ${count} 字`;
+    el.style.color  = '#2a7a2a';
+    if (selectBtn) selectBtn.textContent = '重新匯入';
+    if (hint)      hint.style.display   = 'none';   // working: hide the verbose hint…
+    if (manual)    manual.style.display = '';        // …but keep the re-import button
+  } else {
+    el.textContent  = '未載入';
+    el.style.color  = '#888';
+    if (selectBtn) selectBtn.textContent = '選擇 JSON 檔';
+    if (hint)      hint.style.display   = '';
+    if (manual)    manual.style.display = '';
+  }
+}
+
+// (Pinyin arrives already tone-marked in the JSON; no numeric→mark conversion needed.)
+
+// Adult/mature senses are pre-marked at build time (build-dict.py) into each reading's
+// "adultDefs" array, so there is no content-filter regex here. When the (always-on,
+// hidden) maskAdult toggle is checked, render uses only "defs"; otherwise defs+adultDefs.
+
+// Property tags matched against full CC-CEDICT defStr.
+// emoji: assigned for >100 occurrences in dict; '' = candidate, no display yet.
+const PROP_TAGS = [
+  // >100 occurrences — displayed as emoji
+  { re: /\bsurname\b/i,                  emoji: '👤', tip: 'surname' },
+  { re: /\(idiom\)/i,                    emoji: '📖', tip: 'idiom' },
+  { re: /\(bird species of China\)/i,    emoji: '🐦', tip: 'bird species' },
+  { re: /\(literary\)/i,                 emoji: '📜', tip: 'literary' },
+  { re: /\(Tw\)/i,                       emoji: '🇹🇼', tip: 'Taiwan usage' },
+  { re: /\(fig\.\)/i,                    emoji: '💭', tip: 'figurative' },
+  { re: /\(coll\.\)/i,                   emoji: '🗣️', tip: 'colloquial' },
+  { re: /\(loanword\)/i,                 emoji: '🌐', tip: 'loanword' },
+  { re: /\(name\)/i,                     emoji: '🏷️', tip: 'proper name' },
+  { re: /\(old\)/i,                      emoji: '🕰️', tip: 'old usage' },
+  { re: /\(dialect\)/i,                  emoji: '💬', tip: 'dialect' },
+  { re: /\(slang\)/i,                    emoji: '🤙', tip: 'slang' },
+  { re: /\(math\.\)/i,                   emoji: '➕', tip: 'mathematics' },
+  { re: /\(computing\)/i,                emoji: '💻', tip: 'computing' },
+  { re: /\(chemistry\)/i,                emoji: '⚗️', tip: 'chemistry' },
+  { re: /\(medicine\)/i,                 emoji: '🏥', tip: 'medicine' },
+  { re: /\(onom\.\)/i,                   emoji: '🔊', tip: 'onomatopoeia' },
+  { re: /\(TCM\)/i,                      emoji: '🌿', tip: 'traditional Chinese medicine' },
+  { re: /\(physics\)/i,                  emoji: '⚛️', tip: 'physics' },
+  { re: /\(Buddhism\)/i,                 emoji: '☸️', tip: 'Buddhism' },
+  { re: /\(botany\)/i,                   emoji: '🌱', tip: 'botany' },
+  { re: /\(sports\)/i,                   emoji: '⚽', tip: 'sports' },
+  { re: /\(geology\)/i,                  emoji: '🪨', tip: 'geology' },
+  { re: /\(Internet slang\)/i,           emoji: '📱', tip: 'internet slang' },
+  { re: /\(anatomy\)/i,                  emoji: '🫀', tip: 'anatomy' },
+  { re: /\(music\)/i,                    emoji: '🎵', tip: 'music' },
+  { re: /\(law\)/i,                      emoji: '⚖️', tip: 'law' },
+  { re: /\(military\)/i,                 emoji: '🪖', tip: 'military' },
+  { re: /\(finance\)/i,                  emoji: '💰', tip: 'finance' },
+  { re: /\(bound form\)/i,               emoji: '🔗', tip: 'bound form' },
+  // 10–99 occurrences — candidates, no emoji yet
+  { re: /\(linguistics\)/i,              emoji: '', tip: 'linguistics' },
+  { re: /\(derog\.\)/i,                  emoji: '', tip: 'derogatory' },
+  { re: /\(Japanese surname\)/i,         emoji: '', tip: 'Japanese surname' },
+  { re: /\(constellation\)/i,            emoji: '', tip: 'constellation' },
+  { re: /\(zoology\)/i,                  emoji: '', tip: 'zoology' },
+  { re: /\(Cantonese\)/i,                emoji: '', tip: 'Cantonese' },
+  { re: /\(language\)/i,                 emoji: '', tip: 'language' },
+  { re: /\(biology\)/i,                  emoji: '', tip: 'biology' },
+  { re: /\(honorific\)/i,                emoji: '', tip: 'honorific' },
+  { re: /\(astronomy\)/i,                emoji: '', tip: 'astronomy' },
+  { re: /\(electronics\)/i,              emoji: '', tip: 'electronics' },
+  { re: /\(proverb\)/i,                  emoji: '', tip: 'proverb' },
+  { re: /\(formal\)/i,                   emoji: '', tip: 'formal' },
+  { re: /\(brand\)/i,                    emoji: '', tip: 'brand' },
+  { re: /\(used in place names\)/i,      emoji: '', tip: 'used in place names' },
+  { re: /\(lit\. and fig\.\)/i,          emoji: '', tip: 'literal and figurative' },
+  { re: /\(PRC\)/i,                      emoji: '', tip: 'PRC usage' },
+  { re: /\(used in TCM\)/i,              emoji: '', tip: 'used in TCM' },
+  { re: /\(neologism\)/i,                emoji: '', tip: 'neologism' },
+  { re: /\(lit\.\)/i,                    emoji: '', tip: 'literal' },
+  { re: /\(in former times\)/i,          emoji: '', tip: 'in former times' },
+  { re: /\(grammar\)/i,                  emoji: '', tip: 'grammar' },
+  { re: /\(economics\)/i,                emoji: '', tip: 'economics' },
+  { re: /\(attributive\)/i,              emoji: '', tip: 'attributive' },
+  { re: /\(polite\)/i,                   emoji: '', tip: 'polite' },
+  { re: /\(golf\)/i,                     emoji: '', tip: 'golf' },
+  { re: /\(meteorology\)/i,              emoji: '', tip: 'meteorology' },
+  { re: /\(color\)/i,                    emoji: '', tip: 'color' },
+  { re: /\(vulgar\)/i,                   emoji: '', tip: 'vulgar' },
+  { re: /\(humble\)/i,                   emoji: '', tip: 'humble' },
+  { re: /\(geometry\)/i,                 emoji: '', tip: 'geometry' },
+  { re: /\(gaming\)/i,                   emoji: '', tip: 'gaming' },
+  { re: /\(arch\.\)/i,                   emoji: '', tip: 'archaic' },
+  { re: /\(HK\)/i,                       emoji: '', tip: 'Hong Kong usage' },
+  { re: /\(statistics\)/i,               emoji: '', tip: 'statistics' },
+  { re: /\(saying\)/i,                   emoji: '', tip: 'saying' },
+  { re: /\(computer\)/i,                 emoji: '', tip: 'computer' },
+  { re: /\(biochemistry\)/i,             emoji: '', tip: 'biochemistry' },
+  { re: /\(agriculture\)/i,              emoji: '', tip: 'agriculture' },
+  { re: /\(euphemism\)/i,                emoji: '', tip: 'euphemism' },
+  { re: /\(historical\)/i,               emoji: '', tip: 'historical' },
+  { re: /\(photography\)/i,              emoji: '', tip: 'photography' },
+  { re: /\(mining\)/i,                   emoji: '', tip: 'mining' },
+  { re: /\(basketball\)/i,               emoji: '', tip: 'basketball' },
+  { re: /\(Chinese medicine\)/i,         emoji: '', tip: 'Chinese medicine' },
+  { re: /\(psychology\)/i,               emoji: '', tip: 'psychology' },
+  { re: /\(jocular\)/i,                  emoji: '', tip: 'jocular' },
+  { re: /\(baseball\)/i,                 emoji: '', tip: 'baseball' },
+  { re: /\(Internet\)/i,                 emoji: '', tip: 'Internet' },
+];
+
+function extractTags(defStrs) {
+  const text = defStrs.join(' ');
+  return PROP_TAGS
+    .filter(t => t.emoji && t.re.test(text))
+    .map(t => ({ emoji: t.emoji, tip: t.tip }));
+}
+
+// Returns deduplicated tagged definitions (emoji + text) from an array of sense strings
+function extractTaggedDefs(defs) {
+  const seen = new Set();
+  const results = [];
+  for (const seg of defs) {
+    const tag = PROP_TAGS.find(t => t.emoji && t.re.test(seg));
+    if (tag) {
+      const cleaned = cleanDef(seg);
+      if (cleaned && !seen.has(cleaned)) {
+        seen.add(cleaned);
+        results.push({ emoji: tag.emoji, tip: tag.tip, def: cleaned });
+      }
+    }
+  }
+  return results;
+}
+
+function cleanDef(d) {
+  if (!d) return '';
+  return d
+    .replace(/\(CL:[^)]*\)/g, '')      // (CL:隻|只[zhi1])
+    .replace(/CL:.*$/, '')             // bare CL:个[gè],位[wèi] → drop whole clause (it's last in a sense)
+    .replace(/\(classifier\)/g, '')
+    .replace(/\s*\(\s*\)/g, '')        // leftover empty parens
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Keep only the first n senses (of a "; "-joined string) — used in quiz mode so the
+// correct option isn't an obvious long definition next to short distractors.
+function limitSenses(s, n) {
+  return (s || '').split('; ').slice(0, n || 2).join('; ');
+}
+
+// merged = { 字: { rank, source, readings, examples } }  (tps-dictionary.json ∪ cedict-supplement.json)
+function buildRecords(merged) {
+  const records = [], seen = new Set();
+  for (const k of Object.keys(WORDS)) {
+    for (const { simp, trad } of WORDS[k]) {
+      if (seen.has(simp)) continue;
+      seen.add(simp);
+      const e = merged[simp];
+      records.push(e
+        ? { simp, trad, rank: e.rank ?? null, source: e.source || null,
+            readings: e.readings || [], examples: e.examples || [] }
+        : { simp, trad, rank: null, source: null, readings: [], examples: [] });
+    }
+  }
+  return records;
+}
+
+// ===== 字典載入 =====
+// 預設自動 fetch 同目錄的 tps-dictionary.json + cedict-supplement.json，合併後存入 IndexedDB。
+// 若以 file:// 開啟（瀏覽器封鎖本機 fetch），則退回手動選擇 JSON 檔。
+const DICT_FILES = ['tps-dictionary.json', 'cedict-supplement.json'];
+
+async function storeMerged(merged) {
+  const records = buildRecords(merged);
+  await dbPutAll(records);
+  updateDictStatus(await dbCount());
+}
+
+async function autoLoadDicts() {
+  const el = document.getElementById('dictStatus');
+  try {
+    if (el) { el.textContent = '載入字典中…'; el.style.color = '#888'; }
+    const parts = await Promise.all(DICT_FILES.map(f =>
+      fetch(f).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    ));
+    await storeMerged(Object.assign({}, ...parts));
+    return true;
+  } catch (e) {
+    showManualLoad('自動載入失敗，請選擇字典 JSON 檔');
+    return false;
+  }
+}
+
+// 手動選擇一個或多個 JSON 檔（tps-dictionary.json / cedict-supplement.json）
+async function onDictFileSelected(e) {
+  const files = [...e.target.files];
+  if (!files.length || !_db) return;
+  const el = document.getElementById('dictStatus');
+  try {
+    el.textContent = '讀取中…'; el.style.color = '#888';
+    const parts = [];
+    for (const f of files) parts.push(JSON.parse(await f.text()));
+    el.textContent = '儲存中…';
+    await storeMerged(Object.assign({}, ...parts));
+  } catch (err) {
+    el.textContent = '錯誤：' + err.message;
+    el.style.color = 'red';
+  }
+}
+
+// ===== 提示面板 =====
+let hintVisMode = 'off';
+let _hintChar   = null;
+let _hintTimer  = null;
+
+// ===== 朗讀 / 語音 (Web Speech API) =====
+let audioMode    = 'manual';   // 'manual' | 'auto' | 'off'
+let _zhVoice     = null;
+let _voicesReady = false;
+
+function pickZhVoice() {
+  if (!('speechSynthesis' in window)) return null;
+  const voices = speechSynthesis.getVoices();
+  if (!voices.length) return null;
+  // Prefer Mandarin voices; zh-CN first, then any zh, then by name hints
+  const zh = voices.filter(v => /^zh\b|^cmn\b/i.test(v.lang) || /\bzh[-_]/i.test(v.lang));
+  const byPref = (list) =>
+    list.find(v => /zh[-_]?CN|zh[-_]?Hans|cmn/i.test(v.lang)) ||
+    list.find(v => /zh[-_]?TW|zh[-_]?Hant|zh[-_]?HK/i.test(v.lang)) ||
+    list[0];
+  return byPref(zh) || null;
+}
+
+function initVoices() {
+  if (!('speechSynthesis' in window)) { _voicesReady = true; reflectAudioAvail(); return; }
+  _zhVoice = pickZhVoice();
+  _voicesReady = !!speechSynthesis.getVoices().length;
+  reflectAudioAvail();
+}
+
+function reflectAudioAvail() {
+  const unavail = document.getElementById('audioUnavail');
+  const ok = !!_zhVoice;
+  if (unavail) unavail.style.display = (_voicesReady && !ok) ? '' : 'none';
+  // If a practice/quiz is already running, refresh the 朗讀 button visibility
+  const ctrl = document.getElementById('audioCtrl');
+  const testVisible = !document.getElementById('test').classList.contains('hidden');
+  if (ctrl && testVisible) ctrl.classList.toggle('hidden', !audioEnabled());
+}
+
+function audioAvailable() { return !!_zhVoice; }
+function audioEnabled()   { return audioAvailable() && audioMode !== 'off'; }
+
+function speak(text, rate) {
+  if (!audioAvailable() || !text) return;
+  try {
+    speechSynthesis.cancel();           // stop any in-flight utterance
+    const u = new SpeechSynthesisUtterance(text);
+    u.voice = _zhVoice;
+    u.lang  = _zhVoice.lang || 'zh-CN';
+    u.rate  = rate || 0.8;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+
+// Single character: extra-slow so learners catch the tone clearly.
+function speakCurrent() {
+  if (audioEnabled() && index < currentWords.length) speak(currentWords[index][script], 0.45);
+}
+// Example phrases read at normal learner pace (not slowed).
+function speakPhrase(text) { if (audioEnabled()) speak(text, 0.8); }
+
+if ('speechSynthesis' in window) {
+  initVoices();
+  speechSynthesis.onvoiceschanged = initVoices;
+}
+
+function clearHint() {
+  _hintChar = null;
+  if (_hintTimer) { clearTimeout(_hintTimer); _hintTimer = null; }
+  document.getElementById('hintPanel').classList.add('hidden');
+  document.getElementById('hintBtn').classList.add('hidden');
+}
+
+// Render-time processing of a DB entry → { readings, examples, rank }.
+// Pinyin is already tone-marked; adult senses are pre-marked into "adultDefs" by
+// build-dict.py, so there is no regex filtering here — just pick the right sense list.
+function buildDisplayReadings(entry, simp) {
+  const maskAdult = document.getElementById('maskAdult')?.checked ?? true;
+  // visible senses for a reading/example: clean defs, plus adultDefs only when unmasked
+  const senses = r => maskAdult ? (r.defs || []) : [...(r.defs || []), ...(r.adultDefs || [])];
+  const isClassicalOnly = ss => ss.length > 0 && ss.every(d => /\(classical\)/i.test(d));
+
+  // ---- character's own readings ----
+  const raw = (entry.readings || []).map(r => ({ pinyin: r.pinyin, ss: senses(r) })).filter(r => r.ss.length);
+  const nonClassical = raw.filter(r => !isClassicalOnly(r.ss));
+  const active = nonClassical.length ? nonClassical : raw;
+
+  const readings = [];
+  active.forEach(r => {
+    const taggedDefs = extractTaggedDefs(r.ss);
+    const mainDefs = r.ss
+      .filter(d => !PROP_TAGS.some(t => t.emoji && t.re.test(d)))
+      .map(cleanDef).filter(Boolean);
+    if (!mainDefs.length && !taggedDefs.length) return;
+    readings.push({
+      pinyin: r.pinyin,
+      en: mainDefs.join('; '),
+      taggedDefs,
+      zh: readings.length === 0 ? (ZH_GLOSS[simp] || '') : '',
+      examples: []                       // example words grouped under this pronunciation
+    });
+  });
+
+  // ---- example words/phrases (all of them) ----
+  const examples = (entry.examples || []).map(ex => {
+    const exReadings = (ex.readings || []).map(rr => ({
+      pinyin: rr.pinyin,
+      en: senses(rr).map(cleanDef).filter(Boolean).join('; ')
+    })).filter(rr => rr.en);
+    if (!exReadings.length) return null;
+    return { word: ex.word, level: ex.level, readings: exReadings };
+  }).filter(Boolean);
+
+  // ---- group each example under the reading whose pronunciation it uses ----
+  // The headword syllable appears within the example's pinyin. Match tone-sensitively
+  // (case-insensitive) to tell true polyphones apart (长 cháng vs zhǎng); fall back to
+  // tone-insensitive for sandhi; among same-sound ties prefer the common (lowercase) reading.
+  const stripTone = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  function readingIndexFor(exPinyin) {
+    if (readings.length <= 1) return 0;
+    const lp = exPinyin.toLowerCase();
+    let m = readings.map((r, i) => i).filter(i => lp.includes(readings[i].pinyin.toLowerCase()));
+    if (!m.length) {
+      const sp = stripTone(exPinyin);
+      m = readings.map((r, i) => i).filter(i => sp.includes(stripTone(readings[i].pinyin)));
+    }
+    if (!m.length) return -1;
+    const common = m.find(i => readings[i].pinyin[0] === readings[i].pinyin[0].toLowerCase());
+    return common !== undefined ? common : m[0];
+  }
+
+  let orphanExamples = [];
+  for (const ex of examples) {
+    const idx = readings.length ? readingIndexFor(ex.readings[0].pinyin) : -1;
+    if (idx >= 0) readings[idx].examples.push(ex);
+    else orphanExamples.push(ex);
+  }
+
+  // Cap each pronunciation at 3 example words: when there are more, keep the most basic /
+  // frequent — lowest TPS frequency level first (① most frequent; unmarked = least),
+  // preserving the dictionary's original order among equals.
+  const EX_LIMIT = 3;
+  const trimExamples = list => list.length <= EX_LIMIT ? list : list
+    .map((ex, i) => ({ ex, i, lv: ex.level ?? 99 }))
+    .sort((a, b) => a.lv - b.lv || a.i - b.i)
+    .slice(0, EX_LIMIT)
+    .sort((a, b) => a.i - b.i)
+    .map(o => o.ex);
+  readings.forEach(r => { r.examples = trimExamples(r.examples); });
+  orphanExamples = trimExamples(orphanExamples);
+
+  return { readings, orphanExamples, rank: entry.rank || null };
+}
+
+async function triggerHint(simp, opts) {
+  const force = opts && opts.force;
+  _hintChar = simp;
+  if (_hintTimer) { clearTimeout(_hintTimer); _hintTimer = null; }
+  const panel = document.getElementById('hintPanel');
+  const btn   = document.getElementById('hintBtn');
+
+  if ((hintVisMode === 'off' && !force) || !_db) { clearHint(); _hintChar = simp; return; }
+
+  const entry = await dbGet(simp);
+  if (_hintChar !== simp) return;   // user already moved on
+
+  if (!entry) {
+    panel.classList.add('hidden');
+    if (hintVisMode === 'tap') { btn.textContent = '💡 提示'; btn.classList.remove('hidden'); }
+    return;
+  }
+
+  const { readings, orphanExamples, rank } = buildDisplayReadings(entry, simp);
+
+  // ZH_GLOSS is shown separately (always-on, under the character) — the detail panel
+  // holds only dictionary content. Nothing to show here → hide the panel.
+  if (readings.length === 0 && orphanExamples.length === 0) {
+    panel.classList.add('hidden');
+    btn.classList.add('hidden');
+    return;
+  }
+
+  // 字形對照（繁/簡）已恆顯示於主字下方，提示面板只放字典內容
+  const rankHtml = rank
+    ? `<div class="hint-rank">頻率排名 #${rank} / 2500</div>`
+    : '';
+
+  // one example row — click the phrase itself to hear it (visual cue when audio is on)
+  const exampleRow = ex => {
+    const lvl = ex.level ? `<span class="ex-level" title="頻率級別">L${ex.level}</span>` : '';
+    const body = ex.readings.map(rr =>
+      `<span class="ex-py">${rr.pinyin}</span> <span class="ex-en">${rr.en}</span>`
+    ).join('<span class="ex-sep">；</span>');
+    const phrase = audioEnabled()
+      ? `<span class="ex-phrase ex-clickable" title="點擊朗讀" onclick="speakPhrase('${ex.word.replace(/'/g, "\\'")}')">${ex.word}</span>`
+      : `<span class="ex-phrase">${ex.word}</span>`;
+    return `<div class="hint-example">${phrase}${lvl} ${body}</div>`;
+  };
+  const exampleBlock = list => list.length
+    ? `<div class="hint-examples">${list.map(exampleRow).join('')}</div>`
+    : '';
+
+  // each reading: pinyin + meanings, then its grouped example words
+  const readingsHtml = readings.map((r, i) => {
+    const taggedHtml = (r.taggedDefs || [])
+      .map(td => `<div class="hint-tagged-def"><span title="${td.tip}">${td.emoji}</span> ${td.def}</div>`)
+      .join('');
+    const sep = i > 0 ? '<hr style="border:none;border-top:1px dashed #c5cff8;margin:8px 0">' : '';
+    return sep +
+      `<div class="hint-pinyin">${r.pinyin}</div>` +
+      `<div class="hint-defs">` +
+      (r.en ? `<span class="hint-en">${r.en}</span>` : '') +
+      taggedHtml +
+      `</div>` +
+      exampleBlock(r.examples);
+  }).join('');
+
+  panel.innerHTML = rankHtml + readingsHtml + exampleBlock(orphanExamples);
+
+  if (force || hintVisMode === 'always') {
+    panel.classList.remove('hidden');
+    btn.classList.add('hidden');
+  } else if (hintVisMode === 'delay') {
+    // 先回想，3 秒後自動顯示（按空白鍵或 💡 可提前看）
+    panel.classList.add('hidden');
+    btn.textContent = '💡 提示';
+    btn.classList.remove('hidden');
+    _hintTimer = setTimeout(() => {
+      if (_hintChar !== simp) return;
+      panel.classList.remove('hidden');
+      btn.classList.add('hidden');
+    }, 3000);
+  } else {                           // tap
+    panel.classList.add('hidden');
+    btn.textContent = '💡 提示';
+    btn.classList.remove('hidden');
+  }
+}
+
+function toggleHint() {
+  document.getElementById('hintPanel').classList.toggle('hidden');
+}
+
+// ===== 測驗模式 =====
+let _quizPhase    = 'answer';   // 'answer' | 'feedback'
+let _quizChar     = null;
+let _quizReadings = [];
+let _quizCorrectIdx = -1;
+let _quizSelected   = -1;
+let _quizResult     = false;
+
+function normPy(s) {
+  return (s || '').toLowerCase().trim()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')  // strip tone diacritics (mā→ma)
+    .replace(/[1-5]/g, '')                             // strip numeric tones (ma1→ma)
+    .replace(/u:/g, 'v').replace(/ü/g, 'v')
+    .replace(/\s+/g, '');
+}
+
+async function renderQuiz(simp) {
+  _quizChar = simp;
+  _quizPhase = 'answer';
+  _quizSelected = -1;
+  clearHint();
+
+  const input = document.getElementById('quizPinyin');
+  input.value = ''; input.className = ''; input.disabled = false;
+  document.getElementById('quizCorrectPy').textContent = '';
+  document.getElementById('quizSubmit').textContent = '確認 ⏎';
+  const optsDiv = document.getElementById('quizOpts');
+  optsDiv.innerHTML = '<span style="color:#888">載入中…</span>';
+
+  const entry = _db ? await dbGet(simp) : null;
+  if (_quizChar !== simp) return;
+
+  const readings = entry ? buildDisplayReadings(entry, simp).readings : [];
+  const r0 = readings[0];
+  // 偏好非姓氏義項；en 本已過濾，taggedDefs 後備也先取非姓氏，最後才允許姓氏義
+  const tagged = r0 ? (r0.taggedDefs || []) : [];
+  const taggedNonSurname = tagged.filter(t => !/\bsurname\b/i.test(t.def));
+  const taggedDef = (taggedNonSurname[0] || tagged[0]);
+  const correctDef = r0
+    ? limitSenses(r0.en || (taggedDef && taggedDef.def) || '', 2)
+    : '';
+  if (!correctDef || !r0.pinyin) {
+    // 字典無此字資料，跳過不判分
+    index++; render(); return;
+  }
+  _quizReadings = readings;
+
+  const distractors = await pickDistractors(simp, 3);
+  if (_quizChar !== simp) return;
+
+  const options = [{ text: correctDef, correct: true },
+                   ...distractors.map(d => ({ text: d, correct: false }))];
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [options[i], options[j]] = [options[j], options[i]];
+  }
+  _quizCorrectIdx = options.findIndex(o => o.correct);
+
+  optsDiv.innerHTML = options.map((o, i) =>
+    `<button class="quiz-opt" id="quizOpt${i}" onclick="selectQuizOpt(${i})">` +
+    `<span class="opt-num">${i + 1}.</span>${o.text}</button>`
+  ).join('');
+  input.focus();
+}
+
+async function pickDistractors(simp, n) {
+  const pool = WORDS[levelSel.value];
+  const out = [], fallback = [], tried = new Set([simp]);
+  let guard = 0;
+  while (out.length < n && guard++ < 40) {
+    const cand = pool[Math.floor(Math.random() * pool.length)];
+    if (tried.has(cand.simp)) continue;
+    tried.add(cand.simp);
+    const e = await dbGet(cand.simp);
+    if (!e || !e.readings || !e.readings.length) continue;
+    const senses = (e.readings[0].defs || []).map(cleanDef).filter(Boolean);
+    // 優先用非姓氏義項；整字只有姓氏義時，留作後備（不足時才補足）
+    const d = limitSenses(senses.filter(s => !/\bsurname\b/i.test(s)).join('; '), 2);
+    if (d) { if (!out.includes(d)) out.push(d); continue; }
+    const ds = limitSenses(senses.join('; '), 2);
+    if (ds && !out.includes(ds) && !fallback.includes(ds)) fallback.push(ds);
+  }
+  for (const f of fallback) { if (out.length >= n) break; if (!out.includes(f)) out.push(f); }
+  return out;
+}
+
+function selectQuizOpt(i) {
+  if (_quizPhase !== 'answer') return;
+  const btn = document.getElementById('quizOpt' + i);
+  if (!btn) return;
+  document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  _quizSelected = i;
+}
+
+function submitQuiz() {
+  if (_quizPhase === 'feedback') {
+    // 下一個：依結果自動判分（markX 會 render 下一題）
+    _quizResult ? markCorrect() : markWrong();
+    return;
+  }
+
+  const input = document.getElementById('quizPinyin');
+  const raw = normPy(input.value);
+  // pinyin is tone-marked in TPS; normPy strips tones from both sides → tone-insensitive match
+  const targets = _quizReadings.map(r => normPy(r.pinyin)).filter(Boolean);
+  const pinyinOK = raw.length > 0 && targets.some(t => raw === t);
+  const meaningOK = _quizSelected === _quizCorrectIdx;
+
+  // 顯示反饋
+  input.className = pinyinOK ? 'good' : 'bad';
+  input.disabled = true;
+  document.getElementById('quizCorrectPy').textContent =
+    _quizReadings.map(r => r.pinyin).join(' / ');
+  document.querySelectorAll('.quiz-opt').forEach((b, i) => {
+    if (i === _quizCorrectIdx) b.classList.add('correct');
+    else if (i === _quizSelected) b.classList.add('incorrect');
+  });
+  triggerHint(_quizChar, { force: true });
+
+  _quizResult = pinyinOK && meaningOK;
+  _quizPhase = 'feedback';
+  document.getElementById('quizSubmit').textContent = '下一個 ⏎';
+  input.blur();
+}
+
+// Init IndexedDB on page load
+initDB();
+refreshStudentList();   // populate known-student dropdown
+renderStudentProgress(document.getElementById('studentId').value);
+
+
+</script>
+
+<footer style="max-width:760px;margin:48px auto 24px;padding-top:16px;border-top:1px solid #e0e0e0;font-size:12px;line-height:1.7;color:#888;text-align:center;">
+  字典資料來源 · Dictionary data credits<br>
+  釋義與拼音改編自
+  <a href="https://www.mdbg.net/chinese/dictionary?page=cc-cedict" target="_blank" rel="noopener" style="color:#1a4fd8;">CC-CEDICT</a>
+  （<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="color:#1a4fd8;">CC&nbsp;BY-SA&nbsp;4.0</a>）。
+  字頻與例詞分級改編自
+  <a href="https://monkeywalk.com/tps-frequency-dictionary-of-mandarin-chinese/" target="_blank" rel="noopener" style="color:#1a4fd8;">《TPS Frequency Dictionary》</a>。<br>
+  Definitions and pinyin adapted from CC-CEDICT (CC BY-SA 4.0).
+  Frequency ranks and graded example words adapted from the
+  <a href="https://monkeywalk.com/tps-frequency-dictionary-of-mandarin-chinese/" target="_blank" rel="noopener" style="color:#1a4fd8;">“TPS Frequency Dictionary”</a>.<br>
+  本工具僅作教學用途，向上述原始辭典編纂者致謝。
+</footer>
+
+</body>
+</html>
+
