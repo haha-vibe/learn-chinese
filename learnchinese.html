@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" translate="no">
 <head>
 <meta charset="UTF-8">
+<!-- 停用瀏覽器／擴充功能自動翻譯（避免把要學的漢字翻成其他語言） -->
+<meta name="google" content="notranslate">
+<meta name="robots" content="notranslate">
 <title>認漢字 Character Learning</title>
 <style>
   body { font-family: system-ui; padding: 20px; }
@@ -127,9 +130,12 @@
 
   /* ── quiz mode ── */
   #quizArea{max-width:660px;margin:10px auto;text-align:center;}
-  #quizPinyin{font-size:22px;padding:6px 12px;width:240px;text-align:center;border:2px solid #ccd;border-radius:8px;}
-  #quizPinyin.good{border-color:#28a745;background:#d4edda;}
-  #quizPinyin.bad{border-color:#dc3545;background:#f8d7da;}
+  #quizPinyin,#practicePyInput{font-size:22px;padding:6px 12px;width:240px;text-align:center;border:2px solid #ccd;border-radius:8px;}
+  #quizPinyin.good,#practicePyInput.good{border-color:#28a745;background:#d4edda;}
+  #quizPinyin.bad,#practicePyInput.bad{border-color:#dc3545;background:#f8d7da;}
+  #practicePinyin{text-align:center;margin:6px auto 10px;}
+  #practicePySubmit{margin-left:8px;}
+  #practicePyAnswer{margin-left:10px;font-size:20px;color:#1a4fd8;font-style:italic;letter-spacing:2px;}
   #quizCorrectPy{font-size:18px;color:#1a4fd8;font-style:italic;margin-left:10px;}
   .quiz-opt{display:block;width:100%;max-width:560px;margin:6px auto;padding:10px 14px;font-size:16px;text-align:left;background:#fff;border:2px solid #ccd;border-radius:8px;cursor:pointer;}
   .quiz-opt.sel{border-color:#1a4fd8;background:#eef2ff;}
@@ -148,7 +154,7 @@
   .missed-def{color:#444;font-size:14px;flex:1;}
 </style>
 </head>
-<body>
+<body class="notranslate">
 
 <h1 style="text-align:center;">認漢字 Character Learning</h1>
 
@@ -156,7 +162,7 @@
 <select id="mode"        style="display:none"><option value="practice" selected>練習</option><option value="quiz">測驗</option></select>
 <select id="level"       style="display:none"><option value="L12" selected>L1–L2</option><option value="L3">L3</option><option value="L4">L4</option><option value="L5">L5</option></select>
 <select id="script"      style="display:none"><option value="simp" selected>簡體</option><option value="trad">繁體</option></select>
-<select id="orderMode"   style="display:none"><option value="random" selected>隨機</option><option value="seq">順序</option><option value="weak">弱字優先</option></select>
+<select id="orderMode"   style="display:none"><option value="random" selected>隨機</option><option value="seq">順序</option><option value="weak">弱字</option></select>
 <select id="sessionSize" style="display:none"><option value="20">20</option><option value="50" selected>50</option><option value="100">100</option><option value="all">全部</option></select>
 <select id="hintVis"     style="display:none"><option value="tap" selected>點擊</option><option value="delay">延遲</option><option value="always">始終</option><option value="off">關閉</option></select>
 <select id="audioMode"   style="display:none"><option value="manual" selected>手動</option><option value="auto">自動</option><option value="off">關閉</option></select>
@@ -212,7 +218,7 @@
       <div class="seg-group" data-for="orderMode">
         <button class="seg-btn active" data-value="random">隨機</button>
         <button class="seg-btn" data-value="seq">順序</button>
-        <button class="seg-btn" data-value="weak">弱字優先</button>
+        <button class="seg-btn" data-value="weak">弱字</button>
       </div>
     </div>
 
@@ -292,6 +298,12 @@
     </div>
   </div>
 
+  <div id="practicePinyin" class="hidden">
+    拼音：<input id="practicePyInput" placeholder="輸入拼音，如 ma1" autocomplete="off">
+    <button id="practicePySubmit" onclick="submitPracticePy()">確認 ⏎</button>
+    <span id="practicePyAnswer"></span>
+  </div>
+
   <button id="hintBtn" class="hidden" onclick="toggleHint()">💡 提示</button>
   <div id="hintPanel" class="hint-panel hidden"></div>
 
@@ -312,7 +324,7 @@
     不計分的字：<span id="wrongWords"></span>
   </div>
 
-  <button onclick="undo()">返回上個字 <small>⌫</small></button>
+  <button onclick="undo()">返回上個字 <small>⌫ / ←</small></button>
 </div>
 
 <!-- 練習結果 -->
@@ -3576,16 +3588,14 @@ function start() {
   const countKey = mode === 'practice' ? 'p' : 't';
 
   const order = document.getElementById("orderMode").value;
-  if (order === "random" || order === "weak") {
+  if (order === "random") {
     // 移除該模式「已學會」（計數 ≥1）的字；順序模式則保留全部
     currentWords = currentWords.filter(w => !isLearned(w.simp, countKey));
     if (currentWords.length === 0) {
       alert("此學生已學會本級全部字（" + (countKey === 'p' ? '練習' : '測驗') +
-            "隨機／弱字模式不再出現）。\n可改用「順序」模式複習。");
+            "隨機模式不再出現）。\n可改用「順序」模式複習。");
       return;
     }
-  }
-  if (order === "random") {
     // 加權隨機：計數越小（越負）→ 權重越大 → 越可能（提前）出現
     // 權重 = 1 - 計數（計數 ∈ [-5,0] → 權重 ∈ [1,6]）；Efraimidis–Spirakis 取樣
     currentWords = currentWords
@@ -3594,6 +3604,14 @@ function start() {
       .map(o => o.w);
   }
   if (order === "weak") {
+    // 弱字：只練習在練習或測驗中答錯過（計數為負）的字
+    const isWeak = w => getCount(w.simp, 'p') < 0 || getCount(w.simp, 't') < 0;
+    currentWords = currentWords.filter(isWeak);
+    if (currentWords.length === 0) {
+      alert("目前沒有弱字。\n在練習或測驗中答錯的字會自動成為弱字，再用此模式加強複習。");
+      return;
+    }
+    // 最弱的排前面（答錯比例越高越前）
     const stats = loadStats();
     const weakScore = e => e ? (e[1] + 1) / (e[0] + 2) : 0.5;
     currentWords.sort((a, b) => weakScore(stats[b.simp]) - weakScore(stats[a.simp]));
@@ -3650,6 +3668,7 @@ if (index >= currentWords.length) {
 
   // 依模式調整測試頁 UI
   document.getElementById('quizArea').classList.toggle('hidden', mode !== 'quiz');
+  document.getElementById('practicePinyin').classList.toggle('hidden', mode !== 'practice');
   document.getElementById('sbCorrect').style.display = (mode === 'quiz') ? 'none' : '';
   document.getElementById('sbWrong').style.display  = (mode === 'quiz') ? 'none' : '';
 
@@ -3686,7 +3705,19 @@ function render() {
   } else {
     aEl.classList.add('hidden');
   }
-  if (mode === 'practice') triggerHint(currentWords[index].simp);
+  if (mode === 'practice') {
+    // 重置拼音練習欄
+    _practicePy = [];
+    _practicePyDone = false;
+    _practicePyWrong = false;
+    const pin = document.getElementById('practicePyInput');
+    if (pin) { pin.value = ''; pin.className = ''; pin.disabled = false; }
+    document.getElementById('practicePySubmit').disabled = false;
+    document.getElementById('practicePyAnswer').textContent = '';
+    setCorrectBtnBlocked(false);
+    triggerHint(currentWords[index].simp);
+    if (pin) setTimeout(() => pin.focus(), 0);   // 自動聚焦拼音輸入框
+  }
   else if (mode === 'quiz') renderQuiz(currentWords[index].simp);
   else clearHint();
   updatePracticeProgress();
@@ -3742,16 +3773,37 @@ function setHintVisMid(btn, val) {
 document.addEventListener("keydown", e => {
   if (document.getElementById("test").classList.contains("hidden")) return;
   const inInput = e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA";
-  if (e.key === "Backspace" && !inInput) { e.preventDefault(); undo(); return; }
-  if ((e.key === "p" || e.key === "P") && !inInput) { e.preventDefault(); speakCurrent(); return; }
+  const inPracticePy = inInput && e.target.id === "practicePyInput";
+
+  // 練習拼音輸入框：只接受英數字（拼音與聲調）與編輯鍵；其餘按鍵改判快捷鍵。
+  if (inPracticePy) {
+    if (e.key === "Enter") { e.preventDefault(); submitPracticePy(); return; }
+    // 放行修飾鍵與組合鍵（Shift/Ctrl/Cmd/Alt + …），維持大寫、選取、複製等
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (["Shift", "Control", "Alt", "Meta", "CapsLock", "Tab"].includes(e.key)) return;
+    const isAlnum   = e.key.length === 1 && /[a-zA-Z0-9]/.test(e.key);
+    // 註：ArrowLeft 不在此列 → 作為「返回上個字」快捷鍵（Backspace 已用於欄位編輯）
+    const isEditKey = ["Backspace", "Delete", "ArrowRight",
+                       "ArrowUp", "ArrowDown", "Home", "End"].includes(e.key);
+    if (isAlnum || isEditKey) return;   // 正常輸入／編輯，照常處理
+    e.preventDefault();                 // 其餘字元一律不輸入欄位 → 往下判快捷鍵
+    // （未 return，繼續往下走快捷鍵邏輯）
+  } else if (inInput) {
+    // 其他輸入框（學生姓名、測驗拼音）維持原行為：僅測驗的 Enter 觸發送出，不啟用判分快捷鍵
+    if (mode === "quiz" && e.key === "Enter") { e.preventDefault(); submitQuiz(); }
+    return;
+  }
+
+  // ── 以下為快捷鍵：非輸入框，或練習拼音框中的「非英數字」鍵 ──
+  // 返回上個字：Backspace（非輸入框時）或 ← 左方向鍵（含拼音框，因 Backspace 已用於編輯）
+  if (e.key === "Backspace" || e.key === "ArrowLeft") { e.preventDefault(); undo(); return; }
+  if (e.key === "p" || e.key === "P") { e.preventDefault(); speakCurrent(); return; }
   if (mode === "quiz") {
-    if (e.key === "Enter") { e.preventDefault(); submitQuiz(); }
-    if (!inInput && /^[1-4]$/.test(e.key) && _quizPhase === "answer") {
+    if (/^[1-4]$/.test(e.key) && _quizPhase === "answer") {
       e.preventDefault(); selectQuizOpt(+e.key - 1);
     }
     return;
   }
-  if (inInput) return;
   if (e.key === "=" || e.key === "+") { e.preventDefault(); markCorrect(); }
   if (e.key === "-" || e.key === "_") { e.preventDefault(); markWrong(); }
   if (e.key === " " && mode === "practice" && hintVisMode !== "always") {
@@ -3780,6 +3832,8 @@ function flashFeedback(good) {
 
 function markCorrect() {
   if (_judging) return;
+  // 練習模式：拼音答錯的字不可 +1
+  if (mode === 'practice' && _practicePyWrong) return;
   _judging = true;
   history.push(snapshot());
   score++;
@@ -4360,6 +4414,50 @@ async function onDictFileSelected(e) {
 let hintVisMode = 'off';
 let _hintChar   = null;
 let _hintTimer  = null;
+let _practicePy = [];        // 目前字的正確拼音
+let _practicePyDone  = false; // 本字是否已按「確認」
+let _practicePyWrong = false; // 本字拼音是否答錯（答錯則禁止 +1）
+
+// 練習模式：揭曉正確拼音（隨提示／釋義一併顯示，供對照；不評分）
+function revealPracticePinyin() {
+  if (mode !== 'practice') return;
+  const ans = document.getElementById('practicePyAnswer');
+  if (ans && _practicePy.length) ans.textContent = _practicePy.join(' / ');
+}
+
+// 練習模式：啟用／停用「+1」按鈕（拼音答錯時停用，僅能 +0／-）
+function setCorrectBtnBlocked(blocked) {
+  const btn = document.getElementById('sbCorrect');
+  if (!btn) return;
+  btn.disabled = blocked;
+  btn.style.opacity = blocked ? '0.4' : '';
+  btn.title = blocked ? '拼音答錯，本字不可得分' : '';
+}
+
+// 練習模式：按「確認」→ 比對拼音、揭曉釋義與正確拼音；答錯則禁止 +1
+async function submitPracticePy() {
+  if (mode !== 'practice' || _practicePyDone) return;
+  const inp = document.getElementById('practicePyInput');
+  const sub = document.getElementById('practicePySubmit');
+  if (!inp) return;
+  _practicePyDone = true;
+  if (sub) sub.disabled = true;
+  inp.disabled = true;
+  inp.blur();   // 讓 +/- 鍵可用於判分
+  // 強制揭曉提示面板（釋義），即使提示設為「關閉」也顯示
+  if (index < currentWords.length) await triggerHint(currentWords[index].simp, { force: true });
+  document.getElementById('practicePyAnswer').textContent = _practicePy.join(' / ');
+  // 比對拼音（去聲調）
+  const targets = _practicePy.map(normPy).filter(Boolean);
+  if (!targets.length) { _practicePyWrong = false; return; }  // 無拼音資料 → 不評分、不封鎖
+  const raw = normPy(inp.value);
+  const ok = targets.some(t => t === raw);
+  // 空白（只想看答案）不標色、不封鎖；有輸入才評分
+  if (raw.length > 0) inp.className = ok ? 'good' : 'bad';
+  // 答錯（有輸入但不正確）→ 本字禁止 +1
+  _practicePyWrong = raw.length > 0 && !ok;
+  setCorrectBtnBlocked(_practicePyWrong);
+}
 
 // ===== 朗讀 / 語音 (Web Speech API) =====
 let audioMode    = 'manual';   // 'manual' | 'auto' | 'off'
@@ -4425,6 +4523,7 @@ if ('speechSynthesis' in window) {
 
 function clearHint() {
   _hintChar = null;
+  _practicePy = [];
   if (_hintTimer) { clearTimeout(_hintTimer); _hintTimer = null; }
   document.getElementById('hintPanel').classList.add('hidden');
   document.getElementById('hintBtn').classList.add('hidden');
@@ -4524,12 +4623,14 @@ async function triggerHint(simp, opts) {
   if (_hintChar !== simp) return;   // user already moved on
 
   if (!entry) {
+    // 此字無字典資料 → 不顯示提示按鈕（否則按下只會出現空面板）
     panel.classList.add('hidden');
-    if (hintVisMode === 'tap') { btn.textContent = '💡 提示'; btn.classList.remove('hidden'); }
+    btn.classList.add('hidden');
     return;
   }
 
   const { readings, orphanExamples, rank } = buildDisplayReadings(entry, simp);
+  _practicePy = readings.map(r => r.pinyin).filter(Boolean);
 
   // ZH_GLOSS is shown separately (always-on, under the character) — the detail panel
   // holds only dictionary content. Nothing to show here → hide the panel.
@@ -4574,11 +4675,19 @@ async function triggerHint(simp, opts) {
       exampleBlock(r.examples);
   }).join('');
 
-  panel.innerHTML = rankHtml + readingsHtml + exampleBlock(orphanExamples);
+  const html = rankHtml + readingsHtml + exampleBlock(orphanExamples);
+  // 去標籤後若無任何文字內容，視為空 → 不顯示按鈕與面板（避免空面板）
+  if (!html.replace(/<[^>]*>/g, '').trim()) {
+    panel.classList.add('hidden');
+    btn.classList.add('hidden');
+    return;
+  }
+  panel.innerHTML = html;
 
   if (force || hintVisMode === 'always') {
     panel.classList.remove('hidden');
     btn.classList.add('hidden');
+    revealPracticePinyin();
   } else if (hintVisMode === 'delay') {
     // 先回想，3 秒後自動顯示（按空白鍵或 💡 可提前看）
     panel.classList.add('hidden');
@@ -4588,6 +4697,7 @@ async function triggerHint(simp, opts) {
       if (_hintChar !== simp) return;
       panel.classList.remove('hidden');
       btn.classList.add('hidden');
+      revealPracticePinyin();
     }, 3000);
   } else {                           // tap
     panel.classList.add('hidden');
@@ -4597,7 +4707,9 @@ async function triggerHint(simp, opts) {
 }
 
 function toggleHint() {
-  document.getElementById('hintPanel').classList.toggle('hidden');
+  const panel = document.getElementById('hintPanel');
+  panel.classList.toggle('hidden');
+  if (!panel.classList.contains('hidden')) revealPracticePinyin();
 }
 
 // ===== 測驗模式 =====
