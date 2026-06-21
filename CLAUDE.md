@@ -26,13 +26,20 @@ recall it (**練習 / practice**) or take a multiple-choice + pinyin quiz
 | File | Role |
 | --- | --- |
 | `learnchinese.html` | The entire app — HTML, CSS, and JS in one file. |
+| `sw.js` | Service worker for offline support (the one allowed separate file — browsers forbid inline/`blob:` SW registration). |
 | `build-dict.py` | Offline script to (re)build the dictionary data. |
 | `tps-dictionary.json` | Generated dictionary the app consumes (readings, defs, examples, frequency rank, graded example words). |
 | `cedict-supplement.json` | Supplemental CC-CEDICT entries. |
 | `progressive-dictionary.txt` | Source word list for the build. |
 
 The app is intentionally **one HTML file**: easy to share, host anywhere, or
-run offline. Prefer keeping it that way over splitting into modules.
+run offline. Prefer keeping it that way over splitting into modules. The lone
+exception is `sw.js`: when hosted (e.g. GitHub Pages) the browser must fetch
+the page over the network on each visit, so with no network there is nothing
+to load. The service worker caches the page shell (stale-while-revalidate) so
+it opens offline after one online visit. Registration lives inline in
+`learnchinese.html`'s `<head>`; the worker file itself must be separate because
+browsers forbid inline SW registration.
 
 ## Data model
 
