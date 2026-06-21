@@ -6,6 +6,14 @@
 <meta name="google" content="notranslate">
 <meta name="robots" content="notranslate">
 <title>認漢字 Character Learning</title>
+<!-- 離線支援：註冊 service worker，讓網路中斷時仍能開啟（字典已存於 IndexedDB） -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () { /* 忽略：仍可線上使用 */ });
+    });
+  }
+</script>
 <style>
   body { font-family: system-ui; padding: 20px; }
   .hidden { display: none; }
