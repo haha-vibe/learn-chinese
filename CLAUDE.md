@@ -45,7 +45,7 @@ browsers forbid inline SW registration.
 
 All learner state lives in the browser.
 
-- **`localStorage["students"]`** — `{ "<name>": { stats, mastery } }`
+- **`localStorage["students"]`** — `{ "<name>": { stats, mastery, progress } }`
   - `stats[simp] = [seen, wrong]` — used for 弱字 ordering (weak-first sort).
   - `mastery[simp] = { p: <count>, t: <count> }` — correctness count per mode
     (`p` = practice, `t` = quiz). Answer right → `+1`, wrong → `-1`, clamped to
@@ -53,6 +53,14 @@ All learner state lives in the browser.
     - count `≥ 1` → "learned" for that mode (`isLearned`); removed from random
       selection (sequential mode still shows it).
     - count `< 0` → "weak" (shown in the 需加強 list and pulled by 弱字 mode).
+  - `progress[date] = { L12:[p,t], L3:[p,t], L4:[p,t], L5:[p,t] }` —
+    end-of-day cumulative *learned* counts (per level, per mode) for the
+    progress chart + completion prediction. **Only written on days with
+    activity** (`recordProgress` upserts the `YYYY-MM-DD` key on every
+    `markCorrect`/`markWrong`/`undo`), so idle days never appear — the series
+    is a list of *practice days*, gaps collapsed. `predictCompletion` takes a
+    **moving average of the last 5 practice-day increments** as the rate and
+    projects practice-days remaining to reach the level's full character count.
 - **IndexedDB** — the dictionary entries, keyed by simplified character.
 
 `simpToWord` maps simplified char → word object; `ZH_GLOSS` holds the short
@@ -104,6 +112,22 @@ Setup screen (hidden `<select>`s driven by segmented buttons):
 - Wrong characters are **re-inserted ~5 positions later** so they recur until
   correct.
 - **Undo** restores the previous state from `history` snapshots.
+
+### Progress chart & completion prediction (setup page)
+
+- **Hidden by default.** Each practice/quiz bar in the per-student progress
+  panel (`renderStudentProgress`) is clickable (`toggleProgressChart(lvl,key)`):
+  clicking a bar opens an inline-SVG line chart of cumulative learned characters
+  over **practice days** for *that* level + mode, inserted directly beneath its
+  row. **At most one chart is open** — clicking another bar switches; clicking
+  the active bar again closes it (`chartSel` holds `{lvl,key}` or `null`, reset
+  on student switch).
+- A dashed green segment projects the curve to 100%; the caption gives the rate
+  (avg characters/practice-day) and **estimated practice-days remaining** to
+  finish the level. States: `done` (🎉), `insufficient` (<2 practice days),
+  `stalled` (rate ≤ 0, can't project), `ok` (shows the estimate).
+- Inline SVG only — keeps the no-dependency, single-file rule. Don't reach for
+  a charting library.
 
 ### Keyboard shortcuts (test page)
 

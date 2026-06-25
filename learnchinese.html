@@ -112,12 +112,27 @@
   .prog-fill.prog-p{background:linear-gradient(90deg,#34c759,#1a7a3a);}   /* practice = green */
   .prog-fill.prog-t{background:linear-gradient(90deg,#4a90e2,#1a4fd8);}   /* test = blue */
   .prog-num{min-width:92px;font-size:12px;color:#444;text-align:left;}
+  .prog-line.clickable{cursor:pointer;border-radius:6px;padding:2px 4px;margin:-2px -4px;transition:background .15s;}
+  .prog-line.clickable:hover{background:#f2f6ff;}
+  .prog-line.pc-active{background:#eaf0ff;box-shadow:inset 0 0 0 1px #c5d4f5;}
   .prog-detail{margin-top:10px;font-size:13px;}
   .prog-detail summary{cursor:pointer;color:#b00020;}
   .weak-chips{margin-top:6px;}
   .weak-chip{display:inline-block;background:#fff3f3;border:1px solid #f0c0c0;border-radius:8px;padding:2px 8px;margin:2px;}
   .weak-chip .wc-char{font-family:"KaiTi","標楷體","STKaiti","DFKai-SB",serif;font-size:18px;color:#1a1a1a;}
   .weak-chip small{color:#b00020;font-size:11px;margin-left:4px;}
+  /* ── progress chart + completion prediction (setup page) ── */
+  .prog-chart{margin-top:14px;padding-top:10px;border-top:1px solid #eee;}
+  .pc-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+  .pc-title{font-size:13px;font-weight:600;color:#444;}
+  .pc-sub{font-size:11px;color:#888;}
+  .prog-chart svg{display:block;width:100%;height:auto;}
+  .prog-chart svg circle[fill="transparent"]{cursor:pointer;}
+  .pc-eta{font-size:13px;color:#444;margin-top:6px;line-height:1.5;}
+  .pc-eta b{color:#1a4fd8;}
+  .pc-eta.done b{color:#1a7a3a;}
+  .pc-eta.stall b{color:#b00020;}
+  .pc-empty{font-size:12px;color:#999;margin-top:6px;}
   /* ── practice-mode live mastery projection bar ── */
   #practiceProgress{display:flex;align-items:center;gap:10px;max-width:560px;margin:0 auto 16px;font-size:13px;color:#555;}
   .pp-label{min-width:78px;text-align:right;}
@@ -3476,12 +3491,14 @@ function refreshStudentList() {
 }
 function pickStudent(name) {
   if (!name) return;
+  chartSel = null;           // 切換學生時收起圖表（預設不顯示）
   document.getElementById('studentId').value = name;
   renderStudentProgress(name);
   refreshStudentList();      // re-highlight the active chip
 }
 // Typing in the name field: update progress and highlight a matching chip.
 function onStudentIdInput(v) {
+  chartSel = null;           // 切換學生時收起圖表（預設不顯示）
   renderStudentProgress(v);
   refreshStudentList();
 }
@@ -3517,23 +3534,171 @@ function masteryDetail(name) {
   return out;
 }
 
+// ===== 進度歷史與完成預測 =====
+// 每個「有練習的日子」記錄各級別累計學會字數（練習 p / 測驗 t）：
+//   students[name].progress = { "YYYY-MM-DD": { L12:[p,t], L3:[p,t], L4:[p,t], L5:[p,t] } }
+// 只在有活動的當天寫入 → 沒練習的日子不佔位（預測以「練習日」為單位，跳過空白日）。
+function todayKey(d) {
+  d = d || new Date();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${d.getFullYear()}-${mm}-${dd}`;
+}
+// 在計數變動後呼叫：把「今天」的各級別累計學會數覆寫進歷史。
+function recordProgress() {
+  if (!currentStudent) return;
+  const snap = {};
+  masteryProgress(currentStudent).forEach(p => { snap[p.lvl] = [p.practiced, p.tested]; });
+  _mutateStudent(s => {
+    if (!s.progress) s.progress = {};
+    s.progress[todayKey()] = snap;
+  });
+}
+
+// 取某級別、某模式（'p' 練習 / 't' 測驗）的逐練習日累計學會數序列。
+// 回傳已依日期排序的 [{date, val}]，每筆 = 一個有活動的日子。
+function progressSeries(name, lvl, key) {
+  const prog = studentRec(name).progress || {};
+  const idx = key === 'p' ? 0 : 1;
+  return Object.keys(prog).sort().map(date => {
+    const rec = prog[date] && prog[date][lvl];
+    return { date, val: Array.isArray(rec) ? (rec[idx] || 0) : 0 };
+  });
+}
+
+// 以「最近 5 個練習日」的每日新增量移動平均，預測完成本級還需幾個練習日。
+function predictCompletion(series, total) {
+  const n = series.length;
+  const current = n ? series[n - 1].val : 0;
+  if (current >= total) return { state: 'done', current, total };
+  if (n < 2) return { state: 'insufficient', current, total };
+  // 連續練習日之間的新增量（可能為 0 或負，計數會因答錯而下降）
+  const deltas = [];
+  for (let i = 1; i < n; i++) deltas.push(series[i].val - series[i - 1].val);
+  const last = deltas.slice(-5);
+  const rate = last.reduce((a, b) => a + b, 0) / last.length;   // 平均每練習日新增
+  if (rate <= 0) return { state: 'stalled', current, total, rate };
+  const days = Math.ceil((total - current) / rate);
+  return { state: 'ok', current, total, rate, days };
+}
+
+// 產生 SVG 折線圖 + 預測虛線；series 為實際資料，pred 為 predictCompletion 結果。
+function progressChartSvg(series, total, pred) {
+  const W = 320, H = 142, PL = 30, PR = 12, PT = 10, PB = 34;
+  const plotW = W - PL - PR, plotH = H - PT - PB;
+  const n = series.length;
+  // x 軸最大索引：含預測延伸出去的練習日
+  const projDays = (pred.state === 'ok') ? pred.days : 0;
+  const maxX = Math.max(1, (n - 1) + projDays);
+  const xAt = i => PL + (maxX ? (i / maxX) * plotW : 0);
+  const yAt = v => PT + plotH - (total ? (v / total) * plotH : 0);
+  const md = d => { const t = String(d).split('-'); return t.length === 3 ? `${+t[1]}/${+t[2]}` : d; };
+
+  // 目標線（100%）
+  const targetY = yAt(total);
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="學習進度圖">`;
+  svg += `<line x1="${PL}" y1="${targetY}" x2="${W - PR}" y2="${targetY}" stroke="#d8b400" stroke-width="1" stroke-dasharray="3 3"/>`;
+  svg += `<text x="${W - PR}" y="${targetY - 3}" text-anchor="end" font-size="9" fill="#b89400">${total}</text>`;
+  // y 軸 0 基線
+  const baseY = yAt(0);
+  svg += `<line x1="${PL}" y1="${PT}" x2="${PL}" y2="${baseY}" stroke="#ddd" stroke-width="1"/>`;
+  svg += `<text x="${PL - 4}" y="${baseY}" text-anchor="end" font-size="9" fill="#aaa">0</text>`;
+
+  // 實際折線
+  if (n >= 1) {
+    const pts = series.map((p, i) => `${xAt(i).toFixed(1)},${yAt(p.val).toFixed(1)}`).join(' ');
+    if (n >= 2) svg += `<polyline points="${pts}" fill="none" stroke="#1a4fd8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    series.forEach((p, i) => {
+      const cx = xAt(i).toFixed(1), cy = yAt(p.val).toFixed(1);
+      svg += `<circle cx="${cx}" cy="${cy}" r="${i === n - 1 ? 3 : 2}" fill="#1a4fd8"/>`;
+      // 透明大圈擴大滑鼠命中範圍，懸停顯示該練習日的日期與累計學會數
+      svg += `<circle cx="${cx}" cy="${cy}" r="8" fill="transparent"><title>${md(p.date)}：已學會 ${p.val}/${total} 字</title></circle>`;
+    });
+  }
+  // 預測虛線：從最後一點延伸到命中目標
+  if (pred.state === 'ok') {
+    const lx = xAt(n - 1), ly = yAt(series[n - 1].val);
+    const tx = xAt((n - 1) + pred.days), ty = targetY;
+    svg += `<line x1="${lx.toFixed(1)}" y1="${ly.toFixed(1)}" x2="${tx.toFixed(1)}" y2="${ty.toFixed(1)}" stroke="#1a7a3a" stroke-width="2" stroke-dasharray="4 3"/>`;
+    svg += `<circle cx="${tx.toFixed(1)}" cy="${ty.toFixed(1)}" r="3" fill="#1a7a3a"/>`;
+    svg += `<circle cx="${tx.toFixed(1)}" cy="${ty.toFixed(1)}" r="8" fill="transparent"><title>預計再 ${pred.days} 個練習日完成（${total}/${total} 字）</title></circle>`;
+  }
+  // x 軸標籤：練習日序號（上）＋ 日期（下）；不含空白日。首尾各標一筆避免擁擠。
+  const yNum = H - 18, yDate = H - 6;
+  svg += `<text x="${PL}" y="${yNum}" text-anchor="start" font-size="9" fill="#aaa">練習日 1</text>`;
+  svg += `<text x="${PL}" y="${yDate}" text-anchor="start" font-size="9" fill="#bbb">${md(series[0].date)}</text>`;
+  if (n >= 2) {
+    const lastX = xAt(n - 1).toFixed(1);
+    svg += `<text x="${lastX}" y="${yNum}" text-anchor="middle" font-size="9" fill="#aaa">${n}</text>`;
+    svg += `<text x="${lastX}" y="${yDate}" text-anchor="middle" font-size="9" fill="#bbb">${md(series[n - 1].date)}</text>`;
+  }
+  if (projDays > 0) svg += `<text x="${W - PR}" y="${yNum}" text-anchor="end" font-size="9" fill="#1a7a3a">+${projDays}</text>`;
+  svg += `</svg>`;
+  return svg;
+}
+
+// 指定級別 lvl + 模式 key（'p' 練習 / 't' 測驗）的進度圖與預測文字。
+function progressChartHtml(name, lvl, key) {
+  const modeLabel = key === 'p' ? '練習' : '測驗';
+  const total = [...new Set((WORDS[lvl] || []).map(w => w.simp))].length;
+  const series = progressSeries(name, lvl, key);
+
+  const head =
+    `<div class="pc-head"><span class="pc-title">📈 ${LEVEL_LABEL[lvl] || lvl}・${modeLabel}　完成預測</span>` +
+    `<span class="pc-sub">最近 5 個練習日移動平均</span></div>`;
+
+  // 還沒有任何練習日記錄
+  if (series.length === 0) {
+    return `<div class="prog-chart">${head}<div class="pc-empty">尚無此級別的練習記錄，開始練習後會在這裡顯示進度曲線與完成預測。</div></div>`;
+  }
+  const pred = predictCompletion(series, total);
+  const svg = progressChartSvg(series, total, pred);
+
+  let eta;
+  if (pred.state === 'done') {
+    eta = `<div class="pc-eta done">🎉 已完成本級全部 <b>${total}</b> 字（${modeLabel}）。</div>`;
+  } else if (pred.state === 'insufficient') {
+    eta = `<div class="pc-eta">目前 <b>${pred.current}/${total}</b>。再多練習一天即可依速度預測完成日。</div>`;
+  } else if (pred.state === 'stalled') {
+    eta = `<div class="pc-eta stall">目前 <b>${pred.current}/${total}</b>。最近 5 個練習日進度停滯，<b>暫無法預測</b>完成時間。</div>`;
+  } else {
+    const rate = Math.round(pred.rate * 10) / 10;
+    eta = `<div class="pc-eta">目前 <b>${pred.current}/${total}</b>，最近平均每練習日 +${rate} 字，` +
+          `預計再 <b>${pred.days}</b> 個練習日完成本級（${modeLabel}）。</div>`;
+  }
+  return `<div class="prog-chart">${head}${svg}${eta}</div>`;
+}
+
+// 目前展開的圖表：{lvl, key} 或 null（預設不顯示）。最多一個。點進度條切換。
+let chartSel = null;
+function toggleProgressChart(lvl, key) {
+  chartSel = (chartSel && chartSel.lvl === lvl && chartSel.key === key) ? null : { lvl, key };
+  renderStudentProgress(document.getElementById('studentId').value);
+}
+
 function renderStudentProgress(name) {
   const el = document.getElementById('studentProgress');
   if (!el) return;
   name = (name || '').trim();
   if (!name || !loadStudents()[name]) { el.innerHTML = ''; return; }
-  const rows = masteryProgress(name).map(p =>
-    `<div class="prog-row">` +
-      `<span class="prog-lvl">${LEVEL_LABEL[p.lvl] || p.lvl}</span>` +
-      `<span class="prog-pair">` +
-        `<span class="prog-line"><span class="prog-tag">練習</span>` +
-          `<span class="prog-bar"><span class="prog-fill prog-p" style="width:${p.pPct}%"></span></span>` +
-          `<span class="prog-num">${p.practiced}/${p.total}　${p.pPct}%</span></span>` +
-        `<span class="prog-line"><span class="prog-tag">測驗</span>` +
-          `<span class="prog-bar"><span class="prog-fill prog-t" style="width:${p.tPct}%"></span></span>` +
-          `<span class="prog-num">${p.tested}/${p.total}　${p.tPct}%</span></span>` +
-      `</span>` +
-    `</div>`).join('');
+  const rows = masteryProgress(name).map(p => {
+    const sel = k => (chartSel && chartSel.lvl === p.lvl && chartSel.key === k) ? ' pc-active' : '';
+    const row =
+      `<div class="prog-row">` +
+        `<span class="prog-lvl">${LEVEL_LABEL[p.lvl] || p.lvl}</span>` +
+        `<span class="prog-pair">` +
+          `<span class="prog-line clickable${sel('p')}" onclick="toggleProgressChart('${p.lvl}','p')" title="點此顯示／隱藏練習進度圖"><span class="prog-tag">練習</span>` +
+            `<span class="prog-bar"><span class="prog-fill prog-p" style="width:${p.pPct}%"></span></span>` +
+            `<span class="prog-num">${p.practiced}/${p.total}　${p.pPct}%</span></span>` +
+          `<span class="prog-line clickable${sel('t')}" onclick="toggleProgressChart('${p.lvl}','t')" title="點此顯示／隱藏測驗進度圖"><span class="prog-tag">測驗</span>` +
+            `<span class="prog-bar"><span class="prog-fill prog-t" style="width:${p.tPct}%"></span></span>` +
+            `<span class="prog-num">${p.tested}/${p.total}　${p.tPct}%</span></span>` +
+        `</span>` +
+      `</div>`;
+    // 圖表緊接在被點選的級別列下方（最多一個）
+    const chart = (chartSel && chartSel.lvl === p.lvl) ? progressChartHtml(name, chartSel.lvl, chartSel.key) : '';
+    return row + chart;
+  }).join('');
 
   // 詳情：計數為負（答錯較多、需加強）的字
   const detail = masteryDetail(name);
@@ -3548,7 +3713,8 @@ function renderStudentProgress(name) {
         }).join('') + `</div></details>`
     : '';
 
-  el.innerHTML = `<div class="prog-title">📊 ${name} 學習進度（練習 / 測驗）</div>${rows}${detailHtml}`;
+  el.innerHTML = `<div class="prog-title">📊 ${name} 學習進度（練習 / 測驗，點進度條看完成預測）</div>${rows}` +
+                 detailHtml;
 }
 
 // 練習模式即時進度條：練習計數 ≥1 即「練習學會」。顯示本級基準 + 本次新學會。
@@ -3851,6 +4017,7 @@ function markCorrect() {
   applyCount(currentWords[index].simp, +1);
   // 先前答錯、現在答對 → 從「不計分的字」移除（undo 由先前的 snapshot 還原）
   wrongSet.delete(currentWords[index].simp);
+  recordProgress();   // 更新今天（練習日）的累計學會數，供進度圖與預測使用
   flashFeedback(true);
   setTimeout(() => {
     _judging = false;
@@ -3867,6 +4034,7 @@ function markWrong() {
   totalJudged++;
   bumpStat(currentWords[index].simp, true);
   applyCount(currentWords[index].simp, -1);   // 正確計數 -1（夾在 [-5,1]）
+  recordProgress();   // 更新今天（練習日）的累計學會數，供進度圖與預測使用
   flashFeedback(false);
 
   // 練習/測驗：答錯的字稍後重現，直到答對
@@ -3884,6 +4052,7 @@ function markWrong() {
 function undo() {
   if (history.length === 0) return;
   restore(history.pop());
+  recordProgress();   // 計數已還原 → 同步更新今天的累計學會數
   render();
 }
 
