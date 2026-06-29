@@ -1,0 +1,1340 @@
+{
+  "meta": {
+    "title": "小学生必背古诗",
+    "subtitle": "Classical Chinese Poems for Primary School",
+    "source": "统编教材 (PEP unified textbook)",
+    "script": "simplified",
+    "noteLanguages": ["zh", "en"],
+    "schemaVersion": 1,
+    "fields": {
+      "poem": "id, title, titlePinyin, titleEn, author, dynasty, grade, volume, lines[], chars[], notes{}",
+      "line": "text, pinyin, zh (白话译文), en (translation)",
+      "char": "char, pinyin, zh (字义), en (gloss); deduplicated within a poem, 多音字 noted in zh",
+      "notes": "background / culture / rhetoric, each { zh, en }",
+      "sandhi": "连读变调 (tone sandhi) list: [{ text, rule, base, read, value, markChange, where, zh, en }]. rule ∈ 上上变调 / 半上声 / 半去声 / 一字变调 / 不字变调. base = 本调 pinyin, read = 实际读音 pinyin, value = 实际调值 (35/211/53/51). markChange=true when the pinyin tone mark itself changes (上上变调/一/不); markChange=false for 调值-only refinements (半上声 211, 半去声 53) where spelling is unchanged. Computed over each line and the title as separate prosodic units (a unit-final 上声/去声 keeps its full citation tone). 半去声 only applies within a 2-syllable foot, never across the caesura/foot boundary. 'where' is the containing line, or 题目 for the title. Empty array = 全诗按本调朗读."
+    },
+    "grade": 6
+  },
+  "poems": [
+    {
+      "id": "g6u-01-sujiandejiang",
+      "title": "宿建德江",
+      "titlePinyin": "sù jiàn dé jiāng",
+      "titleEn": "Mooring on the Jiande River",
+      "author": "孟浩然",
+      "dynasty": "唐",
+      "grade": 6,
+      "volume": "上",
+      "lines": [
+        { "text": "移舟泊烟渚，", "pinyin": "yí zhōu bó yān zhǔ", "zh": "把船划过去，停靠在雾气笼罩的小洲边。", "en": "I move my boat to moor by a mist-veiled islet." },
+        { "text": "日暮客愁新。", "pinyin": "rì mù kè chóu xīn", "zh": "天色将晚，旅人的愁绪又涌上心头。", "en": "As dusk falls, a traveler's sorrow comes anew." },
+        { "text": "野旷天低树，", "pinyin": "yě kuàng tiān dī shù", "zh": "原野空旷辽阔，远处的天空仿佛比树还低。", "en": "The plain is so vast the sky hangs below the trees." },
+        { "text": "江清月近人。", "pinyin": "jiāng qīng yuè jìn rén", "zh": "江水清澈，水中的月影离人格外亲近。", "en": "The river is so clear the moon draws near to me." }
+      ],
+      "chars": [
+        { "char": "宿", "pinyin": "sù", "zh": "住宿、过夜（多音字：xiǔ 量词，如一宿；xiù 星宿）。", "en": "to lodge overnight" },
+        { "char": "建", "pinyin": "jiàn", "zh": "建德，地名。", "en": "(place name) Jiande" },
+        { "char": "德", "pinyin": "dé", "zh": "建德，地名。", "en": "(place name) Jiande" },
+        { "char": "江", "pinyin": "jiāng", "zh": "江河，这里指建德江。", "en": "river" },
+        { "char": "移", "pinyin": "yí", "zh": "移动、划动。", "en": "to move" },
+        { "char": "舟", "pinyin": "zhōu", "zh": "小船。", "en": "boat" },
+        { "char": "泊", "pinyin": "bó", "zh": "停船靠岸（多音字：pō 湖泊）。", "en": "to moor" },
+        { "char": "烟", "pinyin": "yān", "zh": "雾气、烟霭。", "en": "mist" },
+        { "char": "渚", "pinyin": "zhǔ", "zh": "水中的小块陆地、小洲。", "en": "islet" },
+        { "char": "日", "pinyin": "rì", "zh": "太阳，这里指天色。", "en": "sun / day" },
+        { "char": "暮", "pinyin": "mù", "zh": "傍晚、日落时分。", "en": "dusk" },
+        { "char": "客", "pinyin": "kè", "zh": "旅客、漂泊在外的人。", "en": "traveler" },
+        { "char": "愁", "pinyin": "chóu", "zh": "忧愁、愁绪。", "en": "sorrow" },
+        { "char": "新", "pinyin": "xīn", "zh": "新添、重新涌起。", "en": "new / anew" },
+        { "char": "野", "pinyin": "yě", "zh": "原野、郊外。", "en": "open field" },
+        { "char": "旷", "pinyin": "kuàng", "zh": "空阔、辽远。", "en": "vast" },
+        { "char": "天", "pinyin": "tiān", "zh": "天空。", "en": "sky" },
+        { "char": "低", "pinyin": "dī", "zh": "低垂，显得低。", "en": "low" },
+        { "char": "树", "pinyin": "shù", "zh": "树木。", "en": "tree" },
+        { "char": "清", "pinyin": "qīng", "zh": "清澈。", "en": "clear" },
+        { "char": "月", "pinyin": "yuè", "zh": "月亮，这里指水中月影。", "en": "moon" },
+        { "char": "近", "pinyin": "jìn", "zh": "靠近、亲近。", "en": "near" },
+        { "char": "人", "pinyin": "rén", "zh": "人，这里指诗人自己。", "en": "person" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "孟浩然漫游吴越途中夜泊建德江，借景抒发羁旅孤愁。",
+          "en": "Written while Meng Haoran roamed the south and moored at night on the Jiande River, voicing a traveler's lonely sorrow."
+        },
+        "culture": {
+          "zh": "孟浩然是盛唐山水田园诗派的代表，与王维并称“王孟”。",
+          "en": "Meng Haoran was a leading High-Tang nature poet, paired with Wang Wei as 'Wang-Meng'."
+        },
+        "rhetoric": {
+          "zh": "前两句叙事点愁，后两句以“天低”“月近”的开阔景象反衬孤独，情景交融。",
+          "en": "Plain narration sets the sorrow, then the wide low sky and near moon mirror the speaker's loneliness, fusing scene and feeling."
+        }
+      },
+      "sandhi": [
+        { "text": "宿建", "rule": "半去声", "base": "sù", "read": "sù", "value": "53", "markChange": false, "where": "题目", "pos": 0, "zh": "\"宿\"是去声，在去声\"建\"前读\"半去\"（调值53），拼音不变：sù。", "en": "宿 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 建; the written pinyin stays sù." },
+        { "text": "日暮", "rule": "半去声", "base": "rì", "read": "rì", "value": "53", "markChange": false, "where": "日暮客愁新。", "pos": 0, "zh": "\"日\"是去声，在去声\"暮\"前读\"半去\"（调值53），拼音不变：rì。", "en": "日 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 暮; the written pinyin stays rì." },
+        { "text": "野旷", "rule": "半上声", "base": "yě", "read": "yě", "value": "211", "markChange": false, "where": "野旷天低树，", "pos": 0, "zh": "\"野\"是上声，在非上声\"旷\"前读\"半上\"（调值211），拼音不变：yě。", "en": "野 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 旷; the written pinyin stays yě." },
+        { "text": "月近", "rule": "半去声", "base": "yuè", "read": "yuè", "value": "53", "markChange": false, "where": "江清月近人。", "pos": 2, "zh": "\"月\"是去声，在去声\"近\"前读\"半去\"（调值53），拼音不变：yuè。", "en": "月 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 近; the written pinyin stays yuè." }
+      ]
+    },
+    {
+      "id": "g6u-02-liuyueershiqiriwanghuloizuishu",
+      "title": "六月二十七日望湖楼醉书",
+      "titlePinyin": "liù yuè èr shí qī rì wàng hú lóu zuì shū",
+      "titleEn": "Written While Drunk at Lake-View Tower on the 27th of the Sixth Month",
+      "author": "苏轼",
+      "dynasty": "宋",
+      "grade": 6,
+      "volume": "上",
+      "lines": [
+        { "text": "黑云翻墨未遮山，", "pinyin": "hēi yún fān mò wèi zhē shān", "zh": "乌黑的云像打翻的墨汁，还没遮住山头。", "en": "Black clouds spill like upset ink, not yet hiding the hills." },
+        { "text": "白雨跳珠乱入船。", "pinyin": "bái yǔ tiào zhū luàn rù chuán", "zh": "白亮的雨点像跳动的珍珠，纷乱地溅进船里。", "en": "Bright rain leaps like pearls, scattering into the boat." },
+        { "text": "卷地风来忽吹散，", "pinyin": "juǎn dì fēng lái hū chuī sàn", "zh": "席卷大地的狂风忽然吹来，把乌云骤雨一下吹散。", "en": "A wind sweeps the ground and suddenly blows it all away." },
+        { "text": "望湖楼下水如天。", "pinyin": "wàng hú lóu xià shuǐ rú tiān", "zh": "望湖楼下的湖水，澄澈得如同蓝天一般。", "en": "Below Lake-View Tower the water is clear as sky." }
+      ],
+      "chars": [
+        { "char": "六", "pinyin": "liù", "zh": "数字六。", "en": "six" },
+        { "char": "月", "pinyin": "yuè", "zh": "月份。", "en": "month" },
+        { "char": "二", "pinyin": "èr", "zh": "数字二。", "en": "two" },
+        { "char": "十", "pinyin": "shí", "zh": "数字十。", "en": "ten" },
+        { "char": "七", "pinyin": "qī", "zh": "数字七。", "en": "seven" },
+        { "char": "日", "pinyin": "rì", "zh": "日子、日期。", "en": "day" },
+        { "char": "望", "pinyin": "wàng", "zh": "眺望，这里是楼名“望湖楼”。", "en": "to gaze (here a tower name)" },
+        { "char": "湖", "pinyin": "hú", "zh": "湖，这里指西湖。", "en": "lake" },
+        { "char": "楼", "pinyin": "lóu", "zh": "楼阁。", "en": "tower" },
+        { "char": "醉", "pinyin": "zuì", "zh": "醉酒。", "en": "drunk" },
+        { "char": "书", "pinyin": "shū", "zh": "书写、写下。", "en": "to write" },
+        { "char": "黑", "pinyin": "hēi", "zh": "黑色。", "en": "black" },
+        { "char": "云", "pinyin": "yún", "zh": "云。", "en": "cloud" },
+        { "char": "翻", "pinyin": "fān", "zh": "翻腾、打翻。", "en": "to overturn / churn" },
+        { "char": "墨", "pinyin": "mò", "zh": "墨汁，比喻乌云。", "en": "ink" },
+        { "char": "未", "pinyin": "wèi", "zh": "还没有。", "en": "not yet" },
+        { "char": "遮", "pinyin": "zhē", "zh": "遮挡、遮住。", "en": "to cover" },
+        { "char": "山", "pinyin": "shān", "zh": "山。", "en": "mountain" },
+        { "char": "白", "pinyin": "bái", "zh": "白亮的。", "en": "white / bright" },
+        { "char": "雨", "pinyin": "yǔ", "zh": "雨。", "en": "rain" },
+        { "char": "跳", "pinyin": "tiào", "zh": "跳动、溅跳。", "en": "to leap" },
+        { "char": "珠", "pinyin": "zhū", "zh": "珍珠，比喻雨点。", "en": "pearl" },
+        { "char": "乱", "pinyin": "luàn", "zh": "纷乱、杂乱。", "en": "in disorder" },
+        { "char": "入", "pinyin": "rù", "zh": "进入。", "en": "to enter" },
+        { "char": "船", "pinyin": "chuán", "zh": "船。", "en": "boat" },
+        { "char": "卷", "pinyin": "juǎn", "zh": "卷起、席卷（多音字：juàn 书卷）。", "en": "to roll up / sweep" },
+        { "char": "地", "pinyin": "dì", "zh": "大地。", "en": "ground" },
+        { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },
+        { "char": "来", "pinyin": "lái", "zh": "来到。", "en": "to come" },
+        { "char": "忽", "pinyin": "hū", "zh": "忽然、突然。", "en": "suddenly" },
+        { "char": "吹", "pinyin": "chuī", "zh": "吹。", "en": "to blow" },
+        { "char": "散", "pinyin": "sàn", "zh": "吹散、消散（多音字：sǎn 松散）。", "en": "to scatter / disperse" },
+        { "char": "下", "pinyin": "xià", "zh": "下面。", "en": "below" },
+        { "char": "水", "pinyin": "shuǐ", "zh": "湖水。", "en": "water" },
+        { "char": "如", "pinyin": "rú", "zh": "好像、如同。", "en": "like" },
+        { "char": "天", "pinyin": "tiān", "zh": "天空。", "en": "sky" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "苏轼任杭州通判时，在西湖望湖楼上趁醉写下骤雨忽来忽去的奇景。",
+          "en": "Su Shi, serving in Hangzhou, wrote this drunk at West Lake's Lake-View Tower, capturing a sudden summer storm."
+        },
+        "culture": {
+          "zh": "苏轼是北宋文坛巨擘，诗、词、文、书、画皆精，为“唐宋八大家”之一。",
+          "en": "Su Shi was a towering Northern Song master of poetry, prose, calligraphy and painting, one of the Eight Masters of Tang-Song prose."
+        },
+        "rhetoric": {
+          "zh": "“翻墨”“跳珠”运用比喻，四句写出云、雨、风、晴的迅速变化，动感强烈。",
+          "en": "Vivid metaphors ('spilt ink', 'leaping pearls') and four swift scenes—cloud, rain, wind, calm—give the storm great momentum."
+        }
+      },
+      "sandhi": [
+        { "text": "六月", "rule": "半去声", "base": "liù", "read": "liù", "value": "53", "markChange": false, "where": "题目", "pos": 0, "zh": "\"六\"是去声，在去声\"月\"前读\"半去\"（调值53），拼音不变：liù。", "en": "六 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 月; the written pinyin stays liù." },
+        { "text": "雨跳", "rule": "半上声", "base": "yǔ", "read": "yǔ", "value": "211", "markChange": false, "where": "白雨跳珠乱入船。", "pos": 1, "zh": "\"雨\"是上声，在非上声\"跳\"前读\"半上\"（调值211），拼音不变：yǔ。", "en": "雨 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 跳; the written pinyin stays yǔ." },
+        { "text": "乱入", "rule": "半去声", "base": "luàn", "read": "luàn", "value": "53", "markChange": false, "where": "白雨跳珠乱入船。", "pos": 4, "zh": "\"乱\"是去声，在去声\"入\"前读\"半去\"（调值53），拼音不变：luàn。", "en": "乱 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 入; the written pinyin stays luàn." },
+        { "text": "卷地", "rule": "半上声", "base": "juǎn", "read": "juǎn", "value": "211", "markChange": false, "where": "卷地风来忽吹散，", "pos": 0, "zh": "\"卷\"是上声，在非上声\"地\"前读\"半上\"（调值211），拼音不变：juǎn。", "en": "卷 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 地; the written pinyin stays juǎn." },
+        { "text": "水如", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "望湖楼下水如天。", "pos": 4, "zh": "\"水\"是上声，在非上声\"如\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 如; the written pinyin stays shuǐ." }
+      ]
+    },
+    {
+      "id": "g6u-03-xijiangyueyexinghuangshadaozhong",
+      "title": "西江月·夜行黄沙道中",
+      "titlePinyin": "xī jiāng yuè · yè xíng huáng shā dào zhōng",
+      "titleEn": "Moon over the West River: Walking the Huangsha Road at Night",
+      "author": "辛弃疾",
+      "dynasty": "宋",
+      "grade": 6,
+      "volume": "上",
+      "lines": [
+        { "text": "明月别枝惊鹊，", "pinyin": "míng yuè bié zhī jīng què", "zh": "明亮的月光惊动了栖息在斜枝上的喜鹊。", "en": "Bright moonlight startles magpies from a slanting branch." },
+        { "text": "清风半夜鸣蝉。", "pinyin": "qīng fēng bàn yè míng chán", "zh": "半夜里清凉的风中传来蝉的鸣叫。", "en": "In the cool midnight breeze cicadas are crying." },
+        { "text": "稻花香里说丰年，", "pinyin": "dào huā xiāng lǐ shuō fēng nián", "zh": "稻花的香气里，人们谈论着丰收的年景。", "en": "Amid the fragrance of rice flowers they speak of a good harvest." },
+        { "text": "听取蛙声一片。", "pinyin": "tīng qǔ wā shēng yī piàn", "zh": "听到一片此起彼伏的蛙鸣声。", "en": "Listen—a chorus of frogs rises all around." },
+        { "text": "七八个星天外，", "pinyin": "qī bā gè xīng tiān wài", "zh": "天边稀疏地挂着七八颗星星。", "en": "Seven or eight stars hang at the edge of the sky." },
+        { "text": "两三点雨山前。", "pinyin": "liǎng sān diǎn yǔ shān qián", "zh": "山前飘落两三点雨。", "en": "Two or three raindrops fall before the hills." },
+        { "text": "旧时茅店社林边，", "pinyin": "jiù shí máo diàn shè lín biān", "zh": "从前那座茅草店就在土地庙树林的旁边。", "en": "The old thatched inn stood by the woods near the village shrine." },
+        { "text": "路转溪桥忽见。", "pinyin": "lù zhuǎn xī qiáo hū xiàn", "zh": "山路一转，过了溪上的小桥，茅店忽然出现在眼前。", "en": "The path turns past the brook's bridge—suddenly there it appears." }
+      ],
+      "chars": [
+        { "char": "西", "pinyin": "xī", "zh": "词牌“西江月”用字。", "en": "(in tune name) west" },
+        { "char": "江", "pinyin": "jiāng", "zh": "词牌“西江月”用字。", "en": "(in tune name) river" },
+        { "char": "月", "pinyin": "yuè", "zh": "月亮；又为词牌用字。", "en": "moon" },
+        { "char": "夜", "pinyin": "yè", "zh": "夜晚。", "en": "night" },
+        { "char": "行", "pinyin": "xíng", "zh": "行走（多音字：háng 行列）。", "en": "to walk" },
+        { "char": "黄", "pinyin": "huáng", "zh": "黄沙岭，地名。", "en": "(place) Huangsha" },
+        { "char": "沙", "pinyin": "shā", "zh": "黄沙岭，地名。", "en": "(place) Huangsha" },
+        { "char": "道", "pinyin": "dào", "zh": "道路。", "en": "road" },
+        { "char": "中", "pinyin": "zhōng", "zh": "途中（多音字：zhòng 中奖）。", "en": "amid / on the way" },
+        { "char": "明", "pinyin": "míng", "zh": "明亮。", "en": "bright" },
+        { "char": "别", "pinyin": "bié", "zh": "斜出的，“别枝”指横斜的枝条（多音字：biè 别扭）。", "en": "slanting (branch)" },
+        { "char": "枝", "pinyin": "zhī", "zh": "树枝。", "en": "branch" },
+        { "char": "惊", "pinyin": "jīng", "zh": "惊动、惊起。", "en": "to startle" },
+        { "char": "鹊", "pinyin": "què", "zh": "喜鹊。", "en": "magpie" },
+        { "char": "清", "pinyin": "qīng", "zh": "清凉。", "en": "cool / clear" },
+        { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },
+        { "char": "半", "pinyin": "bàn", "zh": "半夜，深夜。", "en": "half / mid-" },
+        { "char": "鸣", "pinyin": "míng", "zh": "鸣叫。", "en": "to cry / chirp" },
+        { "char": "蝉", "pinyin": "chán", "zh": "蝉。", "en": "cicada" },
+        { "char": "稻", "pinyin": "dào", "zh": "稻子。", "en": "rice plant" },
+        { "char": "花", "pinyin": "huā", "zh": "稻花。", "en": "flower / blossom" },
+        { "char": "香", "pinyin": "xiāng", "zh": "香气。", "en": "fragrance" },
+        { "char": "里", "pinyin": "lǐ", "zh": "里面，在……之中。", "en": "within" },
+        { "char": "说", "pinyin": "shuō", "zh": "谈论（多音字：shuì 游说）。", "en": "to speak of" },
+        { "char": "丰", "pinyin": "fēng", "zh": "丰收。", "en": "abundant" },
+        { "char": "年", "pinyin": "nián", "zh": "年景、收成。", "en": "year / harvest" },
+        { "char": "听", "pinyin": "tīng", "zh": "听。", "en": "to listen" },
+        { "char": "取", "pinyin": "qǔ", "zh": "助词，无实义，“听取”即听。", "en": "(verbal particle)" },
+        { "char": "蛙", "pinyin": "wā", "zh": "青蛙。", "en": "frog" },
+        { "char": "声", "pinyin": "shēng", "zh": "声音、鸣声。", "en": "sound" },
+        { "char": "一", "pinyin": "yī", "zh": "一片，形容声音连成一片。", "en": "one / a whole" },
+        { "char": "片", "pinyin": "piàn", "zh": "一片，量词。", "en": "stretch / expanse" },
+        { "char": "七", "pinyin": "qī", "zh": "数字七，言其稀少。", "en": "seven" },
+        { "char": "八", "pinyin": "bā", "zh": "数字八，言其稀少。", "en": "eight" },
+        { "char": "个", "pinyin": "gè", "zh": "量词。", "en": "(measure word)" },
+        { "char": "星", "pinyin": "xīng", "zh": "星星。", "en": "star" },
+        { "char": "天", "pinyin": "tiān", "zh": "天空。", "en": "sky" },
+        { "char": "外", "pinyin": "wài", "zh": "天外，天边。", "en": "beyond / edge" },
+        { "char": "两", "pinyin": "liǎng", "zh": "数字二，言其少。", "en": "two" },
+        { "char": "三", "pinyin": "sān", "zh": "数字三，言其少。", "en": "three" },
+        { "char": "点", "pinyin": "diǎn", "zh": "点，量词，指零星雨点。", "en": "drop (measure word)" },
+        { "char": "雨", "pinyin": "yǔ", "zh": "雨。", "en": "rain" },
+        { "char": "山", "pinyin": "shān", "zh": "山。", "en": "hill / mountain" },
+        { "char": "前", "pinyin": "qián", "zh": "前面。", "en": "before / in front" },
+        { "char": "旧", "pinyin": "jiù", "zh": "从前的、往日的。", "en": "old / former" },
+        { "char": "时", "pinyin": "shí", "zh": "时候，“旧时”即从前。", "en": "time / days" },
+        { "char": "茅", "pinyin": "máo", "zh": "茅草。", "en": "thatch" },
+        { "char": "店", "pinyin": "diàn", "zh": "店铺，这里指茅草小客店。", "en": "inn / shop" },
+        { "char": "社", "pinyin": "shè", "zh": "土地庙，“社林”指土地庙旁的树林。", "en": "village shrine of the earth god" },
+        { "char": "林", "pinyin": "lín", "zh": "树林。", "en": "woods" },
+        { "char": "边", "pinyin": "biān", "zh": "旁边。", "en": "beside" },
+        { "char": "路", "pinyin": "lù", "zh": "道路。", "en": "road" },
+        { "char": "转", "pinyin": "zhuǎn", "zh": "转弯（多音字：zhuàn 转动）。", "en": "to turn" },
+        { "char": "溪", "pinyin": "xī", "zh": "小溪。", "en": "brook" },
+        { "char": "桥", "pinyin": "qiáo", "zh": "桥。", "en": "bridge" },
+        { "char": "忽", "pinyin": "hū", "zh": "忽然。", "en": "suddenly" },
+        { "char": "见", "pinyin": "xiàn", "zh": "同“现”，显现、出现（多音字：jiàn 看见）。", "en": "to appear (= 现)" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "辛弃疾闲居江西上饶时，夜行黄沙岭，写下这首描绘农村夏夜的词。",
+          "en": "Written when Xin Qiji lived in retirement in Jiangxi, walking the Huangsha ridge at night to depict a summer countryside evening."
+        },
+        "culture": {
+          "zh": "“西江月”是词牌名，“夜行黄沙道中”是题目；社林指祭土地神的庙旁树林。",
+          "en": "'Xijiangyue' is the tune pattern and the rest is the title; 'shelin' refers to woods by the earth-god shrine."
+        },
+        "rhetoric": {
+          "zh": "上片以明月、蝉鸣、稻香、蛙声写丰年喜悦，下片以“忽见”写转弯遇店的惊喜，动静结合、对仗工整。",
+          "en": "The first stanza paints harvest joy through moon, cicadas, rice scent and frogs; the second's 'suddenly appears' captures delight at the inn, with neat parallelism and balanced motion and stillness."
+        }
+      },
+      "sandhi": [
+        { "text": "月夜", "rule": "半去声", "base": "yuè", "read": "yuè", "value": "53", "markChange": false, "where": "题目", "pos": 2, "zh": "\"月\"是去声，在去声\"夜\"前读\"半去\"（调值53），拼音不变：yuè。", "en": "月 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 夜; the written pinyin stays yuè." },
+        { "text": "半夜", "rule": "半去声", "base": "bàn", "read": "bàn", "value": "53", "markChange": false, "where": "清风半夜鸣蝉。", "pos": 2, "zh": "\"半\"是去声，在去声\"夜\"前读\"半去\"（调值53），拼音不变：bàn。", "en": "半 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 夜; the written pinyin stays bàn." },
+        { "text": "里说", "rule": "半上声", "base": "lǐ", "read": "lǐ", "value": "211", "markChange": false, "where": "稻花香里说丰年，", "pos": 3, "zh": "\"里\"是上声，在非上声\"说\"前读\"半上\"（调值211），拼音不变：lǐ。", "en": "里 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 说; the written pinyin stays lǐ." },
+        { "text": "取蛙", "rule": "半上声", "base": "qǔ", "read": "qǔ", "value": "211", "markChange": false, "where": "听取蛙声一片。", "pos": 1, "zh": "\"取\"是上声，在非上声\"蛙\"前读\"半上\"（调值211），拼音不变：qǔ。", "en": "取 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 蛙; the written pinyin stays qǔ." },
+        { "text": "一片", "rule": "一字变调", "base": "yī", "read": "yí", "value": "35", "markChange": true, "where": "听取蛙声一片。", "pos": 4, "zh": "\"一\"在去声\"片\"前变读阳平（第二声）：yī→yí。", "en": "一 before the fourth-tone 片 changes to second tone: yī → yí." },
+        { "text": "两三", "rule": "半上声", "base": "liǎng", "read": "liǎng", "value": "211", "markChange": false, "where": "两三点雨山前。", "pos": 0, "zh": "\"两\"是上声，在非上声\"三\"前读\"半上\"（调值211），拼音不变：liǎng。", "en": "两 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 三; the written pinyin stays liǎng." },
+        { "text": "点雨", "rule": "上上变调", "base": "diǎn", "read": "dián", "value": "35", "markChange": true, "where": "两三点雨山前。", "pos": 2, "zh": "\"点\"在上声\"雨\"前变读阳平（第二声）：diǎn→dián。", "en": "点 comes before the third-tone 雨, so it is read in second tone: diǎn → dián." },
+        { "text": "雨山", "rule": "半上声", "base": "yǔ", "read": "yǔ", "value": "211", "markChange": false, "where": "两三点雨山前。", "pos": 3, "zh": "\"雨\"是上声，在非上声\"山\"前读\"半上\"（调值211），拼音不变：yǔ。", "en": "雨 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 山; the written pinyin stays yǔ." },
+        { "text": "转溪", "rule": "半上声", "base": "zhuǎn", "read": "zhuǎn", "value": "211", "markChange": false, "where": "路转溪桥忽见。", "pos": 1, "zh": "\"转\"是上声，在非上声\"溪\"前读\"半上\"（调值211），拼音不变：zhuǎn。", "en": "转 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 溪; the written pinyin stays zhuǎn." }
+      ]
+    },
+    {
+      "id": "g6u-04-qiluchangzheng",
+      "title": "七律·长征",
+      "titlePinyin": "qī lǜ · cháng zhēng",
+      "titleEn": "The Long March (Seven-Character Regulated Verse)",
+      "author": "毛泽东",
+      "dynasty": "近现代",
+      "grade": 6,
+      "volume": "上",
+      "lines": [
+        { "text": "红军不怕远征难，", "pinyin": "hóng jūn bù pà yuǎn zhēng nán", "zh": "红军不怕万里长征路上的种种艰难。", "en": "The Red Army fears not the trials of the long march." },
+        { "text": "万水千山只等闲。", "pinyin": "wàn shuǐ qiān shān zhǐ děng xián", "zh": "千山万水在他们眼里不过是平平常常的事。", "en": "Countless rivers and peaks are nothing to them." },
+        { "text": "五岭逶迤腾细浪，", "pinyin": "wǔ lǐng wēi yí téng xì làng", "zh": "绵延起伏的五岭，在红军看来只像翻腾的细小波浪。", "en": "The rolling Five Ridges seem mere ripples." },
+        { "text": "乌蒙磅礴走泥丸。", "pinyin": "wū méng páng bó zǒu ní wán", "zh": "气势磅礴的乌蒙山，也不过像脚下滚动的泥丸。", "en": "The mighty Wumeng Mountains roll past like clay balls." },
+        { "text": "金沙水拍云崖暖，", "pinyin": "jīn shā shuǐ pāi yún yá nuǎn", "zh": "金沙江的水拍打着高耸入云的山崖，使人感到温暖。", "en": "Waters of the Jinsha lap warm against cloud-high cliffs." },
+        { "text": "大渡桥横铁索寒。", "pinyin": "dà dù qiáo héng tiě suǒ hán", "zh": "大渡河上横跨的泸定桥，铁索高悬，令人胆寒。", "en": "Over the Dadu the bridge's iron chains hang cold." },
+        { "text": "更喜岷山千里雪，", "pinyin": "gèng xǐ mín shān qiān lǐ xuě", "zh": "更让人欢喜的是翻过了千里皑皑白雪的岷山。", "en": "More gladdening still: the thousand-li snows of Min Mountain." },
+        { "text": "三军过后尽开颜。", "pinyin": "sān jūn guò hòu jìn kāi yán", "zh": "红军将士翻越过去之后，个个喜笑颜开。", "en": "Once the whole army crossed, every face broke into a smile." }
+      ],
+      "chars": [
+        { "char": "七", "pinyin": "qī", "zh": "七律，七言律诗。", "en": "seven" },
+        { "char": "律", "pinyin": "lǜ", "zh": "律诗，一种格律诗体。", "en": "regulated verse" },
+        { "char": "长", "pinyin": "cháng", "zh": "长征，长途行军（多音字：zhǎng 生长）。", "en": "long" },
+        { "char": "征", "pinyin": "zhēng", "zh": "远行、征途。", "en": "expedition / march" },
+        { "char": "红", "pinyin": "hóng", "zh": "红军。", "en": "red" },
+        { "char": "军", "pinyin": "jūn", "zh": "军队。", "en": "army" },
+        { "char": "不", "pinyin": "bù", "zh": "不。", "en": "not" },
+        { "char": "怕", "pinyin": "pà", "zh": "害怕、畏惧。", "en": "to fear" },
+        { "char": "远", "pinyin": "yuǎn", "zh": "遥远。", "en": "far" },
+        { "char": "难", "pinyin": "nán", "zh": "艰难（多音字：nàn 灾难）。", "en": "hardship / difficult" },
+        { "char": "万", "pinyin": "wàn", "zh": "万，极言其多。", "en": "ten thousand / countless" },
+        { "char": "水", "pinyin": "shuǐ", "zh": "江河水。", "en": "water / river" },
+        { "char": "千", "pinyin": "qiān", "zh": "千，极言其多。", "en": "thousand" },
+        { "char": "山", "pinyin": "shān", "zh": "山。", "en": "mountain" },
+        { "char": "只", "pinyin": "zhǐ", "zh": "只、仅仅（多音字：zhī 一只）。", "en": "only" },
+        { "char": "等", "pinyin": "děng", "zh": "等闲，平常。", "en": "(in 等闲) ordinary" },
+        { "char": "闲", "pinyin": "xián", "zh": "等闲，寻常、不放在心上。", "en": "(in 等闲) trivial" },
+        { "char": "五", "pinyin": "wǔ", "zh": "五岭，山名。", "en": "five" },
+        { "char": "岭", "pinyin": "lǐng", "zh": "山岭，这里指五岭。", "en": "ridge" },
+        { "char": "逶", "pinyin": "wēi", "zh": "逶迤，弯曲绵延的样子。", "en": "(in 逶迤) winding" },
+        { "char": "迤", "pinyin": "yí", "zh": "逶迤，绵延曲折。", "en": "(in 逶迤) meandering" },
+        { "char": "腾", "pinyin": "téng", "zh": "翻腾、奔涌。", "en": "to surge" },
+        { "char": "细", "pinyin": "xì", "zh": "细小。", "en": "tiny" },
+        { "char": "浪", "pinyin": "làng", "zh": "波浪。", "en": "wave" },
+        { "char": "乌", "pinyin": "wū", "zh": "乌蒙山，山名。", "en": "(place) Wumeng" },
+        { "char": "蒙", "pinyin": "méng", "zh": "乌蒙山，山名（多音字：mēng 蒙骗；měng 蒙古）。", "en": "(place) Wumeng" },
+        { "char": "磅", "pinyin": "páng", "zh": "磅礴，气势宏大（多音字：bàng 磅秤）。", "en": "(in 磅礴) majestic" },
+        { "char": "礴", "pinyin": "bó", "zh": "磅礴，广大无边。", "en": "(in 磅礴) vast" },
+        { "char": "走", "pinyin": "zǒu", "zh": "滚动、奔走。", "en": "to roll / move" },
+        { "char": "泥", "pinyin": "ní", "zh": "泥土。", "en": "mud / clay" },
+        { "char": "丸", "pinyin": "wán", "zh": "小球，“泥丸”指小泥球。", "en": "ball / pellet" },
+        { "char": "金", "pinyin": "jīn", "zh": "金沙江，江名。", "en": "(place) Jinsha" },
+        { "char": "沙", "pinyin": "shā", "zh": "金沙江，江名。", "en": "(place) Jinsha" },
+        { "char": "拍", "pinyin": "pāi", "zh": "拍打。", "en": "to beat against" },
+        { "char": "云", "pinyin": "yún", "zh": "云，“云崖”指高耸入云的山崖。", "en": "cloud" },
+        { "char": "崖", "pinyin": "yá", "zh": "山崖。", "en": "cliff" },
+        { "char": "暖", "pinyin": "nuǎn", "zh": "温暖，写渡江胜利的喜悦。", "en": "warm" },
+        { "char": "大", "pinyin": "dà", "zh": "大渡河，河名。", "en": "(place) Dadu" },
+        { "char": "渡", "pinyin": "dù", "zh": "大渡河，渡口。", "en": "(place) Dadu / crossing" },
+        { "char": "桥", "pinyin": "qiáo", "zh": "桥，这里指泸定桥。", "en": "bridge" },
+        { "char": "横", "pinyin": "héng", "zh": "横跨（多音字：hèng 蛮横）。", "en": "to span across" },
+        { "char": "铁", "pinyin": "tiě", "zh": "铁。", "en": "iron" },
+        { "char": "索", "pinyin": "suǒ", "zh": "铁索、绳索。", "en": "chain / cable" },
+        { "char": "寒", "pinyin": "hán", "zh": "寒冷，写铁索桥的惊险。", "en": "cold" },
+        { "char": "更", "pinyin": "gèng", "zh": "更加（多音字：gēng 更改）。", "en": "even more" },
+        { "char": "喜", "pinyin": "xǐ", "zh": "欢喜。", "en": "glad" },
+        { "char": "岷", "pinyin": "mín", "zh": "岷山，山名。", "en": "(place) Min" },
+        { "char": "里", "pinyin": "lǐ", "zh": "里，长度单位，“千里”极言其广。", "en": "li (distance)" },
+        { "char": "雪", "pinyin": "xuě", "zh": "雪。", "en": "snow" },
+        { "char": "三", "pinyin": "sān", "zh": "三军，指整个红军队伍。", "en": "three (whole army)" },
+        { "char": "过", "pinyin": "guò", "zh": "翻越、经过。", "en": "to cross / pass" },
+        { "char": "后", "pinyin": "hòu", "zh": "之后。", "en": "after" },
+        { "char": "尽", "pinyin": "jìn", "zh": "全、都（多音字：jǐn 尽管）。", "en": "all / entirely" },
+        { "char": "开", "pinyin": "kāi", "zh": "开颜，露出笑容。", "en": "(in 开颜) to break into" },
+        { "char": "颜", "pinyin": "yán", "zh": "面容，“开颜”指笑逐颜开。", "en": "face / countenance" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "1935年红军长征即将胜利之际，毛泽东写下此诗，回顾二万五千里征途的艰险与豪情。",
+          "en": "Mao Zedong wrote this in 1935 as the Long March neared victory, recalling the perils and heroism of the 25,000-li trek."
+        },
+        "culture": {
+          "zh": "全诗概括了越五岭、渡金沙江、夺泸定桥、翻岷山等长征中的重大历程。",
+          "en": "The poem condenses key episodes of the March: crossing the Five Ridges, the Jinsha, Luding Bridge, and the Min snows."
+        },
+        "rhetoric": {
+          "zh": "运用夸张与对比，把崇山大河化为“细浪”“泥丸”，以小衬大，气势雄浑，对仗工整。",
+          "en": "Hyperbole and contrast shrink great mountains and rivers to 'ripples' and 'clay balls', creating heroic grandeur in tight parallel couplets."
+        }
+      },
+      "sandhi": [
+        { "text": "不怕", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "红军不怕远征难，", "pos": 2, "zh": "\"不\"在去声\"怕\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 怕 changes to second tone: bù → bú." },
+        { "text": "远征", "rule": "半上声", "base": "yuǎn", "read": "yuǎn", "value": "211", "markChange": false, "where": "红军不怕远征难，", "pos": 4, "zh": "\"远\"是上声，在非上声\"征\"前读\"半上\"（调值211），拼音不变：yuǎn。", "en": "远 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 征; the written pinyin stays yuǎn." },
+        { "text": "水千", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "万水千山只等闲。", "pos": 1, "zh": "\"水\"是上声，在非上声\"千\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 千; the written pinyin stays shuǐ." },
+        { "text": "只等", "rule": "上上变调", "base": "zhǐ", "read": "zhí", "value": "35", "markChange": true, "where": "万水千山只等闲。", "pos": 4, "zh": "\"只\"在上声\"等\"前变读阳平（第二声）：zhǐ→zhí。", "en": "只 comes before the third-tone 等, so it is read in second tone: zhǐ → zhí." },
+        { "text": "等闲", "rule": "半上声", "base": "děng", "read": "děng", "value": "211", "markChange": false, "where": "万水千山只等闲。", "pos": 5, "zh": "\"等\"是上声，在非上声\"闲\"前读\"半上\"（调值211），拼音不变：děng。", "en": "等 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 闲; the written pinyin stays děng." },
+        { "text": "五岭", "rule": "上上变调", "base": "wǔ", "read": "wú", "value": "35", "markChange": true, "where": "五岭逶迤腾细浪，", "pos": 0, "zh": "\"五\"在上声\"岭\"前变读阳平（第二声）：wǔ→wú。", "en": "五 comes before the third-tone 岭, so it is read in second tone: wǔ → wú." },
+        { "text": "岭逶", "rule": "半上声", "base": "lǐng", "read": "lǐng", "value": "211", "markChange": false, "where": "五岭逶迤腾细浪，", "pos": 1, "zh": "\"岭\"是上声，在非上声\"逶\"前读\"半上\"（调值211），拼音不变：lǐng。", "en": "岭 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 逶; the written pinyin stays lǐng." },
+        { "text": "走泥", "rule": "半上声", "base": "zǒu", "read": "zǒu", "value": "211", "markChange": false, "where": "乌蒙磅礴走泥丸。", "pos": 4, "zh": "\"走\"是上声，在非上声\"泥\"前读\"半上\"（调值211），拼音不变：zǒu。", "en": "走 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 泥; the written pinyin stays zǒu." },
+        { "text": "水拍", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "金沙水拍云崖暖，", "pos": 2, "zh": "\"水\"是上声，在非上声\"拍\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 拍; the written pinyin stays shuǐ." },
+        { "text": "大渡", "rule": "半去声", "base": "dà", "read": "dà", "value": "53", "markChange": false, "where": "大渡桥横铁索寒。", "pos": 0, "zh": "\"大\"是去声，在去声\"渡\"前读\"半去\"（调值53），拼音不变：dà。", "en": "大 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 渡; the written pinyin stays dà." },
+        { "text": "铁索", "rule": "上上变调", "base": "tiě", "read": "tié", "value": "35", "markChange": true, "where": "大渡桥横铁索寒。", "pos": 4, "zh": "\"铁\"在上声\"索\"前变读阳平（第二声）：tiě→tié。", "en": "铁 comes before the third-tone 索, so it is read in second tone: tiě → tié." },
+        { "text": "索寒", "rule": "半上声", "base": "suǒ", "read": "suǒ", "value": "211", "markChange": false, "where": "大渡桥横铁索寒。", "pos": 5, "zh": "\"索\"是上声，在非上声\"寒\"前读\"半上\"（调值211），拼音不变：suǒ。", "en": "索 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 寒; the written pinyin stays suǒ." },
+        { "text": "喜岷", "rule": "半上声", "base": "xǐ", "read": "xǐ", "value": "211", "markChange": false, "where": "更喜岷山千里雪，", "pos": 1, "zh": "\"喜\"是上声，在非上声\"岷\"前读\"半上\"（调值211），拼音不变：xǐ。", "en": "喜 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 岷; the written pinyin stays xǐ." },
+        { "text": "里雪", "rule": "上上变调", "base": "lǐ", "read": "lí", "value": "35", "markChange": true, "where": "更喜岷山千里雪，", "pos": 5, "zh": "\"里\"在上声\"雪\"前变读阳平（第二声）：lǐ→lí。", "en": "里 comes before the third-tone 雪, so it is read in second tone: lǐ → lí." },
+        { "text": "过后", "rule": "半去声", "base": "guò", "read": "guò", "value": "53", "markChange": false, "where": "三军过后尽开颜。", "pos": 2, "zh": "\"过\"是去声，在去声\"后\"前读\"半去\"（调值53），拼音不变：guò。", "en": "过 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 后; the written pinyin stays guò." }
+      ]
+    },
+    {
+      "id": "g6u-05-langtaoshaqiyi",
+      "title": "浪淘沙（其一）",
+      "titlePinyin": "làng táo shā (qí yī)",
+      "titleEn": "Waves Scouring Sand (No. 1)",
+      "author": "刘禹锡",
+      "dynasty": "唐",
+      "grade": 6,
+      "volume": "上",
+      "lines": [
+        { "text": "九曲黄河万里沙，", "pinyin": "jiǔ qū huáng hé wàn lǐ shā", "zh": "黄河弯弯曲曲，挟带着万里黄沙奔流。", "en": "The winding Yellow River carries sand for ten thousand li." },
+        { "text": "浪淘风簸自天涯。", "pinyin": "làng táo fēng bǒ zì tiān yá", "zh": "波浪冲刷、狂风颠簸，仿佛是从天边奔涌而来。", "en": "Waves scour and winds toss it, as if from the world's far edge." },
+        { "text": "如今直上银河去，", "pinyin": "rú jīn zhí shàng yín hé qù", "zh": "如今我要沿着黄河一直上到天上的银河去，", "en": "Now let me ride straight up to the Silver River in the sky," },
+        { "text": "同到牵牛织女家。", "pinyin": "tóng dào qiān niú zhī nǚ jiā", "zh": "一同到牛郎织女居住的人家做客。", "en": "and visit together the homes of the Cowherd and Weaver Maid." }
+      ],
+      "chars": [
+        { "char": "浪", "pinyin": "làng", "zh": "波浪；又为词牌“浪淘沙”用字。", "en": "wave" },
+        { "char": "淘", "pinyin": "táo", "zh": "冲刷、淘洗。", "en": "to wash / scour" },
+        { "char": "沙", "pinyin": "shā", "zh": "泥沙。", "en": "sand" },
+        { "char": "其", "pinyin": "qí", "zh": "其一，第一首。", "en": "(its) the first" },
+        { "char": "一", "pinyin": "yī", "zh": "第一。", "en": "one / first" },
+        { "char": "九", "pinyin": "jiǔ", "zh": "九曲，形容黄河弯曲多。", "en": "nine (many bends)" },
+        { "char": "曲", "pinyin": "qū", "zh": "弯曲（多音字：qǔ 歌曲）。", "en": "winding" },
+        { "char": "黄", "pinyin": "huáng", "zh": "黄河。", "en": "yellow" },
+        { "char": "河", "pinyin": "hé", "zh": "河，这里指黄河。", "en": "river" },
+        { "char": "万", "pinyin": "wàn", "zh": "万，极言其多。", "en": "ten thousand" },
+        { "char": "里", "pinyin": "lǐ", "zh": "里，长度单位。", "en": "li (distance)" },
+        { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },
+        { "char": "簸", "pinyin": "bǒ", "zh": "颠簸、扬动（多音字：bò 簸箕）。", "en": "to toss / winnow" },
+        { "char": "自", "pinyin": "zì", "zh": "从、自从。", "en": "from" },
+        { "char": "天", "pinyin": "tiān", "zh": "天涯，天边。", "en": "sky / horizon" },
+        { "char": "涯", "pinyin": "yá", "zh": "边际，“天涯”指极远处。", "en": "edge / shore" },
+        { "char": "如", "pinyin": "rú", "zh": "如今，现在。", "en": "(in 如今) now" },
+        { "char": "今", "pinyin": "jīn", "zh": "现在。", "en": "now" },
+        { "char": "直", "pinyin": "zhí", "zh": "一直、径直。", "en": "straight" },
+        { "char": "上", "pinyin": "shàng", "zh": "上溯、登上。", "en": "to go up" },
+        { "char": "银", "pinyin": "yín", "zh": "银河，天上的星河。", "en": "(in 银河) silver" },
+        { "char": "去", "pinyin": "qù", "zh": "前往。", "en": "to go" },
+        { "char": "同", "pinyin": "tóng", "zh": "一同、共同。", "en": "together" },
+        { "char": "到", "pinyin": "dào", "zh": "到达。", "en": "to arrive" },
+        { "char": "牵", "pinyin": "qiān", "zh": "牵牛，即牛郎星。", "en": "(in 牵牛) Cowherd" },
+        { "char": "牛", "pinyin": "niú", "zh": "牵牛，牛郎。", "en": "ox / Cowherd" },
+        { "char": "织", "pinyin": "zhī", "zh": "织女，织女星。", "en": "to weave / Weaver" },
+        { "char": "女", "pinyin": "nǚ", "zh": "织女，传说中的仙女。", "en": "woman / maid" },
+        { "char": "家", "pinyin": "jiā", "zh": "家、住处。", "en": "home" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "刘禹锡《浪淘沙》组诗共九首，此为第一首，咏黄河气势并寄托豪迈奇想。",
+          "en": "This is the first of Liu Yuxi's nine 'Langtaosha' poems, praising the Yellow River's force and voicing bold fancy."
+        },
+        "culture": {
+          "zh": "末句借牛郎织女的神话传说，化用《博物志》乘槎上天河的典故。",
+          "en": "The ending draws on the Cowherd-Weaver myth and the legend of riding a raft up to the heavenly river."
+        },
+        "rhetoric": {
+          "zh": "前两句写实，气势磅礴；后两句驰骋想象，由黄河直上银河，浪漫豪迈。",
+          "en": "The first couplet is grandly realistic; the second leaps to imagination, soaring from the river to the Milky Way."
+        }
+      },
+      "sandhi": [
+        { "text": "九曲", "rule": "半上声", "base": "jiǔ", "read": "jiǔ", "value": "211", "markChange": false, "where": "九曲黄河万里沙，", "pos": 0, "zh": "\"九\"是上声，在非上声\"曲\"前读\"半上\"（调值211），拼音不变：jiǔ。", "en": "九 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 曲; the written pinyin stays jiǔ." },
+        { "text": "里沙", "rule": "半上声", "base": "lǐ", "read": "lǐ", "value": "211", "markChange": false, "where": "九曲黄河万里沙，", "pos": 5, "zh": "\"里\"是上声，在非上声\"沙\"前读\"半上\"（调值211），拼音不变：lǐ。", "en": "里 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 沙; the written pinyin stays lǐ." },
+        { "text": "簸自", "rule": "半上声", "base": "bǒ", "read": "bǒ", "value": "211", "markChange": false, "where": "浪淘风簸自天涯。", "pos": 3, "zh": "\"簸\"是上声，在非上声\"自\"前读\"半上\"（调值211），拼音不变：bǒ。", "en": "簸 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 自; the written pinyin stays bǒ." },
+        { "text": "女家", "rule": "半上声", "base": "nǚ", "read": "nǚ", "value": "211", "markChange": false, "where": "同到牵牛织女家。", "pos": 5, "zh": "\"女\"是上声，在非上声\"家\"前读\"半上\"（调值211），拼音不变：nǚ。", "en": "女 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 家; the written pinyin stays nǚ." }
+      ]
+    },
+    {
+      "id": "g6u-06-jiangnanchun",
+      "title": "江南春",
+      "titlePinyin": "jiāng nán chūn",
+      "titleEn": "Spring in the South of the Yangtze",
+      "author": "杜牧",
+      "dynasty": "唐",
+      "grade": 6,
+      "volume": "上",
+      "lines": [
+        { "text": "千里莺啼绿映红，", "pinyin": "qiān lǐ yīng tí lǜ yìng hóng", "zh": "辽阔的江南到处黄莺啼鸣，绿叶映衬着红花。", "en": "For a thousand li orioles sing, green sets off red." },
+        { "text": "水村山郭酒旗风。", "pinyin": "shuǐ cūn shān guō jiǔ qí fēng", "zh": "依水的村庄、靠山的城郭，酒店的旗子在风中飘扬。", "en": "By riverside hamlets and hill-girt towns, tavern flags flutter in the breeze." },
+        { "text": "南朝四百八十寺，", "pinyin": "nán cháo sì bǎi bā shí sì", "zh": "南朝时修建的众多佛寺，", "en": "The four hundred eighty temples of the Southern Dynasties—" },
+        { "text": "多少楼台烟雨中。", "pinyin": "duō shǎo lóu tái yān yǔ zhōng", "zh": "如今有多少楼台亭阁笼罩在迷蒙的烟雨之中。", "en": "how many towers now stand veiled in misty rain." }
+      ],
+      "chars": [
+        { "char": "江", "pinyin": "jiāng", "zh": "江南，长江以南地区。", "en": "(in 江南) river / south region" },
+        { "char": "南", "pinyin": "nán", "zh": "江南；又指南朝。", "en": "south" },
+        { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
+        { "char": "千", "pinyin": "qiān", "zh": "千里，极言地域辽阔。", "en": "thousand" },
+        { "char": "里", "pinyin": "lǐ", "zh": "里，长度单位。", "en": "li (distance)" },
+        { "char": "莺", "pinyin": "yīng", "zh": "黄莺、黄鹂。", "en": "oriole" },
+        { "char": "啼", "pinyin": "tí", "zh": "鸟鸣。", "en": "to chirp / cry" },
+        { "char": "绿", "pinyin": "lǜ", "zh": "绿色，指绿叶（多音字：lù 绿林）。", "en": "green" },
+        { "char": "映", "pinyin": "yìng", "zh": "映衬、辉映。", "en": "to set off / reflect" },
+        { "char": "红", "pinyin": "hóng", "zh": "红色，指红花。", "en": "red" },
+        { "char": "水", "pinyin": "shuǐ", "zh": "水，“水村”指临水的村庄。", "en": "water" },
+        { "char": "村", "pinyin": "cūn", "zh": "村庄。", "en": "village" },
+        { "char": "山", "pinyin": "shān", "zh": "山，“山郭”指依山的城。", "en": "mountain" },
+        { "char": "郭", "pinyin": "guō", "zh": "外城、城郭。", "en": "town wall / town" },
+        { "char": "酒", "pinyin": "jiǔ", "zh": "酒，“酒旗”指酒店的招旗。", "en": "wine" },
+        { "char": "旗", "pinyin": "qí", "zh": "旗子、酒旗。", "en": "flag / banner" },
+        { "char": "风", "pinyin": "fēng", "zh": "风，旗在风中飘。", "en": "wind" },
+        { "char": "朝", "pinyin": "cháo", "zh": "朝代，“南朝”（多音字：zhāo 朝阳）。", "en": "(in 南朝) dynasty" },
+        { "char": "四", "pinyin": "sì", "zh": "数字四。", "en": "four" },
+        { "char": "百", "pinyin": "bǎi", "zh": "数字百。", "en": "hundred" },
+        { "char": "八", "pinyin": "bā", "zh": "数字八。", "en": "eight" },
+        { "char": "十", "pinyin": "shí", "zh": "数字十，“四百八十”极言寺庙之多。", "en": "ten" },
+        { "char": "寺", "pinyin": "sì", "zh": "寺庙。", "en": "temple" },
+        { "char": "多", "pinyin": "duō", "zh": "多少，表示数量很多。", "en": "many" },
+        { "char": "少", "pinyin": "shǎo", "zh": "多少（多音字：shào 少年）。", "en": "(in 多少) how many" },
+        { "char": "楼", "pinyin": "lóu", "zh": "楼阁。", "en": "tower" },
+        { "char": "台", "pinyin": "tái", "zh": "亭台，“楼台”泛指楼阁建筑。", "en": "terrace / pavilion" },
+        { "char": "烟", "pinyin": "yān", "zh": "烟雾，“烟雨”指迷蒙细雨。", "en": "mist" },
+        { "char": "雨", "pinyin": "yǔ", "zh": "雨。", "en": "rain" },
+        { "char": "中", "pinyin": "zhōng", "zh": "之中（多音字：zhòng 中奖）。", "en": "within" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "杜牧描绘江南春日的明丽风光，并由南朝众多寺庙引发对历史兴亡的感慨。",
+          "en": "Du Mu paints the bright spring scenery of the Jiangnan region while musing on history through the Southern Dynasties' temples."
+        },
+        "culture": {
+          "zh": "“南朝四百八十寺”反映南朝崇佛、广建佛寺的史实，今多隐于烟雨。",
+          "en": "The line reflects the Southern Dynasties' Buddhist fervor and their many temples, now half-lost in mist."
+        },
+        "rhetoric": {
+          "zh": "以“千里”总写，色彩对比鲜明，结尾以“烟雨”朦胧之景寄寓怀古之思，景中含情。",
+          "en": "A sweeping 'thousand li' opening, vivid color contrast, and a misty close that carries reflection on the past."
+        }
+      },
+      "sandhi": [
+        { "text": "里莺", "rule": "半上声", "base": "lǐ", "read": "lǐ", "value": "211", "markChange": false, "where": "千里莺啼绿映红，", "pos": 1, "zh": "\"里\"是上声，在非上声\"莺\"前读\"半上\"（调值211），拼音不变：lǐ。", "en": "里 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 莺; the written pinyin stays lǐ." },
+        { "text": "绿映", "rule": "半去声", "base": "lǜ", "read": "lǜ", "value": "53", "markChange": false, "where": "千里莺啼绿映红，", "pos": 4, "zh": "\"绿\"是去声，在去声\"映\"前读\"半去\"（调值53），拼音不变：lǜ。", "en": "绿 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 映; the written pinyin stays lǜ." },
+        { "text": "水村", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "水村山郭酒旗风。", "pos": 0, "zh": "\"水\"是上声，在非上声\"村\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 村; the written pinyin stays shuǐ." },
+        { "text": "酒旗", "rule": "半上声", "base": "jiǔ", "read": "jiǔ", "value": "211", "markChange": false, "where": "水村山郭酒旗风。", "pos": 4, "zh": "\"酒\"是上声，在非上声\"旗\"前读\"半上\"（调值211），拼音不变：jiǔ。", "en": "酒 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 旗; the written pinyin stays jiǔ." },
+        { "text": "百八", "rule": "半上声", "base": "bǎi", "read": "bǎi", "value": "211", "markChange": false, "where": "南朝四百八十寺，", "pos": 3, "zh": "\"百\"是上声，在非上声\"八\"前读\"半上\"（调值211），拼音不变：bǎi。", "en": "百 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 八; the written pinyin stays bǎi." },
+        { "text": "少楼", "rule": "半上声", "base": "shǎo", "read": "shǎo", "value": "211", "markChange": false, "where": "多少楼台烟雨中。", "pos": 1, "zh": "\"少\"是上声，在非上声\"楼\"前读\"半上\"（调值211），拼音不变：shǎo。", "en": "少 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 楼; the written pinyin stays shǎo." },
+        { "text": "雨中", "rule": "半上声", "base": "yǔ", "read": "yǔ", "value": "211", "markChange": false, "where": "多少楼台烟雨中。", "pos": 5, "zh": "\"雨\"是上声，在非上声\"中\"前读\"半上\"（调值211），拼音不变：yǔ。", "en": "雨 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 中; the written pinyin stays yǔ." }
+      ]
+    },
+    {
+      "id": "g6u-07-shuhuyinxianshengbi",
+      "title": "书湖阴先生壁",
+      "titlePinyin": "shū hú yīn xiān shēng bì",
+      "titleEn": "Inscribed on Mr. Huyin's Wall",
+      "author": "王安石",
+      "dynasty": "宋",
+      "grade": 6,
+      "volume": "上",
+      "lines": [
+        { "text": "茅檐长扫净无苔，", "pinyin": "máo yán cháng sǎo jìng wú tái", "zh": "茅草屋檐下经常打扫，洁净得没有一点青苔。", "en": "The thatched eaves, often swept, are clean and free of moss." },
+        { "text": "花木成畦手自栽。", "pinyin": "huā mù chéng qí shǒu zì zāi", "zh": "花草树木一畦一畦，都是主人亲手栽种的。", "en": "Flowers and trees in neat beds, all planted by his own hand." },
+        { "text": "一水护田将绿绕，", "pinyin": "yī shuǐ hù tián jiāng lǜ rào", "zh": "一道溪水护卫着农田，把绿色的田地环绕起来。", "en": "A stream guards the fields, encircling the green all around." },
+        { "text": "两山排闼送青来。", "pinyin": "liǎng shān pái tà sòng qīng lái", "zh": "两座青山推门而入，把青翠的颜色送到眼前。", "en": "Two hills, flinging the door wide, deliver their blue-green in." }
+      ],
+      "chars": [
+        { "char": "书", "pinyin": "shū", "zh": "书写、题写。", "en": "to write / inscribe" },
+        { "char": "湖", "pinyin": "hú", "zh": "湖阴先生，人名（杨德逢）。", "en": "(in name) Huyin" },
+        { "char": "阴", "pinyin": "yīn", "zh": "湖阴先生，人名。", "en": "(in name) Huyin" },
+        { "char": "先", "pinyin": "xiān", "zh": "先生，对人的尊称。", "en": "(in 先生) mister" },
+        { "char": "生", "pinyin": "shēng", "zh": "先生，对人的尊称。", "en": "(in 先生) sir" },
+        { "char": "壁", "pinyin": "bì", "zh": "墙壁。", "en": "wall" },
+        { "char": "茅", "pinyin": "máo", "zh": "茅草。", "en": "thatch" },
+        { "char": "檐", "pinyin": "yán", "zh": "屋檐。", "en": "eaves" },
+        { "char": "长", "pinyin": "cháng", "zh": "经常、长久（多音字：zhǎng 生长）。", "en": "often / long" },
+        { "char": "扫", "pinyin": "sǎo", "zh": "打扫（多音字：sào 扫帚）。", "en": "to sweep" },
+        { "char": "净", "pinyin": "jìng", "zh": "干净、洁净。", "en": "clean" },
+        { "char": "无", "pinyin": "wú", "zh": "没有。", "en": "without" },
+        { "char": "苔", "pinyin": "tái", "zh": "青苔（多音字：tāi 舌苔）。", "en": "moss" },
+        { "char": "花", "pinyin": "huā", "zh": "花。", "en": "flower" },
+        { "char": "木", "pinyin": "mù", "zh": "树木。", "en": "tree" },
+        { "char": "成", "pinyin": "chéng", "zh": "成、构成，“成畦”指排成一畦畦。", "en": "to form" },
+        { "char": "畦", "pinyin": "qí", "zh": "田园中分块的小区，菜畦。", "en": "garden bed / plot" },
+        { "char": "手", "pinyin": "shǒu", "zh": "手，亲手。", "en": "hand" },
+        { "char": "自", "pinyin": "zì", "zh": "亲自。", "en": "oneself" },
+        { "char": "栽", "pinyin": "zāi", "zh": "栽种。", "en": "to plant" },
+        { "char": "一", "pinyin": "yī", "zh": "一道、一条。", "en": "one / a" },
+        { "char": "水", "pinyin": "shuǐ", "zh": "溪水。", "en": "water / stream" },
+        { "char": "护", "pinyin": "hù", "zh": "护卫、环护。", "en": "to guard" },
+        { "char": "田", "pinyin": "tián", "zh": "田地。", "en": "field" },
+        { "char": "将", "pinyin": "jiāng", "zh": "把（多音字：jiàng 将领）。", "en": "(coverb) to take" },
+        { "char": "绿", "pinyin": "lǜ", "zh": "绿色的田野（多音字：lù 绿林）。", "en": "green" },
+        { "char": "绕", "pinyin": "rào", "zh": "环绕。", "en": "to encircle" },
+        { "char": "两", "pinyin": "liǎng", "zh": "两座。", "en": "two" },
+        { "char": "山", "pinyin": "shān", "zh": "山。", "en": "mountain" },
+        { "char": "排", "pinyin": "pái", "zh": "推开，“排闼”指推门。", "en": "to push open" },
+        { "char": "闼", "pinyin": "tà", "zh": "小门、门。", "en": "door" },
+        { "char": "送", "pinyin": "sòng", "zh": "送来、送到。", "en": "to send / deliver" },
+        { "char": "青", "pinyin": "qīng", "zh": "青翠的山色。", "en": "blue-green" },
+        { "char": "来", "pinyin": "lái", "zh": "来，送到眼前。", "en": "to come" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "王安石晚年退居江宁，题写在友人湖阴先生（杨德逢）家的墙壁上，赞其庭院清雅。",
+          "en": "Written in Wang Anshi's later years in Jiangning, inscribed on the wall of his friend Mr. Huyin, praising his tidy, elegant home."
+        },
+        "culture": {
+          "zh": "“书……壁”是古代题壁诗的常见形式，借主人居处之洁雅见其品格高洁。",
+          "en": "Inscribing poems on walls was a common Tang-Song practice; the tidy home reflects the host's noble character."
+        },
+        "rhetoric": {
+          "zh": "后两句用拟人和对仗，“护”“将”“排”“送”赋予山水以情意，化静为动，生动传神。",
+          "en": "The last couplet personifies water and hills—'guard', 'encircle', 'fling open', 'deliver'—turning still scenery lively, in tight parallelism."
+        }
+      },
+      "sandhi": [
+        { "text": "扫净", "rule": "半上声", "base": "sǎo", "read": "sǎo", "value": "211", "markChange": false, "where": "茅檐长扫净无苔，", "pos": 3, "zh": "\"扫\"是上声，在非上声\"净\"前读\"半上\"（调值211），拼音不变：sǎo。", "en": "扫 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 净; the written pinyin stays sǎo." },
+        { "text": "手自", "rule": "半上声", "base": "shǒu", "read": "shǒu", "value": "211", "markChange": false, "where": "花木成畦手自栽。", "pos": 4, "zh": "\"手\"是上声，在非上声\"自\"前读\"半上\"（调值211），拼音不变：shǒu。", "en": "手 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 自; the written pinyin stays shǒu." },
+        { "text": "一水", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "一水护田将绿绕，", "pos": 0, "zh": "\"一\"在阴平/阳平/上声\"水\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 水 changes to fourth tone: yī → yì." },
+        { "text": "水护", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "一水护田将绿绕，", "pos": 1, "zh": "\"水\"是上声，在非上声\"护\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 护; the written pinyin stays shuǐ." },
+        { "text": "两山", "rule": "半上声", "base": "liǎng", "read": "liǎng", "value": "211", "markChange": false, "where": "两山排闼送青来。", "pos": 0, "zh": "\"两\"是上声，在非上声\"山\"前读\"半上\"（调值211），拼音不变：liǎng。", "en": "两 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 山; the written pinyin stays liǎng." }
+      ]
+    },
+    {
+      "id": "g6u-08-huixiangoushu",
+      "title": "回乡偶书",
+      "titlePinyin": "huí xiāng ǒu shū",
+      "titleEn": "Casually Written on Returning Home",
+      "author": "贺知章",
+      "dynasty": "唐",
+      "grade": 6,
+      "volume": "上",
+      "lines": [
+        { "text": "少小离家老大回，", "pinyin": "shào xiǎo lí jiā lǎo dà huí", "zh": "年少时离开家乡，年老了才回来。", "en": "Young I left home, old I now return." },
+        { "text": "乡音无改鬓毛衰。", "pinyin": "xiāng yīn wú gǎi bìn máo cuī", "zh": "家乡的口音没有改变，鬓边的头发却已稀疏花白。", "en": "My hometown accent unchanged, but the hair at my temples has thinned." },
+        { "text": "儿童相见不相识，", "pinyin": "ér tóng xiāng jiàn bù xiāng shí", "zh": "村里的孩子见了我却都不认识，", "en": "The children meet me but do not know me," },
+        { "text": "笑问客从何处来。", "pinyin": "xiào wèn kè cóng hé chù lái", "zh": "笑着问我这位客人是从哪里来的。", "en": "and ask with a smile: 'Where, sir, do you come from?'" }
+      ],
+      "chars": [
+        { "char": "回", "pinyin": "huí", "zh": "返回。", "en": "to return" },
+        { "char": "乡", "pinyin": "xiāng", "zh": "家乡、故乡。", "en": "hometown" },
+        { "char": "偶", "pinyin": "ǒu", "zh": "偶然，“偶书”指随意写下。", "en": "by chance" },
+        { "char": "书", "pinyin": "shū", "zh": "书写。", "en": "to write" },
+        { "char": "少", "pinyin": "shào", "zh": "年少（多音字：shǎo 多少）。", "en": "young" },
+        { "char": "小", "pinyin": "xiǎo", "zh": "年纪小，“少小”指年幼时。", "en": "small / young" },
+        { "char": "离", "pinyin": "lí", "zh": "离开。", "en": "to leave" },
+        { "char": "家", "pinyin": "jiā", "zh": "家、家乡。", "en": "home" },
+        { "char": "老", "pinyin": "lǎo", "zh": "年老，“老大”指年纪大了。", "en": "old" },
+        { "char": "大", "pinyin": "dà", "zh": "“老大”指年岁已大。", "en": "(in 老大) grown old" },
+        { "char": "音", "pinyin": "yīn", "zh": "口音，“乡音”指家乡话。", "en": "accent / voice" },
+        { "char": "无", "pinyin": "wú", "zh": "没有。", "en": "no / not" },
+        { "char": "改", "pinyin": "gǎi", "zh": "改变。", "en": "to change" },
+        { "char": "鬓", "pinyin": "bìn", "zh": "鬓发，耳边的头发。", "en": "hair at the temples" },
+        { "char": "毛", "pinyin": "máo", "zh": "毛发，“鬓毛”指鬓发。", "en": "hair" },
+        { "char": "衰", "pinyin": "cuī", "zh": "（鬓发）疏落花白，此处旧读 cuī 以协韵（今读 shuāi）。", "en": "to thin / wane (rhyme reading cuī)" },
+        { "char": "儿", "pinyin": "ér", "zh": "儿童，小孩。", "en": "child" },
+        { "char": "童", "pinyin": "tóng", "zh": "儿童。", "en": "child" },
+        { "char": "相", "pinyin": "xiāng", "zh": "相见、相识，表互相或动作偏指（多音字：xiàng 相貌）。", "en": "(in 相见/相识) each other" },
+        { "char": "见", "pinyin": "jiàn", "zh": "看见、遇见。", "en": "to meet / see" },
+        { "char": "不", "pinyin": "bù", "zh": "不。", "en": "not" },
+        { "char": "识", "pinyin": "shí", "zh": "认识（多音字：zhì 标识）。", "en": "to recognize" },
+        { "char": "笑", "pinyin": "xiào", "zh": "微笑。", "en": "to smile" },
+        { "char": "问", "pinyin": "wèn", "zh": "询问。", "en": "to ask" },
+        { "char": "客", "pinyin": "kè", "zh": "客人，孩子把诗人当作外来客。", "en": "guest / stranger" },
+        { "char": "从", "pinyin": "cóng", "zh": "从、由。", "en": "from" },
+        { "char": "何", "pinyin": "hé", "zh": "什么，“何处”即哪里。", "en": "what / which" },
+        { "char": "处", "pinyin": "chù", "zh": "地方（多音字：chǔ 处理）。", "en": "place" },
+        { "char": "来", "pinyin": "lái", "zh": "来。", "en": "to come" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "贺知章年逾八十辞官还乡，写下久客返乡、物是人非的感慨。",
+          "en": "Written when He Zhizhang, over eighty, resigned and returned home after decades away, voicing the ache of long absence."
+        },
+        "culture": {
+          "zh": "“衰”字旧读 cuī，与“回”“来”押韵；体现古诗音韵之美。",
+          "en": "The character 衰 takes its old reading 'cuī' to rhyme with 回 and 来, showing classical rhyme practice."
+        },
+        "rhetoric": {
+          "zh": "前两句对比“少小”与“老大”、“乡音”与“鬓衰”，后两句以儿童发问的细节含蓄抒发悲凉。",
+          "en": "The first couplet contrasts youth and age, unchanged accent and graying hair; the children's question quietly conveys bittersweet feeling."
+        }
+      },
+      "sandhi": [
+        { "text": "偶书", "rule": "半上声", "base": "ǒu", "read": "ǒu", "value": "211", "markChange": false, "where": "题目", "pos": 2, "zh": "\"偶\"是上声，在非上声\"书\"前读\"半上\"（调值211），拼音不变：ǒu。", "en": "偶 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 书; the written pinyin stays ǒu." },
+        { "text": "小离", "rule": "半上声", "base": "xiǎo", "read": "xiǎo", "value": "211", "markChange": false, "where": "少小离家老大回，", "pos": 1, "zh": "\"小\"是上声，在非上声\"离\"前读\"半上\"（调值211），拼音不变：xiǎo。", "en": "小 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 离; the written pinyin stays xiǎo." },
+        { "text": "老大", "rule": "半上声", "base": "lǎo", "read": "lǎo", "value": "211", "markChange": false, "where": "少小离家老大回，", "pos": 4, "zh": "\"老\"是上声，在非上声\"大\"前读\"半上\"（调值211），拼音不变：lǎo。", "en": "老 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 大; the written pinyin stays lǎo." },
+        { "text": "改鬓", "rule": "半上声", "base": "gǎi", "read": "gǎi", "value": "211", "markChange": false, "where": "乡音无改鬓毛衰。", "pos": 3, "zh": "\"改\"是上声，在非上声\"鬓\"前读\"半上\"（调值211），拼音不变：gǎi。", "en": "改 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 鬓; the written pinyin stays gǎi." },
+        { "text": "笑问", "rule": "半去声", "base": "xiào", "read": "xiào", "value": "53", "markChange": false, "where": "笑问客从何处来。", "pos": 0, "zh": "\"笑\"是去声，在去声\"问\"前读\"半去\"（调值53），拼音不变：xiào。", "en": "笑 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 问; the written pinyin stays xiào." }
+      ]
+    },
+    {
+      "id": "g6u-09-chunri",
+      "title": "春日",
+      "titlePinyin": "chūn rì",
+      "titleEn": "A Spring Day",
+      "author": "朱熹",
+      "dynasty": "宋",
+      "grade": 6,
+      "volume": "上",
+      "lines": [
+        { "text": "胜日寻芳泗水滨，", "pinyin": "shèng rì xún fāng sì shuǐ bīn", "zh": "在风和日丽的日子里，到泗水之滨去观赏春花。", "en": "On a fine day I seek spring's blooms by the Si River's shore." },
+        { "text": "无边光景一时新。", "pinyin": "wú biān guāng jǐng yī shí xīn", "zh": "无边无际的风光景物，一时间都焕然一新。", "en": "Boundless scenery all at once is fresh and new." },
+        { "text": "等闲识得东风面，", "pinyin": "děng xián shí dé dōng fēng miàn", "zh": "轻易就能认出春风的面貌，", "en": "With ease one knows the face of the east wind;" },
+        { "text": "万紫千红总是春。", "pinyin": "wàn zǐ qiān hóng zǒng shì chūn", "zh": "那万紫千红的景象，全都是春天带来的。", "en": "Ten thousand purples and a thousand reds—all of it is spring." }
+      ],
+      "chars": [
+        { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
+        { "char": "日", "pinyin": "rì", "zh": "日子；又指好天气。", "en": "day" },
+        { "char": "胜", "pinyin": "shèng", "zh": "胜日，天气晴好的美好日子。", "en": "(in 胜日) fine / fair" },
+        { "char": "寻", "pinyin": "xún", "zh": "寻找、探访。", "en": "to seek" },
+        { "char": "芳", "pinyin": "fāng", "zh": "花草，“寻芳”指赏春游玩。", "en": "fragrant flowers / spring" },
+        { "char": "泗", "pinyin": "sì", "zh": "泗水，河名。", "en": "(river) Si" },
+        { "char": "水", "pinyin": "shuǐ", "zh": "水，这里指泗水。", "en": "water / river" },
+        { "char": "滨", "pinyin": "bīn", "zh": "水边、岸边。", "en": "shore / bank" },
+        { "char": "无", "pinyin": "wú", "zh": "没有，“无边”指广阔无边。", "en": "without / boundless" },
+        { "char": "边", "pinyin": "biān", "zh": "边际。", "en": "edge / bound" },
+        { "char": "光", "pinyin": "guāng", "zh": "光景，风光景物。", "en": "(in 光景) light / scene" },
+        { "char": "景", "pinyin": "jǐng", "zh": "景物、景色。", "en": "scenery" },
+        { "char": "一", "pinyin": "yī", "zh": "一时，一下子。", "en": "one (in 一时: all at once)" },
+        { "char": "时", "pinyin": "shí", "zh": "“一时”指一下子、顿时。", "en": "(in 一时) at once" },
+        { "char": "新", "pinyin": "xīn", "zh": "焕然一新。", "en": "new / fresh" },
+        { "char": "等", "pinyin": "děng", "zh": "等闲，轻易、随便。", "en": "(in 等闲) easily" },
+        { "char": "闲", "pinyin": "xián", "zh": "等闲，平常、轻易。", "en": "(in 等闲) casual / easy" },
+        { "char": "识", "pinyin": "shí", "zh": "认识、辨识（多音字：zhì 标识）。", "en": "to recognize" },
+        { "char": "得", "pinyin": "dé", "zh": "助词，表示能够（多音字：de 跑得快；děi 必须）。", "en": "(particle) able to" },
+        { "char": "东", "pinyin": "dōng", "zh": "东风，指春风。", "en": "east (spring wind)" },
+        { "char": "风", "pinyin": "fēng", "zh": "风，“东风”指春风。", "en": "wind" },
+        { "char": "面", "pinyin": "miàn", "zh": "面貌、面容。", "en": "face" },
+        { "char": "万", "pinyin": "wàn", "zh": "万紫，极言花多色艳。", "en": "ten thousand" },
+        { "char": "紫", "pinyin": "zǐ", "zh": "紫色。", "en": "purple" },
+        { "char": "千", "pinyin": "qiān", "zh": "千红，极言花多色艳。", "en": "thousand" },
+        { "char": "红", "pinyin": "hóng", "zh": "红色。", "en": "red" },
+        { "char": "总", "pinyin": "zǒng", "zh": "总是、全都。", "en": "all / always" },
+        { "char": "是", "pinyin": "shì", "zh": "是。", "en": "to be" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "朱熹借春日游赏泗水之景，实为以孔门求学之地寓意求圣人之道、探求真理。",
+          "en": "Ostensibly a spring outing by the Si River, the poem allegorizes Zhu Xi's pursuit of the sages' Way and truth."
+        },
+        "culture": {
+          "zh": "泗水流经孔子故乡曲阜，是儒家圣地；“寻芳”暗喻寻求圣人之道。",
+          "en": "The Si River runs through Confucius's home of Qufu, a Confucian holy site; 'seeking blooms' allegorizes seeking the sages' teaching."
+        },
+        "rhetoric": {
+          "zh": "以“万紫千红”形象写春，末句寓理于景，是富有哲理的写景名句。",
+          "en": "Vivid color imagery 'ten thousand purples and a thousand reds' embeds philosophy in scenery, a famous scene-with-meaning line."
+        }
+      },
+      "sandhi": [
+        { "text": "胜日", "rule": "半去声", "base": "shèng", "read": "shèng", "value": "53", "markChange": false, "where": "胜日寻芳泗水滨，", "pos": 0, "zh": "\"胜\"是去声，在去声\"日\"前读\"半去\"（调值53），拼音不变：shèng。", "en": "胜 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 日; the written pinyin stays shèng." },
+        { "text": "水滨", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "胜日寻芳泗水滨，", "pos": 5, "zh": "\"水\"是上声，在非上声\"滨\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 滨; the written pinyin stays shuǐ." },
+        { "text": "景一", "rule": "半上声", "base": "jǐng", "read": "jǐng", "value": "211", "markChange": false, "where": "无边光景一时新。", "pos": 3, "zh": "\"景\"是上声，在非上声\"一\"前读\"半上\"（调值211），拼音不变：jǐng。", "en": "景 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 一; the written pinyin stays jǐng." },
+        { "text": "一时", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "无边光景一时新。", "pos": 4, "zh": "\"一\"在阴平/阳平/上声\"时\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 时 changes to fourth tone: yī → yì." },
+        { "text": "等闲", "rule": "半上声", "base": "děng", "read": "děng", "value": "211", "markChange": false, "where": "等闲识得东风面，", "pos": 0, "zh": "\"等\"是上声，在非上声\"闲\"前读\"半上\"（调值211），拼音不变：děng。", "en": "等 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 闲; the written pinyin stays děng." },
+        { "text": "紫千", "rule": "半上声", "base": "zǐ", "read": "zǐ", "value": "211", "markChange": false, "where": "万紫千红总是春。", "pos": 1, "zh": "\"紫\"是上声，在非上声\"千\"前读\"半上\"（调值211），拼音不变：zǐ。", "en": "紫 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 千; the written pinyin stays zǐ." },
+        { "text": "总是", "rule": "半上声", "base": "zǒng", "read": "zǒng", "value": "211", "markChange": false, "where": "万紫千红总是春。", "pos": 4, "zh": "\"总\"是上声，在非上声\"是\"前读\"半上\"（调值211），拼音不变：zǒng。", "en": "总 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 是; the written pinyin stays zǒng." }
+      ]
+    },
+    {
+      "id": "g6d-01-hanshi",
+      "title": "寒食",
+      "titlePinyin": "hán shí",
+      "titleEn": "Cold Food Festival",
+      "author": "韩翃",
+      "dynasty": "唐",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "春城无处不飞花，", "pinyin": "chūn chéng wú chù bù fēi huā", "zh": "暮春时节，长安城中处处柳絮飞舞、落红无数。", "en": "In the spring city there is nowhere the blossoms do not fly." },
+        { "text": "寒食东风御柳斜。", "pinyin": "hán shí dōng fēng yù liǔ xié", "zh": "寒食节里东风吹拂，皇宫御苑中的柳枝随风斜垂。", "en": "At Cold Food, the east wind bends the palace willows aslant." },
+        { "text": "日暮汉宫传蜡烛，", "pinyin": "rì mù hàn gōng chuán là zhú", "zh": "黄昏时分，皇宫里传送着赏赐的蜡烛。", "en": "At dusk the Han palace passes out candles," },
+        { "text": "轻烟散入五侯家。", "pinyin": "qīng yān sàn rù wǔ hóu jiā", "zh": "袅袅轻烟飘散，进入权贵宠臣的家中。", "en": "and light smoke drifts into the homes of the five marquises." }
+      ],
+      "chars": [
+        { "char": "春", "pinyin": "chūn", "zh": "春天，这里指暮春。", "en": "spring" },
+        { "char": "城", "pinyin": "chéng", "zh": "城市，指长安城。", "en": "city" },
+        { "char": "无", "pinyin": "wú", "zh": "没有。", "en": "no / not have" },
+        { "char": "处", "pinyin": "chù", "zh": "地方（多音字：chǔ 指处理、相处）。", "en": "place" },
+        { "char": "不", "pinyin": "bù", "zh": "不，否定词。", "en": "not" },
+        { "char": "飞", "pinyin": "fēi", "zh": "飞舞、飘飞。", "en": "to fly" },
+        { "char": "花", "pinyin": "huā", "zh": "花，指落花、柳絮。", "en": "blossom / flower" },
+        { "char": "寒", "pinyin": "hán", "zh": "寒，寒食节。", "en": "cold" },
+        { "char": "食", "pinyin": "shí", "zh": "食，寒食节（这天禁火吃冷食）。", "en": "food" },
+        { "char": "东", "pinyin": "dōng", "zh": "东方，东风指春风。", "en": "east" },
+        { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },
+        { "char": "御", "pinyin": "yù", "zh": "帝王所用的，御柳即皇宫的柳。", "en": "imperial" },
+        { "char": "柳", "pinyin": "liǔ", "zh": "柳树、柳枝。", "en": "willow" },
+        { "char": "斜", "pinyin": "xié", "zh": "倾斜、斜垂。", "en": "slanting" },
+        { "char": "日", "pinyin": "rì", "zh": "太阳，日暮指黄昏。", "en": "sun / day" },
+        { "char": "暮", "pinyin": "mù", "zh": "傍晚、黄昏。", "en": "dusk" },
+        { "char": "汉", "pinyin": "hàn", "zh": "汉朝，借汉指唐宫。", "en": "Han (dynasty)" },
+        { "char": "宫", "pinyin": "gōng", "zh": "皇宫。", "en": "palace" },
+        { "char": "传", "pinyin": "chuán", "zh": "传送、传递（多音字：zhuàn 指传记）。", "en": "to pass on" },
+        { "char": "蜡", "pinyin": "là", "zh": "蜡，蜡烛。", "en": "wax" },
+        { "char": "烛", "pinyin": "zhú", "zh": "蜡烛。", "en": "candle" },
+        { "char": "轻", "pinyin": "qīng", "zh": "轻，轻淡的。", "en": "light" },
+        { "char": "烟", "pinyin": "yān", "zh": "烟，烛烟。", "en": "smoke" },
+        { "char": "散", "pinyin": "sàn", "zh": "飘散、散开（多音字：sǎn 指零散）。", "en": "to scatter" },
+        { "char": "入", "pinyin": "rù", "zh": "进入。", "en": "to enter" },
+        { "char": "五", "pinyin": "wǔ", "zh": "五，五侯泛指权贵。", "en": "five" },
+        { "char": "侯", "pinyin": "hóu", "zh": "侯，王侯、权贵。", "en": "marquis / noble" },
+        { "char": "家", "pinyin": "jiā", "zh": "家、人家。", "en": "household" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "寒食节在清明前一两天，旧俗禁火冷食；唐代皇帝在这天用榆柳之火赐给近臣。",
+          "en": "The Cold Food Festival falls just before Qingming, when fires were banned; the Tang emperor gave new fire to favoured officials."
+        },
+        "culture": {
+          "zh": "“五侯”原指汉代受封的外戚宠臣，诗中借指唐代受宠的权贵。",
+          "en": "The 'five marquises' originally meant Han imperial in-laws, here standing for the favoured nobility of Tang."
+        },
+        "rhetoric": {
+          "zh": "前两句写全城春景，后两句以“传蜡烛”“入五侯家”含蓄讽刺特权，借古讽今。",
+          "en": "It paints the city in spring, then gently satirizes privilege through the imperial candles reaching only the powerful."
+        }
+      },
+      "sandhi": [
+        { "text": "柳斜", "rule": "半上声", "base": "liǔ", "read": "liǔ", "value": "211", "markChange": false, "where": "寒食东风御柳斜。", "pos": 5, "zh": "\"柳\"是上声，在非上声\"斜\"前读\"半上\"（调值211），拼音不变：liǔ。", "en": "柳 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 斜; the written pinyin stays liǔ." },
+        { "text": "日暮", "rule": "半去声", "base": "rì", "read": "rì", "value": "53", "markChange": false, "where": "日暮汉宫传蜡烛，", "pos": 0, "zh": "\"日\"是去声，在去声\"暮\"前读\"半去\"（调值53），拼音不变：rì。", "en": "日 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 暮; the written pinyin stays rì." },
+        { "text": "散入", "rule": "半去声", "base": "sàn", "read": "sàn", "value": "53", "markChange": false, "where": "轻烟散入五侯家。", "pos": 2, "zh": "\"散\"是去声，在去声\"入\"前读\"半去\"（调值53），拼音不变：sàn。", "en": "散 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 入; the written pinyin stays sàn." },
+        { "text": "五侯", "rule": "半上声", "base": "wǔ", "read": "wǔ", "value": "211", "markChange": false, "where": "轻烟散入五侯家。", "pos": 4, "zh": "\"五\"是上声，在非上声\"侯\"前读\"半上\"（调值211），拼音不变：wǔ。", "en": "五 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 侯; the written pinyin stays wǔ." }
+      ]
+    },
+    {
+      "id": "g6d-02-tiaotiaoqianniuxing",
+      "title": "迢迢牵牛星",
+      "titlePinyin": "tiáo tiáo qiān niú xīng",
+      "titleEn": "Far Away the Cowherd Star",
+      "author": "古诗十九首",
+      "dynasty": "汉",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "迢迢牵牛星，", "pinyin": "tiáo tiáo qiān niú xīng", "zh": "遥远的牵牛星啊，", "en": "Far, far away shines the Cowherd star," },
+        { "text": "皎皎河汉女。", "pinyin": "jiǎo jiǎo hé hàn nǚ", "zh": "明亮的银河边的织女星。", "en": "bright, bright the Weaving Maid by the River of Heaven." },
+        { "text": "纤纤擢素手，", "pinyin": "xiān xiān zhuó sù shǒu", "zh": "她伸出柔美洁白的双手，", "en": "Slender, she lifts her pale white hands," },
+        { "text": "札札弄机杼。", "pinyin": "zhá zhá nòng jī zhù", "zh": "札札地摆弄着织布机的梭子。", "en": "clack-clack she works the loom and shuttle." },
+        { "text": "终日不成章，", "pinyin": "zhōng rì bù chéng zhāng", "zh": "织了一整天也织不成一段布纹，", "en": "All day she weaves but finishes no pattern," },
+        { "text": "泣涕零如雨。", "pinyin": "qì tì líng rú yǔ", "zh": "眼泪零落，像雨一样落下。", "en": "her tears fall scattered like the rain." },
+        { "text": "河汉清且浅，", "pinyin": "hé hàn qīng qiě qiǎn", "zh": "那银河既清澈又浅显，", "en": "The River of Heaven is clear and shallow," },
+        { "text": "相去复几许？", "pinyin": "xiāng qù fù jǐ xǔ", "zh": "两人相隔又能有多远呢？", "en": "and how far apart, after all, are they?" },
+        { "text": "盈盈一水间，", "pinyin": "yíng yíng yī shuǐ jiān", "zh": "只隔着一道清浅的河水，", "en": "Just one stretch of brimming water lies between," },
+        { "text": "脉脉不得语。", "pinyin": "mò mò bù dé yǔ", "zh": "却只能含情相望，不能互诉衷肠。", "en": "yet, gazing in silence, they cannot speak." }
+      ],
+      "chars": [
+        { "char": "迢", "pinyin": "tiáo", "zh": "迢迢，遥远的样子。", "en": "distant" },
+        { "char": "牵", "pinyin": "qiān", "zh": "牵，牵牛星（牛郎星）。", "en": "to lead (here: Cowherd)" },
+        { "char": "牛", "pinyin": "niú", "zh": "牛，牵牛星。", "en": "ox / cowherd" },
+        { "char": "星", "pinyin": "xīng", "zh": "星，星星。", "en": "star" },
+        { "char": "皎", "pinyin": "jiǎo", "zh": "皎皎，明亮洁白的样子。", "en": "bright / white" },
+        { "char": "河", "pinyin": "hé", "zh": "河，河汉指银河。", "en": "river" },
+        { "char": "汉", "pinyin": "hàn", "zh": "汉，河汉即天河、银河。", "en": "Milky Way" },
+        { "char": "女", "pinyin": "nǚ", "zh": "女，织女星。", "en": "woman / maiden" },
+        { "char": "纤", "pinyin": "xiān", "zh": "纤纤，细长柔美（多音字：qiàn 指纤夫）。", "en": "slender" },
+        { "char": "擢", "pinyin": "zhuó", "zh": "伸出、举起。", "en": "to raise / extend" },
+        { "char": "素", "pinyin": "sù", "zh": "白色的、洁白的。", "en": "white / plain" },
+        { "char": "手", "pinyin": "shǒu", "zh": "手。", "en": "hand" },
+        { "char": "札", "pinyin": "zhá", "zh": "札札，织布机的声音。", "en": "clacking sound" },
+        { "char": "弄", "pinyin": "nòng", "zh": "摆弄、操作。", "en": "to work / handle" },
+        { "char": "机", "pinyin": "jī", "zh": "织布机。", "en": "loom" },
+        { "char": "杼", "pinyin": "zhù", "zh": "织布机上的梭子。", "en": "shuttle" },
+        { "char": "终", "pinyin": "zhōng", "zh": "整、终了，终日即整天。", "en": "whole / end" },
+        { "char": "日", "pinyin": "rì", "zh": "日，终日指整天。", "en": "day" },
+        { "char": "不", "pinyin": "bù", "zh": "不。", "en": "not" },
+        { "char": "成", "pinyin": "chéng", "zh": "织成、完成。", "en": "to complete" },
+        { "char": "章", "pinyin": "zhāng", "zh": "织物的纹理、花纹。", "en": "woven pattern" },
+        { "char": "泣", "pinyin": "qì", "zh": "哭泣、流泪。", "en": "to weep" },
+        { "char": "涕", "pinyin": "tì", "zh": "眼泪。", "en": "tears" },
+        { "char": "零", "pinyin": "líng", "zh": "零落、落下。", "en": "to fall / drip" },
+        { "char": "如", "pinyin": "rú", "zh": "好像、如同。", "en": "like / as" },
+        { "char": "雨", "pinyin": "yǔ", "zh": "雨。", "en": "rain" },
+        { "char": "清", "pinyin": "qīng", "zh": "清澈。", "en": "clear" },
+        { "char": "且", "pinyin": "qiě", "zh": "又、而且。", "en": "and / moreover" },
+        { "char": "浅", "pinyin": "qiǎn", "zh": "浅。", "en": "shallow" },
+        { "char": "相", "pinyin": "xiāng", "zh": "互相，相去即相距（多音字：xiàng 指相貌）。", "en": "mutually" },
+        { "char": "去", "pinyin": "qù", "zh": "距、相隔。", "en": "apart / distance" },
+        { "char": "复", "pinyin": "fù", "zh": "又、能。", "en": "again / after all" },
+        { "char": "几", "pinyin": "jǐ", "zh": "多少（多音字：jī 指几乎、茶几）。", "en": "how much" },
+        { "char": "许", "pinyin": "xǔ", "zh": "几许，多少、多远。", "en": "approximately (here: how far)" },
+        { "char": "盈", "pinyin": "yíng", "zh": "盈盈，水清浅充盈的样子。", "en": "brimming / full" },
+        { "char": "一", "pinyin": "yī", "zh": "一，一道。", "en": "one" },
+        { "char": "水", "pinyin": "shuǐ", "zh": "水，指银河。", "en": "water" },
+        { "char": "间", "pinyin": "jiān", "zh": "中间、之间（多音字：jiàn 指间隔、缝隙）。", "en": "between" },
+        { "char": "脉", "pinyin": "mò", "zh": "脉脉，含情相视的样子（多音字：mài 指脉搏）。", "en": "gazing in silence" },
+        { "char": "得", "pinyin": "dé", "zh": "能、得以（多音字：de 助词；děi 须要）。", "en": "able to" },
+        { "char": "语", "pinyin": "yǔ", "zh": "说话、交谈。", "en": "to speak" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "选自《古诗十九首》，是东汉末年文人创作的五言诗，借牛郎织女的传说抒写离别相思。",
+          "en": "From the 'Nineteen Old Poems' of the late Eastern Han, it uses the Cowherd-and-Weaving-Maid legend to voice the sorrow of parting."
+        },
+        "culture": {
+          "zh": "牵牛星与织女星隔银河相望，是中国七夕传说的源头。",
+          "en": "The Cowherd and Weaving Maid stars, separated by the Milky Way, are the root of the Qixi (Double Seventh) legend."
+        },
+        "rhetoric": {
+          "zh": "全诗六组叠词（迢迢、皎皎等）回环往复，借物拟人，情景交融，含蓄动人。",
+          "en": "Six pairs of reduplicated words give it a musical rhythm, blending scene and feeling through personification."
+        }
+      },
+      "sandhi": [
+        { "text": "皎皎", "rule": "上上变调", "base": "jiǎo", "read": "jiáo", "value": "35", "markChange": true, "where": "皎皎河汉女。", "pos": 0, "zh": "\"皎\"在上声\"皎\"前变读阳平（第二声）：jiǎo→jiáo。", "en": "皎 comes before the third-tone 皎, so it is read in second tone: jiǎo → jiáo." },
+        { "text": "皎河", "rule": "半上声", "base": "jiǎo", "read": "jiǎo", "value": "211", "markChange": false, "where": "皎皎河汉女。", "pos": 1, "zh": "\"皎\"是上声，在非上声\"河\"前读\"半上\"（调值211），拼音不变：jiǎo。", "en": "皎 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 河; the written pinyin stays jiǎo." },
+        { "text": "泣涕", "rule": "半去声", "base": "qì", "read": "qì", "value": "53", "markChange": false, "where": "泣涕零如雨。", "pos": 0, "zh": "\"泣\"是去声，在去声\"涕\"前读\"半去\"（调值53），拼音不变：qì。", "en": "泣 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 涕; the written pinyin stays qì." },
+        { "text": "且浅", "rule": "上上变调", "base": "qiě", "read": "qié", "value": "35", "markChange": true, "where": "河汉清且浅，", "pos": 3, "zh": "\"且\"在上声\"浅\"前变读阳平（第二声）：qiě→qié。", "en": "且 comes before the third-tone 浅, so it is read in second tone: qiě → qié." },
+        { "text": "几许", "rule": "上上变调", "base": "jǐ", "read": "jí", "value": "35", "markChange": true, "where": "相去复几许？", "pos": 3, "zh": "\"几\"在上声\"许\"前变读阳平（第二声）：jǐ→jí。", "en": "几 comes before the third-tone 许, so it is read in second tone: jǐ → jí." },
+        { "text": "一水", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "盈盈一水间，", "pos": 2, "zh": "\"一\"在阴平/阳平/上声\"水\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 水 changes to fourth tone: yī → yì." },
+        { "text": "水间", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "盈盈一水间，", "pos": 3, "zh": "\"水\"是上声，在非上声\"间\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 间; the written pinyin stays shuǐ." },
+        { "text": "脉脉", "rule": "半去声", "base": "mò", "read": "mò", "value": "53", "markChange": false, "where": "脉脉不得语。", "pos": 0, "zh": "\"脉\"是去声，在去声\"脉\"前读\"半去\"（调值53），拼音不变：mò。", "en": "脉 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 脉; the written pinyin stays mò." }
+      ]
+    },
+    {
+      "id": "g6d-03-shiwuyewangyue",
+      "title": "十五夜望月",
+      "titlePinyin": "shí wǔ yè wàng yuè",
+      "titleEn": "Gazing at the Moon on the Fifteenth Night",
+      "author": "王建",
+      "dynasty": "唐",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "中庭地白树栖鸦，", "pinyin": "zhōng tíng dì bái shù qī yā", "zh": "庭院中地面洒满月光一片银白，树上栖息着乌鸦。", "en": "In the courtyard the ground is white, crows roost in the trees," },
+        { "text": "冷露无声湿桂花。", "pinyin": "lěng lù wú shēng shī guì huā", "zh": "清冷的露水悄无声息地打湿了桂花。", "en": "and cold dew silently dampens the osmanthus blossoms." },
+        { "text": "今夜月明人尽望，", "pinyin": "jīn yè yuè míng rén jìn wàng", "zh": "今夜明月当空，人们都在抬头望月，", "en": "Tonight the moon is bright and all gaze up at it," },
+        { "text": "不知秋思落谁家？", "pinyin": "bù zhī qiū sī luò shuí jiā", "zh": "不知这秋天的思念会落到谁家呢？", "en": "but who knows whose home this autumn longing falls upon?" }
+      ],
+      "chars": [
+        { "char": "中", "pinyin": "zhōng", "zh": "中间，中庭即庭院之中（多音字：zhòng 指击中）。", "en": "middle" },
+        { "char": "庭", "pinyin": "tíng", "zh": "庭院。", "en": "courtyard" },
+        { "char": "地", "pinyin": "dì", "zh": "地面（多音字：de 助词）。", "en": "ground" },
+        { "char": "白", "pinyin": "bái", "zh": "白色，指月光照得地面发白。", "en": "white" },
+        { "char": "树", "pinyin": "shù", "zh": "树。", "en": "tree" },
+        { "char": "栖", "pinyin": "qī", "zh": "栖息、停留。", "en": "to roost" },
+        { "char": "鸦", "pinyin": "yā", "zh": "乌鸦。", "en": "crow" },
+        { "char": "冷", "pinyin": "lěng", "zh": "寒冷、清冷。", "en": "cold" },
+        { "char": "露", "pinyin": "lù", "zh": "露水（多音字：lòu 指露脸、露馅）。", "en": "dew" },
+        { "char": "无", "pinyin": "wú", "zh": "没有，无声即悄然。", "en": "without" },
+        { "char": "声", "pinyin": "shēng", "zh": "声音。", "en": "sound" },
+        { "char": "湿", "pinyin": "shī", "zh": "打湿、沾湿。", "en": "to dampen" },
+        { "char": "桂", "pinyin": "guì", "zh": "桂树、桂花。", "en": "osmanthus" },
+        { "char": "花", "pinyin": "huā", "zh": "花，桂花。", "en": "flower" },
+        { "char": "今", "pinyin": "jīn", "zh": "今天，今夜即今晚。", "en": "this / today" },
+        { "char": "夜", "pinyin": "yè", "zh": "夜晚。", "en": "night" },
+        { "char": "月", "pinyin": "yuè", "zh": "月亮。", "en": "moon" },
+        { "char": "明", "pinyin": "míng", "zh": "明亮。", "en": "bright" },
+        { "char": "人", "pinyin": "rén", "zh": "人、人们。", "en": "people" },
+        { "char": "尽", "pinyin": "jìn", "zh": "全、都（多音字：jǐn 指尽管、尽量）。", "en": "all" },
+        { "char": "望", "pinyin": "wàng", "zh": "远望、仰望。", "en": "to gaze" },
+        { "char": "不", "pinyin": "bù", "zh": "不。", "en": "not" },
+        { "char": "知", "pinyin": "zhī", "zh": "知道。", "en": "to know" },
+        { "char": "秋", "pinyin": "qiū", "zh": "秋天。", "en": "autumn" },
+        { "char": "思", "pinyin": "sī", "zh": "思念，秋思即秋天的情思。", "en": "longing / thoughts" },
+        { "char": "落", "pinyin": "luò", "zh": "落、降临（多音字：là 指落下东西；lào 指落枕）。", "en": "to fall" },
+        { "char": "谁", "pinyin": "shuí", "zh": "谁、哪一个（又读 shéi）。", "en": "who" },
+        { "char": "家", "pinyin": "jiā", "zh": "家、人家。", "en": "home / family" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "这是一首中秋望月怀人的诗，原题下有“时会琴客”一句，写于中秋之夜。",
+          "en": "Written on the Mid-Autumn night, this poem gazes at the full moon while longing for distant loved ones."
+        },
+        "culture": {
+          "zh": "中秋赏月、思乡怀人是中国传统节俗；桂花与月亮常一起出现（传说月中有桂树）。",
+          "en": "Moon-viewing and homesickness mark the Mid-Autumn Festival; osmanthus and the moon pair in legend, which places a cassia tree on the moon."
+        },
+        "rhetoric": {
+          "zh": "末句不直说自己思乡，而问“秋思落谁家”，以委婉含蓄之笔将个人之情推及天下人。",
+          "en": "Instead of stating his own longing, the poet asks whose home the autumn sorrow falls upon, broadening private feeling to all."
+        }
+      },
+      "sandhi": [
+        { "text": "五夜", "rule": "半上声", "base": "wǔ", "read": "wǔ", "value": "211", "markChange": false, "where": "题目", "pos": 1, "zh": "\"五\"是上声，在非上声\"夜\"前读\"半上\"（调值211），拼音不变：wǔ。", "en": "五 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 夜; the written pinyin stays wǔ." },
+        { "text": "夜望", "rule": "半去声", "base": "yè", "read": "yè", "value": "53", "markChange": false, "where": "题目", "pos": 2, "zh": "\"夜\"是去声，在去声\"望\"前读\"半去\"（调值53），拼音不变：yè。", "en": "夜 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 望; the written pinyin stays yè." },
+        { "text": "冷露", "rule": "半上声", "base": "lěng", "read": "lěng", "value": "211", "markChange": false, "where": "冷露无声湿桂花。", "pos": 0, "zh": "\"冷\"是上声，在非上声\"露\"前读\"半上\"（调值211），拼音不变：lěng。", "en": "冷 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 露; the written pinyin stays lěng." }
+      ]
+    },
+    {
+      "id": "g6d-04-mashi",
+      "title": "马诗",
+      "titlePinyin": "mǎ shī",
+      "titleEn": "Song of the Horse",
+      "author": "李贺",
+      "dynasty": "唐",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "大漠沙如雪，", "pinyin": "dà mò shā rú xuě", "zh": "茫茫大沙漠中，沙子洁白得像雪一样。", "en": "On the great desert the sand is white as snow," },
+        { "text": "燕山月似钩。", "pinyin": "yān shān yuè sì gōu", "zh": "燕山上一弯新月像弯钩一样高挂。", "en": "over the Yan Mountains the moon hangs like a hook." },
+        { "text": "何当金络脑，", "pinyin": "hé dāng jīn luò nǎo", "zh": "什么时候才能戴上黄金打造的笼头，", "en": "When will it wear a golden bridle on its head," },
+        { "text": "快走踏清秋。", "pinyin": "kuài zǒu tà qīng qiū", "zh": "在清爽的秋天里纵情奔驰、施展才能呢？", "en": "and gallop swiftly through the clear autumn air?" }
+      ],
+      "chars": [
+        { "char": "大", "pinyin": "dà", "zh": "广大，大漠即大沙漠（多音字：dài 指大夫）。", "en": "great / big" },
+        { "char": "漠", "pinyin": "mò", "zh": "沙漠。", "en": "desert" },
+        { "char": "沙", "pinyin": "shā", "zh": "沙子。", "en": "sand" },
+        { "char": "如", "pinyin": "rú", "zh": "好像、如同。", "en": "like" },
+        { "char": "雪", "pinyin": "xuě", "zh": "雪。", "en": "snow" },
+        { "char": "燕", "pinyin": "yān", "zh": "燕山，地名（多音字：yàn 指燕子）。", "en": "Yan (place name)" },
+        { "char": "山", "pinyin": "shān", "zh": "山。", "en": "mountain" },
+        { "char": "月", "pinyin": "yuè", "zh": "月亮，指新月。", "en": "moon" },
+        { "char": "似", "pinyin": "sì", "zh": "像、好似（多音字：shì 指似的）。", "en": "to resemble" },
+        { "char": "钩", "pinyin": "gōu", "zh": "弯钩，比喻新月，也指兵器。", "en": "hook" },
+        { "char": "何", "pinyin": "hé", "zh": "何当，何时、什么时候。", "en": "what / when" },
+        { "char": "当", "pinyin": "dāng", "zh": "何当即“何时能够”（多音字：dàng 指当作、恰当）。", "en": "should / when" },
+        { "char": "金", "pinyin": "jīn", "zh": "黄金、金制的。", "en": "gold" },
+        { "char": "络", "pinyin": "luò", "zh": "笼罩、套住，金络脑指金饰的马笼头（多音字：lào 指络子）。", "en": "to bind / bridle" },
+        { "char": "脑", "pinyin": "nǎo", "zh": "头部，络脑即套在马头上的笼头。", "en": "head" },
+        { "char": "快", "pinyin": "kuài", "zh": "快速。", "en": "fast" },
+        { "char": "走", "pinyin": "zǒu", "zh": "奔跑（古义为跑）。", "en": "to run / gallop" },
+        { "char": "踏", "pinyin": "tà", "zh": "踏、奔驰。", "en": "to tread / gallop" },
+        { "char": "清", "pinyin": "qīng", "zh": "清爽，清秋即清爽的秋天。", "en": "clear / crisp" },
+        { "char": "秋", "pinyin": "qiū", "zh": "秋天。", "en": "autumn" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "李贺《马诗》共二十三首，这是第五首，借咏马抒发渴望建功立业、却怀才不遇的感慨。",
+          "en": "The fifth of Li He's twenty-three 'Horse Poems', it uses the horse to voice his yearning to serve and his frustrated talent."
+        },
+        "culture": {
+          "zh": "古人常以骏马比喻人才，以“伯乐相马”寄托对赏识者的期盼。",
+          "en": "Fine horses traditionally symbolize talented people, and the wish for a 'Bole' to recognize them."
+        },
+        "rhetoric": {
+          "zh": "前两句写边塞景象起兴，后两句用反问托物言志，借马自喻。",
+          "en": "The frontier scene sets the mood, then a rhetorical question makes the horse a vehicle for the poet's own ambition."
+        }
+      },
+      "sandhi": [
+        { "text": "马诗", "rule": "半上声", "base": "mǎ", "read": "mǎ", "value": "211", "markChange": false, "where": "题目", "pos": 0, "zh": "\"马\"是上声，在非上声\"诗\"前读\"半上\"（调值211），拼音不变：mǎ。", "en": "马 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 诗; the written pinyin stays mǎ." },
+        { "text": "大漠", "rule": "半去声", "base": "dà", "read": "dà", "value": "53", "markChange": false, "where": "大漠沙如雪，", "pos": 0, "zh": "\"大\"是去声，在去声\"漠\"前读\"半去\"（调值53），拼音不变：dà。", "en": "大 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 漠; the written pinyin stays dà." },
+        { "text": "月似", "rule": "半去声", "base": "yuè", "read": "yuè", "value": "53", "markChange": false, "where": "燕山月似钩。", "pos": 2, "zh": "\"月\"是去声，在去声\"似\"前读\"半去\"（调值53），拼音不变：yuè。", "en": "月 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 似; the written pinyin stays yuè." },
+        { "text": "走踏", "rule": "半上声", "base": "zǒu", "read": "zǒu", "value": "211", "markChange": false, "where": "快走踏清秋。", "pos": 1, "zh": "\"走\"是上声，在非上声\"踏\"前读\"半上\"（调值211），拼音不变：zǒu。", "en": "走 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 踏; the written pinyin stays zǒu." }
+      ]
+    },
+    {
+      "id": "g6d-05-shihuiyin",
+      "title": "石灰吟",
+      "titlePinyin": "shí huī yín",
+      "titleEn": "Ode to Lime",
+      "author": "于谦",
+      "dynasty": "明",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "千锤万凿出深山，", "pinyin": "qiān chuí wàn záo chū shēn shān", "zh": "石灰石经过千万次的锤打和开凿，才从深山中开采出来。", "en": "Through a thousand hammer-blows and ten thousand chisels it comes out of the deep mountains," },
+        { "text": "烈火焚烧若等闲。", "pinyin": "liè huǒ fén shāo ruò děng xián", "zh": "面对熊熊烈火的焚烧，它却看得平平常常、毫不在意。", "en": "and it treats the raging fire that burns it as an everyday thing." },
+        { "text": "粉骨碎身浑不怕，", "pinyin": "fěn gǔ suì shēn hún bù pà", "zh": "即使被烧得粉身碎骨，也全然不怕，", "en": "Though ground to powder and shattered to bits, it is not afraid at all," },
+        { "text": "要留清白在人间。", "pinyin": "yào liú qīng bái zài rén jiān", "zh": "只为把清白纯洁留存在人世间。", "en": "for it wishes only to leave its purity behind in the world of men." }
+      ],
+      "chars": [
+        { "char": "千", "pinyin": "qiān", "zh": "千，形容次数极多。", "en": "thousand" },
+        { "char": "锤", "pinyin": "chuí", "zh": "锤打、敲打。", "en": "to hammer" },
+        { "char": "万", "pinyin": "wàn", "zh": "万，形容次数极多。", "en": "ten thousand" },
+        { "char": "凿", "pinyin": "záo", "zh": "开凿、凿击。", "en": "to chisel" },
+        { "char": "出", "pinyin": "chū", "zh": "出来、开采出。", "en": "to come out" },
+        { "char": "深", "pinyin": "shēn", "zh": "深，深山即大山深处。", "en": "deep" },
+        { "char": "山", "pinyin": "shān", "zh": "山。", "en": "mountain" },
+        { "char": "烈", "pinyin": "liè", "zh": "猛烈，烈火即大火。", "en": "fierce" },
+        { "char": "火", "pinyin": "huǒ", "zh": "火。", "en": "fire" },
+        { "char": "焚", "pinyin": "fén", "zh": "焚烧、烧。", "en": "to burn" },
+        { "char": "烧", "pinyin": "shāo", "zh": "烧。", "en": "to burn" },
+        { "char": "若", "pinyin": "ruò", "zh": "好像、如同。", "en": "as if / like" },
+        { "char": "等", "pinyin": "děng", "zh": "等闲，平常、寻常。", "en": "ordinary" },
+        { "char": "闲", "pinyin": "xián", "zh": "等闲，平常、随便。", "en": "ordinary / casual" },
+        { "char": "粉", "pinyin": "fěn", "zh": "粉碎，粉骨即骨头被磨成粉。", "en": "to powder" },
+        { "char": "骨", "pinyin": "gǔ", "zh": "骨头（多音字：gū 指骨碌、花骨朵）。", "en": "bone" },
+        { "char": "碎", "pinyin": "suì", "zh": "碎裂、破碎。", "en": "to shatter" },
+        { "char": "身", "pinyin": "shēn", "zh": "身体。", "en": "body" },
+        { "char": "浑", "pinyin": "hún", "zh": "全、完全。", "en": "completely" },
+        { "char": "不", "pinyin": "bù", "zh": "不。", "en": "not" },
+        { "char": "怕", "pinyin": "pà", "zh": "害怕。", "en": "to fear" },
+        { "char": "要", "pinyin": "yào", "zh": "要、想要（多音字：yāo 指要求、要挟）。", "en": "to want" },
+        { "char": "留", "pinyin": "liú", "zh": "留下、留存。", "en": "to leave behind" },
+        { "char": "清", "pinyin": "qīng", "zh": "清白，纯洁，喻高洁品格。", "en": "pure / clean" },
+        { "char": "白", "pinyin": "bái", "zh": "清白，洁白纯净，喻高尚操守。", "en": "white / pure" },
+        { "char": "在", "pinyin": "zài", "zh": "在、留存于。", "en": "at / in" },
+        { "char": "人", "pinyin": "rén", "zh": "人，人间即人世。", "en": "human / people" },
+        { "char": "间", "pinyin": "jiān", "zh": "人间即人世（多音字：jiàn 指间隔）。", "en": "world / among" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "相传于谦十二岁时写下此诗，借石灰自喻；他后来成为明代名臣，忠贞清廉。",
+          "en": "Said to be written when Yu Qian was twelve, the poem uses lime as a self-portrait; he later became a loyal, upright Ming official."
+        },
+        "culture": {
+          "zh": "这是一首托物言志的咏物诗，以石灰象征坚贞高洁、不怕牺牲的人格。",
+          "en": "An object-as-emblem poem, it makes lime a symbol of steadfast purity and willing sacrifice."
+        },
+        "rhetoric": {
+          "zh": "全诗用拟人和双关，“清白”既指石灰之色，又指人的高洁品格，层层递进。",
+          "en": "Through personification and a pun, 'pure white' means both the colour of lime and the poet's moral integrity."
+        }
+      },
+      "sandhi": [
+        { "text": "火焚", "rule": "半上声", "base": "huǒ", "read": "huǒ", "value": "211", "markChange": false, "where": "烈火焚烧若等闲。", "pos": 1, "zh": "\"火\"是上声，在非上声\"焚\"前读\"半上\"（调值211），拼音不变：huǒ。", "en": "火 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 焚; the written pinyin stays huǒ." },
+        { "text": "等闲", "rule": "半上声", "base": "děng", "read": "děng", "value": "211", "markChange": false, "where": "烈火焚烧若等闲。", "pos": 5, "zh": "\"等\"是上声，在非上声\"闲\"前读\"半上\"（调值211），拼音不变：děng。", "en": "等 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 闲; the written pinyin stays děng." },
+        { "text": "粉骨", "rule": "上上变调", "base": "fěn", "read": "fén", "value": "35", "markChange": true, "where": "粉骨碎身浑不怕，", "pos": 0, "zh": "\"粉\"在上声\"骨\"前变读阳平（第二声）：fěn→fén。", "en": "粉 comes before the third-tone 骨, so it is read in second tone: fěn → fén." },
+        { "text": "骨碎", "rule": "半上声", "base": "gǔ", "read": "gǔ", "value": "211", "markChange": false, "where": "粉骨碎身浑不怕，", "pos": 1, "zh": "\"骨\"是上声，在非上声\"碎\"前读\"半上\"（调值211），拼音不变：gǔ。", "en": "骨 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 碎; the written pinyin stays gǔ." },
+        { "text": "不怕", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "粉骨碎身浑不怕，", "pos": 5, "zh": "\"不\"在去声\"怕\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 怕 changes to second tone: bù → bú." }
+      ]
+    },
+    {
+      "id": "g6d-06-zhushi",
+      "title": "竹石",
+      "titlePinyin": "zhú shí",
+      "titleEn": "Bamboo and Rock",
+      "author": "郑燮",
+      "dynasty": "清",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "咬定青山不放松，", "pinyin": "yǎo dìng qīng shān bù fàng sōng", "zh": "竹子牢牢地咬定青山，绝不放松。", "en": "Biting fast into the green mountain it will not let go," },
+        { "text": "立根原在破岩中。", "pinyin": "lì gēn yuán zài pò yán zhōng", "zh": "它把根深深扎在破裂的岩石缝隙之中。", "en": "its roots set firmly in the cracks of broken rock." },
+        { "text": "千磨万击还坚劲，", "pinyin": "qiān mó wàn jī hái jiān jìng", "zh": "历经千万次的磨难和打击，依然坚定强劲，", "en": "Through a thousand grindings and ten thousand blows it stays strong," },
+        { "text": "任尔东西南北风。", "pinyin": "rèn ěr dōng xī nán běi fēng", "zh": "任凭你东西南北各个方向的狂风吹打。", "en": "let the winds blow from east, west, south, or north as they will." }
+      ],
+      "chars": [
+        { "char": "咬", "pinyin": "yǎo", "zh": "咬住，比喻竹根紧紧抓住。", "en": "to bite / grip" },
+        { "char": "定", "pinyin": "dìng", "zh": "咬定，牢牢咬住、坚定不移。", "en": "firmly" },
+        { "char": "青", "pinyin": "qīng", "zh": "青翠，青山即葱翠的山。", "en": "green / verdant" },
+        { "char": "山", "pinyin": "shān", "zh": "山。", "en": "mountain" },
+        { "char": "不", "pinyin": "bù", "zh": "不。", "en": "not" },
+        { "char": "放", "pinyin": "fàng", "zh": "放开，放松即松开。", "en": "to let go" },
+        { "char": "松", "pinyin": "sōng", "zh": "放松、松动。", "en": "loose / relax" },
+        { "char": "立", "pinyin": "lì", "zh": "立、扎，立根即扎根。", "en": "to set / stand" },
+        { "char": "根", "pinyin": "gēn", "zh": "根。", "en": "root" },
+        { "char": "原", "pinyin": "yuán", "zh": "本来、原本。", "en": "originally" },
+        { "char": "在", "pinyin": "zài", "zh": "在、处于。", "en": "in / at" },
+        { "char": "破", "pinyin": "pò", "zh": "破裂的，破岩即裂开的岩石。", "en": "broken" },
+        { "char": "岩", "pinyin": "yán", "zh": "岩石。", "en": "rock / cliff" },
+        { "char": "中", "pinyin": "zhōng", "zh": "中间、之中（多音字：zhòng 指击中）。", "en": "within" },
+        { "char": "千", "pinyin": "qiān", "zh": "千，形容次数多。", "en": "thousand" },
+        { "char": "磨", "pinyin": "mó", "zh": "磨难、磨炼（多音字：mò 指磨面、石磨）。", "en": "to grind / hardship" },
+        { "char": "万", "pinyin": "wàn", "zh": "万，形容次数多。", "en": "ten thousand" },
+        { "char": "击", "pinyin": "jī", "zh": "打击。", "en": "to strike" },
+        { "char": "还", "pinyin": "hái", "zh": "仍然、依然（多音字：huán 指归还）。", "en": "still" },
+        { "char": "坚", "pinyin": "jiān", "zh": "坚定、坚固。", "en": "firm" },
+        { "char": "劲", "pinyin": "jìng", "zh": "坚劲，强劲有力（多音字：jìn 指力气、干劲）。", "en": "strong / sturdy" },
+        { "char": "任", "pinyin": "rèn", "zh": "任凭、无论（多音字：rén 指姓氏、地名）。", "en": "no matter / let" },
+        { "char": "尔", "pinyin": "ěr", "zh": "你，这里指风。", "en": "you" },
+        { "char": "东", "pinyin": "dōng", "zh": "东方。", "en": "east" },
+        { "char": "西", "pinyin": "xī", "zh": "西方。", "en": "west" },
+        { "char": "南", "pinyin": "nán", "zh": "南方。", "en": "south" },
+        { "char": "北", "pinyin": "běi", "zh": "北方。", "en": "north" },
+        { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "郑燮（郑板桥）是清代书画家，“扬州八怪”之一，这是他为自己的画《竹石图》所题的诗。",
+          "en": "Zheng Xie (Zheng Banqiao), a Qing painter and one of the 'Eight Eccentrics of Yangzhou', inscribed this poem on his own painting of bamboo and rock."
+        },
+        "culture": {
+          "zh": "竹在中国文化中象征坚贞、虚心和气节，与梅、兰、菊并称“四君子”。",
+          "en": "Bamboo symbolizes integrity and humility, and with plum, orchid, and chrysanthemum forms the 'Four Gentlemen'."
+        },
+        "rhetoric": {
+          "zh": "全诗托物言志，用“咬定”“立根”等拟人词写竹石的顽强，借竹喻人，表现坚毅不屈的品格。",
+          "en": "Personifying the bamboo with words like 'bite fast', it praises through the plant a person's unyielding strength of character."
+        }
+      },
+      "sandhi": [
+        { "text": "咬定", "rule": "半上声", "base": "yǎo", "read": "yǎo", "value": "211", "markChange": false, "where": "咬定青山不放松，", "pos": 0, "zh": "\"咬\"是上声，在非上声\"定\"前读\"半上\"（调值211），拼音不变：yǎo。", "en": "咬 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 定; the written pinyin stays yǎo." },
+        { "text": "不放", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "咬定青山不放松，", "pos": 4, "zh": "\"不\"在去声\"放\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 放 changes to second tone: bù → bú." },
+        { "text": "尔东", "rule": "半上声", "base": "ěr", "read": "ěr", "value": "211", "markChange": false, "where": "任尔东西南北风。", "pos": 1, "zh": "\"尔\"是上声，在非上声\"东\"前读\"半上\"（调值211），拼音不变：ěr。", "en": "尔 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 东; the written pinyin stays ěr." },
+        { "text": "北风", "rule": "半上声", "base": "běi", "read": "běi", "value": "211", "markChange": false, "where": "任尔东西南北风。", "pos": 5, "zh": "\"北\"是上声，在非上声\"风\"前读\"半上\"（调值211），拼音不变：běi。", "en": "北 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 风; the written pinyin stays běi." }
+      ]
+    },
+    {
+      "id": "g6d-07-xueyi",
+      "title": "学弈",
+      "titlePinyin": "xué yì",
+      "titleEn": "Learning Chess",
+      "author": "《孟子》",
+      "dynasty": "先秦",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "弈秋，通国之善弈者也。", "pinyin": "yì qiū tōng guó zhī shàn yì zhě yě", "zh": "弈秋，是全国最擅长下棋的人。", "en": "Yi Qiu was the best chess player in the whole country." },
+        { "text": "使弈秋诲二人弈，", "pinyin": "shǐ yì qiū huì èr rén yì", "zh": "让弈秋教两个人下棋，", "en": "Suppose Yi Qiu were made to teach two people chess:" },
+        { "text": "其一人专心致志，惟弈秋之为听；", "pinyin": "qí yī rén zhuān xīn zhì zhì wéi yì qiū zhī wéi tīng", "zh": "其中一个人专心致志，只听弈秋的教导；", "en": "one of them concentrates completely and listens only to Yi Qiu;" },
+        { "text": "一人虽听之，一心以为有鸿鹄将至，思援弓缴而射之。", "pinyin": "yī rén suī tīng zhī yī xīn yǐ wéi yǒu hóng hú jiāng zhì sī yuán gōng zhuó ér shè zhī", "zh": "另一个人虽然也在听，却一心以为有天鹅将要飞来，想着拉弓搭箭去射它。", "en": "the other, though listening, keeps thinking a swan is about to come, and plans to draw his bow and shoot it down." },
+        { "text": "虽与之俱学，弗若之矣。", "pinyin": "suī yǔ zhī jù xué fú ruò zhī yǐ", "zh": "虽然和前一个人一起学习，棋艺却比不上他了。", "en": "Though he studies alongside the first, he is not his equal." },
+        { "text": "为是其智弗若与？", "pinyin": "wéi shì qí zhì fú ruò yú", "zh": "能说是因为他的智力不如前一个人吗？", "en": "Is this because his intelligence is inferior?" },
+        { "text": "曰：非然也。", "pinyin": "yuē fēi rán yě", "zh": "回答说：不是这样的。", "en": "The answer is: no, it is not." }
+      ],
+      "chars": [
+        { "char": "弈", "pinyin": "yì", "zh": "下棋；这里指围棋。", "en": "to play chess / weiqi" },
+        { "char": "秋", "pinyin": "qiū", "zh": "人名“弈秋”中的字。", "en": "(part of name Yi Qiu)" },
+        { "char": "通", "pinyin": "tōng", "zh": "全、整个，通国即全国。", "en": "whole / entire" },
+        { "char": "国", "pinyin": "guó", "zh": "国家。", "en": "country" },
+        { "char": "之", "pinyin": "zhī", "zh": "的；又作代词“它/他”，或宾语前置标志。", "en": "'s / it (particle)" },
+        { "char": "善", "pinyin": "shàn", "zh": "擅长、善于。", "en": "good at" },
+        { "char": "者", "pinyin": "zhě", "zh": "……的人。", "en": "the one who" },
+        { "char": "也", "pinyin": "yě", "zh": "句末语气助词，表判断。", "en": "(final particle)" },
+        { "char": "使", "pinyin": "shǐ", "zh": "让、叫。", "en": "to cause / let" },
+        { "char": "诲", "pinyin": "huì", "zh": "教导、教诲。", "en": "to teach / instruct" },
+        { "char": "二", "pinyin": "èr", "zh": "二、两。", "en": "two" },
+        { "char": "人", "pinyin": "rén", "zh": "人。", "en": "person" },
+        { "char": "其", "pinyin": "qí", "zh": "其中；又作代词“他的”。", "en": "among them / his" },
+        { "char": "一", "pinyin": "yī", "zh": "一、其中一个。", "en": "one" },
+        { "char": "专", "pinyin": "zhuān", "zh": "专心，专一。", "en": "focused" },
+        { "char": "心", "pinyin": "xīn", "zh": "心思、心。", "en": "mind / heart" },
+        { "char": "致", "pinyin": "zhì", "zh": "致志，集中心思。", "en": "to devote" },
+        { "char": "志", "pinyin": "zhì", "zh": "志向、心思。", "en": "will / attention" },
+        { "char": "惟", "pinyin": "wéi", "zh": "只、唯独。", "en": "only" },
+        { "char": "为", "pinyin": "wéi", "zh": "“之为听”中助词，宾语前置标志（多音字：wèi 指因为、替）。", "en": "(particle) / for" },
+        { "char": "听", "pinyin": "tīng", "zh": "听、听从。", "en": "to listen" },
+        { "char": "虽", "pinyin": "suī", "zh": "虽然。", "en": "although" },
+        { "char": "以", "pinyin": "yǐ", "zh": "以为，认为。", "en": "to consider / by" },
+        { "char": "有", "pinyin": "yǒu", "zh": "有。", "en": "there is" },
+        { "char": "鸿", "pinyin": "hóng", "zh": "鸿鹄，指天鹅。", "en": "swan (with 鹄)" },
+        { "char": "鹄", "pinyin": "hú", "zh": "鸿鹄，天鹅（此处读 hú）。", "en": "swan" },
+        { "char": "将", "pinyin": "jiāng", "zh": "将要（多音字：jiàng 指将领）。", "en": "about to" },
+        { "char": "至", "pinyin": "zhì", "zh": "到、来到。", "en": "to arrive" },
+        { "char": "思", "pinyin": "sī", "zh": "想、考虑。", "en": "to think of" },
+        { "char": "援", "pinyin": "yuán", "zh": "拉、引（弓）。", "en": "to draw / pull" },
+        { "char": "弓", "pinyin": "gōng", "zh": "弓。", "en": "bow" },
+        { "char": "缴", "pinyin": "zhuó", "zh": "系在箭上的生丝绳，此处指带绳的箭（此处读 zhuó；多音字：jiǎo 指缴纳）。", "en": "arrow with attached cord" },
+        { "char": "而", "pinyin": "ér", "zh": "连词，表承接。", "en": "and / then" },
+        { "char": "射", "pinyin": "shè", "zh": "射、发箭。", "en": "to shoot" },
+        { "char": "与", "pinyin": "yǔ", "zh": "和、跟；句末“弗若与”中读 yú，同“欤”，表疑问。", "en": "with / (final ? = 欤)" },
+        { "char": "俱", "pinyin": "jù", "zh": "一起、都。", "en": "together" },
+        { "char": "学", "pinyin": "xué", "zh": "学习。", "en": "to learn" },
+        { "char": "弗", "pinyin": "fú", "zh": "不，弗若即不如。", "en": "not" },
+        { "char": "若", "pinyin": "ruò", "zh": "如、及，弗若即比不上。", "en": "as / equal to" },
+        { "char": "矣", "pinyin": "yǐ", "zh": "句末语气助词，相当于“了”。", "en": "(final particle, '...indeed')" },
+        { "char": "是", "pinyin": "shì", "zh": "这、此。", "en": "this" },
+        { "char": "智", "pinyin": "zhì", "zh": "智力、聪明。", "en": "intelligence" },
+        { "char": "曰", "pinyin": "yuē", "zh": "说。", "en": "to say" },
+        { "char": "非", "pinyin": "fēi", "zh": "不是。", "en": "not / is not" },
+        { "char": "然", "pinyin": "rán", "zh": "这样，如此。", "en": "so / thus" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "选自《孟子·告子上》，是孟子用来说理的一则寓言式短文。",
+          "en": "From the 'Gaozi I' chapter of the Mencius, this short parable is used to make a point about learning."
+        },
+        "culture": {
+          "zh": "弈秋是先秦著名棋手，“弈”指围棋，是中国古代重要的智力游戏。",
+          "en": "Yi Qiu was a famed pre-Qin chess master; 'yi' refers to weiqi (Go), an important ancient intellectual game."
+        },
+        "rhetoric": {
+          "zh": "文章用两人学棋作对比，结尾以反问点明：学习的差异不在智力，而在是否专心。",
+          "en": "Through a contrast between two learners and a closing rhetorical question, it shows that the difference lies not in talent but in concentration."
+        }
+      },
+      "sandhi": [
+        { "text": "者也", "rule": "上上变调", "base": "zhě", "read": "zhé", "value": "35", "markChange": true, "where": "弈秋，通国之善弈者也。", "pos": 7, "zh": "\"者\"在上声\"也\"前变读阳平（第二声）：zhě→zhé。", "en": "者 comes before the third-tone 也, so it is read in second tone: zhě → zhé." },
+        { "text": "使弈", "rule": "半上声", "base": "shǐ", "read": "shǐ", "value": "211", "markChange": false, "where": "使弈秋诲二人弈，", "pos": 0, "zh": "\"使\"是上声，在非上声\"弈\"前读\"半上\"（调值211），拼音不变：shǐ。", "en": "使 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 弈; the written pinyin stays shǐ." },
+        { "text": "一人", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "其一人专心致志，惟弈秋之为听；", "pos": 1, "zh": "\"一\"在阴平/阳平/上声\"人\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 人 changes to fourth tone: yī → yì." },
+        { "text": "一人", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "一人虽听之，一心以为有鸿鹄将至，思援弓缴而射之。", "pos": 0, "zh": "\"一\"在阴平/阳平/上声\"人\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 人 changes to fourth tone: yī → yì." },
+        { "text": "一心", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "一人虽听之，一心以为有鸿鹄将至，思援弓缴而射之。", "pos": 5, "zh": "\"一\"在阴平/阳平/上声\"心\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 心 changes to fourth tone: yī → yì." },
+        { "text": "以为", "rule": "半上声", "base": "yǐ", "read": "yǐ", "value": "211", "markChange": false, "where": "一人虽听之，一心以为有鸿鹄将至，思援弓缴而射之。", "pos": 7, "zh": "\"以\"是上声，在非上声\"为\"前读\"半上\"（调值211），拼音不变：yǐ。", "en": "以 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 为; the written pinyin stays yǐ." },
+        { "text": "有鸿", "rule": "半上声", "base": "yǒu", "read": "yǒu", "value": "211", "markChange": false, "where": "一人虽听之，一心以为有鸿鹄将至，思援弓缴而射之。", "pos": 9, "zh": "\"有\"是上声，在非上声\"鸿\"前读\"半上\"（调值211），拼音不变：yǒu。", "en": "有 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 鸿; the written pinyin stays yǒu." },
+        { "text": "与之", "rule": "半上声", "base": "yǔ", "read": "yǔ", "value": "211", "markChange": false, "where": "虽与之俱学，弗若之矣。", "pos": 1, "zh": "\"与\"是上声，在非上声\"之\"前读\"半上\"（调值211），拼音不变：yǔ。", "en": "与 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 之; the written pinyin stays yǔ." }
+      ]
+    },
+    {
+      "id": "g6d-08-liangxiaoerbianri",
+      "title": "两小儿辩日",
+      "titlePinyin": "liǎng xiǎo ér biàn rì",
+      "titleEn": "Two Children Debate the Sun",
+      "author": "《列子》",
+      "dynasty": "先秦",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "孔子东游，见两小儿辩斗，", "pinyin": "kǒng zǐ dōng yóu jiàn liǎng xiǎo ér biàn dòu", "zh": "孔子到东方游历，看见两个小孩在争辩，", "en": "Confucius, travelling east, saw two children arguing," },
+        { "text": "问其故。", "pinyin": "wèn qí gù", "zh": "便问他们争辩的原因。", "en": "and asked them the reason." },
+        { "text": "一儿曰：“我以日始出时去人近，而日中时远也。”", "pinyin": "yī ér yuē wǒ yǐ rì shǐ chū shí qù rén jìn ér rì zhōng shí yuǎn yě", "zh": "一个小孩说：“我认为太阳刚出来时离人近，而正午时离人远。”", "en": "One child said: 'I think the sun is near at sunrise and far at noon.'" },
+        { "text": "一儿以日初出远，而日中时近。", "pinyin": "yī ér yǐ rì chū chū yuǎn ér rì zhōng shí jìn", "zh": "另一个小孩认为太阳刚出来时离人远，而正午时离人近。", "en": "The other thought the sun was far at sunrise and near at noon." },
+        { "text": "一儿曰：“日初出大如车盖，及日中则如盘盂，此不为远者小而近者大乎？”", "pinyin": "yī ér yuē rì chū chū dà rú chē gài jí rì zhōng zé rú pán yú cǐ bù wéi yuǎn zhě xiǎo ér jìn zhě dà hū", "zh": "一个小孩说：“太阳刚出来时大得像车盖，到了正午却像盘子，这不正是远的小、近的大吗？”", "en": "One child said: 'At sunrise the sun is big as a carriage canopy, but at noon it is like a plate or bowl; isn't this because what is far looks small and what is near looks big?'" },
+        { "text": "一儿曰：“日初出沧沧凉凉，及其日中如探汤，此不为近者热而远者凉乎？”", "pinyin": "yī ér yuē rì chū chū cāng cāng liáng liáng jí qí rì zhōng rú tàn tāng cǐ bù wéi jìn zhě rè ér yuǎn zhě liáng hū", "zh": "另一个小孩说：“太阳刚出来时清清凉凉，到了正午却热得像把手伸进热水里，这不正是近的热、远的凉吗？”", "en": "The other said: 'At sunrise it is cool and chilly, but at noon it feels like reaching into hot water; isn't this because what is near is hot and what is far is cool?'" },
+        { "text": "孔子不能决也。", "pinyin": "kǒng zǐ bù néng jué yě", "zh": "孔子也不能判断谁对谁错。", "en": "Confucius could not decide who was right." },
+        { "text": "两小儿笑曰：“孰为汝多知乎？”", "pinyin": "liǎng xiǎo ér xiào yuē shú wèi rǔ duō zhì hū", "zh": "两个小孩笑着说：“谁说你知识渊博呢？”", "en": "The two children laughed and said: 'Who says you are so learned?'" }
+      ],
+      "chars": [
+        { "char": "孔", "pinyin": "kǒng", "zh": "孔子，指孔丘。", "en": "Kong (Confucius)" },
+        { "char": "子", "pinyin": "zǐ", "zh": "对人的尊称，孔子即孔先生。", "en": "master (honorific)" },
+        { "char": "东", "pinyin": "dōng", "zh": "东方，东游即向东游历。", "en": "east" },
+        { "char": "游", "pinyin": "yóu", "zh": "游历、游学。", "en": "to travel" },
+        { "char": "见", "pinyin": "jiàn", "zh": "看见（多音字：xiàn 同“现”，显现）。", "en": "to see" },
+        { "char": "两", "pinyin": "liǎng", "zh": "两、两个。", "en": "two" },
+        { "char": "小", "pinyin": "xiǎo", "zh": "小，小儿即小孩。", "en": "small / young" },
+        { "char": "儿", "pinyin": "ér", "zh": "小孩、孩子。", "en": "child" },
+        { "char": "辩", "pinyin": "biàn", "zh": "辩论、争辩。", "en": "to argue / debate" },
+        { "char": "斗", "pinyin": "dòu", "zh": "辩斗，争论（多音字：dǒu 指斗笠、量器）。", "en": "to contend" },
+        { "char": "问", "pinyin": "wèn", "zh": "询问。", "en": "to ask" },
+        { "char": "其", "pinyin": "qí", "zh": "他们的、其中的。", "en": "their / its" },
+        { "char": "故", "pinyin": "gù", "zh": "缘故、原因。", "en": "reason / cause" },
+        { "char": "一", "pinyin": "yī", "zh": "一、其中一个。", "en": "one" },
+        { "char": "曰", "pinyin": "yuē", "zh": "说。", "en": "to say" },
+        { "char": "我", "pinyin": "wǒ", "zh": "我。", "en": "I / me" },
+        { "char": "以", "pinyin": "yǐ", "zh": "认为、以为。", "en": "to think / consider" },
+        { "char": "日", "pinyin": "rì", "zh": "太阳。", "en": "sun" },
+        { "char": "始", "pinyin": "shǐ", "zh": "开始，始出即刚出来。", "en": "to begin" },
+        { "char": "出", "pinyin": "chū", "zh": "出来、升起。", "en": "to rise / come out" },
+        { "char": "时", "pinyin": "shí", "zh": "时候。", "en": "time / when" },
+        { "char": "去", "pinyin": "qù", "zh": "距、离。", "en": "from / distance" },
+        { "char": "人", "pinyin": "rén", "zh": "人。", "en": "people" },
+        { "char": "近", "pinyin": "jìn", "zh": "近。", "en": "near" },
+        { "char": "而", "pinyin": "ér", "zh": "连词，表转折或承接。", "en": "but / and" },
+        { "char": "中", "pinyin": "zhōng", "zh": "日中即正午（多音字：zhòng 指击中）。", "en": "midday (here)" },
+        { "char": "远", "pinyin": "yuǎn", "zh": "远。", "en": "far" },
+        { "char": "也", "pinyin": "yě", "zh": "句末语气助词。", "en": "(final particle)" },
+        { "char": "初", "pinyin": "chū", "zh": "初、刚刚，初出即刚升起。", "en": "at first / just" },
+        { "char": "大", "pinyin": "dà", "zh": "大（多音字：dài 指大夫）。", "en": "big" },
+        { "char": "如", "pinyin": "rú", "zh": "像、如同。", "en": "like" },
+        { "char": "车", "pinyin": "chē", "zh": "车，车盖即车上的篷盖（多音字：jū 指象棋的车）。", "en": "carriage" },
+        { "char": "盖", "pinyin": "gài", "zh": "车盖，车上的伞状篷盖。", "en": "canopy / cover" },
+        { "char": "及", "pinyin": "jí", "zh": "到、等到。", "en": "to reach / by the time" },
+        { "char": "则", "pinyin": "zé", "zh": "就、便。", "en": "then" },
+        { "char": "盘", "pinyin": "pán", "zh": "盘子，盘盂即盘碗类器皿。", "en": "plate" },
+        { "char": "盂", "pinyin": "yú", "zh": "盛液体的圆口器皿，盘盂泛指盘碗。", "en": "bowl / basin" },
+        { "char": "此", "pinyin": "cǐ", "zh": "这。", "en": "this" },
+        { "char": "不", "pinyin": "bù", "zh": "不，不为……乎即不是……吗。", "en": "not" },
+        { "char": "为", "pinyin": "wéi", "zh": "是；句末“孰为汝多知”中读 wèi，同“谓”，说（多音字）。", "en": "to be / (wèi) to say" },
+        { "char": "者", "pinyin": "zhě", "zh": "……的（东西、人）。", "en": "the one that" },
+        { "char": "乎", "pinyin": "hū", "zh": "句末语气助词，表反问，相当于“吗”。", "en": "(final ? particle)" },
+        { "char": "沧", "pinyin": "cāng", "zh": "沧沧凉凉，形容清凉寒冷。", "en": "cool / chilly" },
+        { "char": "凉", "pinyin": "liáng", "zh": "凉、清凉（多音字：liàng 指晾凉）。", "en": "cool" },
+        { "char": "探", "pinyin": "tàn", "zh": "伸进、探入。", "en": "to reach into" },
+        { "char": "汤", "pinyin": "tāng", "zh": "热水（古义）。", "en": "hot water" },
+        { "char": "热", "pinyin": "rè", "zh": "热。", "en": "hot" },
+        { "char": "能", "pinyin": "néng", "zh": "能、能够。", "en": "able to" },
+        { "char": "决", "pinyin": "jué", "zh": "判断、裁决。", "en": "to decide" },
+        { "char": "笑", "pinyin": "xiào", "zh": "笑。", "en": "to laugh" },
+        { "char": "孰", "pinyin": "shú", "zh": "谁。", "en": "who" },
+        { "char": "汝", "pinyin": "rǔ", "zh": "你。", "en": "you" },
+        { "char": "多", "pinyin": "duō", "zh": "多，多知即知识渊博。", "en": "much / many" },
+        { "char": "知", "pinyin": "zhì", "zh": "此处通“智”，智慧、见识（多音字：zhī 指知道）。", "en": "knowledge/wisdom (= 智)" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "选自《列子·汤问》，是一则寓言故事，借两小儿辩日说明道理。",
+          "en": "From the 'Tang Wen' chapter of the Liezi, this fable uses two children debating the sun to make a point."
+        },
+        "culture": {
+          "zh": "故事反映古人对自然现象的探究精神，连博学的孔子也坦言“不能决”。",
+          "en": "It reflects the ancients' spirit of inquiry into nature; even the learned Confucius honestly admits he cannot decide."
+        },
+        "rhetoric": {
+          "zh": "全文用对比和反问，借两小儿各执一词，说明知识无穷、学无止境，也赞扬实事求是的态度。",
+          "en": "Through contrast and rhetorical questions, it shows that knowledge is boundless and praises honesty about the limits of what one knows."
+        }
+      },
+      "sandhi": [
+        { "text": "两小", "rule": "上上变调", "base": "liǎng", "read": "liáng", "value": "35", "markChange": true, "where": "题目", "pos": 0, "zh": "\"两\"在上声\"小\"前变读阳平（第二声）：liǎng→liáng。", "en": "两 comes before the third-tone 小, so it is read in second tone: liǎng → liáng." },
+        { "text": "小儿", "rule": "半上声", "base": "xiǎo", "read": "xiǎo", "value": "211", "markChange": false, "where": "题目", "pos": 1, "zh": "\"小\"是上声，在非上声\"儿\"前读\"半上\"（调值211），拼音不变：xiǎo。", "en": "小 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 儿; the written pinyin stays xiǎo." },
+        { "text": "孔子", "rule": "上上变调", "base": "kǒng", "read": "kóng", "value": "35", "markChange": true, "where": "孔子东游，见两小儿辩斗，", "pos": 0, "zh": "\"孔\"在上声\"子\"前变读阳平（第二声）：kǒng→kóng。", "en": "孔 comes before the third-tone 子, so it is read in second tone: kǒng → kóng." },
+        { "text": "子东", "rule": "半上声", "base": "zǐ", "read": "zǐ", "value": "211", "markChange": false, "where": "孔子东游，见两小儿辩斗，", "pos": 1, "zh": "\"子\"是上声，在非上声\"东\"前读\"半上\"（调值211），拼音不变：zǐ。", "en": "子 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 东; the written pinyin stays zǐ." },
+        { "text": "两小", "rule": "上上变调", "base": "liǎng", "read": "liáng", "value": "35", "markChange": true, "where": "孔子东游，见两小儿辩斗，", "pos": 5, "zh": "\"两\"在上声\"小\"前变读阳平（第二声）：liǎng→liáng。", "en": "两 comes before the third-tone 小, so it is read in second tone: liǎng → liáng." },
+        { "text": "小儿", "rule": "半上声", "base": "xiǎo", "read": "xiǎo", "value": "211", "markChange": false, "where": "孔子东游，见两小儿辩斗，", "pos": 6, "zh": "\"小\"是上声，在非上声\"儿\"前读\"半上\"（调值211），拼音不变：xiǎo。", "en": "小 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 儿; the written pinyin stays xiǎo." },
+        { "text": "辩斗", "rule": "半去声", "base": "biàn", "read": "biàn", "value": "53", "markChange": false, "where": "孔子东游，见两小儿辩斗，", "pos": 8, "zh": "\"辩\"是去声，在去声\"斗\"前读\"半去\"（调值53），拼音不变：biàn。", "en": "辩 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 斗; the written pinyin stays biàn." },
+        { "text": "一儿", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "一儿曰：“我以日始出时去人近，而日中时远也。”", "pos": 0, "zh": "\"一\"在阴平/阳平/上声\"儿\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 儿 changes to fourth tone: yī → yì." },
+        { "text": "我以", "rule": "上上变调", "base": "wǒ", "read": "wó", "value": "35", "markChange": true, "where": "一儿曰：“我以日始出时去人近，而日中时远也。”", "pos": 3, "zh": "\"我\"在上声\"以\"前变读阳平（第二声）：wǒ→wó。", "en": "我 comes before the third-tone 以, so it is read in second tone: wǒ → wó." },
+        { "text": "以日", "rule": "半上声", "base": "yǐ", "read": "yǐ", "value": "211", "markChange": false, "where": "一儿曰：“我以日始出时去人近，而日中时远也。”", "pos": 4, "zh": "\"以\"是上声，在非上声\"日\"前读\"半上\"（调值211），拼音不变：yǐ。", "en": "以 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 日; the written pinyin stays yǐ." },
+        { "text": "始出", "rule": "半上声", "base": "shǐ", "read": "shǐ", "value": "211", "markChange": false, "where": "一儿曰：“我以日始出时去人近，而日中时远也。”", "pos": 6, "zh": "\"始\"是上声，在非上声\"出\"前读\"半上\"（调值211），拼音不变：shǐ。", "en": "始 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 出; the written pinyin stays shǐ." },
+        { "text": "远也", "rule": "上上变调", "base": "yuǎn", "read": "yuán", "value": "35", "markChange": true, "where": "一儿曰：“我以日始出时去人近，而日中时远也。”", "pos": 16, "zh": "\"远\"在上声\"也\"前变读阳平（第二声）：yuǎn→yuán。", "en": "远 comes before the third-tone 也, so it is read in second tone: yuǎn → yuán." },
+        { "text": "一儿", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "一儿以日初出远，而日中时近。", "pos": 0, "zh": "\"一\"在阴平/阳平/上声\"儿\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 儿 changes to fourth tone: yī → yì." },
+        { "text": "以日", "rule": "半上声", "base": "yǐ", "read": "yǐ", "value": "211", "markChange": false, "where": "一儿以日初出远，而日中时近。", "pos": 2, "zh": "\"以\"是上声，在非上声\"日\"前读\"半上\"（调值211），拼音不变：yǐ。", "en": "以 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 日; the written pinyin stays yǐ." },
+        { "text": "远而", "rule": "半上声", "base": "yuǎn", "read": "yuǎn", "value": "211", "markChange": false, "where": "一儿以日初出远，而日中时近。", "pos": 6, "zh": "\"远\"是上声，在非上声\"而\"前读\"半上\"（调值211），拼音不变：yuǎn。", "en": "远 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 而; the written pinyin stays yuǎn." },
+        { "text": "一儿", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "一儿曰：“日初出大如车盖，及日中则如盘盂，此不为远者小而近者大乎？”", "pos": 0, "zh": "\"一\"在阴平/阳平/上声\"儿\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 儿 changes to fourth tone: yī → yì." },
+        { "text": "此不", "rule": "半上声", "base": "cǐ", "read": "cǐ", "value": "211", "markChange": false, "where": "一儿曰：“日初出大如车盖，及日中则如盘盂，此不为远者小而近者大乎？”", "pos": 17, "zh": "\"此\"是上声，在非上声\"不\"前读\"半上\"（调值211），拼音不变：cǐ。", "en": "此 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 不; the written pinyin stays cǐ." },
+        { "text": "远者", "rule": "上上变调", "base": "yuǎn", "read": "yuán", "value": "35", "markChange": true, "where": "一儿曰：“日初出大如车盖，及日中则如盘盂，此不为远者小而近者大乎？”", "pos": 20, "zh": "\"远\"在上声\"者\"前变读阳平（第二声）：yuǎn→yuán。", "en": "远 comes before the third-tone 者, so it is read in second tone: yuǎn → yuán." },
+        { "text": "者小", "rule": "上上变调", "base": "zhě", "read": "zhé", "value": "35", "markChange": true, "where": "一儿曰：“日初出大如车盖，及日中则如盘盂，此不为远者小而近者大乎？”", "pos": 21, "zh": "\"者\"在上声\"小\"前变读阳平（第二声）：zhě→zhé。", "en": "者 comes before the third-tone 小, so it is read in second tone: zhě → zhé." },
+        { "text": "小而", "rule": "半上声", "base": "xiǎo", "read": "xiǎo", "value": "211", "markChange": false, "where": "一儿曰：“日初出大如车盖，及日中则如盘盂，此不为远者小而近者大乎？”", "pos": 22, "zh": "\"小\"是上声，在非上声\"而\"前读\"半上\"（调值211），拼音不变：xiǎo。", "en": "小 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 而; the written pinyin stays xiǎo." },
+        { "text": "者大", "rule": "半上声", "base": "zhě", "read": "zhě", "value": "211", "markChange": false, "where": "一儿曰：“日初出大如车盖，及日中则如盘盂，此不为远者小而近者大乎？”", "pos": 25, "zh": "\"者\"是上声，在非上声\"大\"前读\"半上\"（调值211），拼音不变：zhě。", "en": "者 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 大; the written pinyin stays zhě." },
+        { "text": "一儿", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "一儿曰：“日初出沧沧凉凉，及其日中如探汤，此不为近者热而远者凉乎？”", "pos": 0, "zh": "\"一\"在阴平/阳平/上声\"儿\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 儿 changes to fourth tone: yī → yì." },
+        { "text": "此不", "rule": "半上声", "base": "cǐ", "read": "cǐ", "value": "211", "markChange": false, "where": "一儿曰：“日初出沧沧凉凉，及其日中如探汤，此不为近者热而远者凉乎？”", "pos": 17, "zh": "\"此\"是上声，在非上声\"不\"前读\"半上\"（调值211），拼音不变：cǐ。", "en": "此 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 不; the written pinyin stays cǐ." },
+        { "text": "者热", "rule": "半上声", "base": "zhě", "read": "zhě", "value": "211", "markChange": false, "where": "一儿曰：“日初出沧沧凉凉，及其日中如探汤，此不为近者热而远者凉乎？”", "pos": 21, "zh": "\"者\"是上声，在非上声\"热\"前读\"半上\"（调值211），拼音不变：zhě。", "en": "者 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 热; the written pinyin stays zhě." },
+        { "text": "远者", "rule": "上上变调", "base": "yuǎn", "read": "yuán", "value": "35", "markChange": true, "where": "一儿曰：“日初出沧沧凉凉，及其日中如探汤，此不为近者热而远者凉乎？”", "pos": 24, "zh": "\"远\"在上声\"者\"前变读阳平（第二声）：yuǎn→yuán。", "en": "远 comes before the third-tone 者, so it is read in second tone: yuǎn → yuán." },
+        { "text": "者凉", "rule": "半上声", "base": "zhě", "read": "zhě", "value": "211", "markChange": false, "where": "一儿曰：“日初出沧沧凉凉，及其日中如探汤，此不为近者热而远者凉乎？”", "pos": 25, "zh": "\"者\"是上声，在非上声\"凉\"前读\"半上\"（调值211），拼音不变：zhě。", "en": "者 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 凉; the written pinyin stays zhě." },
+        { "text": "孔子", "rule": "上上变调", "base": "kǒng", "read": "kóng", "value": "35", "markChange": true, "where": "孔子不能决也。", "pos": 0, "zh": "\"孔\"在上声\"子\"前变读阳平（第二声）：kǒng→kóng。", "en": "孔 comes before the third-tone 子, so it is read in second tone: kǒng → kóng." },
+        { "text": "子不", "rule": "半上声", "base": "zǐ", "read": "zǐ", "value": "211", "markChange": false, "where": "孔子不能决也。", "pos": 1, "zh": "\"子\"是上声，在非上声\"不\"前读\"半上\"（调值211），拼音不变：zǐ。", "en": "子 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 不; the written pinyin stays zǐ." },
+        { "text": "两小", "rule": "上上变调", "base": "liǎng", "read": "liáng", "value": "35", "markChange": true, "where": "两小儿笑曰：“孰为汝多知乎？”", "pos": 0, "zh": "\"两\"在上声\"小\"前变读阳平（第二声）：liǎng→liáng。", "en": "两 comes before the third-tone 小, so it is read in second tone: liǎng → liáng." },
+        { "text": "小儿", "rule": "半上声", "base": "xiǎo", "read": "xiǎo", "value": "211", "markChange": false, "where": "两小儿笑曰：“孰为汝多知乎？”", "pos": 1, "zh": "\"小\"是上声，在非上声\"儿\"前读\"半上\"（调值211），拼音不变：xiǎo。", "en": "小 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 儿; the written pinyin stays xiǎo." },
+        { "text": "汝多", "rule": "半上声", "base": "rǔ", "read": "rǔ", "value": "211", "markChange": false, "where": "两小儿笑曰：“孰为汝多知乎？”", "pos": 7, "zh": "\"汝\"是上声，在非上声\"多\"前读\"半上\"（调值211），拼音不变：rǔ。", "en": "汝 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 多; the written pinyin stays rǔ." }
+      ]
+    }
+  ]
+}

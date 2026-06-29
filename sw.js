@@ -1,10 +1,10 @@
-/* 認漢字 — offline service worker.
+/* Learn Chinese apps — offline service worker.
  *
- * Why this exists: the app has no runtime dependencies and the dictionary
- * lives in IndexedDB, but when hosted on GitHub Pages the browser must still
- * fetch learnchinese.html over the network on every visit. With no network,
- * there is nothing to load. This worker caches the page shell so the app
- * opens offline after the first online visit.
+ * Why this exists: the apps have no runtime dependencies, but when hosted on
+ * GitHub Pages the browser must still fetch the HTML/JSON shells over the
+ * network on every visit. With no network, there is nothing to load. This
+ * worker caches the page shells and poem JSON so the apps open offline after
+ * one online visit.
  *
  * Strategy: stale-while-revalidate for same-origin GET requests — serve the
  * cached copy instantly, then refresh the cache in the background so the
@@ -13,10 +13,25 @@
  *
  * Bump CACHE when you want to force-drop old caches.
  */
-const CACHE = 'renhanzi-v1';
+const CACHE = 'learn-chinese-v2';
+const CORE_ASSETS = [
+  './learnchinese.html',
+  './poems.html',
+  './poems-g1.json',
+  './poems-g2.json',
+  './poems-g3.json',
+  './poems-g4.json',
+  './poems-g5.json',
+  './poems-g6.json',
+  './poems-media.json',
+];
 
-self.addEventListener('install', () => {
-  self.skipWaiting();
+self.addEventListener('install', (e) => {
+  e.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
+    await cache.addAll(CORE_ASSETS);
+    await self.skipWaiting();
+  })());
 });
 
 self.addEventListener('activate', (e) => {

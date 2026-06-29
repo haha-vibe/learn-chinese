@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="google" content="notranslate">
+
+<meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self'; 
+               script-src 'self' 'unsafe-inline'; 
+               style-src 'self' 'unsafe-inline';
+               connect-src 'self';
+               media-src 'self' https://www.edb.gov.hk;
+               frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
+               child-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
+               base-uri 'self';
+               object-src 'none';">
+
+<title>小学生必背古诗 · 诵读</title>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    });
+  }
+</script>
+<style>
+  :root{
+    --bg:#fbf6ec; --card:#fffdf8; --ink:#2b2520; --muted:#8a7f70;
+    --line:#e7ddc9; --accent:#b5651d; --accent2:#0b7285;
+    --mark:#d9480f; --value:#0b7285; --good:#2f9e44; --ring:#f0a868;
+    --shadow:0 1px 3px rgba(80,60,30,.10),0 6px 18px rgba(80,60,30,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+    -webkit-text-size-adjust:100%; line-height:1.5;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:18px 16px 60px}
+  a{color:var(--accent)}
+  button{font-family:inherit}
+  .btn{
+    border:1px solid var(--line); background:var(--card); color:var(--ink);
+    border-radius:999px; padding:8px 16px; font-size:15px; cursor:pointer;
+    display:inline-flex; align-items:center; gap:7px; box-shadow:var(--shadow);
+  }
+  .btn:hover{border-color:var(--ring)}
+  .btn.on{background:var(--accent); color:#fff; border-color:var(--accent)}
+  .icon-btn{font-size:20px; line-height:1; padding:9px 12px}
+
+  /* ---------- Index ---------- */
+  .app-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:6px 0 18px}
+  .app-head h1{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:30px;margin:0;letter-spacing:2px}
+  .app-head .sub{color:var(--muted);font-size:14px}
+  .overall{margin-left:auto;color:var(--muted);font-size:13px}
+
+  .grade{margin:0 0 26px}
+  .grade-head{display:flex;align-items:center;gap:12px;margin:0 0 10px}
+  .grade-head h2{font-size:19px;margin:0;font-weight:700}
+  .grade-head .count{color:var(--muted);font-size:13px;white-space:nowrap}
+  .bar{flex:1;height:9px;background:var(--line);border-radius:999px;overflow:hidden;min-width:80px;max-width:340px}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,#7bbf6a,#2f9e44);width:0;transition:width .4s ease}
+  .vol{color:var(--muted);font-size:12px;margin:12px 0 6px;letter-spacing:1px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .pcard{
+    position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:13px 13px 11px;cursor:pointer;box-shadow:var(--shadow);transition:transform .12s,border-color .12s;
+    min-height:74px;display:flex;flex-direction:column;justify-content:space-between
+  }
+  .pcard:hover{transform:translateY(-2px);border-color:var(--ring)}
+  .pcard .t{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:20px;font-weight:700;letter-spacing:1px}
+  .pcard .a{color:var(--muted);font-size:12.5px;margin-top:4px}
+  .pcard .seen{position:absolute;top:9px;right:10px;color:var(--good);font-size:14px;opacity:0}
+  .pcard.viewed .seen{opacity:1}
+  .pcard.viewed .t{color:#6f6757}
+  .pcard.focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(240,168,104,.5),var(--shadow);animation:pulse 1.6s ease 2}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(240,168,104,.25),var(--shadow)}50%{box-shadow:0 0 0 5px rgba(240,168,104,.6),var(--shadow)}}
+
+  /* ---------- Poem ---------- */
+  .toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:2px 0 14px}
+  .toolbar .spacer{flex:1}
+  .poem-card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:26px 20px}
+  .ptitle{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:30px;font-weight:700;text-align:center;letter-spacing:2px;margin:2px 0 2px}
+  .ptitle-py{text-align:center;color:var(--muted);font-size:14px;letter-spacing:1px;margin-bottom:4px;display:none}
+  body.pinyin .ptitle-py{display:block}
+  .pauthor{text-align:center;color:var(--muted);font-size:14px;margin-bottom:6px}
+  .media{display:flex;gap:10px;justify-content:center;margin:8px 0 4px;min-height:4px}
+
+  .body{margin:20px auto 6px;max-width:100%;overflow-x:auto}
+  .poem-line{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:2px 4px;padding:5px 0}
+  .char{display:inline-flex;flex-direction:column;align-items:center;justify-content:flex-end}
+  .char .py{font-size:0;height:0;color:var(--muted);transition:none;white-space:nowrap;font-variant:none}
+  body.pinyin .char .py{font-size:14px;height:1.35em;line-height:1.35em;margin-bottom:1px}
+  .char .hz{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:30px;line-height:1.25}
+  .punct{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:30px;line-height:1.25;align-self:flex-end;color:#9c917f}
+  .char[title]{cursor:help}
+  /* sandhi (only meaningful when pinyin shown) */
+  body.pinyin .py.s-mark{color:var(--mark);font-weight:700}
+  body.pinyin .py.s-value{color:var(--value);border-bottom:2px dotted var(--value)}
+  body.pinyin .char:has(.s-mark) .hz{box-shadow:inset 0 -10px 0 rgba(217,72,15,.13)}
+  body.pinyin .char:has(.s-value) .hz{box-shadow:inset 0 -10px 0 rgba(11,114,133,.10)}
+
+  .legend{display:none;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:12.5px;margin:6px 0 0}
+  body.pinyin .legend{display:flex}
+  .legend b{font-weight:700}
+  .legend .m{color:var(--mark)} .legend .v{color:var(--value)}
+
+  .section{margin:22px auto 0;max-width:760px}
+  .section h3{font-size:15px;margin:0 0 8px;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--line);padding-bottom:5px}
+  .trans .tl{display:flex;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);flex-wrap:wrap}
+  .trans .tl:last-child{border-bottom:0}
+  .trans .src{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:17px;min-width:7em;flex:1 1 8em}
+  .trans .zh{flex:2 1 12em;color:#4a4337;font-size:14px}
+  .trans .en{flex:2 1 12em;color:var(--muted);font-size:13px;font-style:italic}
+  .note{margin:0 0 12px}
+  .note .lab{font-weight:700;font-size:13.5px;color:#5a5042}
+  .note .zh{font-size:14.5px;margin:2px 0}
+  .note .en{font-size:13px;color:var(--muted)}
+  details.glossary{margin-top:6px}
+  details.glossary summary{cursor:pointer;color:var(--accent);font-size:14px}
+  .gloss-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px 14px;margin-top:10px}
+  .gloss-grid .g{font-size:13.5px;border-bottom:1px dotted var(--line);padding-bottom:4px}
+  .gloss-grid .g b{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:17px;margin-right:5px}
+  .gloss-grid .g .gp{color:var(--accent2);margin-right:6px}
+  .gloss-grid .g .ge{color:var(--muted)}
+
+  .hint{color:var(--muted);font-size:12.5px}
+  /* import */
+  .import{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:24px;text-align:center;box-shadow:var(--shadow)}
+  .import p{color:var(--muted);font-size:14px}
+
+  /* video modal */
+  .modal{position:fixed;inset:0;background:rgba(20,15,8,.72);display:flex;align-items:center;justify-content:center;padding:18px;z-index:50}
+  .modal .box{background:#000;border-radius:14px;overflow:hidden;width:min(900px,100%);max-height:90vh;position:relative}
+  .modal .vwrap{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+  .modal iframe,.modal video{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .modal .x{position:absolute;top:8px;right:10px;z-index:2}
+  .modal .open-ext{position:absolute;bottom:8px;left:12px;z-index:2;color:#fff;font-size:13px}
+  /* custom tooltip (fast, readable) */
+  #tip{position:fixed;z-index:80;max-width:300px;background:#2b2520;color:#fdf6e9;padding:9px 12px;border-radius:10px;font-size:15px;line-height:1.5;white-space:pre-line;box-shadow:0 8px 26px rgba(0,0,0,.32);pointer-events:none;display:none}
+  /* media icons on index cards */
+  .cardmedia{display:flex;gap:6px;margin-top:9px}
+  .icon-btn.mini{padding:5px 9px;font-size:15px;box-shadow:none}
+  /* credits + license footer */
+  .credits{margin:30px 0 0}
+  .credits h3{font-size:15px;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--line);padding-bottom:5px;margin:0 0 10px}
+  .credit-list{display:flex;flex-direction:column;gap:6px}
+  .credit{font-size:14px}
+  .credit .cn{color:var(--muted)}
+  .footer{max-width:760px;margin:36px auto 10px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:var(--muted);text-align:center}
+  .footer a{color:var(--accent)}
+  @media(max-width:520px){
+    .ptitle{font-size:26px}.char .hz,.punct{font-size:26px}
+    .pcard .t{font-size:18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="root"></div>
+<audio id="audio" preload="none"></audio>
+
+<script>
+"use strict";
+/* ============================ state ============================ */
+const DATA_KEY="poems.data.v2", VIEW_KEY="poems.viewed.v1", PREF_KEY="poems.pinyin.v1";
+const GRADE_LABEL={1:"一年级",2:"二年级",3:"三年级",4:"四年级",5:"五年级",6:"六年级"};
+const VOL_LABEL={"上":"上册","下":"下册"};
+
+let GRADES=[];          // [{grade, poems:[...]}]
+let BYID={};            // id -> poem (poem carries its grade)
+let ORDER=[];           // ids in display order
+let MEDIA={};           // id -> {audio,audioStart,video,videoStart}
+let CREDITS=[];         // [{name,url,note}] external media credits
+let viewed=loadViewed();
+let showPinyin=localStorage.getItem(PREF_KEY)==="1";
+
+const root=document.getElementById("root");
+const audioEl=document.getElementById("audio");
+let activeAudioId=null;
+
+/* ============================ storage ============================ */
+function loadViewed(){ try{return new Set(JSON.parse(localStorage.getItem(VIEW_KEY)||"[]"));}catch(e){return new Set();} }
+function saveViewed(){ try{localStorage.setItem(VIEW_KEY,JSON.stringify([...viewed]));}catch(e){} }
+function cacheData(grades,media){ try{localStorage.setItem(DATA_KEY,JSON.stringify({grades,media}));}catch(e){} }
+function readCache(){ try{return JSON.parse(localStorage.getItem(DATA_KEY)||"null");}catch(e){return null;} }
+function resetData(){ try{localStorage.removeItem(DATA_KEY);}catch(e){} location.reload(); }
+
+function setData(grades,media){
+  GRADES=grades.slice().sort((a,b)=>a.grade-b.grade);
+  BYID={}; ORDER=[]; MEDIA={};
+  for(const g of GRADES) for(const p of g.poems){ p.grade=g.grade; BYID[p.id]=p; ORDER.push(p.id); }
+  if(media) for(const k in media){ if(k[0]==="_") continue; const m=media[k]; if(m&&(m.audio||m.video)) MEDIA[k]=m; }
+  CREDITS = (media && Array.isArray(media._credits)) ? media._credits : [];
+}
+
+/* ============================ load ============================ */
+async function loadData(){
+  try{
+    const arr=await Promise.all([1,2,3,4,5,6].map(g=>
+      fetch("poems-g"+g+".json",{cache:"reload"}).then(r=>{if(!r.ok)throw new Error("http "+r.status);return r.json();})
+    ));
+    let media={};
+    try{ const mr=await fetch("poems-media.json",{cache:"reload"}); if(mr.ok) media=await mr.json(); }catch(e){}
+    const grades=arr.map(d=>({grade:d.meta.grade, poems:d.poems}));
+    setData(grades,media); cacheData(grades,media); return true;
+  }catch(e){
+    const cached=readCache();
+    if(cached&&cached.grades){ setData(cached.grades,cached.media||{}); return true; }
+    return false;
+  }
+}
+
+function renderImport(){
+  root.innerHTML=`<div class="app-head"><h1>小学生必背古诗</h1></div>
+    <div class="import">
+      <p>无法自动载入诗歌数据（直接打开本地文件时浏览器会阻止读取）。<br>
+      请选择 <b>poems-g1.json … poems-g6.json</b>（可一次多选，亦可加入 poems-media.json）。</p>
+      <p><label class="btn"><input id="fi" type="file" accept=".json,application/json" multiple style="display:none">📂 选择 JSON 文件</label></p>
+      <p class="hint">提示：将本页与 JSON 文件一起放到网站（如 GitHub Pages）即可自动载入。</p>
+    </div>`;
+  document.getElementById("fi").onchange=async e=>{
+    const grades=[]; let media={};
+    for(const f of e.target.files){
+      let j; try{ j=JSON.parse(await f.text()); }catch(_){ continue; }
+      if(j&&Array.isArray(j.poems)) grades.push({grade:(j.meta&&j.meta.grade)||(j.poems[0]&&j.poems[0].grade)||0, poems:j.poems});
+      else if(j&&typeof j==="object") media={...media,...j};
+    }
+    if(!grades.length){ alert("没有找到诗歌数据文件（应包含 poems 数组）。"); return; }
+    setData(grades,media); cacheData(grades,media); location.hash=""; renderIndex();
+  };
+}
+
+/* ============================ helpers ============================ */
+const isHan=c=>/[一-鿿]/.test(c);
+const stripPy=s=>s.replace(/[，,。.、；;：:！!？?（）()「」『』“”‘’'"《》—…·\-]/g,"");
+function sandhiTip(s){
+  return `${s.rule}　${s.base}→${s.read}（调值 ${s.value}）\n${s.zh}\n${s.en}`;
+}
+function charMeaning(poem,ch){
+  const c=poem.chars.find(x=>x.char===ch); if(!c) return "";
+  return `${c.char}　${c.pinyin}\n${c.zh}\n${c.en}`;
+}
+function sandhiMap(poem,where){
+  const m={}; for(const s of poem.sandhi||[]) if(s.where===where) m[s.pos]=s; return m;
+}
+function el(tag,cls,txt){ const e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
+function mediaButtons(id,small){
+  const out=[], m=MEDIA[id]||{};
+  const cls="btn icon-btn"+(small?" mini":"");
+  if(m.audio){
+    const b=el("button",cls); b.textContent="🎧"; b.title="真人朗读（普通话 · 香港教育局）";
+    b.setAttribute("data-audio",id);
+    b.onclick=ev=>{ ev.stopPropagation(); toggleAudio(id); };
+    out.push(b);
+  }
+  if(TTS){
+    const b=el("button",cls); b.textContent="🗣️"; b.title="语音合成朗读（TTS · 近似发音）"; b.setAttribute("data-tts",id);
+    if(ttsId===id) b.classList.add("on");
+    b.onclick=ev=>{ ev.stopPropagation(); speakPoem(id,true); };
+    out.push(b);
+  }
+  if(m.video){
+    const b=el("button",cls); b.textContent="▶️"; b.title="播放视频";
+    b.onclick=ev=>{ ev.stopPropagation(); openVideo(id); };
+    out.push(b);
+  }
+  return out;
+}
+
+/* ============================ index view ============================ */
+function renderIndex(){
+  stopAudio();
+  document.title="小学生必背古诗 · 诵读";
+  const total=ORDER.length, seen=ORDER.filter(id=>viewed.has(id)).length;
+  root.innerHTML="";
+  const head=el("div","app-head");
+  head.appendChild(el("h1","","小学生必背古诗"));
+  head.appendChild(el("span","sub","Classical Chinese Poems · 诵读"));
+  head.appendChild(el("span","overall",`已读 ${seen} / ${total}`));
+  const rb=el("button","btn"); rb.textContent="↻ 刷新"; rb.title="清除本地缓存并重新载入数据"; rb.style.cssText="padding:4px 11px;font-size:12px";
+  rb.onclick=resetData; head.appendChild(rb);
+  root.appendChild(head);
+
+  let focusCard=null;
+  for(const g of GRADES){
+    const ids=g.poems.map(p=>p.id);
+    const gs=ids.filter(id=>viewed.has(id)).length;
+    const sec=el("section","grade");
+    const gh=el("div","grade-head");
+    gh.appendChild(el("h2","",GRADE_LABEL[g.grade]||("Grade "+g.grade)));
+    const bar=el("div","bar"); const fill=el("i"); fill.style.width=(g.poems.length?gs/g.poems.length*100:0)+"%"; bar.appendChild(fill);
+    gh.appendChild(bar);
+    gh.appendChild(el("span","count",`${gs}/${g.poems.length}`));
+    sec.appendChild(gh);
+
+    let curVol=null, grid=null;
+    for(const p of g.poems){
+      if(p.volume!==curVol){
+        curVol=p.volume;
+        sec.appendChild(el("div","vol",VOL_LABEL[curVol]||curVol||""));
+        grid=el("div","grid"); sec.appendChild(grid);
+      }
+      const card=el("div","pcard"+(viewed.has(p.id)?" viewed":""));
+      card.appendChild(el("div","t",p.title));
+      card.appendChild(el("div","a",`${p.author}　${p.dynasty?("〔"+p.dynasty+"〕"):""}`));
+      card.appendChild(el("div","seen","✓ 已读"));
+      const mb=mediaButtons(p.id,true);
+      if(mb.length){ const mr=el("div","cardmedia"); for(const b of mb) mr.appendChild(b); card.appendChild(mr); }
+      card.onclick=()=>{ location.hash="poem/"+encodeURIComponent(p.id); };
+      grid.appendChild(card);
+      if(!focusCard && !viewed.has(p.id)) focusCard=card;
+    }
+    root.appendChild(sec);
+  }
+  /* credits */
+  if(CREDITS.length){
+    const cs=el("section","credits");
+    cs.appendChild(el("h3","","鸣谢 · 外部音视频来源 / Media credits"));
+    const list=el("div","credit-list");
+    for(const c of CREDITS){
+      const d=el("div","credit");
+      const a=el("a",null,c.name||c.url); a.href=c.url; a.target="_blank"; a.rel="noopener";
+      d.appendChild(a);
+      if(c.note) d.appendChild(el("span","cn"," — "+c.note));
+      list.appendChild(d);
+    }
+    cs.appendChild(list);
+    cs.appendChild(el("p","hint","音视频由外部网站（YouTube 等）提供，版权归原作者所有；本应用仅作链接引用，不存储或分发其内容。"));
+    root.appendChild(cs);
+  }
+  /* license / copyright */
+  const ft=el("footer","footer");
+  ft.innerHTML='古诗原文 · Poem texts<br>原文选自小学语文统编教材；古诗词均为公有领域作品（public domain）。<br><br>'+
+    '注释、拼音、连读变调与译文，以及应用程序代码 © 2026 <a href="https://github.com/haha-vibe" target="_blank" rel="noopener">haha-vibe</a>，'+
+    '依 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-NC-SA&nbsp;4.0</a> 授权发布。<br>'+
+    'Annotations &amp; application code © 2026 haha-vibe, licensed under CC BY-NC-SA 4.0 — for educational, non-commercial use.';
+  root.appendChild(ft);
+  if(focusCard){
+    focusCard.classList.add("focus");
+    requestAnimationFrame(()=>focusCard.scrollIntoView({block:"center",behavior:"smooth"}));
+  }
+}
+
+/* ============================ poem view ============================ */
+function renderPoem(id){
+  const poem=BYID[id];
+  if(!poem){ location.hash=""; return; }
+  if(!viewed.has(id)){ viewed.add(id); saveViewed(); }
+  stopAudio();
+  document.title=poem.title+" · "+poem.author;
+  root.innerHTML="";
+
+  /* toolbar */
+  const tb=el("div","toolbar");
+  const back=el("button","btn"); back.innerHTML="← 返回目录"; back.onclick=()=>{location.hash="";};
+  tb.appendChild(back);
+  tb.appendChild(el("span","spacer"));
+  const pyBtn=el("button","btn"+(showPinyin?" on":"")); pyBtn.id="pyBtn";
+  pyBtn.innerHTML=showPinyin?"✓ 拼音 (空格)":"拼音 (空格)";
+  pyBtn.onclick=()=>togglePinyin();
+  tb.appendChild(pyBtn);
+  root.appendChild(tb);
+
+  const card=el("div","poem-card");
+  card.appendChild(el("div","ptitle",poem.title));
+  card.appendChild(el("div","ptitle-py",poem.titlePinyin||""));
+  card.appendChild(el("div","pauthor",`${poem.dynasty?("〔"+poem.dynasty+"〕 "):""}${poem.author}`));
+
+  /* media */
+  const media=el("div","media");
+  for(const b of mediaButtons(id,false)) media.appendChild(b);
+  card.appendChild(media);
+
+  /* poem body */
+  const body=el("div","body");
+  for(const ln of poem.lines) body.appendChild(buildLine(poem,ln));
+  card.appendChild(body);
+
+  const legend=el("div","legend");
+  legend.innerHTML='连读变调：<span class="m"><b>橙色</b> 变调（拼音改变）</span><span class="v"><b>蓝色虚线</b> 半上/半去（音值变化）</span>';
+  card.appendChild(legend);
+  root.appendChild(card);
+
+  /* translations */
+  const sT=el("div","section trans");
+  sT.appendChild(el("h3","","译文 · Translation"));
+  for(const ln of poem.lines){
+    const tl=el("div","tl");
+    tl.appendChild(el("div","src",ln.text));
+    tl.appendChild(el("div","zh",ln.zh||""));
+    tl.appendChild(el("div","en",ln.en||""));
+    sT.appendChild(tl);
+  }
+  root.appendChild(sT);
+
+  /* notes */
+  const sN=el("div","section");
+  sN.appendChild(el("h3","","注释 · Notes"));
+  const NL=[["background","背景"],["culture","文化"],["rhetoric","修辞"]];
+  for(const [k,lab] of NL){
+    const n=poem.notes&&poem.notes[k]; if(!n) continue;
+    const box=el("div","note");
+    box.appendChild(el("span","lab",lab+"　"));
+    box.appendChild(el("div","zh",n.zh||""));
+    box.appendChild(el("div","en",n.en||""));
+    sN.appendChild(box);
+  }
+  /* glossary */
+  const det=el("details","glossary");
+  det.appendChild(el("summary","","字词释义 · Characters ("+poem.chars.length+")"));
+  const gg=el("div","gloss-grid");
+  for(const c of poem.chars){
+    const g=el("div","g");
+    g.innerHTML=`<b>${c.char}</b><span class="gp">${c.pinyin}</span>${c.zh}<span class="ge"> ${c.en}</span>`;
+    gg.appendChild(g);
+  }
+  det.appendChild(gg); sN.appendChild(det);
+  root.appendChild(sN);
+
+  window.scrollTo(0,0);
+  applyPinyinClass();
+  if(showPinyin) maybeAutoPlay();
+}
+
+function buildLine(poem,ln){
+  const sm=sandhiMap(poem,ln.text);
+  const sylls=ln.pinyin.trim().split(/\s+/);
+  const line=el("div","poem-line");
+  let hi=0;
+  for(const ch of ln.text){
+    if(isHan(ch)){
+      const s=sm[hi];
+      const c=el("span","char");
+      const py=el("span","py");
+      if(s){
+        py.textContent = s.markChange ? s.read : stripPy(sylls[hi]||"");
+        py.classList.add(s.markChange?"s-mark":"s-value");
+        c.setAttribute("data-tip",sandhiTip(s));
+      }else{
+        py.textContent=stripPy(sylls[hi]||"");
+        const mm=charMeaning(poem,ch); if(mm) c.setAttribute("data-tip",mm);
+      }
+      c.appendChild(py);
+      c.appendChild(el("span","hz",ch));
+      line.appendChild(c);
+      hi++;
+    }else{
+      line.appendChild(el("span","punct",ch));
+    }
+  }
+  return line;
+}
+
+/* ============================ pinyin + audio ============================ */
+function applyPinyinClass(){ document.body.classList.toggle("pinyin",showPinyin); }
+function togglePinyin(){
+  showPinyin=!showPinyin;
+  localStorage.setItem(PREF_KEY,showPinyin?"1":"0");
+  applyPinyinClass();
+  const b=document.getElementById("pyBtn");
+  if(b){ b.classList.toggle("on",showPinyin); b.innerHTML=showPinyin?"✓ 拼音 (空格)":"拼音 (空格)"; }
+  if(showPinyin) maybeAutoPlay(); else stopAudio();
+}
+function maybeAutoPlay(){
+  const id=currentPoemId(); if(!id) return; const m=MEDIA[id];
+  if(m&&m.audio) playAudio(id);
+  else if(TTS) speakPoem(id,false);
+}
+function mediaStartSeconds(value, fallback){
+  const n=Number(value);
+  return Number.isFinite(n) && n>=0 ? n : fallback;
+}
+function playAudio(id){
+  const m=MEDIA[id]; if(!m||!m.audio) return;
+  try{
+    stopMedia({keepAudio:true});
+    const start=mediaStartSeconds(m.audioStart,0);
+    activeAudioId=id;
+    const isNewSource=audioEl.getAttribute("data-src")!==m.audio;
+    if(isNewSource){
+      audioEl.src=m.audio;
+      audioEl.setAttribute("data-src",m.audio);
+      audioEl.load();
+    }
+    audioEl.setAttribute("data-start",String(start));
+    const skipToStart=()=>{
+      try{
+        if(Math.abs(audioEl.currentTime-start)>0.25) audioEl.currentTime=start;
+      }catch(e){}
+    };
+    const startPlayback=()=>{
+      skipToStart();
+      audioEl.play().catch(()=>{ clearAudioState(); });
+      setTimeout(skipToStart,80);
+    };
+    if(audioEl.readyState>=1) startPlayback();
+    else audioEl.addEventListener("loadedmetadata",startPlayback,{once:true});
+    updateAudioBtns();
+  }catch(e){}
+}
+function stopMedia(opts={}){
+  if(!opts.keepAudio) stopAudioOnly();
+  if(!opts.keepTts) stopTtsOnly();
+  if(!opts.keepVideo) closeVideoModal();
+}
+function stopAudio(){ stopMedia(); }
+function stopAudioOnly(){
+  try{
+    audioEl.pause();
+    const start=Number(audioEl.getAttribute("data-start")||0);
+    if(Number.isFinite(start)) audioEl.currentTime=start;
+  }catch(e){}
+  clearAudioState();
+}
+function clearAudioState(){ activeAudioId=null; updateAudioBtns(); }
+function toggleAudio(id){
+  if(activeAudioId===id && !audioEl.paused){ stopAudioOnly(); }
+  else playAudio(id);
+}
+function updateAudioBtns(){ document.querySelectorAll("[data-audio]").forEach(b=>b.classList.toggle("on", b.getAttribute("data-audio")===activeAudioId)); }
+audioEl && audioEl.addEventListener("ended",()=>clearAudioState());
+audioEl && audioEl.addEventListener("playing",()=>{
+  const start=Number(audioEl.getAttribute("data-start")||0);
+  try{ if(Number.isFinite(start) && Math.abs(audioEl.currentTime-start)>0.25) audioEl.currentTime=start; }catch(e){}
+});
+
+/* ============================ text-to-speech (read-aloud) ============================ */
+const TTS = ("speechSynthesis" in window);
+let zhVoice=null, ttsId=null;
+function pickVoice(){
+  if(!TTS) return;
+  const vs=speechSynthesis.getVoices()||[];
+  zhVoice = vs.find(v=>/^(zh|cmn)/i.test(v.lang)) || vs.find(v=>/chinese|中文|普通话|國語|国语|粤/i.test(v.name)) || null;
+}
+if(TTS){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
+function speakPoem(id, toggle){
+  if(!TTS) return;
+  const p=BYID[id]; if(!p) return;
+  const wasThis = ttsId===id && (speechSynthesis.speaking||speechSynthesis.pending);
+  if(toggle && wasThis){ stopTtsOnly(); return; }
+  stopMedia();
+  ttsId=id;
+  const u=new SpeechSynthesisUtterance(ttsText(p));
+  u.lang="zh-CN"; if(zhVoice) u.voice=zhVoice; u.rate=0.50; u.pitch=1;
+  u.onend=()=>{ if(ttsId===id){ ttsId=null; updateTtsBtns(); } };
+  u.onerror=()=>{ if(ttsId===id){ ttsId=null; updateTtsBtns(); } };
+  speechSynthesis.speak(u); updateTtsBtns();
+}
+function ttsText(poem){
+  const meta=[poem.title, poem.dynasty?`${poem.dynasty}代`:"", poem.author].filter(Boolean).join("。 ");
+  return `${meta}。 \n\n${poem.lines.map(l=>l.text).join("。 \n")}`;
+}
+function stopTts(){ stopMedia(); }
+function stopTtsOnly(){ if(TTS){ try{speechSynthesis.cancel();}catch(e){} } ttsId=null; updateTtsBtns(); }
+function updateTtsBtns(){ document.querySelectorAll("[data-tts]").forEach(b=>b.classList.toggle("on", b.getAttribute("data-tts")===ttsId)); }
+
+/* ============================ video modal ============================ */
+function openVideo(id){
+  const m=MEDIA[id]; if(!m||!m.video) return;
+  stopMedia();
+  const url=m.video, start=mediaStartSeconds(m.videoStart,0);
+  let inner="", yt=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{6,})/);
+  let bb=url.match(/bilibili\.com\/video\/(BV[\w]+)/i);
+  if(yt) inner=`<iframe title="YouTube video player" src="${youtubeEmbedUrl(yt[1],start)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  else if(bb) inner=`<iframe src="https://player.bilibili.com/player.html?bvid=${bb[1]}&autoplay=1&high_quality=1" allowfullscreen scrolling="no"></iframe>`;
+  else if(/\.(mp4|webm|ogg|m4v|mov)(\?|$)/i.test(url)) inner=`<video src="${url}#t=${start}" controls autoplay playsinline></video>`;
+  else { window.open(url,"_blank","noopener"); return; }
+  const modal=el("div","modal");
+  modal.innerHTML=`<div class="box"><button class="btn icon-btn x">✕</button><div class="vwrap">${inner}</div><a class="open-ext" href="${url}" target="_blank" rel="noopener">在新标签打开 ↗</a></div>`;
+  const close=()=>modal.remove();
+  modal.addEventListener("click",e=>{ if(e.target===modal) close(); });
+  modal.querySelector(".x").onclick=close;
+  document.addEventListener("keydown",function esc(ev){ if(ev.key==="Escape"){close();document.removeEventListener("keydown",esc);} });
+  document.body.appendChild(modal);
+}
+
+function closeVideoModal(){ document.querySelectorAll(".modal").forEach(m=>m.remove()); }
+
+function youtubeEmbedUrl(videoId,start){
+  const params=new URLSearchParams({autoplay:"1",playsinline:"1",rel:"0"});
+  if(start>0) params.set("start",String(Math.floor(start)));
+  if(location.protocol==="http:" || location.protocol==="https:"){
+    params.set("origin",location.origin);
+    params.set("widget_referrer",location.href);
+  }
+  return `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?${params}`;
+}
+
+/* ============================ router ============================ */
+function currentPoemId(){
+  const h=location.hash.replace(/^#/,"");
+  if(h.startsWith("poem/")) return decodeURIComponent(h.slice(5));
+  return null;
+}
+function route(){
+  const id=currentPoemId();
+  if(id) renderPoem(id); else renderIndex();
+}
+window.addEventListener("hashchange",route);
+document.addEventListener("keydown",e=>{
+  if(e.code==="Space" || e.key===" "){
+    const t=e.target;
+    if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA")) return;
+    if(currentPoemId()){ e.preventDefault(); togglePinyin(); }
+  }
+});
+
+/* ============================ tooltip (fast, readable) ============================ */
+const tipEl=el("div"); tipEl.id="tip"; document.body.appendChild(tipEl);
+let tipTimer=null;
+function showTip(t){
+  const txt=t.getAttribute("data-tip"); if(!txt) return;
+  tipEl.textContent=txt; tipEl.style.display="block";
+  const r=t.getBoundingClientRect(), b=tipEl.getBoundingClientRect();
+  let left=r.left+r.width/2-b.width/2;
+  left=Math.max(8,Math.min(left,window.innerWidth-b.width-8));
+  let top=r.top-b.height-10; if(top<8) top=r.bottom+10;
+  tipEl.style.left=left+"px"; tipEl.style.top=top+"px";
+}
+function hideTip(){ tipEl.style.display="none"; }
+document.addEventListener("pointerover",e=>{
+  const t=e.target.closest&&e.target.closest("[data-tip]"); if(!t) return;
+  if(e.relatedTarget&&t.contains(e.relatedTarget)) return;
+  clearTimeout(tipTimer); tipTimer=setTimeout(()=>showTip(t),80);
+});
+document.addEventListener("pointerout",e=>{
+  const t=e.target.closest&&e.target.closest("[data-tip]"); if(!t) return;
+  if(e.relatedTarget&&t.contains(e.relatedTarget)) return;
+  clearTimeout(tipTimer); hideTip();
+});
+document.addEventListener("click",e=>{
+  const t=e.target.closest&&e.target.closest("[data-tip]");
+  if(t){ clearTimeout(tipTimer); showTip(t); } else hideTip();
+});
+window.addEventListener("scroll",hideTip,true);
+window.addEventListener("hashchange",hideTip);
+
+/* ============================ boot ============================ */
+(async function(){
+  applyPinyinClass();
+  const ok=await loadData();
+  if(!ok){ renderImport(); return; }
+  route();
+})();
+</script>
+</body>
+</html>
