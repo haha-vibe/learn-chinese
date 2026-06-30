@@ -11,7 +11,8 @@
       "line": "text, pinyin, zh (白话译文), en (translation)",
       "char": "char, pinyin, zh (字义), en (gloss); deduplicated within a poem, 多音字 noted in zh",
       "notes": "background / culture / rhetoric, each { zh, en }",
-      "sandhi": "连读变调 (tone sandhi) list: [{ text, rule, base, read, value, markChange, where, zh, en }]. rule ∈ 上上变调 / 半上声 / 半去声 / 一字变调 / 不字变调. base = 本调 pinyin, read = 实际读音 pinyin, value = 实际调值 (35/211/53/51). markChange=true when the pinyin tone mark itself changes (上上变调/一/不); markChange=false for 调值-only refinements (半上声 211, 半去声 53) where spelling is unchanged. Computed over each line and the title as separate prosodic units (a unit-final 上声/去声 keeps its full citation tone). 半去声 only applies within a 2-syllable foot, never across the caesura/foot boundary. 'where' is the containing line, or 题目 for the title. Empty array = 全诗按本调朗读."
+      "sandhi": "连读变调 (tone sandhi) list: [{ text, rule, base, read, value, markChange, where, zh, en }]. rule ∈ 上上变调 / 半上声 / 半去声 / 一字变调 / 不字变调. base = 本调 pinyin, read = 实际读音 pinyin, value = 实际调值 (35/211/53/51). markChange=true when the pinyin tone mark itself changes (上上变调/一/不); markChange=false for 调值-only refinements (半上声 211, 半去声 53) where spelling is unchanged. Computed over each line and the title as separate prosodic units (a unit-final 上声/去声 keeps its full citation tone). 半去声 only applies within a 2-syllable foot, never across the caesura/foot boundary. 'where' is the containing line, or 题目 for the title. Empty array = 全诗按本调朗读.",
+      "tags": "theme tags: array of category keys (multi-label, central themes only). Definitions in poems/categories.json."
     },
     "grade": 3
   },
@@ -80,7 +81,8 @@
         { "text": "有人", "rule": "半上声", "base": "yǒu", "read": "yǒu", "value": "211", "markChange": false, "where": "白云生处有人家。", "pos": 4, "zh": "\"有\"是上声，在非上声\"人\"前读\"半上\"（调值211），拼音不变：yǒu。", "en": "有 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 人; the written pinyin stays yǒu." },
         { "text": "坐爱", "rule": "半去声", "base": "zuò", "read": "zuò", "value": "53", "markChange": false, "where": "停车坐爱枫林晚，", "pos": 2, "zh": "\"坐\"是去声，在去声\"爱\"前读\"半去\"（调值53），拼音不变：zuò。", "en": "坐 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 爱; the written pinyin stays zuò." },
         { "text": "二月", "rule": "半去声", "base": "èr", "read": "èr", "value": "53", "markChange": false, "where": "霜叶红于二月花。", "pos": 4, "zh": "\"二\"是去声，在去声\"月\"前读\"半去\"（调值53），拼音不变：èr。", "en": "二 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 月; the written pinyin stays èr." }
-      ]
+      ],
+      "tags": ["season-autumn"]
     },
     {
       "id": "g3u-02-zengliujingwen",
@@ -150,7 +152,8 @@
         { "text": "好景", "rule": "上上变调", "base": "hǎo", "read": "háo", "value": "35", "markChange": true, "where": "一年好景君须记，", "pos": 2, "zh": "\"好\"在上声\"景\"前变读阳平（第二声）：hǎo→háo。", "en": "好 comes before the third-tone 景, so it is read in second tone: hǎo → háo." },
         { "text": "景君", "rule": "半上声", "base": "jǐng", "read": "jǐng", "value": "211", "markChange": false, "where": "一年好景君须记，", "pos": 3, "zh": "\"景\"是上声，在非上声\"君\"前读\"半上\"（调值211），拼音不变：jǐng。", "en": "景 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 君; the written pinyin stays jǐng." },
         { "text": "最是", "rule": "半去声", "base": "zuì", "read": "zuì", "value": "53", "markChange": false, "where": "最是橙黄橘绿时。", "pos": 0, "zh": "\"最\"是去声，在去声\"是\"前读\"半去\"（调值53），拼音不变：zuì。", "en": "最 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 是; the written pinyin stays zuì." }
-      ]
+      ],
+      "tags": ["season-autumn", "insight"]
     },
     {
       "id": "g3u-03-yeshusuojian",
@@ -216,7 +219,8 @@
         { "text": "有儿", "rule": "半上声", "base": "yǒu", "read": "yǒu", "value": "211", "markChange": false, "where": "知有儿童挑促织，", "pos": 1, "zh": "\"有\"是上声，在非上声\"儿\"前读\"半上\"（调值211），拼音不变：yǒu。", "en": "有 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 儿; the written pinyin stays yǒu." },
         { "text": "挑促", "rule": "半上声", "base": "tiǎo", "read": "tiǎo", "value": "211", "markChange": false, "where": "知有儿童挑促织，", "pos": 4, "zh": "\"挑\"是上声，在非上声\"促\"前读\"半上\"（调值211），拼音不变：tiǎo。", "en": "挑 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 促; the written pinyin stays tiǎo." },
         { "text": "一灯", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "夜深篱落一灯明。", "pos": 4, "zh": "\"一\"在阴平/阳平/上声\"灯\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 灯 changes to fourth tone: yī → yì." }
-      ]
+      ],
+      "tags": ["season-autumn", "homesick", "childhood"]
     },
     {
       "id": "g3u-04-wangtianmenshan",
@@ -283,7 +287,8 @@
         { "text": "此回", "rule": "半上声", "base": "cǐ", "read": "cǐ", "value": "211", "markChange": false, "where": "碧水东流至此回。", "pos": 5, "zh": "\"此\"是上声，在非上声\"回\"前读\"半上\"（调值211），拼音不变：cǐ。", "en": "此 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 回; the written pinyin stays cǐ." },
         { "text": "两岸", "rule": "半上声", "base": "liǎng", "read": "liǎng", "value": "211", "markChange": false, "where": "两岸青山相对出，", "pos": 0, "zh": "\"两\"是上声，在非上声\"岸\"前读\"半上\"（调值211），拼音不变：liǎng。", "en": "两 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 岸; the written pinyin stays liǎng." },
         { "text": "一片", "rule": "一字变调", "base": "yī", "read": "yí", "value": "35", "markChange": true, "where": "孤帆一片日边来。", "pos": 2, "zh": "\"一\"在去声\"片\"前变读阳平（第二声）：yī→yí。", "en": "一 before the fourth-tone 片 changes to second tone: yī → yí." }
-      ]
+      ],
+      "tags": ["landscape"]
     },
     {
       "id": "g3u-05-yinhushangchuqinghouyu",
@@ -352,7 +357,8 @@
         { "text": "比西", "rule": "半上声", "base": "bǐ", "read": "bǐ", "value": "211", "markChange": false, "where": "欲把西湖比西子，", "pos": 4, "zh": "\"比\"是上声，在非上声\"西\"前读\"半上\"（调值211），拼音不变：bǐ。", "en": "比 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 西; the written pinyin stays bǐ." },
         { "text": "抹总", "rule": "上上变调", "base": "mǒ", "read": "mó", "value": "35", "markChange": true, "where": "淡妆浓抹总相宜。", "pos": 3, "zh": "\"抹\"在上声\"总\"前变读阳平（第二声）：mǒ→mó。", "en": "抹 comes before the third-tone 总, so it is read in second tone: mǒ → mó." },
         { "text": "总相", "rule": "半上声", "base": "zǒng", "read": "zǒng", "value": "211", "markChange": false, "where": "淡妆浓抹总相宜。", "pos": 4, "zh": "\"总\"是上声，在非上声\"相\"前读\"半上\"（调值211），拼音不变：zǒng。", "en": "总 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 相; the written pinyin stays zǒng." }
-      ]
+      ],
+      "tags": ["landscape"]
     },
     {
       "id": "g3u-06-wangdongting",
@@ -420,7 +426,8 @@
         { "text": "水翠", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "遥望洞庭山水翠，", "pos": 5, "zh": "\"水\"是上声，在非上声\"翠\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 翠; the written pinyin stays shuǐ." },
         { "text": "里一", "rule": "半上声", "base": "lǐ", "read": "lǐ", "value": "211", "markChange": false, "where": "白银盘里一青螺。", "pos": 3, "zh": "\"里\"是上声，在非上声\"一\"前读\"半上\"（调值211），拼音不变：lǐ。", "en": "里 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 一; the written pinyin stays lǐ." },
         { "text": "一青", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "白银盘里一青螺。", "pos": 4, "zh": "\"一\"在阴平/阳平/上声\"青\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 青 changes to fourth tone: yī → yì." }
-      ]
+      ],
+      "tags": ["landscape", "season-autumn"]
     },
     {
       "id": "g3u-07-zaofabaidicheng",
@@ -489,7 +496,8 @@
         { "text": "两岸", "rule": "半上声", "base": "liǎng", "read": "liǎng", "value": "211", "markChange": false, "where": "两岸猿声啼不住，", "pos": 0, "zh": "\"两\"是上声，在非上声\"岸\"前读\"半上\"（调值211），拼音不变：liǎng。", "en": "两 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 岸; the written pinyin stays liǎng." },
         { "text": "不住", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "两岸猿声啼不住，", "pos": 5, "zh": "\"不\"在去声\"住\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 住 changes to second tone: bù → bú." },
         { "text": "已过", "rule": "半上声", "base": "yǐ", "read": "yǐ", "value": "211", "markChange": false, "where": "轻舟已过万重山。", "pos": 2, "zh": "\"已\"是上声，在非上声\"过\"前读\"半上\"（调值211），拼音不变：yǐ。", "en": "已 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 过; the written pinyin stays yǐ." }
-      ]
+      ],
+      "tags": ["landscape"]
     },
     {
       "id": "g3u-08-cailianqu",
@@ -560,7 +568,8 @@
         { "text": "不见", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "乱入池中看不见，", "pos": 5, "zh": "\"不\"在去声\"见\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 见 changes to second tone: bù → bú." },
         { "text": "始觉", "rule": "半上声", "base": "shǐ", "read": "shǐ", "value": "211", "markChange": false, "where": "闻歌始觉有人来。", "pos": 2, "zh": "\"始\"是上声，在非上声\"觉\"前读\"半上\"（调值211），拼音不变：shǐ。", "en": "始 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 觉; the written pinyin stays shǐ." },
         { "text": "有人", "rule": "半上声", "base": "yǒu", "read": "yǒu", "value": "211", "markChange": false, "where": "闻歌始觉有人来。", "pos": 4, "zh": "\"有\"是上声，在非上声\"人\"前读\"半上\"（调值211），拼音不变：yǒu。", "en": "有 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 人; the written pinyin stays yǒu." }
-      ]
+      ],
+      "tags": ["season-summer", "pastoral"]
     },
     {
       "id": "g3d-01-jueju",
@@ -616,7 +625,8 @@
       "sandhi": [
         { "text": "草香", "rule": "半上声", "base": "cǎo", "read": "cǎo", "value": "211", "markChange": false, "where": "春风花草香。", "pos": 3, "zh": "\"草\"是上声，在非上声\"香\"前读\"半上\"（调值211），拼音不变：cǎo。", "en": "草 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 香; the written pinyin stays cǎo." },
         { "text": "暖睡", "rule": "半上声", "base": "nuǎn", "read": "nuǎn", "value": "211", "markChange": false, "where": "沙暖睡鸳鸯。", "pos": 1, "zh": "\"暖\"是上声，在非上声\"睡\"前读\"半上\"（调值211），拼音不变：nuǎn。", "en": "暖 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 睡; the written pinyin stays nuǎn." }
-      ]
+      ],
+      "tags": ["season-spring"]
     },
     {
       "id": "g3d-02-huichongchunjiangwanjing",
@@ -685,7 +695,8 @@
         { "text": "满地", "rule": "半上声", "base": "mǎn", "read": "mǎn", "value": "211", "markChange": false, "where": "蒌蒿满地芦芽短，", "pos": 2, "zh": "\"满\"是上声，在非上声\"地\"前读\"半上\"（调值211），拼音不变：mǎn。", "en": "满 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 地; the written pinyin stays mǎn." },
         { "text": "正是", "rule": "半去声", "base": "zhèng", "read": "zhèng", "value": "53", "markChange": false, "where": "正是河豚欲上时。", "pos": 0, "zh": "\"正\"是去声，在去声\"是\"前读\"半去\"（调值53），拼音不变：zhèng。", "en": "正 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 是; the written pinyin stays zhèng." },
         { "text": "欲上", "rule": "半去声", "base": "yù", "read": "yù", "value": "53", "markChange": false, "where": "正是河豚欲上时。", "pos": 4, "zh": "\"欲\"是去声，在去声\"上\"前读\"半去\"（调值53），拼音不变：yù。", "en": "欲 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 上; the written pinyin stays yù." }
-      ]
+      ],
+      "tags": ["season-spring"]
     },
     {
       "id": "g3d-03-sanqudaozhong",
@@ -749,7 +760,8 @@
         { "text": "泛尽", "rule": "半去声", "base": "fàn", "read": "fàn", "value": "53", "markChange": false, "where": "小溪泛尽却山行。", "pos": 2, "zh": "\"泛\"是去声，在去声\"尽\"前读\"半去\"（调值53），拼音不变：fàn。", "en": "泛 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 尽; the written pinyin stays fàn." },
         { "text": "减来", "rule": "半上声", "base": "jiǎn", "read": "jiǎn", "value": "211", "markChange": false, "where": "绿阴不减来时路，", "pos": 3, "zh": "\"减\"是上声，在非上声\"来\"前读\"半上\"（调值211），拼音不变：jiǎn。", "en": "减 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 来; the written pinyin stays jiǎn." },
         { "text": "五声", "rule": "半上声", "base": "wǔ", "read": "wǔ", "value": "211", "markChange": false, "where": "添得黄鹂四五声。", "pos": 5, "zh": "\"五\"是上声，在非上声\"声\"前读\"半上\"（调值211），拼音不变：wǔ。", "en": "五 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 声; the written pinyin stays wǔ." }
-      ]
+      ],
+      "tags": ["season-summer"]
     },
     {
       "id": "g3d-04-yijiangnan",
@@ -810,7 +822,8 @@
         { "text": "景旧", "rule": "半上声", "base": "jǐng", "read": "jǐng", "value": "211", "markChange": false, "where": "风景旧曾谙。", "pos": 1, "zh": "\"景\"是上声，在非上声\"旧\"前读\"半上\"（调值211），拼音不变：jǐng。", "en": "景 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 旧; the written pinyin stays jǐng." },
         { "text": "水绿", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "春来江水绿如蓝。", "pos": 3, "zh": "\"水\"是上声，在非上声\"绿\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 绿; the written pinyin stays shuǐ." },
         { "text": "不忆", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "能不忆江南？", "pos": 1, "zh": "\"不\"在去声\"忆\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 忆 changes to second tone: bù → bú." }
-      ]
+      ],
+      "tags": ["landscape", "season-spring"]
     },
     {
       "id": "g3d-05-yuanri",
@@ -877,7 +890,8 @@
         { "text": "总把", "rule": "上上变调", "base": "zǒng", "read": "zóng", "value": "35", "markChange": true, "where": "总把新桃换旧符。", "pos": 0, "zh": "\"总\"在上声\"把\"前变读阳平（第二声）：zǒng→zóng。", "en": "总 comes before the third-tone 把, so it is read in second tone: zǒng → zóng." },
         { "text": "把新", "rule": "半上声", "base": "bǎ", "read": "bǎ", "value": "211", "markChange": false, "where": "总把新桃换旧符。", "pos": 1, "zh": "\"把\"是上声，在非上声\"新\"前读\"半上\"（调值211），拼音不变：bǎ。", "en": "把 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 新; the written pinyin stays bǎ." },
         { "text": "换旧", "rule": "半去声", "base": "huàn", "read": "huàn", "value": "53", "markChange": false, "where": "总把新桃换旧符。", "pos": 4, "zh": "\"换\"是去声，在去声\"旧\"前读\"半去\"（调值53），拼音不变：huàn。", "en": "换 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 旧; the written pinyin stays huàn." }
-      ]
+      ],
+      "tags": ["festival"]
     },
     {
       "id": "g3d-06-qingming",
@@ -944,7 +958,8 @@
         { "text": "借问", "rule": "半去声", "base": "jiè", "read": "jiè", "value": "53", "markChange": false, "where": "借问酒家何处有？", "pos": 0, "zh": "\"借\"是去声，在去声\"问\"前读\"半去\"（调值53），拼音不变：jiè。", "en": "借 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 问; the written pinyin stays jiè." },
         { "text": "酒家", "rule": "半上声", "base": "jiǔ", "read": "jiǔ", "value": "211", "markChange": false, "where": "借问酒家何处有？", "pos": 2, "zh": "\"酒\"是上声，在非上声\"家\"前读\"半上\"（调值211），拼音不变：jiǔ。", "en": "酒 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 家; the written pinyin stays jiǔ." },
         { "text": "指杏", "rule": "半上声", "base": "zhǐ", "read": "zhǐ", "value": "211", "markChange": false, "where": "牧童遥指杏花村。", "pos": 3, "zh": "\"指\"是上声，在非上声\"杏\"前读\"半上\"（调值211），拼音不变：zhǐ。", "en": "指 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 杏; the written pinyin stays zhǐ." }
-      ]
+      ],
+      "tags": ["festival", "season-spring"]
     },
     {
       "id": "g3d-07-jiuyuejiuriyishandongxiongdi",
@@ -1010,7 +1025,8 @@
         { "text": "每逢", "rule": "半上声", "base": "měi", "read": "měi", "value": "211", "markChange": false, "where": "每逢佳节倍思亲。", "pos": 0, "zh": "\"每\"是上声，在非上声\"逢\"前读\"半上\"（调值211），拼音不变：měi。", "en": "每 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 逢; the written pinyin stays měi." },
         { "text": "少一", "rule": "半上声", "base": "shǎo", "read": "shǎo", "value": "211", "markChange": false, "where": "遍插茱萸少一人。", "pos": 4, "zh": "\"少\"是上声，在非上声\"一\"前读\"半上\"（调值211），拼音不变：shǎo。", "en": "少 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 一; the written pinyin stays shǎo." },
         { "text": "一人", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "遍插茱萸少一人。", "pos": 5, "zh": "\"一\"在阴平/阳平/上声\"人\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 人 changes to fourth tone: yī → yì." }
-      ]
+      ],
+      "tags": ["festival", "homesick"]
     },
     {
       "id": "g3d-08-chuzhouxijian",
@@ -1077,7 +1093,8 @@
         { "text": "雨晚", "rule": "上上变调", "base": "yǔ", "read": "yú", "value": "35", "markChange": true, "where": "春潮带雨晚来急，", "pos": 3, "zh": "\"雨\"在上声\"晚\"前变读阳平（第二声）：yǔ→yú。", "en": "雨 comes before the third-tone 晚, so it is read in second tone: yǔ → yú." },
         { "text": "晚来", "rule": "半上声", "base": "wǎn", "read": "wǎn", "value": "211", "markChange": false, "where": "春潮带雨晚来急，", "pos": 4, "zh": "\"晚\"是上声，在非上声\"来\"前读\"半上\"（调值211），拼音不变：wǎn。", "en": "晚 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 来; the written pinyin stays wǎn." },
         { "text": "野渡", "rule": "半上声", "base": "yě", "read": "yě", "value": "211", "markChange": false, "where": "野渡无人舟自横。", "pos": 0, "zh": "\"野\"是上声，在非上声\"渡\"前读\"半上\"（调值211），拼音不变：yě。", "en": "野 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 渡; the written pinyin stays yě." }
-      ]
+      ],
+      "tags": ["landscape", "season-spring"]
     },
     {
       "id": "g3d-09-dalinsitaohua",
@@ -1143,7 +1160,8 @@
         { "text": "始盛", "rule": "半上声", "base": "shǐ", "read": "shǐ", "value": "211", "markChange": false, "where": "山寺桃花始盛开。", "pos": 4, "zh": "\"始\"是上声，在非上声\"盛\"前读\"半上\"（调值211），拼音不变：shǐ。", "en": "始 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 盛; the written pinyin stays shǐ." },
         { "text": "转入", "rule": "半上声", "base": "zhuǎn", "read": "zhuǎn", "value": "211", "markChange": false, "where": "不知转入此中来。", "pos": 2, "zh": "\"转\"是上声，在非上声\"入\"前读\"半上\"（调值211），拼音不变：zhuǎn。", "en": "转 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 入; the written pinyin stays zhuǎn." },
         { "text": "此中", "rule": "半上声", "base": "cǐ", "read": "cǐ", "value": "211", "markChange": false, "where": "不知转入此中来。", "pos": 4, "zh": "\"此\"是上声，在非上声\"中\"前读\"半上\"（调值211），拼音不变：cǐ。", "en": "此 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 中; the written pinyin stays cǐ." }
-      ]
+      ],
+      "tags": ["season-spring"]
     }
   ]
 }

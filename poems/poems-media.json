@@ -185,8 +185,10 @@
     "videoStart": 5
   },
   "g2d-04-jueju": {
-    "video": "https://www.youtube.com/watch?v=BopftRq5MQI",
-    "videoStart": 5
+    "video": "https://www.youtube.com/watch?v=m59snDg5Ilk&list=PLH2XUr3ltUZ1cXpyW1ZkjCP8yGSKUnmVE&index=7",
+    "videoStart": 5,
+    "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/043_jilei_shi(putonghua).mp3",
+    "audioStart": 3.5
   },
   "g2d-05-fudeguyuancaosongbie": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/053_jilei_shi(putonghua).mp3",
@@ -243,9 +245,7 @@
     "videoStart": 5
   },
   "g3d-01-jueju": {
-    "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/043_jilei_shi(putonghua).mp3",
-    "audioStart": 3.5,
-    "video": "https://www.youtube.com/watch?v=BopftRq5MQI",
+    "video": "https://www.youtube.com/watch?v=BopftRq5MQI&list=PLkWWcTwDGs4Z5yB3f-ZLC3XNWLJtkZQZu&index=19",
     "videoStart": 5
   },
   "g3d-02-huichongchunjiangwanjing": {

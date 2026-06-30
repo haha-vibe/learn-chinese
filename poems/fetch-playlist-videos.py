@@ -126,6 +126,17 @@ def extract_video_id(url):
     return m.group(1) if m else None
 
 
+def is_pinned(url):
+    """A manually-pinned video link, kept verbatim by this script.
+
+    Convention: a manual link carries a playlist reference (``&list=`` / a
+    youtube.com/playlist URL). Such links are never purged, replaced, or
+    upgraded -- the author chose them deliberately. The links this script
+    writes are bare ``watch?v=ID`` URLs, so they are never pinned.
+    """
+    return bool(url) and ("list=" in url or "youtube.com/playlist" in url)
+
+
 # ---------------------------------------------------------------------------
 # Title matching
 # All non-ASCII characters are written as \uXXXX escapes so this file
@@ -285,13 +296,16 @@ def main():
     print("\nTotal unique credited videos: %d\n" % len(vid_to_pl))
 
     if args.purge:
-        purged = 0
+        purged = kept = 0
         for entry in media.values():
             if isinstance(entry, dict) and "video" in entry:
+                if is_pinned(entry["video"]):
+                    kept += 1
+                    continue
                 del entry["video"]
                 entry.pop("videoStart", None)
                 purged += 1
-        print("Purged %d existing video link(s).\n" % purged)
+        print("Purged %d existing video link(s); kept %d manually-pinned (playlist) link(s).\n" % (purged, kept))
 
     # load all poem data
     poems = []
@@ -312,6 +326,8 @@ def main():
     for poem in poems:
         pid, title, author = poem["id"], poem["title"], poem["author"]
         current_url = media.get(pid, {}).get("video", "")
+        if is_pinned(current_url):
+            continue  # manually-pinned link: never replace/upgrade, don't flag
         current_vid = extract_video_id(current_url) if current_url else ""
         current_pri = vid_to_pl[current_vid]["priority"] if current_vid in vid_to_pl else None
 

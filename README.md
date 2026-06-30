@@ -34,7 +34,8 @@ Shared, at the repo root:
 
 | File | Description |
 | --- | --- |
-| `poems/poems-g1.json` – `poems-g6.json` | Per-grade poem data (text, per-char pinyin/meaning, notes, tone sandhi). |
+| `poems/poems-g1.json` – `poems-g6.json` | Per-grade poem data (text, per-char pinyin/meaning, notes, tone sandhi, theme `tags`). |
+| `poems/categories.json` | Theme-category definitions; each poem's `tags` reference these keys so students can compare poems on the same subject. |
 | `poems/poems-edb.json` | Additional poems from the HK EDB curriculum list. |
 | `poems/poems-media.json` | Maps each poem to its audio (HK EDB Putonghua) and video links; `_credits` lists the credited sources in priority order. |
 | `poems/fetch-playlist-videos.py` | Syncs video links in `poems-media.json` from the credited playlists (requires `yt-dlp` and `zhconv`). |

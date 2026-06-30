@@ -205,9 +205,41 @@
   .credit .cn{color:var(--muted)}
   .footer{max-width:760px;margin:36px auto 10px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:var(--muted);text-align:center}
   .footer a{color:var(--accent)}
+  /* view toggle */
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+  .seg-btn{border:0;background:transparent;color:var(--muted);font:14px system-ui,sans-serif;padding:6px 14px;cursor:pointer}
+  .seg-btn.on{background:var(--accent);color:#fff}
+  /* category (theme) view */
+  .cat-group{margin:18px 0 6px;font-size:13px;letter-spacing:2px;color:var(--accent2);font-weight:700}
+  .cat-block{border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow);margin:0 0 10px;overflow:hidden}
+  .cat-head{padding:12px 18px;cursor:pointer}
+  .cat-head:hover{background:rgba(240,168,104,.08)}
+  .cat-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .cat-head .chev{color:var(--accent);font-size:12px;width:1em;flex:0 0 auto}
+  .cat-head .clabel{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:19px;font-weight:700}
+  .cat-head .clabel .cen{font-family:system-ui,sans-serif;font-size:12px;font-weight:400;color:var(--muted);letter-spacing:1px}
+  .cat-head .ccount{background:var(--line);color:#6f6757;border-radius:999px;padding:1px 9px;font-size:12px}
+  .cat-head .cdesc{color:var(--muted);font-size:12.5px;margin:4px 0 0 1.7em}
+  .cat-body{padding:0 20px 4px}
+  .cat-body.open{padding:6px 20px 18px}
+  .cat-list{display:flex;flex-direction:column}
+  .cat-row{display:flex;gap:16px;align-items:baseline;padding:8px 6px;border-top:1px dashed var(--line);cursor:pointer}
+  .cat-row:hover{color:var(--accent)}
+  .cat-row .rt{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:16px;font-weight:700;flex:0 0 14em;line-height:1.3}
+  .cat-row .ra{flex:0 0 5em;color:var(--muted);font-size:12.5px;white-space:nowrap}
+  .cat-row .rl{flex:1 1 0;min-width:0;color:#8d8273;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cmp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;padding-top:6px}
+  .cmp-card{border:1px solid var(--line);border-radius:12px;padding:14px 12px;background:var(--bg);cursor:pointer;text-align:center;transition:transform .12s,border-color .12s}
+  .cmp-card:hover{transform:translateY(-2px);border-color:var(--ring)}
+  .cmp-card .ct{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:19px;font-weight:700;letter-spacing:1px}
+  .cmp-card .ca{color:var(--muted);font-size:12px;margin:2px 0 8px}
+  .cmp-card .cmp-text{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:16px;line-height:1.75}
   @media(max-width:520px){
     .ptitle{font-size:26px}.char .hz,.punct{font-size:26px}
     .pcard .t{font-size:18px}
+    .cat-row{flex-wrap:wrap}
+    .cat-row .rt{flex-basis:auto}
+    .cat-row .rl{flex-basis:100%}
   }
 </style>
 </head>
@@ -218,7 +250,7 @@
 <script>
 "use strict";
 /* ============================ state ============================ */
-const DATA_KEY="poems.data.v2", VIEW_KEY="poems.viewed.v1", PREF_KEY="poems.pinyin.v1";
+const DATA_KEY="poems.data.v3", VIEW_KEY="poems.viewed.v1", PREF_KEY="poems.pinyin.v1", VIEWMODE_KEY="poems.view.v1";
 const GRADE_LABEL={1:"一年级",2:"二年级",3:"三年级",4:"四年级",5:"五年级",6:"六年级"};
 const VOL_LABEL={"上":"上册","下":"下册"};
 
@@ -227,8 +259,11 @@ let BYID={};            // id -> poem (poem carries its grade)
 let ORDER=[];           // ids in display order
 let MEDIA={};           // id -> {audio,audioStart,video,videoStart}
 let CREDITS=[];         // [{name,url,note}] external media credits
+let CATEGORIES=[];      // [{key,zh,en,group,desc_zh,desc_en,count}]
 let viewed=loadViewed();
 let showPinyin=localStorage.getItem(PREF_KEY)==="1";
+let indexMode=localStorage.getItem(VIEWMODE_KEY)||"grades";  // "grades" | "themes"
+const expandedCats=new Set();
 
 const root=document.getElementById("root");
 const audioEl=document.getElementById("audio");
@@ -237,16 +272,17 @@ let activeAudioId=null;
 /* ============================ storage ============================ */
 function loadViewed(){ try{return new Set(JSON.parse(localStorage.getItem(VIEW_KEY)||"[]"));}catch(e){return new Set();} }
 function saveViewed(){ try{localStorage.setItem(VIEW_KEY,JSON.stringify([...viewed]));}catch(e){} }
-function cacheData(grades,media){ try{localStorage.setItem(DATA_KEY,JSON.stringify({grades,media}));}catch(e){} }
+function cacheData(grades,media,cats){ try{localStorage.setItem(DATA_KEY,JSON.stringify({grades,media,cats}));}catch(e){} }
 function readCache(){ try{return JSON.parse(localStorage.getItem(DATA_KEY)||"null");}catch(e){return null;} }
 function resetData(){ try{localStorage.removeItem(DATA_KEY);}catch(e){} location.reload(); }
 
-function setData(grades,media){
+function setData(grades,media,cats){
   GRADES=grades.slice().sort((a,b)=>a.grade-b.grade);
   BYID={}; ORDER=[]; MEDIA={};
   for(const g of GRADES) for(const p of g.poems){ p.grade=g.grade; BYID[p.id]=p; ORDER.push(p.id); }
   if(media) for(const k in media){ if(k[0]==="_") continue; const m=media[k]; if(m&&(m.audio||m.video)) MEDIA[k]=m; }
   CREDITS = (media && Array.isArray(media._credits)) ? media._credits : [];
+  CATEGORIES = Array.isArray(cats) ? cats : [];
 }
 
 /* ============================ load ============================ */
@@ -257,11 +293,13 @@ async function loadData(){
     ));
     let media={};
     try{ const mr=await fetch("poems/poems-media.json",{cache:"reload"}); if(mr.ok) media=await mr.json(); }catch(e){}
+    let cats=[];
+    try{ const cr=await fetch("poems/categories.json",{cache:"reload"}); if(cr.ok){ const cj=await cr.json(); cats=cj.categories||[]; } }catch(e){}
     const grades=arr.map(d=>({grade:d.meta.grade, poems:d.poems}));
-    setData(grades,media); cacheData(grades,media); return true;
+    setData(grades,media,cats); cacheData(grades,media,cats); return true;
   }catch(e){
     const cached=readCache();
-    if(cached&&cached.grades){ setData(cached.grades,cached.media||{}); return true; }
+    if(cached&&cached.grades){ setData(cached.grades,cached.media||{},cached.cats||[]); return true; }
     return false;
   }
 }
@@ -270,19 +308,20 @@ function renderImport(){
   root.innerHTML=`<div class="app-head"><h1>小学生必背古诗</h1></div>
     <div class="import">
       <p>无法自动载入诗歌数据（直接打开本地文件时浏览器会阻止读取）。<br>
-      请选择 <b>poems-g1.json … poems-g6.json</b>（可一次多选，亦可加入 poems-media.json）。</p>
+      请选择 <b>poems-g1.json … poems-g6.json</b>（可一次多选，亦可加入 poems-media.json、categories.json）。</p>
       <p><label class="btn"><input id="fi" type="file" accept=".json,application/json" multiple style="display:none">📂 选择 JSON 文件</label></p>
       <p class="hint">提示：将本页与 JSON 文件一起放到网站（如 GitHub Pages）即可自动载入。</p>
     </div>`;
   document.getElementById("fi").onchange=async e=>{
-    const grades=[]; let media={};
+    const grades=[]; let media={}, cats=[];
     for(const f of e.target.files){
       let j; try{ j=JSON.parse(await f.text()); }catch(_){ continue; }
       if(j&&Array.isArray(j.poems)) grades.push({grade:(j.meta&&j.meta.grade)||(j.poems[0]&&j.poems[0].grade)||0, poems:j.poems});
+      else if(j&&Array.isArray(j.categories)) cats=j.categories;
       else if(j&&typeof j==="object") media={...media,...j};
     }
     if(!grades.length){ alert("没有找到诗歌数据文件（应包含 poems 数组）。"); return; }
-    setData(grades,media); cacheData(grades,media); location.hash=""; renderIndex();
+    setData(grades,media,cats); cacheData(grades,media,cats); location.hash=""; renderIndex();
   };
 }
 
@@ -340,16 +379,36 @@ function mediaButtons(id,small){
 function renderIndex(){
   stopAudio();
   document.title="小学生必背古诗 · 诵读";
-  const total=ORDER.length, seen=ORDER.filter(id=>viewed.has(id)).length;
   root.innerHTML="";
+  root.appendChild(buildHead());
+  if(indexMode==="themes" && CATEGORIES.length) renderThemes();
+  else renderGrades();
+  renderCreditsFooter();
+}
+
+function buildHead(){
+  const total=ORDER.length, seen=ORDER.filter(id=>viewed.has(id)).length;
   const head=el("div","app-head");
   head.appendChild(el("h1","","小学生必背古诗"));
   head.appendChild(el("span","sub","Classical Chinese Poems · 诵读"));
+  if(CATEGORIES.length){
+    const seg=el("div","seg");
+    const mk=(mode,label)=>{
+      const b=el("button","seg-btn"+(indexMode===mode?" on":""),label);
+      b.onclick=()=>{ if(indexMode!==mode){ indexMode=mode; try{localStorage.setItem(VIEWMODE_KEY,mode);}catch(e){} renderIndex(); } };
+      return b;
+    };
+    seg.appendChild(mk("grades","按年级"));
+    seg.appendChild(mk("themes","按主题"));
+    head.appendChild(seg);
+  }
   head.appendChild(el("span","overall",`已读 ${seen} / ${total}`));
   const rb=el("button","btn"); rb.textContent="↻ 刷新"; rb.title="清除本地缓存并重新载入数据"; rb.style.cssText="padding:4px 11px;font-size:12px";
   rb.onclick=resetData; head.appendChild(rb);
-  root.appendChild(head);
+  return head;
+}
 
+function renderGrades(){
   let focusCard=null;
   for(const g of GRADES){
     const ids=g.poems.map(p=>p.id);
@@ -381,7 +440,77 @@ function renderIndex(){
     }
     root.appendChild(sec);
   }
-  /* credits */
+  if(focusCard){
+    focusCard.classList.add("focus");
+    requestAnimationFrame(()=>focusCard.scrollIntoView({block:"center",behavior:"smooth"}));
+  }
+}
+
+/* ---- theme (category) view ---- */
+function poemsForCat(key){ return ORDER.map(id=>BYID[id]).filter(p=>p.tags && p.tags.indexOf(key)>=0); }
+
+function renderThemes(){
+  const wrap=el("div","themes");
+  let curGroup=null;
+  for(const cat of CATEGORIES){
+    const grp=cat.group||"";
+    if(grp!==curGroup){ curGroup=grp; if(grp) wrap.appendChild(el("div","cat-group",grp)); }
+    const ps=poemsForCat(cat.key);
+    const block=el("div","cat-block");
+    const head=el("div","cat-head");
+    const top=el("div","cat-top");
+    const chev=el("span","chev",expandedCats.has(cat.key)?"▾":"▸");
+    top.appendChild(chev);
+    const lab=el("span","clabel"); lab.innerHTML=cat.zh+' <span class="cen">'+(cat.en||"")+'</span>';
+    top.appendChild(lab);
+    top.appendChild(el("span","ccount",String(ps.length)));
+    head.appendChild(top);
+    if(cat.desc_zh) head.appendChild(el("div","cdesc",cat.desc_zh));
+    const body=el("div","cat-body");
+    head.onclick=()=>{
+      if(expandedCats.has(cat.key)) expandedCats.delete(cat.key); else expandedCats.add(cat.key);
+      chev.textContent=expandedCats.has(cat.key)?"▾":"▸";
+      renderCatBody(cat,ps,body);
+    };
+    block.appendChild(head); block.appendChild(body);
+    renderCatBody(cat,ps,body);
+    wrap.appendChild(block);
+  }
+  root.appendChild(wrap);
+}
+
+function renderCatBody(cat,ps,body){
+  const open=expandedCats.has(cat.key);
+  body.className="cat-body"+(open?" open":"");
+  body.innerHTML="";
+  if(open){
+    const grid=el("div","cmp-grid");
+    for(const p of ps){
+      const c=el("div","cmp-card");
+      c.appendChild(el("div","ct",p.title));
+      c.appendChild(el("div","ca",(p.dynasty?("〔"+p.dynasty+"〕"):"")+p.author));
+      const txt=el("div","cmp-text");
+      for(const ln of p.lines) txt.appendChild(el("div","cl",ln.text));
+      c.appendChild(txt);
+      c.onclick=()=>{ location.hash="poem/"+encodeURIComponent(p.id); };
+      grid.appendChild(c);
+    }
+    body.appendChild(grid);
+  }else{
+    const list=el("div","cat-list");
+    for(const p of ps){
+      const row=el("div","cat-row");
+      row.appendChild(el("span","rt",p.title));
+      row.appendChild(el("span","ra",p.author));
+      row.appendChild(el("span","rl",p.lines[0]?p.lines[0].text:""));
+      row.onclick=()=>{ location.hash="poem/"+encodeURIComponent(p.id); };
+      list.appendChild(row);
+    }
+    body.appendChild(list);
+  }
+}
+
+function renderCreditsFooter(){
   if(CREDITS.length){
     const cs=el("section","credits");
     cs.appendChild(el("h3","","鸣谢 · 外部音视频来源 / Media credits"));
@@ -397,17 +526,12 @@ function renderIndex(){
     cs.appendChild(el("p","hint","音视频由外部网站（YouTube 等）提供，版权归原作者所有；本应用仅作链接引用，不存储或分发其内容。"));
     root.appendChild(cs);
   }
-  /* license / copyright */
   const ft=el("footer","footer");
   ft.innerHTML='古诗原文 · Poem texts<br>原文选自小学语文统编教材；古诗词均为公有领域作品（public domain）。<br><br>'+
     '注释、拼音、连读变调与译文，以及应用程序代码 © 2026 <a href="https://github.com/haha-vibe" target="_blank" rel="noopener">haha-vibe</a>，'+
     '依 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC&nbsp;BY-NC-SA&nbsp;4.0</a> 授权发布。<br>'+
     'Annotations &amp; application code © 2026 haha-vibe, licensed under CC BY-NC-SA 4.0 — for educational, non-commercial use.';
   root.appendChild(ft);
-  if(focusCard){
-    focusCard.classList.add("focus");
-    requestAnimationFrame(()=>focusCard.scrollIntoView({block:"center",behavior:"smooth"}));
-  }
 }
 
 /* ============================ poem view ============================ */

@@ -197,7 +197,8 @@ for editing here, `←` is the in-field "go back" shortcut.
 
 | File | Role |
 | --- | --- |
-| `poems/poems-g1.json` – `poems-g6.json` | Poem lists (id, title, author, pinyin) for grades 1–6. |
+| `poems/poems-g1.json` – `poems-g6.json` | Poem data (id, title, author, lines, per-char pinyin/meaning, notes, sandhi, **`tags`**) for grades 1–6. |
+| `poems/categories.json` | Theme-category definitions (`key`, zh/en label, optional `group`, bilingual desc, count). Each poem's `tags` array holds these keys (multi-label). Powers the **按主题** (theme) view in `poems.html`: index has a 按年级/按主题 toggle; theme view lists each category (title·author·first line) and expands to a grid of full-text **compare cards**. 18 categories: 送别/思乡/亲情·相思/山水/田园/咏物/边塞/爱国/节日/咏月/童趣/哲理/劳动悯农/文言寓言 + 季节(春夏秋冬). |
 | `poems/poems-edb.json` | EDB-curriculum poems not yet in the grade files (title only; to be expanded). |
 | `poems/poems-media.json` | Maps poem id → `{ audio, audioStart, video, videoStart }`. Top-level `_credits` array declares allowed sources in priority order. |
 | `poems/fetch-playlist-videos.py` | Syncs `poems-media.json` video links from credited YouTube playlists. Requires `yt-dlp` and `zhconv` on PATH / installed. |
@@ -242,6 +243,14 @@ python fetch-playlist-videos.py --force
 # Purge and reassign from scratch (use after reordering _credits)
 python fetch-playlist-videos.py --purge
 ```
+
+**Manually-pinned links.** A `video` URL that carries a playlist reference
+(`&list=…`) is treated as **manually pinned** — `fetch-playlist-videos.py` never
+replaces, upgrades, or purges it (`is_pinned()`), even under `--force`/`--purge`.
+Use this to hand-pick a specific video for a poem (e.g. the two 《绝句》); the
+links the script writes are bare `watch?v=ID` URLs, so they're never pinned. The
+player (`openVideo` in `poems.html`) extracts the video id and ignores the
+`list`/`index` params, so a pinned URL still plays just that one video.
 
 ### Browser-export fallback for large / members-only playlists
 
