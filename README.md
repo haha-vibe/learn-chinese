@@ -19,7 +19,7 @@ Shared, at the repo root:
 | --- | --- |
 | `learnchinese.html` | The 认汉字 (character-learning) app. |
 | `poems.html` | The 小学古诗 (poem-learning) app. |
-| `sw.js` | Service worker — caches both apps' shells + data for offline use. |
+| `sw.js` | Shared service worker — network-first caching for offline use, plus a "new version / content updated" reload prompt for open tabs. Bump its `CACHE` on each deploy. |
 
 `hanzi/` — character-learning data & build script:
 

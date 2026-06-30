@@ -6,14 +6,15 @@
  * worker caches the page shells and poem JSON so the apps open offline after
  * one online visit.
  *
- * Strategy: stale-while-revalidate for same-origin GET requests — serve the
- * cached copy instantly, then refresh the cache in the background so the
- * author's updates propagate on the next load. Cross-origin requests (e.g.
- * speech-synthesis voices) are left untouched.
+ * Strategy: network-first for same-origin GET requests — when online, always
+ * fetch the latest copy and refresh the cache, so the author's updates show
+ * immediately (no stale-load lag). When offline or the network fails, serve
+ * the last cached copy. Cross-origin requests (e.g. speech-synthesis voices,
+ * YouTube, EDB audio) are left untouched.
  *
  * Bump CACHE when you want to force-drop old caches.
  */
-const CACHE = 'learn-chinese-v3';
+const CACHE = 'learn-chinese-v5';
 const CORE_ASSETS = [
   './learnchinese.html',
   './poems.html',
@@ -29,12 +30,44 @@ const CORE_ASSETS = [
 ];
 
 self.addEventListener('install', (e) => {
+  // Precache shells/data, but do NOT skipWaiting here: let the new worker wait
+  // so the open page can detect it and prompt the user to reload. The page asks
+  // us to activate by posting {type:'SKIP_WAITING'} (see the message handler).
   e.waitUntil((async () => {
     const cache = await caches.open(CACHE);
     await cache.addAll(CORE_ASSETS);
-    await self.skipWaiting();
   })());
 });
+
+self.addEventListener('message', (e) => {
+  const data = e.data || {};
+  if (data.type === 'SKIP_WAITING') { self.skipWaiting(); return; }
+  if (data.type === 'CHECK_UPDATES') { e.waitUntil(checkCoreUpdates()); return; }
+});
+
+// Compare each cached CORE_ASSET against the server by ETag/Last-Modified.
+// Read-only (never mutates the cache) — the user's reload does the refresh via
+// the network-first fetch handler. Notifies all clients if anything changed.
+async function checkCoreUpdates() {
+  const cache = await caches.open(CACHE);
+  const tagOf = (res) => res && (res.headers.get('ETag') || res.headers.get('Last-Modified'));
+  const changed = [];
+  await Promise.all(CORE_ASSETS.map(async (url) => {
+    try {
+      const cached = await cache.match(url);
+      const oldTag = tagOf(cached);
+      if (!oldTag) return;                       // nothing cached yet, or no validator → skip
+      const head = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+      if (!head || !head.ok) return;
+      const newTag = tagOf(head);
+      if (newTag && newTag !== oldTag) changed.push(url);
+    } catch (_) { /* offline / network error → ignore */ }
+  }));
+  if (changed.length) {
+    const clients = await self.clients.matchAll({ includeUncontrolled: true });
+    clients.forEach((c) => c.postMessage({ type: 'DATA_CHANGED', files: changed }));
+  }
+}
 
 self.addEventListener('activate', (e) => {
   e.waitUntil((async () => {
@@ -51,15 +84,15 @@ self.addEventListener('fetch', (e) => {
 
   e.respondWith((async () => {
     const cache = await caches.open(CACHE);
-    const cached = await cache.match(req);
-    const network = fetch(req)
-      .then((res) => {
-        if (res && res.ok) cache.put(req, res.clone());
-        return res;
-      })
-      .catch(() => null);
-
-    // Cached first (fast, offline-safe); fall back to network on a cold cache.
-    return cached || (await network) || Response.error();
+    try {
+      // Network-first: fetch fresh, and refresh the cache when it succeeds.
+      const res = await fetch(req);
+      if (res && res.ok) cache.put(req, res.clone());
+      return res;
+    } catch (_) {
+      // Offline / network error: fall back to the last cached copy.
+      const cached = await cache.match(req);
+      return cached || Response.error();
+    }
   })());
 });

@@ -38,14 +38,37 @@ scripts live in its own subfolder (`hanzi/`, `poems/`).
 | `hanzi/cedict-supplement.json` | Supplemental CC-CEDICT entries. |
 | `hanzi/progressive-dictionary.txt` | Source word list for the build. |
 
-The app is intentionally **one HTML file**: easy to share, host anywhere, or
+Each app is intentionally **one HTML file**: easy to share, host anywhere, or
 run offline. Prefer keeping it that way over splitting into modules. The lone
-exception is `sw.js`: when hosted (e.g. GitHub Pages) the browser must fetch
-the page over the network on each visit, so with no network there is nothing
-to load. The service worker caches the page shell (stale-while-revalidate) so
-it opens offline after one online visit. Registration lives inline in
-`learnchinese.html`'s `<head>`; the worker file itself must be separate because
-browsers forbid inline SW registration.
+shared file is `sw.js` (browsers forbid inline/`blob:` SW registration, so it
+must be separate); registration lives inline in each page's `<head>`.
+
+## Offline & auto-update (`sw.js`)
+
+- **Network-first.** Each same-origin GET goes to the network first and refreshes
+  the cache; the cache is served only when the network fails (offline). So a
+  reload always shows the latest content. `CORE_ASSETS` is precached on install
+  for first-load offline support. **Bump `CACHE` on every deploy** — it both
+  drops stale caches and is what signals a code update to open tabs.
+- **Two update prompts → one banner.** A long-open tab won't otherwise notice a
+  deploy, so each page, on a 30-min timer + on tab-focus, does two checks:
+  1. `reg.update()` — the browser byte-compares `sw.js`; a changed worker installs
+     and *waits* (install no longer calls `skipWaiting`), surfacing a **"new
+     version"** banner.
+  2. `postMessage({type:'CHECK_UPDATES'})` — the SW diffs each cached `CORE_ASSET`
+     against the server by **`ETag`/`Last-Modified`** (read-only; `HEAD` requests)
+     and, if any changed, posts `DATA_CHANGED`, surfacing a **"content updated"**
+     banner. The cache is the single source of truth for "what the user has," so
+     no page-side version bookkeeping.
+- **Reload button** always activates a waiting worker first (`SKIP_WAITING` →
+  `controllerchange` → reload) if one exists, else a plain reload — so one click
+  picks up a data change, a code change, or both at once. A `controllerchange`
+  reload is gated by an `updating` flag so the first-install `clients.claim()`
+  never triggers a surprise reload.
+- Why the page drives it (not the SW alone): a SW has no DOM (can't show the
+  banner or reload) and is killed when idle (no reliable timer). The SW owns the
+  cache + diff + messaging; the page owns the timer + UI. Data detection only
+  works when hosted (needs server validators); irrelevant on `file://`.
 
 ## Data model
 
