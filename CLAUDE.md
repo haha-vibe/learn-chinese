@@ -14,23 +14,29 @@ recall it (**練習 / practice**) or take a multiple-choice + pinyin quiz
 
 - **No build, no server.** Open [`learnchinese.html`](learnchinese.html)
   directly in a browser.
-- On first use, import the dictionary: click **選擇 JSON 檔** and select both
-  [`tps-dictionary.json`](tps-dictionary.json) and
-  [`cedict-supplement.json`](cedict-supplement.json). They are loaded into
-  **IndexedDB** (too large for localStorage) and persist across sessions.
-- [`build-dict.py`](build-dict.py) regenerates the dictionary JSONs from
-  CC-CEDICT + the TPS frequency list + [`progressive-dictionary.txt`].
+  When served, the app auto-fetches the dictionary from [`hanzi/`](hanzi/); when
+  opened via `file://`, click **選擇 JSON 檔** and select both
+  [`hanzi/tps-dictionary.json`](hanzi/tps-dictionary.json) and
+  [`hanzi/cedict-supplement.json`](hanzi/cedict-supplement.json). They are
+  loaded into **IndexedDB** (too large for localStorage) and persist.
+- [`hanzi/build-dict.py`](hanzi/build-dict.py) regenerates the dictionary JSONs
+  from CC-CEDICT + the TPS frequency list + [`hanzi/progressive-dictionary.txt`].
 
 ## File layout
 
+The repo holds **two apps**: `learnchinese.html` (认汉字) and `poems.html` (小学古诗).
+The two HTML files and the shared `sw.js` live at the root; each app's data and
+scripts live in its own subfolder (`hanzi/`, `poems/`).
+
 | File | Role |
 | --- | --- |
-| `learnchinese.html` | The entire app — HTML, CSS, and JS in one file. |
-| `sw.js` | Service worker for offline support (the one allowed separate file — browsers forbid inline/`blob:` SW registration). |
-| `build-dict.py` | Offline script to (re)build the dictionary data. |
-| `tps-dictionary.json` | Generated dictionary the app consumes (readings, defs, examples, frequency rank, graded example words). |
-| `cedict-supplement.json` | Supplemental CC-CEDICT entries. |
-| `progressive-dictionary.txt` | Source word list for the build. |
+| `learnchinese.html` | The 认汉字 app — HTML, CSS, and JS in one file (root). |
+| `poems.html` | The 小学古诗 app — single file (root). See "Poem media system" below. |
+| `sw.js` | Shared service worker; caches both apps' shells + subfolder data (root). |
+| `hanzi/build-dict.py` | Offline script to (re)build the dictionary data (reads `../learnchinese.html`). |
+| `hanzi/tps-dictionary.json` | Generated dictionary the app consumes (readings, defs, examples, frequency rank, graded example words). |
+| `hanzi/cedict-supplement.json` | Supplemental CC-CEDICT entries. |
+| `hanzi/progressive-dictionary.txt` | Source word list for the build. |
 
 The app is intentionally **one HTML file**: easy to share, host anywhere, or
 run offline. Prefer keeping it that way over splitting into modules. The lone
@@ -168,11 +174,11 @@ for editing here, `←` is the in-field "go back" shortcut.
 
 | File | Role |
 | --- | --- |
-| `poems-g1.json` – `poems-g6.json` | Poem lists (id, title, author, pinyin) for grades 1–6. |
-| `poems-edb.json` | EDB-curriculum poems not yet in the grade files (title only; to be expanded). |
-| `poems-media.json` | Maps poem id → `{ audio, audioStart, video, videoStart }`. Top-level `_credits` array declares allowed sources in priority order. |
-| `fetch-playlist-videos.py` | Syncs `poems-media.json` video links from credited YouTube playlists. Requires `yt-dlp` and `zhconv` on PATH / installed. |
-| `playlist-cache/<ID>.html` | Browser-exported playlist HTML used as fallback when yt-dlp cannot enumerate all items (e.g. members-only content). |
+| `poems/poems-g1.json` – `poems-g6.json` | Poem lists (id, title, author, pinyin) for grades 1–6. |
+| `poems/poems-edb.json` | EDB-curriculum poems not yet in the grade files (title only; to be expanded). |
+| `poems/poems-media.json` | Maps poem id → `{ audio, audioStart, video, videoStart }`. Top-level `_credits` array declares allowed sources in priority order. |
+| `poems/fetch-playlist-videos.py` | Syncs `poems-media.json` video links from credited YouTube playlists. Requires `yt-dlp` and `zhconv` on PATH / installed. |
+| `poems/playlist-cache/<ID>.html` | Browser-exported playlist HTML used as fallback when yt-dlp cannot enumerate all items (e.g. members-only content). |
 
 ### `_credits` structure
 
@@ -224,7 +230,7 @@ that needs full coverage:
 2. Scroll to the bottom so all videos are loaded.
 3. In DevTools → Elements, find `<div id="contents">`, right-click →
    **Copy → Copy outerHTML**.
-4. Save the clipboard to `playlist-cache/<PLAYLIST_ID>.html`
+4. Save the clipboard to `poems/playlist-cache/<PLAYLIST_ID>.html`
    (the playlist ID is the `list=…` value in the URL).
 
 `fetch_playlist()` checks for this file first; if found it parses the HTML

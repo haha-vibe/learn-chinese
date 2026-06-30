@@ -1,24 +1,44 @@
 # Learn Chinese
 
-An interactive web app for learning Chinese, built around a progressive
-dictionary and spaced practice. Open [`learnchinese.html`](learnchinese.html)
-in a browser to use it.
+Two self-contained, single-file web apps:
+
+- **认汉字** — [`learnchinese.html`](learnchinese.html): character learning with a
+  progressive dictionary and spaced practice (data in [`hanzi/`](hanzi/)).
+- **小学古诗** — [`poems.html`](poems.html): primary-school poem recitation with
+  pinyin, tone-sandhi highlighting, and audio/video (data in [`poems/`](poems/)).
+
+Open either HTML file in a browser. Each app fetches its data from its own
+subfolder when served, and falls back to a manual file picker when opened via
+`file://`.
 
 ## Contents
 
+Shared, at the repo root:
+
 | File | Description |
 | --- | --- |
-| `learnchinese.html` | The single-file web app. |
-| `sw.js` | Service worker for offline support. |
-| `build-dict.py` | Script that builds the dictionary data. |
-| `progressive-dictionary.txt` | Source dictionary used by the build. |
-| `cedict-supplement.json` | Supplemental CC-CEDICT entries. |
-| `tps-dictionary.json` | Generated dictionary consumed by the app. |
-| `poems-g1.json` – `poems-g6.json` | Poem lists for grades 1–6 (id, title, author, pinyin). |
-| `poems-edb.json` | Additional poems from the HK EDB curriculum list. |
-| `poems-media.json` | Maps each poem to its audio and video links; `_credits` lists the credited YouTube playlists in priority order. |
-| `fetch-playlist-videos.py` | Syncs video links in `poems-media.json` from the credited playlists (requires `yt-dlp` and `zhconv`). |
-| `playlist-cache/` | Browser-exported playlist HTML files used as fallback when yt-dlp cannot enumerate all items (e.g. members-only content). Save as `<PLAYLIST_ID>.html`. |
+| `learnchinese.html` | The 认汉字 (character-learning) app. |
+| `poems.html` | The 小学古诗 (poem-learning) app. |
+| `sw.js` | Service worker — caches both apps' shells + data for offline use. |
+
+`hanzi/` — character-learning data & build script:
+
+| File | Description |
+| --- | --- |
+| `hanzi/build-dict.py` | Builds the dictionary data (reads `../learnchinese.html` for the WORDS list). |
+| `hanzi/progressive-dictionary.txt` | Source dictionary used by the build. |
+| `hanzi/cedict-supplement.json` | Supplemental CC-CEDICT entries. |
+| `hanzi/tps-dictionary.json` | Generated dictionary consumed by the app. |
+
+`poems/` — poem data & media pipeline:
+
+| File | Description |
+| --- | --- |
+| `poems/poems-g1.json` – `poems-g6.json` | Per-grade poem data (text, per-char pinyin/meaning, notes, tone sandhi). |
+| `poems/poems-edb.json` | Additional poems from the HK EDB curriculum list. |
+| `poems/poems-media.json` | Maps each poem to its audio (HK EDB Putonghua) and video links; `_credits` lists the credited sources in priority order. |
+| `poems/fetch-playlist-videos.py` | Syncs video links in `poems-media.json` from the credited playlists (requires `yt-dlp` and `zhconv`). |
+| `poems/playlist-cache/` | Browser-exported playlist HTML files used as fallback when yt-dlp cannot enumerate all items. Save as `<PLAYLIST_ID>.html`. |
 
 ## License
 

@@ -143,7 +143,7 @@ def build_tps():
 
 # ───────────────────────── 2. CEDICT supplement ─────────────────────────
 def load_words():
-    html = open(path('learnchinese.html'), encoding='utf-8').read()
+    html = open(path('../learnchinese.html'), encoding='utf-8').read()
     src = re.search(r'const WORDS = (\{.*?\n\});', html, re.S).group(1)
     src = src.replace('simp:', '"simp":').replace('trad:', '"trad":')
     src = re.sub(r'(\bL\d+):', r'"\1":', src)

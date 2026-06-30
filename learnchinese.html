@@ -4547,7 +4547,7 @@ function buildRecords(merged) {
 // ===== 字典載入 =====
 // 預設自動 fetch 同目錄的 tps-dictionary.json + cedict-supplement.json，合併後存入 IndexedDB。
 // 若以 file:// 開啟（瀏覽器封鎖本機 fetch），則退回手動選擇 JSON 檔。
-const DICT_FILES = ['tps-dictionary.json', 'cedict-supplement.json'];
+const DICT_FILES = ['hanzi/tps-dictionary.json', 'hanzi/cedict-supplement.json'];
 
 async function storeMerged(merged) {
   const records = buildRecords(merged);

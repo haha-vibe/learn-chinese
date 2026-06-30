@@ -199,10 +199,10 @@ function setData(grades,media){
 async function loadData(){
   try{
     const arr=await Promise.all([1,2,3,4,5,6].map(g=>
-      fetch("poems-g"+g+".json",{cache:"reload"}).then(r=>{if(!r.ok)throw new Error("http "+r.status);return r.json();})
+      fetch("poems/poems-g"+g+".json",{cache:"reload"}).then(r=>{if(!r.ok)throw new Error("http "+r.status);return r.json();})
     ));
     let media={};
-    try{ const mr=await fetch("poems-media.json",{cache:"reload"}); if(mr.ok) media=await mr.json(); }catch(e){}
+    try{ const mr=await fetch("poems/poems-media.json",{cache:"reload"}); if(mr.ok) media=await mr.json(); }catch(e){}
     const grades=arr.map(d=>({grade:d.meta.grade, poems:d.poems}));
     setData(grades,media); cacheData(grades,media); return true;
   }catch(e){
