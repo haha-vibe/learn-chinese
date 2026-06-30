@@ -425,7 +425,7 @@
         { "text": "晚来", "rule": "半上声", "base": "wǎn", "read": "wǎn", "value": "211", "markChange": false, "where": "天气晚来秋。", "pos": 2, "zh": "\"晚\"是上声，在非上声\"来\"前读\"半上\"（调值211），拼音不变：wǎn。", "en": "晚 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 来; the written pinyin stays wǎn." },
         { "text": "可留", "rule": "半上声", "base": "kě", "read": "kě", "value": "211", "markChange": false, "where": "王孙自可留。", "pos": 3, "zh": "\"可\"是上声，在非上声\"留\"前读\"半上\"（调值211），拼音不变：kě。", "en": "可 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 留; the written pinyin stays kě." }
       ],
-      "tags": ["landscape", "season-autumn"]
+      "tags": ["season-autumn"]
     },
     {
       "id": "g5u-07-fengqiaoyebo",

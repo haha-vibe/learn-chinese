@@ -140,7 +140,7 @@
         { "text": "露似", "rule": "半去声", "base": "lù", "read": "lù", "value": "53", "markChange": false, "where": "露似真珠月似弓。", "pos": 0, "zh": "\"露\"是去声，在去声\"似\"前读\"半去\"（调值53），拼音不变：lù。", "en": "露 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 似; the written pinyin stays lù." },
         { "text": "月似", "rule": "半去声", "base": "yuè", "read": "yuè", "value": "53", "markChange": false, "where": "露似真珠月似弓。", "pos": 4, "zh": "\"月\"是去声，在去声\"似\"前读\"半去\"（调值53），拼音不变：yuè。", "en": "月 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 似; the written pinyin stays yuè." }
       ],
-      "tags": ["landscape", "moon"]
+      "tags": ["moon"]
     },
     {
       "id": "g4u-03-tixilinbi",

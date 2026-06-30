@@ -1,117 +1,103 @@
 {
-  "_schema": "Theme categories for the poems. Each poem carries a `tags` array of these keys (multi-label). `group` clusters related tags (e.g. the four seasons). Counts are over all 101 poems.",
+  "_schema": "Theme categories for the poems. Each poem carries a `tags` array of these keys (multi-label). `group` clusters related tags (e.g. the four seasons). Poem counts are computed on the fly by the app, not stored here.",
   "categories": [
     {
       "key": "farewell",
       "zh": "送别",
       "en": "Farewell",
       "desc_zh": "送别友人，抒发离情。",
-      "desc_en": "Parting from friends.",
-      "count": 6
+      "desc_en": "Parting from friends."
     },
     {
       "key": "homesick",
       "zh": "思乡怀人",
       "en": "Homesickness",
       "desc_zh": "思念家乡。",
-      "desc_en": "Longing for home.",
-      "count": 8
+      "desc_en": "Longing for home."
     },
     {
       "key": "kinship",
       "zh": "亲情·相思",
       "en": "Kinship & longing",
       "desc_zh": "亲情、友情与离别相思之情。",
-      "desc_en": "Family love, friendship, and longing between separated people.",
-      "count": 4
+      "desc_en": "Family love, friendship, and longing between separated people."
     },
     {
       "key": "landscape",
       "zh": "山水写景",
       "en": "Landscape",
-      "desc_zh": "描绘山水自然景色。",
-      "desc_en": "Mountains, rivers, natural scenery.",
-      "count": 18
+      "desc_zh": "纯写自然景色（无更具体主题时才归入此类）。",
+      "desc_en": "Pure natural scenery — the catch-all, used only when no more specific theme fits."
     },
     {
       "key": "pastoral",
       "zh": "田园乡村",
       "en": "Pastoral",
       "desc_zh": "乡村田园与农家生活。",
-      "desc_en": "Countryside and farm life.",
-      "count": 12
+      "desc_en": "Countryside and farm life."
     },
     {
       "key": "object",
       "zh": "咏物言志",
       "en": "Object-chanting",
       "desc_zh": "借物抒情、托物言志。",
-      "desc_en": "Chanting an object to voice character or feeling.",
-      "count": 12
+      "desc_en": "Chanting an object to voice character or feeling."
     },
     {
       "key": "frontier",
       "zh": "边塞军旅",
       "en": "Frontier & war",
       "desc_zh": "边关战事与戍边生活。",
-      "desc_en": "The frontier, war, garrison life.",
-      "count": 6
+      "desc_en": "The frontier, war, garrison life."
     },
     {
       "key": "patriotic",
       "zh": "爱国忧国",
       "en": "Patriotism",
       "desc_zh": "忧国忧民、报国之志。",
-      "desc_en": "Love and worry for the country.",
-      "count": 9
+      "desc_en": "Love and worry for the country."
     },
     {
       "key": "festival",
       "zh": "传统节日",
       "en": "Festivals",
       "desc_zh": "传统节日的情景与情感。",
-      "desc_en": "Traditional festivals.",
-      "count": 6
+      "desc_en": "Traditional festivals."
     },
     {
       "key": "moon",
       "zh": "咏月",
       "en": "The moon",
       "desc_zh": "以月为题或核心意象。",
-      "desc_en": "The moon as subject or central image.",
-      "count": 7
+      "desc_en": "The moon as subject or central image."
     },
     {
       "key": "childhood",
       "zh": "儿童童趣",
       "en": "Childhood & play",
       "desc_zh": "儿童与天真童趣。",
-      "desc_en": "Children and playful scenes.",
-      "count": 10
+      "desc_en": "Children and playful scenes."
     },
     {
       "key": "insight",
       "zh": "哲理启示",
       "en": "Insight",
       "desc_zh": "蕴含道理或人生启示。",
-      "desc_en": "A life-lesson or piece of reasoning.",
-      "count": 12
+      "desc_en": "A life-lesson or piece of reasoning."
     },
     {
       "key": "labour",
       "zh": "劳动悯农",
       "en": "Labour & common folk",
       "desc_zh": "劳作艰辛与悯农之情。",
-      "desc_en": "Toil and sympathy for working people.",
-      "count": 3
+      "desc_en": "Toil and sympathy for working people."
     },
     {
       "key": "fable",
       "zh": "文言寓言",
       "en": "Classical-prose fable",
       "desc_zh": "文言小品、寓言说理。",
-      "desc_en": "Lesson stories in classical prose.",
-      "count": 2
+      "desc_en": "Lesson stories in classical prose."
     },
     {
       "key": "season-spring",
@@ -119,8 +105,7 @@
       "en": "Spring",
       "group": "季节 · Season",
       "desc_zh": "春天景象。",
-      "desc_en": "Spring scenes.",
-      "count": 18
+      "desc_en": "Spring scenes."
     },
     {
       "key": "season-summer",
@@ -128,8 +113,7 @@
       "en": "Summer",
       "group": "季节 · Season",
       "desc_zh": "夏天景象。",
-      "desc_en": "Summer scenes.",
-      "count": 10
+      "desc_en": "Summer scenes."
     },
     {
       "key": "season-autumn",
@@ -137,8 +121,7 @@
       "en": "Autumn",
       "group": "季节 · Season",
       "desc_zh": "秋天景象。",
-      "desc_en": "Autumn scenes.",
-      "count": 6
+      "desc_en": "Autumn scenes."
     },
     {
       "key": "season-winter",
@@ -146,8 +129,7 @@
       "en": "Winter",
       "group": "季节 · Season",
       "desc_zh": "冬天与雪景。",
-      "desc_en": "Winter and snow scenes.",
-      "count": 9
+      "desc_en": "Winter and snow scenes."
     }
   ]
 }

@@ -427,7 +427,7 @@
         { "text": "里一", "rule": "半上声", "base": "lǐ", "read": "lǐ", "value": "211", "markChange": false, "where": "白银盘里一青螺。", "pos": 3, "zh": "\"里\"是上声，在非上声\"一\"前读\"半上\"（调值211），拼音不变：lǐ。", "en": "里 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 一; the written pinyin stays lǐ." },
         { "text": "一青", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "白银盘里一青螺。", "pos": 4, "zh": "\"一\"在阴平/阳平/上声\"青\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 青 changes to fourth tone: yī → yì." }
       ],
-      "tags": ["landscape", "season-autumn"]
+      "tags": ["season-autumn"]
     },
     {
       "id": "g3u-07-zaofabaidicheng",
@@ -823,7 +823,7 @@
         { "text": "水绿", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "春来江水绿如蓝。", "pos": 3, "zh": "\"水\"是上声，在非上声\"绿\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 绿; the written pinyin stays shuǐ." },
         { "text": "不忆", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "能不忆江南？", "pos": 1, "zh": "\"不\"在去声\"忆\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 忆 changes to second tone: bù → bú." }
       ],
-      "tags": ["landscape", "season-spring"]
+      "tags": ["season-spring"]
     },
     {
       "id": "g3d-05-yuanri",
@@ -1094,7 +1094,7 @@
         { "text": "晚来", "rule": "半上声", "base": "wǎn", "read": "wǎn", "value": "211", "markChange": false, "where": "春潮带雨晚来急，", "pos": 4, "zh": "\"晚\"是上声，在非上声\"来\"前读\"半上\"（调值211），拼音不变：wǎn。", "en": "晚 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 来; the written pinyin stays wǎn." },
         { "text": "野渡", "rule": "半上声", "base": "yě", "read": "yě", "value": "211", "markChange": false, "where": "野渡无人舟自横。", "pos": 0, "zh": "\"野\"是上声，在非上声\"渡\"前读\"半上\"（调值211），拼音不变：yě。", "en": "野 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 渡; the written pinyin stays yě." }
       ],
-      "tags": ["landscape", "season-spring"]
+      "tags": ["season-spring"]
     },
     {
       "id": "g3d-09-dalinsitaohua",

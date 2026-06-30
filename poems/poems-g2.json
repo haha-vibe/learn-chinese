@@ -275,7 +275,7 @@
         { "text": "野茫", "rule": "半上声", "base": "yě", "read": "yě", "value": "211", "markChange": false, "where": "天苍苍，野茫茫，", "pos": 3, "zh": "\"野\"是上声，在非上声\"茫\"前读\"半上\"（调值211），拼音不变：yě。", "en": "野 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 茫; the written pinyin stays yě." },
         { "text": "草低", "rule": "半上声", "base": "cǎo", "read": "cǎo", "value": "211", "markChange": false, "where": "风吹草低见牛羊。", "pos": 2, "zh": "\"草\"是上声，在非上声\"低\"前读\"半上\"（调值211），拼音不变：cǎo。", "en": "草 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 低; the written pinyin stays cǎo." }
       ],
-      "tags": ["landscape", "pastoral"]
+      "tags": ["pastoral"]
     },
     {
       "id": "g2u-05-meihua",
@@ -738,7 +738,7 @@
         { "text": "岭千", "rule": "半上声", "base": "lǐng", "read": "lǐng", "value": "211", "markChange": false, "where": "窗含西岭千秋雪，", "pos": 3, "zh": "\"岭\"是上声，在非上声\"千\"前读\"半上\"（调值211），拼音不变：lǐng。", "en": "岭 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 千; the written pinyin stays lǐng." },
         { "text": "里船", "rule": "半上声", "base": "lǐ", "read": "lǐ", "value": "211", "markChange": false, "where": "门泊东吴万里船。", "pos": 5, "zh": "\"里\"是上声，在非上声\"船\"前读\"半上\"（调值211），拼音不变：lǐ。", "en": "里 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 船; the written pinyin stays lǐ." }
       ],
-      "tags": ["season-spring", "landscape"]
+      "tags": ["season-spring"]
     },
     {
       "id": "g2d-05-fudeguyuancaosongbie",
