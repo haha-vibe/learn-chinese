@@ -162,6 +162,75 @@ for editing here, `←` is the in-field "go back" shortcut.
   class) so browser/extension auto-translate doesn't convert the very
   characters being taught.
 
+## Poem media system
+
+### Files
+
+| File | Role |
+| --- | --- |
+| `poems-g1.json` – `poems-g6.json` | Poem lists (id, title, author, pinyin) for grades 1–6. |
+| `poems-edb.json` | EDB-curriculum poems not yet in the grade files (title only; to be expanded). |
+| `poems-media.json` | Maps poem id → `{ audio, audioStart, video, videoStart }`. Top-level `_credits` array declares allowed sources in priority order. |
+| `fetch-playlist-videos.py` | Syncs `poems-media.json` video links from credited YouTube playlists. Requires `yt-dlp` and `zhconv` on PATH / installed. |
+| `playlist-cache/<ID>.html` | Browser-exported playlist HTML used as fallback when yt-dlp cannot enumerate all items (e.g. members-only content). |
+
+### `_credits` structure
+
+Each entry in the `_credits` array of `poems-media.json`:
+
+```json
+{
+  "name": "Display name",
+  "url": "https://www.youtube.com/playlist?list=PLAYLIST_ID",
+  "note": "optional free-text",
+  "titleOnly": true   // omit or false to require author in video title too
+}
+```
+
+- Entries are processed in order; first match wins.
+- `titleOnly: true` skips the author check (used for playlists whose video titles don't include the poet's name, e.g. 可可读课本).
+- Classical-text authors stored as `《孟子》` have their brackets stripped before matching.
+
+### Matching logic (`fetch-playlist-videos.py`)
+
+- Video title is converted from traditional → simplified (`zhconv`) before matching.
+- Author: plain substring match (brackets stripped).
+- Poem title: word-boundary match (no adjacent Han character on either side) **or** prefix match (≥ 4 chars, left-boundary only — handles abbreviated local titles like 十五夜望月 matching 十五夜望月寄杜郎中).
+- Trailing qualifiers like `（其一）` are stripped and the bare title is also tried.
+
+### Updating video links
+
+```bash
+# Dry run — show proposed changes without writing
+python fetch-playlist-videos.py --dry-run
+
+# Apply — only adds links for poems that have none
+python fetch-playlist-videos.py
+
+# Force — upgrade to higher-priority source even if already linked
+python fetch-playlist-videos.py --force
+
+# Purge and reassign from scratch (use after reordering _credits)
+python fetch-playlist-videos.py --purge
+```
+
+### Browser-export fallback for large / members-only playlists
+
+yt-dlp can only enumerate public playlist items (YouTube serves 100 per page,
+and members-only items are invisible without authentication). For any playlist
+that needs full coverage:
+
+1. Open the playlist URL in Chrome (log in if needed for members-only content).
+2. Scroll to the bottom so all videos are loaded.
+3. In DevTools → Elements, find `<div id="contents">`, right-click →
+   **Copy → Copy outerHTML**.
+4. Save the clipboard to `playlist-cache/<PLAYLIST_ID>.html`
+   (the playlist ID is the `list=…` value in the URL).
+
+`fetch_playlist()` checks for this file first; if found it parses the HTML
+instead of calling yt-dlp, giving access to the full list including
+members-only items that were visible when you exported.
+
 ## Conventions for future edits
 
 - Keep everything in `learnchinese.html` unless there's a strong reason not to.

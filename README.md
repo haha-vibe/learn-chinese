@@ -9,10 +9,16 @@ in a browser to use it.
 | File | Description |
 | --- | --- |
 | `learnchinese.html` | The single-file web app. |
+| `sw.js` | Service worker for offline support. |
 | `build-dict.py` | Script that builds the dictionary data. |
 | `progressive-dictionary.txt` | Source dictionary used by the build. |
 | `cedict-supplement.json` | Supplemental CC-CEDICT entries. |
 | `tps-dictionary.json` | Generated dictionary consumed by the app. |
+| `poems-g1.json` – `poems-g6.json` | Poem lists for grades 1–6 (id, title, author, pinyin). |
+| `poems-edb.json` | Additional poems from the HK EDB curriculum list. |
+| `poems-media.json` | Maps each poem to its audio and video links; `_credits` lists the credited YouTube playlists in priority order. |
+| `fetch-playlist-videos.py` | Syncs video links in `poems-media.json` from the credited playlists (requires `yt-dlp` and `zhconv`). |
+| `playlist-cache/` | Browser-exported playlist HTML files used as fallback when yt-dlp cannot enumerate all items (e.g. members-only content). Save as `<PLAYLIST_ID>.html`. |
 
 ## License
 

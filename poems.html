@@ -9,7 +9,7 @@
       content="default-src 'self'; 
                script-src 'self' 'unsafe-inline'; 
                style-src 'self' 'unsafe-inline';
-               connect-src 'self';
+               connect-src 'self' https://www.youtube.com;
                media-src 'self' https://www.edb.gov.hk;
                frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
                child-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
@@ -246,23 +246,36 @@ function sandhiMap(poem,where){
   const m={}; for(const s of poem.sandhi||[]) if(s.where===where) m[s.pos]=s; return m;
 }
 function el(tag,cls,txt){ const e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
+/* YouTube logo SVG — scales with font-size via em units */
+const YT_ICON='<svg viewBox="0 0 28 20" width="1.25em" height="0.9em" style="display:inline-block;vertical-align:middle" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><polygon points="11,4 22,10 11,16" fill="#fff"/></svg>';
+
 function mediaButtons(id,small){
   const out=[], m=MEDIA[id]||{};
   const cls="btn icon-btn"+(small?" mini":"");
   if(m.audio){
-    const b=el("button",cls); b.textContent="🎧"; b.title="真人朗读（普通话 · 香港教育局）";
+    const b=el("button",cls); b.textContent="🎙️";
+    b.title="真人朗读（普通话 · 香港教育局）";
     b.setAttribute("data-audio",id);
+    b.setAttribute("data-tip","🎙️ 真人朗读\n普通话 · 香港教育局");
     b.onclick=ev=>{ ev.stopPropagation(); toggleAudio(id); };
     out.push(b);
   }
   if(TTS){
-    const b=el("button",cls); b.textContent="🗣️"; b.title="语音合成朗读（TTS · 近似发音）"; b.setAttribute("data-tts",id);
+    const b=el("button",cls); b.textContent="🤖";
+    b.title="语音合成朗读（TTS · 近似发音）";
+    b.setAttribute("data-tts",id);
+    b.setAttribute("data-tip","🤖 语音合成（TTS）\n由浏览器合成，近似发音");
     if(ttsId===id) b.classList.add("on");
     b.onclick=ev=>{ ev.stopPropagation(); speakPoem(id,true); };
     out.push(b);
   }
   if(m.video){
-    const b=el("button",cls); b.textContent="▶️"; b.title="播放视频";
+    const b=el("button",cls);
+    b.innerHTML=YT_ICON;
+    b.title="播放视频";
+    b.setAttribute("data-tip","▶ 播放视频");
+    const ytM=m.video.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{6,})/);
+    if(ytM) b.setAttribute("data-video-id",ytM[1]);
     b.onclick=ev=>{ ev.stopPropagation(); openVideo(id); };
     out.push(b);
   }
@@ -620,9 +633,26 @@ function showTip(t){
   tipEl.style.left=left+"px"; tipEl.style.top=top+"px";
 }
 function hideTip(){ tipEl.style.display="none"; }
+/* Fire-and-forget oEmbed fetch for YouTube video buttons.
+   No API key needed — YouTube's public oEmbed endpoint returns title + channel. */
+function prefetchYtTip(b,vid){
+  if(b.hasAttribute("data-tip-fetched")) return;
+  b.setAttribute("data-tip-fetched","1");
+  fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${encodeURIComponent(vid)}&format=json`)
+    .then(r=>r.ok?r.json():null)
+    .then(j=>{
+      if(!j) return;
+      const tip=`▶ ${j.title}\n${j.author_name}`;
+      b.setAttribute("data-tip",tip);
+      if(tipEl.style.display!=="none" && tipEl.textContent.startsWith("▶")) showTip(b);
+    })
+    .catch(()=>{});
+}
 document.addEventListener("pointerover",e=>{
   const t=e.target.closest&&e.target.closest("[data-tip]"); if(!t) return;
   if(e.relatedTarget&&t.contains(e.relatedTarget)) return;
+  const vid=t.getAttribute("data-video-id");
+  if(vid) prefetchYtTip(t,vid);
   clearTimeout(tipTimer); tipTimer=setTimeout(()=>showTip(t),80);
 });
 document.addEventListener("pointerout",e=>{
