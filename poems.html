@@ -238,6 +238,8 @@
   .cat-head .clabel .cen{font-family:system-ui,sans-serif;font-size:12px;font-weight:400;color:var(--muted);letter-spacing:1px}
   .cat-head .ccount{background:var(--line);color:#6f6757;border-radius:999px;padding:1px 9px;font-size:12px}
   .cat-head .cdesc{color:var(--muted);font-size:12.5px;margin:4px 0 0 1.7em}
+  .cat-head .cexample{color:var(--accent2);font-size:12.5px;font-style:italic;margin:4px 0 0 1.7em}
+  .cat-head .cexample .exen{color:var(--muted);font-style:normal}
   .cat-body{padding:0 20px 4px}
   .cat-body.open{padding:6px 20px 18px}
   .cat-list{display:flex;flex-direction:column}
@@ -769,10 +771,16 @@ function renderRhetoricView(target){
     top.appendChild(el("span","ccount",String(items.length)));
     head.appendChild(top);
     if(dev.desc_zh) head.appendChild(el("div","cdesc",dev.desc_zh));
+    const example=el("div","cexample");
+    if(dev.examples&&dev.examples.length) example.innerHTML=dev.examples.map(ex=>'例：'+(ex.zh||"")+(ex.en?' <span class="exen">'+ex.en+"</span>":"")).join("<br>");
+    example.style.display=expandedRhet.has(dev.key)?"none":"";
+    head.appendChild(example);
     const body=el("div","cat-body");
     head.onclick=()=>{
       if(expandedRhet.has(dev.key)) expandedRhet.delete(dev.key); else expandedRhet.add(dev.key);
-      chev.textContent=expandedRhet.has(dev.key)?"▾":"▸";
+      const open=expandedRhet.has(dev.key);
+      chev.textContent=open?"▾":"▸";
+      example.style.display=open?"none":"";
       renderRhetBody(dev,items,body);
     };
     block.appendChild(head); block.appendChild(body);

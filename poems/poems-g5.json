@@ -1486,6 +1486,74 @@
         { "text": "草心", "rule": "半上声", "base": "cǎo", "read": "cǎo", "value": "211", "markChange": false, "where": "谁言寸草心，", "pos": 3, "zh": "\"草\"是上声，在非上声\"心\"前读\"半上\"（调值211），拼音不变：cǎo。", "en": "草 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 心; the written pinyin stays cǎo." }
       ],
       "tags": ["huairen"]
+    },
+    {
+      "id": "g5d-12-songyuanershianxi",
+      "title": "送元二使安西",
+      "titlePinyin": "sòng yuán èr shǐ ān xī",
+      "titleEn": "Seeing Off Yuan the Second on His Mission to Anxi",
+      "author": "王维",
+      "dynasty": "唐",
+      "grade": 5,
+      "volume": "下",
+      "lines": [
+        { "text": "渭城朝雨浥轻尘，", "pinyin": "wèi chéng zhāo yǔ yì qīng chén", "zh": "渭城早晨的细雨湿润了地上的轻尘，", "en": "Morning rain in Weicheng settles the light dust,", "rhetoric": ["parallelism"] },
+        { "text": "客舍青青柳色新。", "pinyin": "kè shè qīng qīng liǔ sè xīn", "zh": "客舍旁的柳树呈现出一片新绿。", "en": "and by the inn the willows show a fresh new green.", "rhetoric": ["parallelism"] },
+        { "text": "劝君更尽一杯酒，", "pinyin": "quàn jūn gèng jìn yī bēi jiǔ", "zh": "劝你再喝完这一杯酒吧，", "en": "Let me urge you, friend, to drain one more cup of wine," },
+        { "text": "西出阳关无故人。", "pinyin": "xī chū yáng guān wú gù rén", "zh": "因为向西出了阳关，就再没有老朋友了。", "en": "for west beyond Yang Pass, no old friend will you find.", "rhetoric": ["hyperbole", "real-imagined"] }
+      ],
+      "chars": [
+        { "char": "渭", "pinyin": "wèi", "zh": "渭城，地名，在今陕西咸阳。", "en": "(in 渭城) place name" },
+        { "char": "城", "pinyin": "chéng", "zh": "渭城，地名。", "en": "(in 渭城) place name" },
+        { "char": "朝", "pinyin": "zhāo", "zh": "早晨。", "en": "morning" },
+        { "char": "雨", "pinyin": "yǔ", "zh": "雨。", "en": "rain" },
+        { "char": "浥", "pinyin": "yì", "zh": "湿润、沾湿。", "en": "to moisten" },
+        { "char": "轻", "pinyin": "qīng", "zh": "轻微的。", "en": "light; slight" },
+        { "char": "尘", "pinyin": "chén", "zh": "尘土。", "en": "dust" },
+        { "char": "客", "pinyin": "kè", "zh": "客舍，旅店。", "en": "guest; (in 客舍) inn" },
+        { "char": "舍", "pinyin": "shè", "zh": "客舍，旅店；多音字，又读 shě（舍弃）。", "en": "house; (in 客舍) inn" },
+        { "char": "青", "pinyin": "qīng", "zh": "青色，青翠。", "en": "green" },
+        { "char": "柳", "pinyin": "liǔ", "zh": "柳树。", "en": "willow" },
+        { "char": "色", "pinyin": "sè", "zh": "颜色。", "en": "color" },
+        { "char": "新", "pinyin": "xīn", "zh": "新鲜、崭新。", "en": "new; fresh" },
+        { "char": "劝", "pinyin": "quàn", "zh": "劝说、劝酒。", "en": "to urge; to persuade" },
+        { "char": "君", "pinyin": "jūn", "zh": "你，对朋友的尊称。", "en": "you (polite)" },
+        { "char": "更", "pinyin": "gèng", "zh": "再、又；多音字，又读 gēng（更改）。", "en": "again; more" },
+        { "char": "尽", "pinyin": "jìn", "zh": "喝完、喝尽。", "en": "to finish; to drain" },
+        { "char": "一", "pinyin": "yī", "zh": "数词一。", "en": "one" },
+        { "char": "杯", "pinyin": "bēi", "zh": "杯子，这里作量词。", "en": "cup" },
+        { "char": "酒", "pinyin": "jiǔ", "zh": "酒。", "en": "wine" },
+        { "char": "西", "pinyin": "xī", "zh": "向西。", "en": "west" },
+        { "char": "出", "pinyin": "chū", "zh": "出了、离开。", "en": "to leave; to exit" },
+        { "char": "阳", "pinyin": "yáng", "zh": "阳关，地名。", "en": "(in 阳关) place name" },
+        { "char": "关", "pinyin": "guān", "zh": "阳关，古代关卡地名。", "en": "(in 阳关) pass" },
+        { "char": "无", "pinyin": "wú", "zh": "没有。", "en": "without" },
+        { "char": "故", "pinyin": "gù", "zh": "故人，老朋友。", "en": "(in 故人) old" },
+        { "char": "人", "pinyin": "rén", "zh": "故人，老朋友。", "en": "person; (in 故人) friend" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "王维送友人元二出使安西（今新疆一带）所作，是唐代送别诗中流传最广的一首，后被谱曲传唱，称《阳关三叠》。",
+          "en": "Written by Wang Wei to see off his friend 'Yuan the Second' on a mission to Anxi (in today's Xinjiang), this is one of the most widely circulated Tang farewell poems, later set to music as 'The Yang Pass Melody, Thrice Repeated.'"
+        },
+        "culture": {
+          "zh": "阳关是唐代通往西域的重要关口，出阳关意味着远赴边疆、前路艰险，故友人相送格外深情。",
+          "en": "Yang Pass was a key gateway to the Western Regions in the Tang dynasty; passing beyond it meant a long, perilous journey to the frontier, which is why this farewell carries such deep feeling."
+        },
+        "rhetoric": {
+          "zh": "首二句写渭城朝雨、客舍新柳，对仗工整，渲染送别的清新氛围；末句“无故人”略带夸张，由眼前实景转为想象友人西出阳关后的孤寂，虚实相生，寄托深切的惜别之情。",
+          "en": "The opening couplet, describing Weicheng's morning rain and the inn's fresh willows, is a neat parallel that sets a clear, fresh mood for the farewell; the closing 'no old friend' is a mild hyperbole, shifting from the present real scene to an imagined vision of the friend's solitude beyond Yang Pass, blending real and imagined to carry deep parting sorrow."
+        }
+      },
+      "sandhi": [
+        { "text": "使安", "rule": "半上声", "base": "shǐ", "read": "shǐ", "value": "211", "markChange": false, "where": "题目", "pos": 3, "zh": "\"使\"是上声，在非上声\"安\"前读\"半上\"（调值211），拼音不变：shǐ。", "en": "使 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 安; the written pinyin stays shǐ." },
+        { "text": "雨浥", "rule": "半上声", "base": "yǔ", "read": "yǔ", "value": "211", "markChange": false, "where": "渭城朝雨浥轻尘，", "pos": 3, "zh": "\"雨\"是上声，在非上声\"浥\"前读\"半上\"（调值211），拼音不变：yǔ。", "en": "雨 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 浥; the written pinyin stays yǔ." },
+        { "text": "客舍", "rule": "半去声", "base": "kè", "read": "kè", "value": "53", "markChange": false, "where": "客舍青青柳色新。", "pos": 0, "zh": "\"客\"是去声，在去声\"舍\"前读\"半去\"（调值53），拼音不变：kè。", "en": "客 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 舍; the written pinyin stays kè." },
+        { "text": "柳色", "rule": "半上声", "base": "liǔ", "read": "liǔ", "value": "211", "markChange": false, "where": "客舍青青柳色新。", "pos": 4, "zh": "\"柳\"是上声，在非上声\"色\"前读\"半上\"（调值211），拼音不变：liǔ。", "en": "柳 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 色; the written pinyin stays liǔ." },
+        { "text": "更尽", "rule": "半去声", "base": "gèng", "read": "gèng", "value": "53", "markChange": false, "where": "劝君更尽一杯酒，", "pos": 2, "zh": "\"更\"是去声，在去声\"尽\"前读\"半去\"（调值53），拼音不变：gèng。", "en": "更 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 尽; the written pinyin stays gèng." },
+        { "text": "一杯", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "劝君更尽一杯酒，", "pos": 4, "zh": "\"一\"在阴平/阳平/上声\"杯\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 杯 changes to fourth tone: yī → yì." }
+      ],
+      "tags": ["farewell"]
     }
   ]
 }

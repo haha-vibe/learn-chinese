@@ -1498,6 +1498,302 @@
         { "text": "锦官", "rule": "半上声", "base": "jǐn", "read": "jǐn", "value": "211", "markChange": false, "where": "花重锦官城。", "pos": 2, "zh": "\"锦\"是上声，在非上声\"官\"前读\"半上\"（调值211），拼音不变：jǐn。", "en": "锦 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 官; the written pinyin stays jǐn." }
       ],
       "tags": ["season-spring"]
+    },
+    {
+      "id": "g6d-11-jiangshangyuzhe",
+      "title": "江上渔者",
+      "titlePinyin": "jiāng shàng yú zhě",
+      "titleEn": "The Fisherman on the River",
+      "author": "范仲淹",
+      "dynasty": "宋",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "江上往来人，", "pinyin": "jiāng shàng wǎng lái rén", "zh": "江岸上来来往往的人们，", "en": "People coming and going along the riverbank,", "rhetoric": ["foil"] },
+        { "text": "但爱鲈鱼美。", "pinyin": "dàn ài lú yú měi", "zh": "只喜爱鲈鱼的鲜美味道。", "en": "care only for how delicious the perch tastes.", "rhetoric": ["foil"] },
+        { "text": "君看一叶舟，", "pinyin": "jūn kàn yī yè zhōu", "zh": "你看那像一片树叶般的小船，", "en": "Look at that small boat, tiny as a single leaf,", "rhetoric": ["metaphor-analogy", "foil"] },
+        { "text": "出没风波里。", "pinyin": "chū mò fēng bō lǐ", "zh": "在风浪中忽隐忽现。", "en": "rising and vanishing amid the wind and waves.", "rhetoric": ["foil"] }
+      ],
+      "chars": [
+        { "char": "江", "pinyin": "jiāng", "zh": "江河，这里指江边。", "en": "river" },
+        { "char": "上", "pinyin": "shàng", "zh": "上面，江上即江边、江面上。", "en": "on" },
+        { "char": "往", "pinyin": "wǎng", "zh": "往来，来来去去。", "en": "to go" },
+        { "char": "来", "pinyin": "lái", "zh": "往来，来来去去。", "en": "to come" },
+        { "char": "人", "pinyin": "rén", "zh": "人们。", "en": "people" },
+        { "char": "但", "pinyin": "dàn", "zh": "只、仅仅。", "en": "only" },
+        { "char": "爱", "pinyin": "ài", "zh": "喜爱。", "en": "to love; to like" },
+        { "char": "鲈", "pinyin": "lú", "zh": "鲈鱼，一种鱼。", "en": "perch (fish)" },
+        { "char": "鱼", "pinyin": "yú", "zh": "鱼。", "en": "fish" },
+        { "char": "美", "pinyin": "měi", "zh": "味美、鲜美。", "en": "delicious; beautiful" },
+        { "char": "君", "pinyin": "jūn", "zh": "你，对人的尊称。", "en": "you (polite)" },
+        { "char": "看", "pinyin": "kàn", "zh": "看、观看。", "en": "to look" },
+        { "char": "一", "pinyin": "yī", "zh": "数词一；一叶舟形容小船之小。", "en": "one" },
+        { "char": "叶", "pinyin": "yè", "zh": "叶子；一叶舟比喻小船像一片树叶。", "en": "leaf" },
+        { "char": "舟", "pinyin": "zhōu", "zh": "船。", "en": "boat" },
+        { "char": "出", "pinyin": "chū", "zh": "出现。", "en": "to appear; to emerge" },
+        { "char": "没", "pinyin": "mò", "zh": "隐没、消失；多音字，又读 méi（没有）。", "en": "to submerge; to disappear" },
+        { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },
+        { "char": "波", "pinyin": "bō", "zh": "波浪。", "en": "wave" },
+        { "char": "里", "pinyin": "lǐ", "zh": "里面、之中。", "en": "inside; within" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "范仲淹任职地方时所作，借江上渔民出没风波、捕鱼艰险的情景，抒发对劳动者的同情与感慨。",
+          "en": "Written while Fan Zhongyan served as a local official, the poem uses the sight of fishermen braving wind and waves to voice sympathy for laborers whose hardship is easily overlooked."
+        },
+        "culture": {
+          "zh": "范仲淹是北宋著名政治家、文学家，以《岳阳楼记》“先天下之忧而忧”的情怀著称，此诗同样体现了他关切民生的一贯态度。",
+          "en": "Fan Zhongyan was a renowned Northern Song statesman and writer, famous for the concern for the people voiced in his 'Yueyang Tower'; this poem reflects that same lifelong care for ordinary people's hardship."
+        },
+        "rhetoric": {
+          "zh": "以“一叶舟”比喻小船之渺小，江岸行人只爱鲈鱼美味，反衬渔民出没风波捕鱼的艰险，寄寓诗人的悲悯之情。",
+          "en": "The boat is likened to 'a single leaf' to convey its smallness; the shore-dwellers who care only for the perch's taste serve as a foil for the fisherman's unseen danger, carrying the poet's compassion for the laborer's hardship."
+        }
+      },
+      "sandhi": [
+        { "text": "往来", "rule": "半上声", "base": "wǎng", "read": "wǎng", "value": "211", "markChange": false, "where": "江上往来人，", "pos": 2, "zh": "\"往\"是上声，在非上声\"来\"前读\"半上\"（调值211），拼音不变：wǎng。", "en": "往 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 来; the written pinyin stays wǎng." },
+        { "text": "但爱", "rule": "半去声", "base": "dàn", "read": "dàn", "value": "53", "markChange": false, "where": "但爱鲈鱼美。", "pos": 0, "zh": "\"但\"是去声，在去声\"爱\"前读\"半去\"（调值53），拼音不变：dàn。", "en": "但 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 爱; the written pinyin stays dàn." },
+        { "text": "一叶", "rule": "一字变调", "base": "yī", "read": "yí", "value": "35", "markChange": true, "where": "君看一叶舟，", "pos": 2, "zh": "\"一\"在去声\"叶\"前变读阳平（第二声）：yī→yí。", "en": "一 before the fourth-tone 叶 changes to second tone: yī → yí." }
+      ],
+      "tags": ["labour"]
+    },
+    {
+      "id": "g6d-12-changgexing",
+      "title": "长歌行",
+      "titlePinyin": "cháng gē xíng",
+      "titleEn": "The Long Song",
+      "author": "汉乐府",
+      "dynasty": "汉",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "青青园中葵，", "pinyin": "qīng qīng yuán zhōng kuí", "zh": "园中的葵菜青翠茂盛，", "en": "The mallow in the garden grows lush and green,", "rhetoric": ["repetition"] },
+        { "text": "朝露待日晞。", "pinyin": "zhāo lù dài rì xī", "zh": "清晨的露珠等待着被阳光晒干。", "en": "morning dew upon it waits to be dried by the sun." },
+        { "text": "阳春布德泽，", "pinyin": "yáng chūn bù dé zé", "zh": "温暖的春天散布着恩泽，", "en": "Radiant spring spreads its bounty over all,", "rhetoric": ["foil"] },
+        { "text": "万物生光辉。", "pinyin": "wàn wù shēng guāng huī", "zh": "万物因此焕发出蓬勃的光彩。", "en": "and all living things glow with vigor.", "rhetoric": ["foil"] },
+        { "text": "常恐秋节至，", "pinyin": "cháng kǒng qiū jié zhì", "zh": "常常担心秋天很快到来，", "en": "Always fearing the autumn season's approach,", "rhetoric": ["foil"] },
+        { "text": "焜黄华叶衰。", "pinyin": "kūn huáng huā yè shuāi", "zh": "那时花叶会枯黄衰败。", "en": "when leaf and blossom turn sallow and decay.", "rhetoric": ["foil"] },
+        { "text": "百川东到海，", "pinyin": "bǎi chuān dōng dào hǎi", "zh": "千万条河流向东流入大海，", "en": "A hundred rivers flow eastward to the sea,", "rhetoric": ["metaphor-analogy"] },
+        { "text": "何时复西归？", "pinyin": "hé shí fù xī guī", "zh": "何时才能再向西流回呢？", "en": "when will they ever turn back west again?", "rhetoric": ["metaphor-analogy", "rhetorical-question"] },
+        { "text": "少壮不努力，", "pinyin": "shào zhuàng bù nǔ lì", "zh": "年轻时不努力奋斗，", "en": "If one does not strive in youth's strong years," },
+        { "text": "老大徒伤悲！", "pinyin": "lǎo dà tú shāng bēi", "zh": "到了年老只能白白地悲伤了！", "en": "in old age all that's left is empty grief!" }
+      ],
+      "chars": [
+        { "char": "青", "pinyin": "qīng", "zh": "青翠、绿色，青青形容茂盛的样子。", "en": "green; lush (reduplicated)" },
+        { "char": "园", "pinyin": "yuán", "zh": "园子、菜园。", "en": "garden" },
+        { "char": "中", "pinyin": "zhōng", "zh": "之中、里面。", "en": "in; within" },
+        { "char": "葵", "pinyin": "kuí", "zh": "葵菜，一种蔬菜。", "en": "mallow (a vegetable)" },
+        { "char": "朝", "pinyin": "zhāo", "zh": "早晨；多音字，又读 cháo（朝代）。", "en": "morning" },
+        { "char": "露", "pinyin": "lù", "zh": "露水。", "en": "dew" },
+        { "char": "待", "pinyin": "dài", "zh": "等待。", "en": "to wait for" },
+        { "char": "日", "pinyin": "rì", "zh": "太阳。", "en": "sun" },
+        { "char": "晞", "pinyin": "xī", "zh": "晒干。", "en": "to dry (in the sun)" },
+        { "char": "阳", "pinyin": "yáng", "zh": "阳光；阳春指温暖的春天。", "en": "sun; (in 阳春) warm" },
+        { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
+        { "char": "布", "pinyin": "bù", "zh": "散布、遍施。", "en": "to spread" },
+        { "char": "德", "pinyin": "dé", "zh": "恩德；德泽指恩泽。", "en": "virtue; kindness" },
+        { "char": "泽", "pinyin": "zé", "zh": "恩泽、雨露之惠。", "en": "grace; bounty" },
+        { "char": "万", "pinyin": "wàn", "zh": "万物，万事万物。", "en": "ten thousand; all" },
+        { "char": "物", "pinyin": "wù", "zh": "事物、万物。", "en": "things" },
+        { "char": "生", "pinyin": "shēng", "zh": "生发、生长。", "en": "to grow; to arise" },
+        { "char": "光", "pinyin": "guāng", "zh": "光彩、光泽。", "en": "light; brightness" },
+        { "char": "辉", "pinyin": "huī", "zh": "光辉、辉煌。", "en": "radiance" },
+        { "char": "常", "pinyin": "cháng", "zh": "常常、经常。", "en": "often" },
+        { "char": "恐", "pinyin": "kǒng", "zh": "担心、恐怕。", "en": "to fear" },
+        { "char": "秋", "pinyin": "qiū", "zh": "秋天。", "en": "autumn" },
+        { "char": "节", "pinyin": "jié", "zh": "节令、季节。", "en": "season" },
+        { "char": "至", "pinyin": "zhì", "zh": "到来。", "en": "to arrive" },
+        { "char": "焜", "pinyin": "kūn", "zh": "焜黄，形容枯黄的样子。", "en": "(in 焜黄) withered yellow" },
+        { "char": "黄", "pinyin": "huáng", "zh": "焜黄，枯黄色。", "en": "yellow" },
+        { "char": "华", "pinyin": "huā", "zh": "同“花”，花朵；多音字，又读 huá（华丽）。", "en": "flower (archaic for 花)" },
+        { "char": "叶", "pinyin": "yè", "zh": "叶子。", "en": "leaf" },
+        { "char": "衰", "pinyin": "shuāi", "zh": "衰败、凋零。", "en": "to decline; to wither" },
+        { "char": "百", "pinyin": "bǎi", "zh": "百川，众多河流。", "en": "hundred; many" },
+        { "char": "川", "pinyin": "chuān", "zh": "河流。", "en": "river" },
+        { "char": "东", "pinyin": "dōng", "zh": "向东。", "en": "east" },
+        { "char": "到", "pinyin": "dào", "zh": "到达。", "en": "to arrive at" },
+        { "char": "海", "pinyin": "hǎi", "zh": "大海。", "en": "sea" },
+        { "char": "何", "pinyin": "hé", "zh": "什么、何时。", "en": "what; when" },
+        { "char": "时", "pinyin": "shí", "zh": "时候。", "en": "time" },
+        { "char": "复", "pinyin": "fù", "zh": "再、又。", "en": "again" },
+        { "char": "西", "pinyin": "xī", "zh": "向西。", "en": "west" },
+        { "char": "归", "pinyin": "guī", "zh": "归来、返回。", "en": "to return" },
+        { "char": "少", "pinyin": "shào", "zh": "年少、年轻；多音字，又读 shǎo（少量）。", "en": "young" },
+        { "char": "壮", "pinyin": "zhuàng", "zh": "壮年、强壮。", "en": "strong; prime of life" },
+        { "char": "不", "pinyin": "bù", "zh": "不。", "en": "not" },
+        { "char": "努", "pinyin": "nǔ", "zh": "努力。", "en": "to exert" },
+        { "char": "力", "pinyin": "lì", "zh": "力量；努力即尽力。", "en": "strength; effort" },
+        { "char": "老", "pinyin": "lǎo", "zh": "年老。", "en": "old" },
+        { "char": "大", "pinyin": "dà", "zh": "老大，年长、年老。", "en": "(in 老大) old age" },
+        { "char": "徒", "pinyin": "tú", "zh": "白白地、徒然。", "en": "in vain" },
+        { "char": "伤", "pinyin": "shāng", "zh": "伤心；伤悲即悲伤。", "en": "to hurt; sad" },
+        { "char": "悲", "pinyin": "bēi", "zh": "悲伤。", "en": "sorrow" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "选自《乐府诗集》，是汉代乐府诗中广为流传的劝勉之作，以园中葵菜的生长凋零、江河东流不返，比喻光阴易逝，劝人珍惜青春、及时努力。",
+          "en": "Collected in the Yuefu Poems, this widely circulated Han-dynasty yuefu ballad uses the mallow's growth and decay and the rivers' irreversible flow to the sea as images for time's swift passing, urging the young to seize the day."
+        },
+        "culture": {
+          "zh": "“少壮不努力，老大徒伤悲”是中国家喻户晓的劝学名句，常被用来勉励青少年珍惜光阴。",
+          "en": "'If one does not strive in youth, old age brings only empty grief' is one of the most famous lines in Chinese literature urging the young to make the most of their time."
+        },
+        "rhetoric": {
+          "zh": "“青青”叠词状葵菜之盛；以阳春万物之盛反衬秋节叶衰，写生命由盛转衰的必然；末以百川东流不返比喻光阴易逝，并以反问加强语气，引出劝勉之意。",
+          "en": "The reduplicated qingqing paints the lush mallow; spring's abundance is set against autumn's decay to convey life's inevitable decline; the closing lines liken the rivers' irreversible eastward flow to time's swift passing, sharpened by a rhetorical question, leading into the poem's exhortation."
+        }
+      },
+      "sandhi": [
+        { "text": "待日", "rule": "半去声", "base": "dài", "read": "dài", "value": "53", "markChange": false, "where": "朝露待日晞。", "pos": 2, "zh": "\"待\"是去声，在去声\"日\"前读\"半去\"（调值53），拼音不变：dài。", "en": "待 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 日; the written pinyin stays dài." },
+        { "text": "万物", "rule": "半去声", "base": "wàn", "read": "wàn", "value": "53", "markChange": false, "where": "万物生光辉。", "pos": 0, "zh": "\"万\"是去声，在去声\"物\"前读\"半去\"（调值53），拼音不变：wàn。", "en": "万 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 物; the written pinyin stays wàn." },
+        { "text": "恐秋", "rule": "半上声", "base": "kǒng", "read": "kǒng", "value": "211", "markChange": false, "where": "常恐秋节至，", "pos": 1, "zh": "\"恐\"是上声，在非上声\"秋\"前读\"半上\"（调值211），拼音不变：kǒng。", "en": "恐 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 秋; the written pinyin stays kǒng." },
+        { "text": "百川", "rule": "半上声", "base": "bǎi", "read": "bǎi", "value": "211", "markChange": false, "where": "百川东到海，", "pos": 0, "zh": "\"百\"是上声，在非上声\"川\"前读\"半上\"（调值211），拼音不变：bǎi。", "en": "百 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 川; the written pinyin stays bǎi." },
+        { "text": "少壮", "rule": "半去声", "base": "shào", "read": "shào", "value": "53", "markChange": false, "where": "少壮不努力，", "pos": 0, "zh": "\"少\"是去声，在去声\"壮\"前读\"半去\"（调值53），拼音不变：shào。", "en": "少 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 壮; the written pinyin stays shào." },
+        { "text": "努力", "rule": "半上声", "base": "nǔ", "read": "nǔ", "value": "211", "markChange": false, "where": "少壮不努力，", "pos": 3, "zh": "\"努\"是上声，在非上声\"力\"前读\"半上\"（调值211），拼音不变：nǔ。", "en": "努 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 力; the written pinyin stays nǔ." },
+        { "text": "老大", "rule": "半上声", "base": "lǎo", "read": "lǎo", "value": "211", "markChange": false, "where": "老大徒伤悲！", "pos": 0, "zh": "\"老\"是上声，在非上声\"大\"前读\"半上\"（调值211），拼音不变：lǎo。", "en": "老 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 大; the written pinyin stays lǎo." }
+      ],
+      "tags": ["insight"]
+    },
+    {
+      "id": "g6d-13-zaochunchengshuibuzhangshibayuanwai",
+      "title": "早春呈水部张十八员外",
+      "titlePinyin": "zǎo chūn chéng shuǐ bù zhāng shí bā yuán wài",
+      "titleEn": "Early Spring, Presented to Zhang Ji of the Water Bureau",
+      "author": "韩愈",
+      "dynasty": "唐",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "天街小雨润如酥，", "pinyin": "tiān jiē xiǎo yǔ rùn rú sū", "zh": "京城街道上的细雨，润泽得如同酥油一般，", "en": "Fine rain on the capital's streets is smooth and soft as cream,", "rhetoric": ["metaphor-analogy", "synaesthesia"] },
+        { "text": "草色遥看近却无。", "pinyin": "cǎo sè yáo kàn jìn què wú", "zh": "远看草色依稀可见，走近却又看不清楚了。", "en": "the grass shows green from a distance, but fades from sight up close.", "rhetoric": ["plain-depiction"] },
+        { "text": "最是一年春好处，", "pinyin": "zuì shì yī nián chūn hǎo chù", "zh": "这正是一年之中春天最美好的时节，", "en": "This is the very best moment of spring in the whole year,", "rhetoric": ["real-imagined"] },
+        { "text": "绝胜烟柳满皇都。", "pinyin": "jué shèng yān liǔ mǎn huáng dū", "zh": "远远胜过晚春柳絮如烟、飘满京城的景象。", "en": "far lovelier than the hazy willow-down that later fills the whole city.", "rhetoric": ["foil", "real-imagined"] }
+      ],
+      "chars": [
+        { "char": "天", "pinyin": "tiān", "zh": "天街，京城的街道。", "en": "(in 天街) sky; imperial" },
+        { "char": "街", "pinyin": "jiē", "zh": "街道。", "en": "street" },
+        { "char": "小", "pinyin": "xiǎo", "zh": "小的、细的。", "en": "small; fine" },
+        { "char": "雨", "pinyin": "yǔ", "zh": "雨。", "en": "rain" },
+        { "char": "润", "pinyin": "rùn", "zh": "润泽、滋润。", "en": "moist; to moisten" },
+        { "char": "如", "pinyin": "rú", "zh": "好像、如同。", "en": "like; as if" },
+        { "char": "酥", "pinyin": "sū", "zh": "酥油，一种乳制品，形容细腻润滑。", "en": "cream; butter (smooth texture)" },
+        { "char": "草", "pinyin": "cǎo", "zh": "草。", "en": "grass" },
+        { "char": "色", "pinyin": "sè", "zh": "颜色，这里指草色。", "en": "color" },
+        { "char": "遥", "pinyin": "yáo", "zh": "遥远，这里指从远处看。", "en": "distant; from afar" },
+        { "char": "看", "pinyin": "kàn", "zh": "看。", "en": "to look" },
+        { "char": "近", "pinyin": "jìn", "zh": "靠近、近处。", "en": "near; close up" },
+        { "char": "却", "pinyin": "què", "zh": "却、反而。", "en": "yet; instead" },
+        { "char": "无", "pinyin": "wú", "zh": "没有，这里指看不清。", "en": "without; none" },
+        { "char": "最", "pinyin": "zuì", "zh": "最、极。", "en": "most" },
+        { "char": "是", "pinyin": "shì", "zh": "是。", "en": "to be" },
+        { "char": "一", "pinyin": "yī", "zh": "一年，整年。", "en": "one" },
+        { "char": "年", "pinyin": "nián", "zh": "年、一年。", "en": "year" },
+        { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
+        { "char": "好", "pinyin": "hǎo", "zh": "美好。", "en": "good; fine" },
+        { "char": "处", "pinyin": "chù", "zh": "之处、时候。", "en": "place; moment" },
+        { "char": "绝", "pinyin": "jué", "zh": "绝对、极。", "en": "absolutely" },
+        { "char": "胜", "pinyin": "shèng", "zh": "胜过、超过。", "en": "to surpass" },
+        { "char": "烟", "pinyin": "yān", "zh": "烟雾，这里指柳絮如烟。", "en": "mist; smoke" },
+        { "char": "柳", "pinyin": "liǔ", "zh": "柳树、柳絮。", "en": "willow" },
+        { "char": "满", "pinyin": "mǎn", "zh": "充满、遍布。", "en": "full of" },
+        { "char": "皇", "pinyin": "huáng", "zh": "皇都，京城。", "en": "(in 皇都) imperial" },
+        { "char": "都", "pinyin": "dū", "zh": "皇都，京城；多音字，又读 dōu（都是）。", "en": "capital; (in 皇都) city" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "韩愈写给友人水部员外郎张籍（排行十八）的诗，描写早春细雨中草色若隐若现的独特景致，因诗中“小雨”意象生动，后人也常以《初春小雨》为题传诵。",
+          "en": "Written by Han Yu for his friend Zhang Ji (eighteenth among his cousins), a Water Bureau official, the poem captures the elusive green of early-spring grass glimpsed through fine rain; because of its vivid 'light rain' image, it is also often known and recited under the title 'Light Rain in Early Spring' (初春小雨)."
+        },
+        "culture": {
+          "zh": "唐代官员常以排行称呼，如“张十八”即张籍在同族兄弟中排行第十八；此诗以早春胜过暮春的观点，体现诗人独特的审美眼光。",
+          "en": "Tang officials were often addressed by their birth order among cousins — 'Zhang the Eighteenth' refers to Zhang Ji; the poem's claim that early spring surpasses late spring reveals Han Yu's distinctive aesthetic taste."
+        },
+        "rhetoric": {
+          "zh": "“润如酥”以酥油的细腻触感通感式比喻雨的润泽；“遥看近却无”白描早春草色若隐若现之态；末两句以晚春烟柳的绚烂反衬、并虚拟这一想象中的景象，衬托眼前早春之景的清新可贵。",
+          "en": "'Moist as cream' uses the tactile smoothness of cream in a synaesthetic simile for the rain's moistness; 'green from afar, faded up close' plainly depicts early spring grass's elusive color; the closing lines conjure the imagined splendor of late-spring willow-down as a foil, setting off the quiet freshness of the present early-spring scene."
+        }
+      },
+      "sandhi": [
+        { "text": "早春", "rule": "半上声", "base": "zǎo", "read": "zǎo", "value": "211", "markChange": false, "where": "题目", "pos": 0, "zh": "\"早\"是上声，在非上声\"春\"前读\"半上\"（调值211），拼音不变：zǎo。", "en": "早 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 春; the written pinyin stays zǎo." },
+        { "text": "水部", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "题目", "pos": 3, "zh": "\"水\"是上声，在非上声\"部\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 部; the written pinyin stays shuǐ." },
+        { "text": "小雨", "rule": "上上变调", "base": "xiǎo", "read": "xiáo", "value": "35", "markChange": true, "where": "天街小雨润如酥，", "pos": 2, "zh": "\"小\"在上声\"雨\"前变读阳平（第二声）：xiǎo→xiáo。", "en": "小 comes before the third-tone 雨, so it is read in second tone: xiǎo → xiáo." },
+        { "text": "雨润", "rule": "半上声", "base": "yǔ", "read": "yǔ", "value": "211", "markChange": false, "where": "天街小雨润如酥，", "pos": 3, "zh": "\"雨\"是上声，在非上声\"润\"前读\"半上\"（调值211），拼音不变：yǔ。", "en": "雨 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 润; the written pinyin stays yǔ." },
+        { "text": "草色", "rule": "半上声", "base": "cǎo", "read": "cǎo", "value": "211", "markChange": false, "where": "草色遥看近却无。", "pos": 0, "zh": "\"草\"是上声，在非上声\"色\"前读\"半上\"（调值211），拼音不变：cǎo。", "en": "草 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 色; the written pinyin stays cǎo." },
+        { "text": "近却", "rule": "半去声", "base": "jìn", "read": "jìn", "value": "53", "markChange": false, "where": "草色遥看近却无。", "pos": 4, "zh": "\"近\"是去声，在去声\"却\"前读\"半去\"（调值53），拼音不变：jìn。", "en": "近 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 却; the written pinyin stays jìn." },
+        { "text": "最是", "rule": "半去声", "base": "zuì", "read": "zuì", "value": "53", "markChange": false, "where": "最是一年春好处，", "pos": 0, "zh": "\"最\"是去声，在去声\"是\"前读\"半去\"（调值53），拼音不变：zuì。", "en": "最 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 是; the written pinyin stays zuì." },
+        { "text": "一年", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "最是一年春好处，", "pos": 2, "zh": "\"一\"在阴平/阳平/上声\"年\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 年 changes to fourth tone: yī → yì." },
+        { "text": "好处", "rule": "半上声", "base": "hǎo", "read": "hǎo", "value": "211", "markChange": false, "where": "最是一年春好处，", "pos": 5, "zh": "\"好\"是上声，在非上声\"处\"前读\"半上\"（调值211），拼音不变：hǎo。", "en": "好 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 处; the written pinyin stays hǎo." },
+        { "text": "柳满", "rule": "上上变调", "base": "liǔ", "read": "liú", "value": "35", "markChange": true, "where": "绝胜烟柳满皇都。", "pos": 3, "zh": "\"柳\"在上声\"满\"前变读阳平（第二声）：liǔ→liú。", "en": "柳 comes before the third-tone 满, so it is read in second tone: liǔ → liú." },
+        { "text": "满皇", "rule": "半上声", "base": "mǎn", "read": "mǎn", "value": "211", "markChange": false, "where": "绝胜烟柳满皇都。", "pos": 4, "zh": "\"满\"是上声，在非上声\"皇\"前读\"半上\"（调值211），拼音不变：mǎn。", "en": "满 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 皇; the written pinyin stays mǎn." }
+      ],
+      "tags": ["season-spring"]
+    },
+    {
+      "id": "g6d-14-youyuanbuzhi",
+      "title": "游园不值",
+      "titlePinyin": "yóu yuán bù zhí",
+      "titleEn": "Visiting a Garden, Turned Away",
+      "author": "叶绍翁",
+      "dynasty": "宋",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "应怜屐齿印苍苔，", "pinyin": "yīng lián jī chǐ yìn cāng tái", "zh": "大概是园主怜惜青苔，怕木底鞋踩出印痕，", "en": "Perhaps the garden's owner spares the moss from clog-prints," },
+        { "text": "小扣柴扉久不开。", "pinyin": "xiǎo kòu chái fēi jiǔ bù kāi", "zh": "我轻轻敲打柴门，很久也没有人来开门。", "en": "so I knock softly at the wicker gate — long it stays closed.", "rhetoric": ["foil"] },
+        { "text": "春色满园关不住，", "pinyin": "chūn sè mǎn yuán guān bù zhù", "zh": "满园的春色是关不住的，", "en": "Spring's beauty fills the garden — it cannot be shut in,", "rhetoric": ["metaphor-analogy"] },
+        { "text": "一枝红杏出墙来。", "pinyin": "yī zhī hóng xìng chū qiáng lái", "zh": "一枝红色的杏花探出墙头来。", "en": "for one branch of red apricot blossom leans out over the wall.", "rhetoric": ["metaphor-analogy"] }
+      ],
+      "chars": [
+        { "char": "应", "pinyin": "yīng", "zh": "应该、大概；多音字，又读 yìng（回应）。", "en": "probably; should" },
+        { "char": "怜", "pinyin": "lián", "zh": "怜惜、爱惜。", "en": "to cherish; to pity" },
+        { "char": "屐", "pinyin": "jī", "zh": "木底鞋。", "en": "wooden clog" },
+        { "char": "齿", "pinyin": "chǐ", "zh": "屐齿，木底鞋底的齿状突起。", "en": "(in 屐齿) tooth-shaped sole ridge" },
+        { "char": "印", "pinyin": "yìn", "zh": "印痕、印记。", "en": "mark; print" },
+        { "char": "苍", "pinyin": "cāng", "zh": "苍老、青绿色；苍苔即青苔。", "en": "(in 苍苔) dark green" },
+        { "char": "苔", "pinyin": "tái", "zh": "苔藓、青苔。", "en": "moss" },
+        { "char": "小", "pinyin": "xiǎo", "zh": "轻轻地。", "en": "lightly" },
+        { "char": "扣", "pinyin": "kòu", "zh": "敲、敲打。", "en": "to knock" },
+        { "char": "柴", "pinyin": "chái", "zh": "柴门，用树枝编成的简陋门；柴扉即柴门。", "en": "(in 柴扉) brushwood" },
+        { "char": "扉", "pinyin": "fēi", "zh": "门；柴扉即柴门。", "en": "door" },
+        { "char": "久", "pinyin": "jiǔ", "zh": "长久、很久。", "en": "long (time)" },
+        { "char": "不", "pinyin": "bù", "zh": "不。", "en": "not" },
+        { "char": "开", "pinyin": "kāi", "zh": "打开。", "en": "to open" },
+        { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
+        { "char": "色", "pinyin": "sè", "zh": "景色；春色即春天的景色。", "en": "scenery; color" },
+        { "char": "满", "pinyin": "mǎn", "zh": "充满、遍布。", "en": "full of" },
+        { "char": "园", "pinyin": "yuán", "zh": "园子、花园。", "en": "garden" },
+        { "char": "关", "pinyin": "guān", "zh": "关闭。", "en": "to close" },
+        { "char": "住", "pinyin": "zhù", "zh": "停住、关住；这里表示“关得住”。", "en": "to stop; to hold" },
+        { "char": "一", "pinyin": "yī", "zh": "数词一。", "en": "one" },
+        { "char": "枝", "pinyin": "zhī", "zh": "枝条，量词。", "en": "branch" },
+        { "char": "红", "pinyin": "hóng", "zh": "红色。", "en": "red" },
+        { "char": "杏", "pinyin": "xìng", "zh": "杏花。", "en": "apricot blossom" },
+        { "char": "出", "pinyin": "chū", "zh": "露出、伸出。", "en": "to emerge" },
+        { "char": "墙", "pinyin": "qiáng", "zh": "墙壁。", "en": "wall" },
+        { "char": "来", "pinyin": "lái", "zh": "来，这里表示动作方向。", "en": "(directional particle)" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "诗人春日游园，因主人不在或不愿开门而未能入内，却从墙外望见一枝红杏探出墙头，由此领悟满园春色是关不住的。",
+          "en": "On a spring outing, the poet finds the garden's gate shut — perhaps the owner is out or unwilling to open it — yet spots a branch of red apricot blossom leaning out over the wall, realizing that spring's abundance cannot be contained."
+        },
+        "culture": {
+          "zh": "“春色满园关不住，一枝红杏出墙来”是描写春意蓬勃、生机不可阻挡的千古名句，也常被引申比喻新生事物无法被压制。",
+          "en": "'Spring fills the garden and cannot be shut in, one branch of red apricot leans out over the wall' is a timeless line celebrating spring's unstoppable vitality, often extended as a metaphor for anything new and vigorous that cannot be suppressed."
+        },
+        "rhetoric": {
+          "zh": "先写敲门久不开的扫兴，反衬后文意外发现红杏出墙的惊喜；末两句将春色、红杏拟人化，写生机不可阻挡、探头出墙的情态。",
+          "en": "The initial disappointment of a long-unanswered knock serves as a foil for the surprise delight that follows; the closing lines personify spring's color and the apricot branch, depicting an unstoppable vitality that pokes its head out over the wall."
+        }
+      },
+      "sandhi": [
+        { "text": "齿印", "rule": "半上声", "base": "chǐ", "read": "chǐ", "value": "211", "markChange": false, "where": "应怜屐齿印苍苔，", "pos": 3, "zh": "\"齿\"是上声，在非上声\"印\"前读\"半上\"（调值211），拼音不变：chǐ。", "en": "齿 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 印; the written pinyin stays chǐ." },
+        { "text": "小扣", "rule": "半上声", "base": "xiǎo", "read": "xiǎo", "value": "211", "markChange": false, "where": "小扣柴扉久不开。", "pos": 0, "zh": "\"小\"是上声，在非上声\"扣\"前读\"半上\"（调值211），拼音不变：xiǎo。", "en": "小 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 扣; the written pinyin stays xiǎo." },
+        { "text": "久不", "rule": "半上声", "base": "jiǔ", "read": "jiǔ", "value": "211", "markChange": false, "where": "小扣柴扉久不开。", "pos": 4, "zh": "\"久\"是上声，在非上声\"不\"前读\"半上\"（调值211），拼音不变：jiǔ。", "en": "久 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 不; the written pinyin stays jiǔ." },
+        { "text": "满园", "rule": "半上声", "base": "mǎn", "read": "mǎn", "value": "211", "markChange": false, "where": "春色满园关不住，", "pos": 2, "zh": "\"满\"是上声，在非上声\"园\"前读\"半上\"（调值211），拼音不变：mǎn。", "en": "满 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 园; the written pinyin stays mǎn." },
+        { "text": "一枝", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "一枝红杏出墙来。", "pos": 0, "zh": "\"一\"在阴平/阳平/上声\"枝\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 枝 changes to fourth tone: yī → yì." }
+      ],
+      "tags": ["season-spring", "insight"]
     }
   ]
 }

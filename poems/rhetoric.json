@@ -1,124 +1,250 @@
 {
-  "_schema": "Rhetorical-device tags for the poems. Mirrors categories.json: each poem may carry a `rhetoric` array of these keys (multi-label). Poem counts, if ever surfaced, are computed on the fly by the app, not stored here.",
+  "_schema": "Rhetorical-device tags for the poems. Mirrors categories.json: each poem may carry a `rhetoric` array of these keys (multi-label). Poem counts, if ever surfaced, are computed on the fly by the app, not stored here. `examples` is an array of `{ zh, en }` pairs — one per sub-device for combined categories (e.g. 比喻／比拟), a single pair otherwise. Drawn from well-known ad slogans and everyday sayings, not necessarily from the poems in this app.",
   "devices": [
     {
       "key": "metaphor-analogy",
       "zh": "比喻／比拟",
       "en": "Metaphor & personification",
       "desc_zh": "以彼物喻此物（比喻），或把物当作人、把人当作物来写（比拟，含拟人拟物）。",
-      "desc_en": "Comparing one thing to another (metaphor/simile), or treating an object as a person or vice versa (personification/objectification)."
+      "desc_en": "Comparing one thing to another (metaphor/simile), or treating an object as a person or vice versa (personification/objectification).",
+      "examples": [
+        {
+          "zh": "时间就是金钱，效率就是生命。（深圳特区著名标语）",
+          "en": "Time is money."
+        },
+        {
+          "zh": "我们不生产水，我们只是大自然的搬运工。（农夫山泉广告语）",
+          "en": "The alarm clock screamed at me to wake up."
+        }
+      ]
     },
     {
       "key": "metonymy",
       "zh": "借代",
       "en": "Metonymy",
       "desc_zh": "不直接说出事物本名，而用与其密切相关的事物代替。",
-      "desc_en": "Referring to a thing by something closely associated with it, instead of naming it directly."
+      "desc_en": "Referring to a thing by something closely associated with it, instead of naming it directly.",
+      "examples": [
+        {
+          "zh": "肥宅快乐水又涨价了。（网络流行语，指可乐等汽水）",
+          "en": "The White House hasn't commented yet."
+        }
+      ]
     },
     {
       "key": "hyperbole",
       "zh": "夸张",
       "en": "Hyperbole",
       "desc_zh": "故意言过其实，以强化情感或意象。",
-      "desc_en": "Deliberate exaggeration to intensify feeling or imagery."
+      "desc_en": "Deliberate exaggeration to intensify feeling or imagery.",
+      "examples": [
+        {
+          "zh": "笑死我了！",
+          "en": "I could eat a horse."
+        }
+      ]
     },
     {
       "key": "parallelism",
       "zh": "对偶／排比",
       "en": "Parallelism",
       "desc_zh": "上下句字数、结构相同或相近，意义相关或相对（对偶两句，排比三句以上）。",
-      "desc_en": "Two or more clauses with matching length and structure, related or contrasting in meaning."
+      "desc_en": "Two or more clauses with matching length and structure, related or contrasting in meaning.",
+      "examples": [
+        {
+          "zh": "钻石恒久远，一颗永流传。（De Beers广告语）",
+          "en": "Have a break, have a KitKat."
+        },
+        {
+          "zh": "更快，更高，更强。（奥林匹克格言）",
+          "en": "Faster, Higher, Stronger. (Olympic motto)"
+        }
+      ]
     },
     {
       "key": "image-listing",
       "zh": "列锦",
       "en": "Asyndetic image-listing",
       "desc_zh": "纯用名词意象并列，不用动词连接，与对偶排比的谓语结构不同。",
-      "desc_en": "A string of noun images juxtaposed with no connecting verb — distinct from parallelism, which keeps a predicate."
+      "desc_en": "A string of noun images juxtaposed with no connecting verb — distinct from parallelism, which keeps a predicate.",
+      "examples": [
+        {
+          "zh": "蓝天，白云，沙滩。（旅游广告常用语）",
+          "en": "Sun, sand, sea."
+        }
+      ]
     },
     {
       "key": "repetition",
       "zh": "反复／顶真",
       "en": "Repetition & chain-linking",
       "desc_zh": "重复相同词句以强调情感（反复），或前句末字接作后句首字（顶真，反复的链接式变体）。",
-      "desc_en": "Repeating words or phrases for emphasis (repetition), or chaining a clause's last word into the next clause's first word (anadiplosis)."
+      "desc_en": "Repeating words or phrases for emphasis (repetition), or chaining a clause's last word into the next clause's first word (anadiplosis).",
+      "examples": [
+        {
+          "zh": "恒源祥，羊羊羊。（经典广告语）",
+          "en": "Location, location, location."
+        },
+        {
+          "zh": "上山打老虎，老虎没打到。（儿歌《一二三四五》）",
+          "en": "Fear leads to anger, anger leads to hate. (Star Wars)"
+        }
+      ]
     },
     {
       "key": "rhetorical-question",
       "zh": "设问／反问",
       "en": "Rhetorical question",
       "desc_zh": "自问自答以引发思考（设问），或用疑问句式表达确定的意思以加强语气（反问）。",
-      "desc_en": "Asking and answering one's own question (self-answered), or phrasing a statement as a question for emphasis (no answer expected)."
+      "desc_en": "Asking and answering one's own question (self-answered), or phrasing a statement as a question for emphasis (no answer expected).",
+      "examples": [
+        {
+          "zh": "什么是幸福？幸福就是和家人在一起。",
+          "en": "What's the secret to success? Hard work."
+        },
+        {
+          "zh": "这么简单的题，谁不会做？",
+          "en": "Where's the beef? (Wendy's ad, 1984)"
+        }
+      ]
     },
     {
       "key": "allusion",
       "zh": "用典",
       "en": "Allusion",
       "desc_zh": "引用历史故事、神话或前人诗句以增加含蓄与厚度。",
-      "desc_en": "Invoking a historical story, myth, or earlier line of verse to add depth and resonance."
+      "desc_en": "Invoking a historical story, myth, or earlier line of verse to add depth and resonance.",
+      "examples": [
+        {
+          "zh": "东施效颦。",
+          "en": "He met his Waterloo."
+        }
+      ]
     },
     {
       "key": "wordplay",
       "zh": "双关／拈连",
       "en": "Pun & zeugma",
       "desc_zh": "一词兼有字面与隐含双重意义（双关），或把适用甲事物的词语顺势用于乙事物（拈连）。",
-      "desc_en": "A word carrying two meanings at once (pun), or a word fitted for one thing carried over to govern another (zeugma)."
+      "desc_en": "A word carrying two meanings at once (pun), or a word fitted for one thing carried over to govern another (zeugma).",
+      "examples": [
+        {
+          "zh": "“咳”不容缓。（感冒药广告语，谐音“刻不容缓”）",
+          "en": "A bicycle can't stand on its own because it's two-tired. (common joke)"
+        },
+        {
+          "zh": "他打破了杯子，也打破了两人之间的沉默。",
+          "en": "He caught the ball and a cold."
+        }
+      ]
     },
     {
       "key": "interlocking",
       "zh": "互文",
       "en": "Interlocking reference",
       "desc_zh": "上下两句意义互相补充，须合起来理解，不可拆开按字面分别解读。",
-      "desc_en": "Two clauses whose meanings complete each other and must be read together, not parsed separately."
+      "desc_en": "Two clauses whose meanings complete each other and must be read together, not parsed separately.",
+      "examples": [
+        {
+          "zh": "他每天东奔西跑，忙个不停。（“东”“西”合指到处，不能拆开理解）",
+          "en": "They searched high and low for the missing dog."
+        }
+      ]
     },
     {
       "key": "synaesthesia",
       "zh": "通感",
       "en": "Synaesthesia",
       "desc_zh": "感官互通描写，如用视觉词语描写听觉感受。",
-      "desc_en": "Describing one sense in terms of another, e.g. a sound described in visual terms."
+      "desc_en": "Describing one sense in terms of another, e.g. a sound described in visual terms.",
+      "examples": [
+        {
+          "zh": "她的声音很甜美。",
+          "en": "Her voice was warm and sweet."
+        }
+      ]
     },
     {
       "key": "foil",
       "zh": "衬托／反衬",
       "en": "Foil: echo & contrast",
       "desc_zh": "以一事物烘托另一事物：或顺势烘托、强化情感（正衬），或以反差对照取效，如乐景写哀情、哀景写乐情（反衬）。",
-      "desc_en": "Using one image or scene to set off another — either echoing it to reinforce a mood (正衬), or contrasting with it for effect, as in a cheerful scene setting off sorrow (反衬)."
+      "desc_en": "Using one image or scene to set off another — either echoing it to reinforce a mood (正衬), or contrasting with it for effect, as in a cheerful scene setting off sorrow (反衬).",
+      "examples": [
+        {
+          "zh": "阳光灿烂，鸟儿歌唱，衬托出他愉快的心情。",
+          "en": "The sun was shining and the birds were singing, matching his cheerful mood."
+        },
+        {
+          "zh": "教室里静得只能听到笔尖划过纸面的声音。",
+          "en": "The candle's light seemed brighter in the dark."
+        }
+      ]
     },
     {
       "key": "gradation",
       "zh": "层递",
       "en": "Gradation",
       "desc_zh": "按程度递增或递减排列，与排比的同级并列不同。",
-      "desc_en": "Arranging items in increasing or decreasing degree — unlike parallelism, which keeps items at the same level."
+      "desc_en": "Arranging items in increasing or decreasing degree — unlike parallelism, which keeps items at the same level.",
+      "examples": [
+        {
+          "zh": "小赢靠术，大赢靠德，长赢靠道。（常见励志说法，层层递进）",
+          "en": "First they ignore you, then they laugh at you, then they fight you, then you win. (widely quoted saying)"
+        }
+      ]
     },
     {
       "key": "apostrophe",
       "zh": "呼告",
       "en": "Apostrophe",
       "desc_zh": "直呼不在场的人、物或抽象对象，以加强情感。",
-      "desc_en": "Directly addressing an absent person, object, or abstraction to intensify emotion."
+      "desc_en": "Directly addressing an absent person, object, or abstraction to intensify emotion.",
+      "examples": [
+        {
+          "zh": "天哪，你怎么可以这样对我！",
+          "en": "Oh God, why me?"
+        }
+      ]
     },
     {
       "key": "irony",
       "zh": "反语",
       "en": "Irony",
       "desc_zh": "表面褒实则贬，或表面贬实则褒，以达到讽刺或强调效果。",
-      "desc_en": "Saying the opposite of what is meant, for satire or emphasis."
+      "desc_en": "Saying the opposite of what is meant, for satire or emphasis.",
+      "examples": [
+        {
+          "zh": "你可真“聪明”，把钥匙锁在家里了。",
+          "en": "Oh great, another rainy day."
+        }
+      ]
     },
     {
       "key": "plain-depiction",
       "zh": "白描",
       "en": "Plain depiction",
       "desc_zh": "不加渲染、不施比喻夸张，纯用朴素语言直接勾画人、事、景物的细节。",
-      "desc_en": "Depicting a person, action, or scene's details plainly and directly, with no figurative ornament such as metaphor or hyperbole."
+      "desc_en": "Depicting a person, action, or scene's details plainly and directly, with no figurative ornament such as metaphor or hyperbole.",
+      "examples": [
+        {
+          "zh": "他放下书包，走到窗边，看着外面的雨。",
+          "en": "She opened the door, sat down, and began to write."
+        }
+      ]
     },
     {
       "key": "real-imagined",
       "zh": "虚实结合",
       "en": "Real and imagined",
       "desc_zh": "将眼前实见、实写之景与想象、推断、虚拟之景交织呈现，虚实相生。",
-      "desc_en": "Interweaving what is actually seen or stated with what is imagined, inferred, or conjectured beyond it."
+      "desc_en": "Interweaving what is actually seen or stated with what is imagined, inferred, or conjectured beyond it.",
+      "examples": [
+        {
+          "zh": "戴上这块手表，仿佛回到了那个年代。（广告常用手法：实景动作＋想象场景）",
+          "en": "One sip, and you're back on that beach in Hawaii. (common ad technique: a real action blended with an imagined scene)"
+        }
+      ]
     }
   ]
 }

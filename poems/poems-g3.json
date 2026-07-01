@@ -1162,6 +1162,65 @@
         { "text": "此中", "rule": "半上声", "base": "cǐ", "read": "cǐ", "value": "211", "markChange": false, "where": "不知转入此中来。", "pos": 4, "zh": "\"此\"是上声，在非上声\"中\"前读\"半上\"（调值211），拼音不变：cǐ。", "en": "此 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 中; the written pinyin stays cǐ." }
       ],
       "tags": ["season-spring"]
+    },
+    {
+      "id": "g3u-09-suojian",
+      "title": "所见",
+      "titlePinyin": "suǒ jiàn",
+      "titleEn": "What I Saw",
+      "author": "袁枚",
+      "dynasty": "清",
+      "grade": 3,
+      "volume": "上",
+      "lines": [
+        { "text": "牧童骑黄牛，", "pinyin": "mù tóng qí huáng niú", "zh": "牧童骑在黄牛的背上，", "en": "A shepherd boy rides upon a yellow ox,", "rhetoric": ["plain-depiction"] },
+        { "text": "歌声振林樾。", "pinyin": "gē shēng zhèn lín yuè", "zh": "他的歌声在林中回荡。", "en": "his singing rings out through the shady grove.", "rhetoric": ["hyperbole"] },
+        { "text": "意欲捕鸣蝉，", "pinyin": "yì yù bǔ míng chán", "zh": "他想要捕捉那正在鸣叫的蝉，", "en": "Wishing to catch a chirping cicada," },
+        { "text": "忽然闭口立。", "pinyin": "hū rán bì kǒu lì", "zh": "忽然停止歌唱，静静地站立着。", "en": "he suddenly stops singing and stands stock-still.", "rhetoric": ["plain-depiction"] }
+      ],
+      "chars": [
+        { "char": "牧", "pinyin": "mù", "zh": "放牧。", "en": "to herd (livestock)" },
+        { "char": "童", "pinyin": "tóng", "zh": "儿童、孩子。", "en": "child" },
+        { "char": "骑", "pinyin": "qí", "zh": "骑坐；多音字，又读 jì（骑兵，较少用）。", "en": "to ride" },
+        { "char": "黄", "pinyin": "huáng", "zh": "黄色。", "en": "yellow" },
+        { "char": "牛", "pinyin": "niú", "zh": "牛。", "en": "ox; cow" },
+        { "char": "歌", "pinyin": "gē", "zh": "歌声、唱歌。", "en": "song; to sing" },
+        { "char": "声", "pinyin": "shēng", "zh": "声音。", "en": "sound" },
+        { "char": "振", "pinyin": "zhèn", "zh": "振荡、回荡。", "en": "to resound; to shake" },
+        { "char": "林", "pinyin": "lín", "zh": "树林。", "en": "forest; grove" },
+        { "char": "樾", "pinyin": "yuè", "zh": "道旁成荫的树。", "en": "shaded roadside trees" },
+        { "char": "意", "pinyin": "yì", "zh": "心意，这里指想法；意欲即想要。", "en": "intention; wish" },
+        { "char": "欲", "pinyin": "yù", "zh": "想要。", "en": "to want; to wish" },
+        { "char": "捕", "pinyin": "bǔ", "zh": "捕捉。", "en": "to catch" },
+        { "char": "鸣", "pinyin": "míng", "zh": "鸣叫。", "en": "to chirp; to cry (of animals)" },
+        { "char": "蝉", "pinyin": "chán", "zh": "蝉，昆虫，夏天鸣叫。", "en": "cicada" },
+        { "char": "忽", "pinyin": "hū", "zh": "忽然、突然。", "en": "suddenly" },
+        { "char": "然", "pinyin": "rán", "zh": "忽然的“然”，助词。", "en": "(suffix indicating manner)" },
+        { "char": "闭", "pinyin": "bì", "zh": "闭上、停止。", "en": "to close" },
+        { "char": "口", "pinyin": "kǒu", "zh": "嘴。", "en": "mouth" },
+        { "char": "立", "pinyin": "lì", "zh": "站立。", "en": "to stand" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "此诗描写夏日林间牧童骑牛唱歌、忽见鸣蝉而停歌欲捕的生动情景，是袁枚描写儿童生活情趣的名篇。",
+          "en": "The poem depicts a summer scene of a shepherd boy singing atop his ox in the woods, who suddenly falls silent, eager to catch a cicada — one of Yuan Mei's best-loved poems of childhood life."
+        },
+        "culture": {
+          "zh": "牧童题材是中国古典诗歌中常见的田园意象，寄托诗人对纯真童趣与乡野生活的喜爱。",
+          "en": "The shepherd-boy motif is a common pastoral image in classical Chinese poetry, reflecting the poet's fondness for innocent childhood joy and rural life."
+        },
+        "rhetoric": {
+          "zh": "全诗运用白描手法，语言浅近自然；“振林樾”略带夸张，写歌声之响亮；末句由“动”转“静”，生动刻画牧童忽见鸣蝉时的机警神态。",
+          "en": "The poem uses plain, unembellished depiction throughout; 'shaking the grove' is a mild hyperbole conveying how loud the singing rings out; the closing line's shift from sound to stillness vividly captures the boy's alert, quick-witted expression on spotting the cicada."
+        }
+      },
+      "sandhi": [
+        { "text": "所见", "rule": "半上声", "base": "suǒ", "read": "suǒ", "value": "211", "markChange": false, "where": "题目", "pos": 0, "zh": "\"所\"是上声，在非上声\"见\"前读\"半上\"（调值211），拼音不变：suǒ。", "en": "所 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 见; the written pinyin stays suǒ." },
+        { "text": "意欲", "rule": "半去声", "base": "yì", "read": "yì", "value": "53", "markChange": false, "where": "意欲捕鸣蝉，", "pos": 0, "zh": "\"意\"是去声，在去声\"欲\"前读\"半去\"（调值53），拼音不变：yì。", "en": "意 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 欲; the written pinyin stays yì." },
+        { "text": "捕鸣", "rule": "半上声", "base": "bǔ", "read": "bǔ", "value": "211", "markChange": false, "where": "意欲捕鸣蝉，", "pos": 2, "zh": "\"捕\"是上声，在非上声\"鸣\"前读\"半上\"（调值211），拼音不变：bǔ。", "en": "捕 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 鸣; the written pinyin stays bǔ." },
+        { "text": "口立", "rule": "半上声", "base": "kǒu", "read": "kǒu", "value": "211", "markChange": false, "where": "忽然闭口立。", "pos": 3, "zh": "\"口\"是上声，在非上声\"立\"前读\"半上\"（调值211），拼音不变：kǒu。", "en": "口 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 立; the written pinyin stays kǒu." }
+      ],
+      "tags": ["childhood"]
     }
   ]
 }
