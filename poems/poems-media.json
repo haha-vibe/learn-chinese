@@ -553,5 +553,31 @@
   "g5d-02-zhizinongbing": {
     "video": "https://www.youtube.com/watch?v=lbbZVzqScZs",
     "videoStart": 5
+  },
+  "g1u-07-shancunyonghuai": {
+    "video": "https://www.youtube.com/watch?v=16Vt1diVfbQ",
+    "videoStart": 5
+  },
+  "g2d-08-xiangsi": {
+    "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/023_jilei_shi(putonghua).mp3",
+    "audioStart": 3.5,
+    "video": "https://www.youtube.com/watch?v=MVcbdiBt1Ks",
+    "videoStart": 5
+  },
+  "g6d-09-qibushi": {
+    "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/007_jilei_shi(putonghua).mp3",
+    "audioStart": 3.5,
+    "video": "https://www.youtube.com/watch?v=vY3uJR6Y6iQ",
+    "videoStart": 5
+  },
+  "g4d-11-boshuanguazhou": {
+    "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/076_jilei_shi(putonghua).mp3",
+    "audioStart": 3.5,
+    "video": "https://www.youtube.com/watch?v=e9ca_pAieqM",
+    "videoStart": 5
+  },
+  "g6d-10-chunyexiyu": {
+    "video": "https://www.youtube.com/watch?v=jC4iDy4AXb0",
+    "videoStart": 5
   }
 }

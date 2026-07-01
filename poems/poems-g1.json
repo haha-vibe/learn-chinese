@@ -362,6 +362,65 @@
       "tags": ["object"]
     },
     {
+      "id": "g1u-07-shancunyonghuai",
+      "title": "山村咏怀",
+      "titlePinyin": "shān cūn yǒng huái",
+      "titleEn": "Thoughts on a Mountain Village",
+      "author": "邵雍",
+      "dynasty": "宋",
+      "grade": 1,
+      "volume": "上",
+      "lines": [
+        { "text": "一去二三里，", "pinyin": "yī qù èr sān lǐ,", "zh": "走出去两三里路，", "en": "Walk out two or three li,", "rhetoric": ["parallelism"] },
+        { "text": "烟村四五家。", "pinyin": "yān cūn sì wǔ jiā.", "zh": "就看见笼罩着炊烟的村子里住着四五户人家。", "en": "and see a misty village of four or five homes.", "rhetoric": ["parallelism"] },
+        { "text": "亭台六七座，", "pinyin": "tíng tái liù qī zuò,", "zh": "还有六七座亭台楼阁，", "en": "Six or seven pavilions stand there too,", "rhetoric": ["parallelism"] },
+        { "text": "八九十枝花。", "pinyin": "bā jiǔ shí zhī huā.", "zh": "以及八九十枝盛开的花朵。", "en": "with eighty or ninety blossoms in bloom.", "rhetoric": ["parallelism"] }
+      ],
+      "chars": [
+        { "char": "一", "pinyin": "yī", "zh": "数词，一。", "en": "one" },
+        { "char": "去", "pinyin": "qù", "zh": "离去，此指走出去。", "en": "to go" },
+        { "char": "二", "pinyin": "èr", "zh": "数词，二。", "en": "two" },
+        { "char": "三", "pinyin": "sān", "zh": "数词，三。", "en": "three" },
+        { "char": "里", "pinyin": "lǐ", "zh": "里，长度单位。", "en": "li (a unit of distance)" },
+        { "char": "烟", "pinyin": "yān", "zh": "烟雾，此指炊烟。", "en": "mist / smoke" },
+        { "char": "村", "pinyin": "cūn", "zh": "村庄。", "en": "village" },
+        { "char": "四", "pinyin": "sì", "zh": "数词，四。", "en": "four" },
+        { "char": "五", "pinyin": "wǔ", "zh": "数词，五。", "en": "five" },
+        { "char": "家", "pinyin": "jiā", "zh": "人家、住户。", "en": "household" },
+        { "char": "亭", "pinyin": "tíng", "zh": "亭子。", "en": "pavilion" },
+        { "char": "台", "pinyin": "tái", "zh": "台阁，高台建筑。", "en": "terrace / belvedere" },
+        { "char": "六", "pinyin": "liù", "zh": "数词，六。", "en": "six" },
+        { "char": "七", "pinyin": "qī", "zh": "数词，七。", "en": "seven" },
+        { "char": "座", "pinyin": "zuò", "zh": "量词，用于建筑物。", "en": "(measure word for buildings)" },
+        { "char": "八", "pinyin": "bā", "zh": "数词，八。", "en": "eight" },
+        { "char": "九", "pinyin": "jiǔ", "zh": "数词，九。", "en": "nine" },
+        { "char": "十", "pinyin": "shí", "zh": "数词，十。", "en": "ten" },
+        { "char": "枝", "pinyin": "zhī", "zh": "量词，用于花朵。", "en": "(measure word for flowers)" },
+        { "char": "花", "pinyin": "huā", "zh": "花朵。", "en": "flower" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "这是一首把一到十的数字嵌入诗中的儿童启蒙诗，相传为宋代邵雍所作，也有说法认为是民间童谣，历来是儿童诵读古诗、认识数字的入门之作。",
+          "en": "A children's primer strung together from the numbers one through ten, traditionally credited to the Song scholar Shao Yong (though some hold it an anonymous folk rhyme); it has long served as a first step into both counting and classical verse for young learners."
+        },
+        "culture": {
+          "zh": "全诗从一到十依次嵌入十个数字，却毫无堆砌之感，反而勾勒出一幅宁静悠远的山村图景，是“数字诗”的典范之作。",
+          "en": "All ten numerals from one to ten appear in sequence, yet never feel forced—instead they sketch a tranquil, distant mountain-village scene, making this a model of the 'numeral poem' genre."
+        },
+        "rhetoric": {
+          "zh": "全诗嵌入数字排比铺陈（二三、四五、六七、八九十），四句结构一致，由近及远、由少到多，勾勒出一幅错落有致的山村画卷。",
+          "en": "Numbers cascade through the poem in parallel succession (two-three, four-five, six-seven, eight-nine-ten), all four lines matching in structure, moving from near to far and few to many, sketching a mountain village in gentle, staggered strokes."
+        }
+      },
+      "sandhi": [
+        { "text": "一去", "rule": "一字变调", "base": "yī", "read": "yí", "value": "35", "markChange": true, "where": "一去二三里，", "pos": 0, "zh": "\"一\"在去声\"去\"前变读阳平（第二声）：yī→yí。", "en": "一 before the fourth-tone 去 changes to second tone: yī → yí." },
+        { "text": "五家", "rule": "半上声", "base": "wǔ", "read": "wǔ", "value": "211", "markChange": false, "where": "烟村四五家。", "pos": 3, "zh": "\"五\"是上声，在非上声\"家\"前读\"半上\"（调值211），拼音不变：wǔ。", "en": "五 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 家; the written pinyin stays wǔ." },
+        { "text": "九十", "rule": "半上声", "base": "jiǔ", "read": "jiǔ", "value": "211", "markChange": false, "where": "八九十枝花。", "pos": 1, "zh": "\"九\"是上声，在非上声\"十\"前读\"半上\"（调值211），拼音不变：jiǔ。", "en": "九 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 十; the written pinyin stays jiǔ." },
+        { "text": "咏怀", "rule": "半上声", "base": "yǒng", "read": "yǒng", "value": "211", "markChange": false, "where": "题目", "pos": 2, "zh": "\"咏\"是上声，在非上声\"怀\"前读\"半上\"（调值211），拼音不变：yǒng。", "en": "咏 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 怀; the written pinyin stays yǒng." }
+      ],
+      "tags": ["pastoral"]
+    },
+    {
       "id": "g1d-01-chunxiao",
       "title": "春晓",
       "titlePinyin": "chūn xiǎo",

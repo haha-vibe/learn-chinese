@@ -742,9 +742,9 @@
     },
     {
       "id": "g2d-05-fudeguyuancaosongbie",
-      "title": "赋得古原草送别（节选）",
-      "titlePinyin": "fù dé gǔ yuán cǎo sòng bié (jié xuǎn)",
-      "titleEn": "Grass on the Ancient Plain: A Farewell (Excerpt)",
+      "title": "赋得古原草送别",
+      "titlePinyin": "fù dé gǔ yuán cǎo sòng bié",
+      "titleEn": "Grass on the Ancient Plain: A Farewell",
       "author": "白居易",
       "dynasty": "唐",
       "grade": 2,
@@ -753,7 +753,11 @@
         { "text": "离离原上草，", "pinyin": "lí lí yuán shàng cǎo", "zh": "原野上的青草长得茂盛繁密，", "en": "Lush and thick, the grass upon the plain", "rhetoric": ["repetition"] },
         { "text": "一岁一枯荣。", "pinyin": "yī suì yī kū róng", "zh": "每年都要经历一次枯萎和一次繁荣。", "en": "withers and flourishes once each year.", "rhetoric": ["repetition"] },
         { "text": "野火烧不尽，", "pinyin": "yě huǒ shāo bù jìn", "zh": "野火也无法把它烧光，", "en": "Wildfires cannot burn it away,", "rhetoric": ["parallelism"] },
-        { "text": "春风吹又生。", "pinyin": "chūn fēng chuī yòu shēng", "zh": "春风一吹它又重新生长出来。", "en": "for the spring breeze blows and it grows again.", "rhetoric": ["parallelism"] }
+        { "text": "春风吹又生。", "pinyin": "chūn fēng chuī yòu shēng", "zh": "春风一吹它又重新生长出来。", "en": "for the spring breeze blows and it grows again.", "rhetoric": ["parallelism"] },
+        { "text": "远芳侵古道，", "pinyin": "yuǎn fāng qīn gǔ dào", "zh": "远处的芳草蔓延，侵占了古老的道路，", "en": "Far-off fragrant grass creeps over the ancient road,", "rhetoric": ["parallelism"] },
+        { "text": "晴翠接荒城。", "pinyin": "qíng cuì jiē huāng chéng", "zh": "阳光下翠绿的草色，一直连到荒芜的城郭。", "en": "and sunlit green stretches to meet the desolate town.", "rhetoric": ["parallelism"] },
+        { "text": "又送王孙去，", "pinyin": "yòu sòng wáng sūn qù", "zh": "我又要送别贵族公子远行，", "en": "Once more I see a noble friend off on his way,", "rhetoric": ["allusion"] },
+        { "text": "萋萋满别情。", "pinyin": "qī qī mǎn bié qíng", "zh": "茂盛的草色里，满是离别的情意。", "en": "and the lush grass brims with the sorrow of parting.", "rhetoric": ["repetition"] }
       ],
       "chars": [
         { "char": "离", "pinyin": "lí", "zh": "离离形容草木茂盛的样子。", "en": "lush (reduplicated)" },
@@ -773,20 +777,38 @@
         { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },
         { "char": "吹", "pinyin": "chuī", "zh": "吹拂。", "en": "to blow" },
         { "char": "又", "pinyin": "yòu", "zh": "又、再次。", "en": "again" },
-        { "char": "生", "pinyin": "shēng", "zh": "生长。", "en": "to grow" }
+        { "char": "生", "pinyin": "shēng", "zh": "生长。", "en": "to grow" },
+        { "char": "远", "pinyin": "yuǎn", "zh": "遥远，这里指远处。", "en": "far; distant" },
+        { "char": "芳", "pinyin": "fāng", "zh": "芳草，这里指野草。", "en": "fragrant grass" },
+        { "char": "侵", "pinyin": "qīn", "zh": "侵占、蔓延到。", "en": "to encroach; to spread into" },
+        { "char": "古", "pinyin": "gǔ", "zh": "古老。", "en": "ancient" },
+        { "char": "道", "pinyin": "dào", "zh": "道路。", "en": "road" },
+        { "char": "晴", "pinyin": "qíng", "zh": "晴天，阳光照耀。", "en": "sunny; clear weather" },
+        { "char": "翠", "pinyin": "cuì", "zh": "翠绿的草色。", "en": "green; verdant" },
+        { "char": "接", "pinyin": "jiē", "zh": "连接。", "en": "to join; to connect" },
+        { "char": "荒", "pinyin": "huāng", "zh": "荒芜、荒废。", "en": "desolate; wild" },
+        { "char": "城", "pinyin": "chéng", "zh": "城郭、城墙。", "en": "city; town wall" },
+        { "char": "送", "pinyin": "sòng", "zh": "送别。", "en": "to see off" },
+        { "char": "王", "pinyin": "wáng", "zh": "王孙指贵族子弟，这里泛指远行的友人。", "en": "prince; noble" },
+        { "char": "孙", "pinyin": "sūn", "zh": "王孙，贵族的子孙，这里指远行的友人。", "en": "descendant; here: a nobleman's son" },
+        { "char": "去", "pinyin": "qù", "zh": "离去。", "en": "to leave; to go" },
+        { "char": "萋", "pinyin": "qī", "zh": "萋萋，形容草茂盛的样子。", "en": "lush (reduplicated, of grass)" },
+        { "char": "满", "pinyin": "mǎn", "zh": "充满。", "en": "full of" },
+        { "char": "别", "pinyin": "bié", "zh": "离别。", "en": "parting; farewell" },
+        { "char": "情", "pinyin": "qíng", "zh": "情意。", "en": "feeling; sentiment" }
       ],
       "notes": {
         "background": {
-          "zh": "相传白居易十六岁应考所作，节选自原诗前四句。",
-          "en": "Said to have been written by Bai Juyi at sixteen; this excerpt is the poem's first four lines."
+          "zh": "相传白居易十六岁应考所作，借咏原上野草寄托送别友人的深情，是一首咏物兼送别的五言律诗。",
+          "en": "Said to have been written by Bai Juyi at sixteen for an examination; using the wild grass on the plain as an image, it blends nature description with the sorrow of seeing off a friend—a five-character regulated verse combining ode-to-object and farewell."
         },
         "culture": {
-          "zh": "“野火烧不尽，春风吹又生”是赞颂顽强生命力的千古名句。",
-          "en": "The lines about wildfire and spring wind are a famous celebration of tenacious life force."
+          "zh": "“野火烧不尽，春风吹又生”是赞颂顽强生命力的千古名句；后四句以“古道”“荒城”烘托送别的苍茫意境。",
+          "en": "The lines about wildfire and spring wind are a famous celebration of tenacious life force; the final four lines use the 'ancient road' and 'desolate town' to set a desolate, far-reaching mood for the farewell."
         },
         "rhetoric": {
-          "zh": "用叠词“离离”状草之盛，借小草的枯荣对比写出顽强生命力。",
-          "en": "The reduplicated lili paints lush grass, and the withering-flourishing contrast conveys indomitable vitality."
+          "zh": "用叠词“离离”“萋萋”状草之盛，借小草的枯荣对比写出顽强生命力；“远芳”“晴翠”对偶工整，写春草蔓延之势；末句化用《楚辞·招隐士》“王孙游兮不归，春草生兮齐”之意，以草木繁茂反衬别情之深。",
+          "en": "The reduplicated lili and qiqi paint lush grass, and the withering-flourishing contrast conveys indomitable vitality; the parallel yuanfang/qingcui couplet depicts the grass spreading; the closing lines echo 'the prince wanders and does not return, while the spring grass grows thick' from the Chuci's 'Summons for a Recluse,' using the grass's abundance to set off the depth of parting sorrow."
         }
       },
       "sandhi": [
@@ -796,7 +818,11 @@
         { "text": "一枯", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "一岁一枯荣。", "pos": 2, "zh": "\"一\"在阴平/阳平/上声\"枯\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 枯 changes to fourth tone: yī → yì." },
         { "text": "野火", "rule": "上上变调", "base": "yě", "read": "yé", "value": "35", "markChange": true, "where": "野火烧不尽，", "pos": 0, "zh": "\"野\"在上声\"火\"前变读阳平（第二声）：yě→yé。", "en": "野 comes before the third-tone 火, so it is read in second tone: yě → yé." },
         { "text": "火烧", "rule": "半上声", "base": "huǒ", "read": "huǒ", "value": "211", "markChange": false, "where": "野火烧不尽，", "pos": 1, "zh": "\"火\"是上声，在非上声\"烧\"前读\"半上\"（调值211），拼音不变：huǒ。", "en": "火 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 烧; the written pinyin stays huǒ." },
-        { "text": "不尽", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "野火烧不尽，", "pos": 3, "zh": "\"不\"在去声\"尽\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 尽 changes to second tone: bù → bú." }
+        { "text": "不尽", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "野火烧不尽，", "pos": 3, "zh": "\"不\"在去声\"尽\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 尽 changes to second tone: bù → bú." },
+        { "text": "远芳", "rule": "半上声", "base": "yuǎn", "read": "yuǎn", "value": "211", "markChange": false, "where": "远芳侵古道，", "pos": 0, "zh": "\"远\"是上声，在非上声\"芳\"前读\"半上\"（调值211），拼音不变：yuǎn。", "en": "远 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 芳; the written pinyin stays yuǎn." },
+        { "text": "古道", "rule": "半上声", "base": "gǔ", "read": "gǔ", "value": "211", "markChange": false, "where": "远芳侵古道，", "pos": 3, "zh": "\"古\"是上声，在非上声\"道\"前读\"半上\"（调值211），拼音不变：gǔ。", "en": "古 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 道; the written pinyin stays gǔ." },
+        { "text": "又送", "rule": "半去声", "base": "yòu", "read": "yòu", "value": "53", "markChange": false, "where": "又送王孙去，", "pos": 0, "zh": "\"又\"是去声，在去声\"送\"前读\"半去\"（调值53），拼音不变：yòu。", "en": "又 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 送; the written pinyin stays yòu." },
+        { "text": "满别", "rule": "半上声", "base": "mǎn", "read": "mǎn", "value": "211", "markChange": false, "where": "萋萋满别情。", "pos": 2, "zh": "\"满\"是上声，在非上声\"别\"前读\"半上\"（调值211），拼音不变：mǎn。", "en": "满 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 别; the written pinyin stays mǎn." }
       ],
       "tags": ["farewell", "insight"]
     },
@@ -916,6 +942,64 @@
         { "text": "满河", "rule": "半上声", "base": "mǎn", "read": "mǎn", "value": "211", "markChange": false, "where": "散作满河星。", "pos": 2, "zh": "\"满\"是上声，在非上声\"河\"前读\"半上\"（调值211），拼音不变：mǎn。", "en": "满 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 河; the written pinyin stays mǎn." }
       ],
       "tags": ["landscape"]
+    },
+    {
+      "id": "g2d-08-xiangsi",
+      "title": "相思",
+      "titlePinyin": "xiāng sī",
+      "titleEn": "Love Seeds",
+      "author": "王维",
+      "dynasty": "唐",
+      "grade": 2,
+      "volume": "下",
+      "lines": [
+        { "text": "红豆生南国，", "pinyin": "hóng dòu shēng nán guó,", "zh": "红豆生长在南方，", "en": "Red beans grow in the southern land," },
+        { "text": "春来发几枝。", "pinyin": "chūn lái fā jǐ zhī.", "zh": "春天来临时又会长出多少新枝呢。", "en": "come spring, how many new sprigs will bud?", "rhetoric": ["rhetorical-question"] },
+        { "text": "愿君多采撷，", "pinyin": "yuàn jūn duō cǎi xié,", "zh": "希望你多多采摘它们，", "en": "I wish you would gather many," },
+        { "text": "此物最相思。", "pinyin": "cǐ wù zuì xiāng sī.", "zh": "因为这红豆最能寄托相思之情。", "en": "for nothing holds longing like this seed." }
+      ],
+      "chars": [
+        { "char": "红", "pinyin": "hóng", "zh": "红色。", "en": "red" },
+        { "char": "豆", "pinyin": "dòu", "zh": "豆子，此指红豆，又称相思子。", "en": "bean (here: the red love-pea)" },
+        { "char": "生", "pinyin": "shēng", "zh": "生长。", "en": "to grow" },
+        { "char": "南", "pinyin": "nán", "zh": "南方。", "en": "south" },
+        { "char": "国", "pinyin": "guó", "zh": "地域，此指南方地区。", "en": "land / region" },
+        { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
+        { "char": "来", "pinyin": "lái", "zh": "到来。", "en": "to come" },
+        { "char": "发", "pinyin": "fā", "zh": "长出、生发。", "en": "to sprout" },
+        { "char": "几", "pinyin": "jǐ", "zh": "多少（多音字：jī 几乎）。", "en": "how many" },
+        { "char": "枝", "pinyin": "zhī", "zh": "枝条。", "en": "twig / sprig" },
+        { "char": "愿", "pinyin": "yuàn", "zh": "希望。", "en": "to wish" },
+        { "char": "君", "pinyin": "jūn", "zh": "你，对人的尊称。", "en": "you (respectful)" },
+        { "char": "多", "pinyin": "duō", "zh": "多多、尽量。", "en": "much / many" },
+        { "char": "采", "pinyin": "cǎi", "zh": "采摘。", "en": "to pick" },
+        { "char": "撷", "pinyin": "xié", "zh": "采摘、摘取。", "en": "to pluck" },
+        { "char": "此", "pinyin": "cǐ", "zh": "这、这个。", "en": "this" },
+        { "char": "物", "pinyin": "wù", "zh": "物品，此指红豆。", "en": "thing / object" },
+        { "char": "最", "pinyin": "zuì", "zh": "最、极。", "en": "most" },
+        { "char": "相", "pinyin": "xiāng", "zh": "互相，相思即彼此思念（多音字：xiàng 相貌）。", "en": "mutually (相思: longing)" },
+        { "char": "思", "pinyin": "sī", "zh": "思念。", "en": "to long for / think of" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "王维借咏南方红豆寄托对友人的深切思念，诗题“相思”即因此得名，是唯美含蓄的赠友抒情诗。",
+          "en": "Wang Wei uses the southern red bean to voice deep longing for a friend; the title 'Xiangsi' (longing) comes from this very theme, making it a graceful, understated poem of friendship."
+        },
+        "culture": {
+          "zh": "红豆又称“相思子”，颗粒鲜红坚硬，自古被用作寄托思念、爱情的信物，此诗更使红豆成为中国文化中相思的经典象征。",
+          "en": "The red bean, also called the 'seed of longing,' is bright red and hard, long used as a token of affection or remembrance; this poem cemented it as a classic emblem of longing in Chinese culture."
+        },
+        "rhetoric": {
+          "zh": "借红豆咏物寄情，托物言志；以设问“发几枝”引出下文，末句直接点明“最相思”，含蓄中见真挚。",
+          "en": "The red bean becomes a vessel for feeling, the object voicing the poet's heart; a question—how many sprigs will bud—leads into the close, which names the longing outright, restrained yet sincere."
+        }
+      },
+      "sandhi": [
+        { "text": "几枝", "rule": "半上声", "base": "jǐ", "read": "jǐ", "value": "211", "markChange": false, "where": "春来发几枝。", "pos": 3, "zh": "\"几\"是上声，在非上声\"枝\"前读\"半上\"（调值211），拼音不变：jǐ。", "en": "几 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 枝; the written pinyin stays jǐ." },
+        { "text": "采撷", "rule": "半上声", "base": "cǎi", "read": "cǎi", "value": "211", "markChange": false, "where": "愿君多采撷，", "pos": 3, "zh": "\"采\"是上声，在非上声\"撷\"前读\"半上\"（调值211），拼音不变：cǎi。", "en": "采 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 撷; the written pinyin stays cǎi." },
+        { "text": "此物", "rule": "半上声", "base": "cǐ", "read": "cǐ", "value": "211", "markChange": false, "where": "此物最相思。", "pos": 0, "zh": "\"此\"是上声，在非上声\"物\"前读\"半上\"（调值211），拼音不变：cǐ。", "en": "此 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 物; the written pinyin stays cǐ." }
+      ],
+      "tags": ["object", "huairen"]
     }
   ]
 }

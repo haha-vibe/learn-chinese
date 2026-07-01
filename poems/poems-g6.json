@@ -1353,6 +1353,151 @@
         { "text": "汝多", "rule": "半上声", "base": "rǔ", "read": "rǔ", "value": "211", "markChange": false, "where": "两小儿笑曰：“孰为汝多知乎？”", "pos": 7, "zh": "\"汝\"是上声，在非上声\"多\"前读\"半上\"（调值211），拼音不变：rǔ。", "en": "汝 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 多; the written pinyin stays rǔ." }
       ],
       "tags": ["fable", "insight"]
+    },
+    {
+      "id": "g6d-09-qibushi",
+      "title": "七步诗",
+      "titlePinyin": "qī bù shī",
+      "titleEn": "The Seven-Step Poem",
+      "author": "曹植",
+      "dynasty": "三国",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "煮豆燃豆萁，", "pinyin": "zhǔ dòu rán dòu qí,", "zh": "煮着豆子，燃烧着豆秸，", "en": "Beans are boiled while their stalks are burned as fuel," },
+        { "text": "豆在釜中泣。", "pinyin": "dòu zài fǔ zhōng qì.", "zh": "豆子在锅里哭泣。", "en": "and the beans weep within the pot.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "本是同根生，", "pinyin": "běn shì tóng gēn shēng,", "zh": "豆子和豆秸本来是从同一条根上生长出来的，", "en": "We grew from one and the same root,", "rhetoric": ["metaphor-analogy"] },
+        { "text": "相煎何太急？", "pinyin": "xiāng jiān hé tài jí", "zh": "又何必这样急迫地相互煎熬呢？", "en": "why torment each other so fiercely?", "rhetoric": ["rhetorical-question", "wordplay"] }
+      ],
+      "chars": [
+        { "char": "煮", "pinyin": "zhǔ", "zh": "烹煮。", "en": "to boil / cook" },
+        { "char": "豆", "pinyin": "dòu", "zh": "豆子。", "en": "bean" },
+        { "char": "燃", "pinyin": "rán", "zh": "燃烧。", "en": "to burn" },
+        { "char": "萁", "pinyin": "qí", "zh": "豆秸，豆茎晒干后的柴草。", "en": "bean stalk" },
+        { "char": "在", "pinyin": "zài", "zh": "在，处于。", "en": "at / in" },
+        { "char": "釜", "pinyin": "fǔ", "zh": "锅。", "en": "cauldron / pot" },
+        { "char": "中", "pinyin": "zhōng", "zh": "里面（多音字：zhòng 指击中）。", "en": "within" },
+        { "char": "泣", "pinyin": "qì", "zh": "哭泣。", "en": "to weep" },
+        { "char": "本", "pinyin": "běn", "zh": "本来、原本。", "en": "originally" },
+        { "char": "是", "pinyin": "shì", "zh": "是。", "en": "to be" },
+        { "char": "同", "pinyin": "tóng", "zh": "相同、共同。", "en": "same / shared" },
+        { "char": "根", "pinyin": "gēn", "zh": "根。", "en": "root" },
+        { "char": "生", "pinyin": "shēng", "zh": "生长。", "en": "to grow" },
+        { "char": "相", "pinyin": "xiāng", "zh": "互相（多音字：xiàng 指相貌）。", "en": "mutually" },
+        { "char": "煎", "pinyin": "jiān", "zh": "煎熬，此指用火烹煮、逼迫。", "en": "to fry / torment" },
+        { "char": "何", "pinyin": "hé", "zh": "为何、怎么。", "en": "why" },
+        { "char": "太", "pinyin": "tài", "zh": "太、过于。", "en": "too / excessively" },
+        { "char": "急", "pinyin": "jí", "zh": "急迫、急切。", "en": "urgent" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "相传魏文帝曹丕忌惮弟弟曹植的才学，命他在七步之内成诗，否则问罪；曹植应声成此诗，以萁豆相煎喻兄弟相逼，曹丕闻之愀然动容。",
+          "en": "Legend holds that Emperor Cao Pi, wary of his brother Cao Zhi's talent, ordered him to compose a poem within seven steps or face punishment; Cao Zhi produced this poem on the spot, likening the stalks scorching the beans to a brother's cruelty, and Cao Pi was said to be moved to shame on hearing it."
+        },
+        "culture": {
+          "zh": "此诗以豆与萁本为同根，却相煎相残，比喻同胞兄弟骨肉相逼，“本是同根生，相煎何太急”已成为劝诫骨肉相残的千古名句。",
+          "en": "The poem likens the bean and its stalk—born of the same root, yet scorching one another—to brothers turning on their own flesh and blood; 'born of the same root, why torment each other so' has become an enduring rebuke of kin who turn against kin."
+        },
+        "rhetoric": {
+          "zh": "借豆萁相煎设喻，“泣”字拟人，赋豆以哀情；末句以反问收束，“相煎”语意双关，既写豆萁，又暗指兄弟，含蓄悲愤。",
+          "en": "The scorching of bean by stalk becomes an extended metaphor; weep personifies the bean with sorrow; the closing rhetorical question turns on the double meaning of 'scorching each other'—naming the beans while pointing at brothers—restrained yet full of grief."
+        }
+      },
+      "sandhi": [
+        { "text": "煮豆", "rule": "半上声", "base": "zhǔ", "read": "zhǔ", "value": "211", "markChange": false, "where": "煮豆燃豆萁，", "pos": 0, "zh": "\"煮\"是上声，在非上声\"豆\"前读\"半上\"（调值211），拼音不变：zhǔ。", "en": "煮 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 豆; the written pinyin stays zhǔ." },
+        { "text": "豆在", "rule": "半去声", "base": "dòu", "read": "dòu", "value": "53", "markChange": false, "where": "豆在釜中泣。", "pos": 0, "zh": "\"豆\"是去声，在去声\"在\"前读\"半去\"（调值53），拼音不变：dòu。", "en": "豆 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 在; the written pinyin stays dòu." },
+        { "text": "釜中", "rule": "半上声", "base": "fǔ", "read": "fǔ", "value": "211", "markChange": false, "where": "豆在釜中泣。", "pos": 2, "zh": "\"釜\"是上声，在非上声\"中\"前读\"半上\"（调值211），拼音不变：fǔ。", "en": "釜 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 中; the written pinyin stays fǔ." },
+        { "text": "本是", "rule": "半上声", "base": "běn", "read": "běn", "value": "211", "markChange": false, "where": "本是同根生，", "pos": 0, "zh": "\"本\"是上声，在非上声\"是\"前读\"半上\"（调值211），拼音不变：běn。", "en": "本 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 是; the written pinyin stays běn." }
+      ],
+      "tags": ["object"]
+    },
+    {
+      "id": "g6d-10-chunyexiyu",
+      "title": "春夜喜雨",
+      "titlePinyin": "chūn yè xǐ yǔ",
+      "titleEn": "Delighting in Rain on a Spring Night",
+      "author": "杜甫",
+      "dynasty": "唐",
+      "grade": 6,
+      "volume": "下",
+      "lines": [
+        { "text": "好雨知时节，", "pinyin": "hǎo yǔ zhī shí jié", "zh": "好雨懂得适应季节的需要，", "en": "A good rain knows just the season it should fall,", "rhetoric": ["metaphor-analogy"] },
+        { "text": "当春乃发生。", "pinyin": "dāng chūn nǎi fā shēng", "zh": "正当春天来临的时候就悄悄降落。", "en": "arriving right when spring begins." },
+        { "text": "随风潜入夜，", "pinyin": "suí fēng qián rù yè", "zh": "伴随着春风悄悄地在夜里降临，", "en": "It steals in with the wind under cover of night,", "rhetoric": ["parallelism", "metaphor-analogy"] },
+        { "text": "润物细无声。", "pinyin": "rùn wù xì wú shēng", "zh": "细细地滋润万物，悄然无声。", "en": "fine and silent, moistening all things.", "rhetoric": ["parallelism", "metaphor-analogy"] },
+        { "text": "野径云俱黑，", "pinyin": "yě jìng yún jù hēi", "zh": "田野间的小路上乌云一片漆黑，", "en": "The country lanes are shrouded in dark clouds,", "rhetoric": ["parallelism", "foil"] },
+        { "text": "江船火独明。", "pinyin": "jiāng chuán huǒ dú míng", "zh": "只有江面上渔船的灯火独自明亮。", "en": "and only a boat's lone lantern glows on the river.", "rhetoric": ["parallelism", "foil"] },
+        { "text": "晓看红湿处，", "pinyin": "xiǎo kàn hóng shī chù", "zh": "天亮时看那被雨水打湿的红花之处，", "en": "At dawn, seeing the rain-soaked red blossoms,", "rhetoric": ["metonymy", "real-imagined"] },
+        { "text": "花重锦官城。", "pinyin": "huā zhòng jǐn guān chéng", "zh": "锦官城中处处都是沉甸甸带雨的鲜花。", "en": "one finds Jinguan City's flowers heavy with rain throughout.", "rhetoric": ["real-imagined"] }
+      ],
+      "chars": [
+        { "char": "好", "pinyin": "hǎo", "zh": "好雨，及时的好雨。", "en": "good" },
+        { "char": "雨", "pinyin": "yǔ", "zh": "雨。", "en": "rain" },
+        { "char": "知", "pinyin": "zhī", "zh": "知道、懂得，这里指雨仿佛懂得时节。", "en": "to know" },
+        { "char": "时", "pinyin": "shí", "zh": "时节、季节。", "en": "time; season" },
+        { "char": "节", "pinyin": "jié", "zh": "节令、季节。", "en": "season; occasion" },
+        { "char": "当", "pinyin": "dāng", "zh": "正当、正值；多音字，又读 dàng（当作）。", "en": "just as; at the time of" },
+        { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
+        { "char": "乃", "pinyin": "nǎi", "zh": "于是、就。", "en": "thereupon; then" },
+        { "char": "发", "pinyin": "fā", "zh": "发生、降下；多音字，又读 fà（头发）。", "en": "to occur; to begin" },
+        { "char": "生", "pinyin": "shēng", "zh": "发生。", "en": "to occur; to arise" },
+        { "char": "随", "pinyin": "suí", "zh": "跟随、伴随。", "en": "to follow; along with" },
+        { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },
+        { "char": "潜", "pinyin": "qián", "zh": "悄悄地、暗中。", "en": "stealthily; quietly" },
+        { "char": "入", "pinyin": "rù", "zh": "进入。", "en": "to enter" },
+        { "char": "夜", "pinyin": "yè", "zh": "夜晚。", "en": "night" },
+        { "char": "润", "pinyin": "rùn", "zh": "滋润。", "en": "to moisten" },
+        { "char": "物", "pinyin": "wù", "zh": "万物。", "en": "things" },
+        { "char": "细", "pinyin": "xì", "zh": "细密、细小。", "en": "fine; delicate" },
+        { "char": "无", "pinyin": "wú", "zh": "没有。", "en": "without" },
+        { "char": "声", "pinyin": "shēng", "zh": "声音。", "en": "sound" },
+        { "char": "野", "pinyin": "yě", "zh": "野外、郊野。", "en": "wild; countryside" },
+        { "char": "径", "pinyin": "jìng", "zh": "小路。", "en": "path" },
+        { "char": "云", "pinyin": "yún", "zh": "云。", "en": "cloud" },
+        { "char": "俱", "pinyin": "jù", "zh": "都、全。", "en": "all; entirely" },
+        { "char": "黑", "pinyin": "hēi", "zh": "黑暗。", "en": "dark; black" },
+        { "char": "江", "pinyin": "jiāng", "zh": "江河。", "en": "river" },
+        { "char": "船", "pinyin": "chuán", "zh": "船。", "en": "boat" },
+        { "char": "火", "pinyin": "huǒ", "zh": "灯火。", "en": "light; fire" },
+        { "char": "独", "pinyin": "dú", "zh": "单独、只有。", "en": "alone; only" },
+        { "char": "明", "pinyin": "míng", "zh": "明亮。", "en": "bright" },
+        { "char": "晓", "pinyin": "xiǎo", "zh": "天亮、拂晓。", "en": "dawn" },
+        { "char": "看", "pinyin": "kàn", "zh": "看、观看。", "en": "to look" },
+        { "char": "红", "pinyin": "hóng", "zh": "红色，这里借指红花。", "en": "red (here: red blossoms)" },
+        { "char": "湿", "pinyin": "shī", "zh": "潮湿、被雨打湿。", "en": "wet; damp" },
+        { "char": "处", "pinyin": "chù", "zh": "地方、处处。", "en": "place" },
+        { "char": "花", "pinyin": "huā", "zh": "花。", "en": "flower" },
+        { "char": "重", "pinyin": "zhòng", "zh": "沉重，这里指花沾雨后显得沉重；多音字，又读 chóng（重复）。", "en": "heavy (here)" },
+        { "char": "锦", "pinyin": "jǐn", "zh": "锦官城，成都的别称。", "en": "(in 锦官城) brocade" },
+        { "char": "官", "pinyin": "guān", "zh": "锦官城，成都的别称。", "en": "(in 锦官城) official" },
+        { "char": "城", "pinyin": "chéng", "zh": "城市，这里指成都。", "en": "city" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "作于唐肃宗上元二年（761年）春，杜甫在成都草堂居住时所作，抒发对滋润万物的春雨的喜悦之情。",
+          "en": "Written in the spring of 761, while Du Fu was living at his thatched cottage in Chengdu; it expresses his joy at a spring rain that nourishes everything."
+        },
+        "culture": {
+          "zh": "“锦官城”是成都的别称，因当地织锦业发达、曾设官员管理而得名。",
+          "en": "'Jinguan City' is an old name for Chengdu, so called because the city's fine brocade-weaving industry was once overseen by a government office."
+        },
+        "rhetoric": {
+          "zh": "首联“知”字将雨拟人化，赋予春雨体贴人意的情态；颔联“随风潜入夜，润物细无声”对偶精工，写雨悄然无声、滋润万物的姿态，历来被誉为咏雨的绝唱；颈联“野径云俱黑，江船火独明”以黑暗反衬孤灯之明；尾联“红湿处”以颜色借代花朵，并由眼前实景转为想象次日清晨雨后繁花满城的虚景，虚实相生。",
+          "en": "The word zhi ('knows') in the opening couplet personifies the rain as considerate and aware; the second couplet—'it follows the wind, slipping quietly into the night, and moistens all things finely, without a sound'—is a masterfully wrought parallel couplet praised as the finest description of rain in Chinese poetry; the third couplet uses the surrounding darkness as a foil for the lone boat lantern's brightness; the closing couplet uses color ('the red, wet places') as metonymy for the blossoms themselves, shifting from the real nighttime scene to an imagined vision of the rain-soaked city abloom the next morning."
+        }
+      },
+      "sandhi": [
+        { "text": "喜雨", "rule": "上上变调", "base": "xǐ", "read": "xí", "value": "35", "markChange": true, "where": "题目", "pos": 2, "zh": "\"喜\"在上声\"雨\"前变读阳平（第二声）：xǐ→xí。", "en": "喜 comes before the third-tone 雨, so it is read in second tone: xǐ → xí." },
+        { "text": "好雨", "rule": "上上变调", "base": "hǎo", "read": "háo", "value": "35", "markChange": true, "where": "好雨知时节，", "pos": 0, "zh": "\"好\"在上声\"雨\"前变读阳平（第二声）：hǎo→háo。", "en": "好 comes before the third-tone 雨, so it is read in second tone: hǎo → háo." },
+        { "text": "雨知", "rule": "半上声", "base": "yǔ", "read": "yǔ", "value": "211", "markChange": false, "where": "好雨知时节，", "pos": 1, "zh": "\"雨\"是上声，在非上声\"知\"前读\"半上\"（调值211），拼音不变：yǔ。", "en": "雨 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 知; the written pinyin stays yǔ." },
+        { "text": "乃发", "rule": "半上声", "base": "nǎi", "read": "nǎi", "value": "211", "markChange": false, "where": "当春乃发生。", "pos": 2, "zh": "\"乃\"是上声，在非上声\"发\"前读\"半上\"（调值211），拼音不变：nǎi。", "en": "乃 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 发; the written pinyin stays nǎi." },
+        { "text": "润物", "rule": "半去声", "base": "rùn", "read": "rùn", "value": "53", "markChange": false, "where": "润物细无声。", "pos": 0, "zh": "\"润\"是去声，在去声\"物\"前读\"半去\"（调值53），拼音不变：rùn。", "en": "润 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 物; the written pinyin stays rùn." },
+        { "text": "野径", "rule": "半上声", "base": "yě", "read": "yě", "value": "211", "markChange": false, "where": "野径云俱黑，", "pos": 0, "zh": "\"野\"是上声，在非上声\"径\"前读\"半上\"（调值211），拼音不变：yě。", "en": "野 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 径; the written pinyin stays yě." },
+        { "text": "火独", "rule": "半上声", "base": "huǒ", "read": "huǒ", "value": "211", "markChange": false, "where": "江船火独明。", "pos": 2, "zh": "\"火\"是上声，在非上声\"独\"前读\"半上\"（调值211），拼音不变：huǒ。", "en": "火 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 独; the written pinyin stays huǒ." },
+        { "text": "晓看", "rule": "半上声", "base": "xiǎo", "read": "xiǎo", "value": "211", "markChange": false, "where": "晓看红湿处，", "pos": 0, "zh": "\"晓\"是上声，在非上声\"看\"前读\"半上\"（调值211），拼音不变：xiǎo。", "en": "晓 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 看; the written pinyin stays xiǎo." },
+        { "text": "锦官", "rule": "半上声", "base": "jǐn", "read": "jǐn", "value": "211", "markChange": false, "where": "花重锦官城。", "pos": 2, "zh": "\"锦\"是上声，在非上声\"官\"前读\"半上\"（调值211），拼音不变：jǐn。", "en": "锦 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 官; the written pinyin stays jǐn." }
+      ],
+      "tags": ["season-spring"]
     }
   ]
 }

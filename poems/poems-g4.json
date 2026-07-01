@@ -1295,6 +1295,74 @@
         { "text": "烂漫", "rule": "半去声", "base": "làn", "read": "làn", "value": "53", "markChange": false, "where": "待到山花烂漫时，", "pos": 4, "zh": "\"烂\"是去声，在去声\"漫\"前读\"半去\"（调值53），拼音不变：làn。", "en": "烂 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 漫; the written pinyin stays làn." }
       ],
       "tags": ["object", "season-winter"]
+    },
+    {
+      "id": "g4d-11-boshuanguazhou",
+      "title": "泊船瓜洲",
+      "titlePinyin": "bó chuán guā zhōu",
+      "titleEn": "Mooring at Guazhou",
+      "author": "王安石",
+      "dynasty": "宋",
+      "grade": 4,
+      "volume": "下",
+      "lines": [
+        { "text": "京口瓜洲一水间，", "pinyin": "jīng kǒu guā zhōu yī shuǐ jiān", "zh": "京口和瓜洲之间只隔着一条江水，", "en": "Jingkou and Guazhou are parted by a single stretch of river," },
+        { "text": "钟山只隔数重山。", "pinyin": "zhōng shān zhǐ gé shù chóng shān", "zh": "钟山也只隔着几重山峦。", "en": "and Mount Zhong lies just a few ranges beyond." },
+        { "text": "春风又绿江南岸，", "pinyin": "chūn fēng yòu lǜ jiāng nán àn", "zh": "春风又吹绿了江南的岸边，", "en": "The spring wind has again turned the southern shore green," },
+        { "text": "明月何时照我还？", "pinyin": "míng yuè hé shí zhào wǒ huán", "zh": "明亮的月亮什么时候才能照着我回到家乡呢？", "en": "when will the bright moon shine upon my way back home?", "rhetoric": ["rhetorical-question"] }
+      ],
+      "chars": [
+        { "char": "京", "pinyin": "jīng", "zh": "京口，地名，在今江苏镇江。", "en": "(in 京口) place name" },
+        { "char": "口", "pinyin": "kǒu", "zh": "京口，地名。", "en": "(in 京口) place name" },
+        { "char": "瓜", "pinyin": "guā", "zh": "瓜洲，地名，在今江苏扬州南、长江北岸。", "en": "(in 瓜洲) place name" },
+        { "char": "洲", "pinyin": "zhōu", "zh": "瓜洲，江中的沙洲、渡口。", "en": "(in 瓜洲) sandbar; place name" },
+        { "char": "一", "pinyin": "yī", "zh": "数词一。", "en": "one" },
+        { "char": "水", "pinyin": "shuǐ", "zh": "江水，这里指长江。", "en": "water; river" },
+        { "char": "间", "pinyin": "jiān", "zh": "间隔、中间；多音字，又读 jiàn（间断）。", "en": "space between; interval" },
+        { "char": "钟", "pinyin": "zhōng", "zh": "钟山，即今南京紫金山。", "en": "(in 钟山) Mount Zhong" },
+        { "char": "山", "pinyin": "shān", "zh": "山，这里指钟山及沿途群山。", "en": "mountain" },
+        { "char": "只", "pinyin": "zhǐ", "zh": "只、仅仅。", "en": "only; merely" },
+        { "char": "隔", "pinyin": "gé", "zh": "隔开、相隔。", "en": "to separate; to be apart" },
+        { "char": "数", "pinyin": "shù", "zh": "数目，这里指“几”；多音字，又读 shǔ（数一数）。", "en": "several; a few (here)" },
+        { "char": "重", "pinyin": "chóng", "zh": "重叠、层；多音字，又读 zhòng（重要）。", "en": "layer; -fold (here)" },
+        { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
+        { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },
+        { "char": "又", "pinyin": "yòu", "zh": "又、再次。", "en": "again" },
+        { "char": "绿", "pinyin": "lǜ", "zh": "绿色；这里用作动词，吹绿。", "en": "green; (here, used as a verb) to turn green" },
+        { "char": "江", "pinyin": "jiāng", "zh": "江，这里指长江；江南指长江以南地区。", "en": "river (in 江南: south of the river)" },
+        { "char": "南", "pinyin": "nán", "zh": "南方；江南指长江以南地区。", "en": "south" },
+        { "char": "岸", "pinyin": "àn", "zh": "岸边、江岸。", "en": "bank; shore" },
+        { "char": "明", "pinyin": "míng", "zh": "明亮。", "en": "bright" },
+        { "char": "月", "pinyin": "yuè", "zh": "月亮。", "en": "moon" },
+        { "char": "何", "pinyin": "hé", "zh": "什么、何时。", "en": "what; when (何时)" },
+        { "char": "时", "pinyin": "shí", "zh": "时候；何时即什么时候。", "en": "time" },
+        { "char": "照", "pinyin": "zhào", "zh": "照耀、照亮。", "en": "to shine" },
+        { "char": "我", "pinyin": "wǒ", "zh": "我。", "en": "I; me" },
+        { "char": "还", "pinyin": "huán", "zh": "归还、回家；多音字，又读 hái（还有）。", "en": "to return home" }
+      ],
+      "notes": {
+        "background": {
+          "zh": "此诗作于王安石第二次拜相赴京途中，诗人泊舟瓜洲，遥望江南钟山下的家园，抒发归乡之思。",
+          "en": "Written while Wang Anshi's boat was moored at Guazhou en route to the capital for his second term as chancellor; gazing south toward his home below Mount Zhong, he voices his longing to return."
+        },
+        "culture": {
+          "zh": "瓜洲、京口分别在长江北岸与南岸，隔江相望；钟山（今南京紫金山）是王安石家乡所在，全诗以地名连缀出归乡的迫切心情。",
+          "en": "Guazhou and Jingkou face each other across the Yangtze; Mount Zhong (today's Purple Mountain in Nanjing) was Wang Anshi's home, and the string of place names traces the urgency of his longing to return."
+        },
+        "rhetoric": {
+          "zh": "“绿”字本为形容词，此处用作动词，写春风“吹绿”江岸，是历来称道的炼字典范；末句以设问抒发归乡之思，言有尽而情无穷。",
+          "en": "The word lü ('green'), normally an adjective, is used here as a verb—'the spring wind greens the bank'—a celebrated instance of masterful word choice; the closing line poses a rhetorical question that voices boundless longing to return home in few words."
+        }
+      },
+      "sandhi": [
+        { "text": "口瓜", "rule": "半上声", "base": "kǒu", "read": "kǒu", "value": "211", "markChange": false, "where": "京口瓜洲一水间，", "pos": 1, "zh": "\"口\"是上声，在非上声\"瓜\"前读\"半上\"（调值211），拼音不变：kǒu。", "en": "口 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 瓜; the written pinyin stays kǒu." },
+        { "text": "一水", "rule": "一字变调", "base": "yī", "read": "yì", "value": "51", "markChange": true, "where": "京口瓜洲一水间，", "pos": 4, "zh": "\"一\"在阴平/阳平/上声\"水\"前变读去声（第四声）：yī→yì。", "en": "一 before the (1st/2nd/3rd-tone) 水 changes to fourth tone: yī → yì." },
+        { "text": "水间", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "京口瓜洲一水间，", "pos": 5, "zh": "\"水\"是上声，在非上声\"间\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 间; the written pinyin stays shuǐ." },
+        { "text": "只隔", "rule": "半上声", "base": "zhǐ", "read": "zhǐ", "value": "211", "markChange": false, "where": "钟山只隔数重山。", "pos": 2, "zh": "\"只\"是上声，在非上声\"隔\"前读\"半上\"（调值211），拼音不变：zhǐ。", "en": "只 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 隔; the written pinyin stays zhǐ." },
+        { "text": "又绿", "rule": "半去声", "base": "yòu", "read": "yòu", "value": "53", "markChange": false, "where": "春风又绿江南岸，", "pos": 2, "zh": "\"又\"是去声，在去声\"绿\"前读\"半去\"（调值53），拼音不变：yòu。", "en": "又 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 绿; the written pinyin stays yòu." },
+        { "text": "我还", "rule": "半上声", "base": "wǒ", "read": "wǒ", "value": "211", "markChange": false, "where": "明月何时照我还？", "pos": 5, "zh": "\"我\"是上声，在非上声\"还\"前读\"半上\"（调值211），拼音不变：wǒ。", "en": "我 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 还; the written pinyin stays wǒ." }
+      ],
+      "tags": ["homesick"]
     }
   ]
 }
