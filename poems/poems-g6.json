@@ -272,8 +272,8 @@
       "lines": [
         { "text": "红军不怕远征难，", "pinyin": "hóng jūn bù pà yuǎn zhēng nán", "zh": "红军不怕万里长征路上的种种艰难。", "en": "The Red Army fears not the trials of the long march." },
         { "text": "万水千山只等闲。", "pinyin": "wàn shuǐ qiān shān zhǐ děng xián", "zh": "千山万水在他们眼里不过是平平常常的事。", "en": "Countless rivers and peaks are nothing to them." },
-        { "text": "五岭逶迤腾细浪，", "pinyin": "wǔ lǐng wēi yí téng xì làng", "zh": "绵延起伏的五岭，在红军看来只像翻腾的细小波浪。", "en": "The rolling Five Ridges seem mere ripples.", "rhetoric": ["metaphor-analogy", "foil", "parallelism"] },
-        { "text": "乌蒙磅礴走泥丸。", "pinyin": "wū méng páng bó zǒu ní wán", "zh": "气势磅礴的乌蒙山，也不过像脚下滚动的泥丸。", "en": "The mighty Wumeng Mountains roll past like clay balls.", "rhetoric": ["metaphor-analogy", "foil", "parallelism"] },
+        { "text": "五岭逶迤腾细浪，", "pinyin": "wǔ lǐng wēi yí téng xì làng", "zh": "绵延起伏的五岭，在红军看来只像翻腾的细小波浪。", "en": "The rolling Five Ridges seem mere ripples.", "rhetoric": ["metaphor-analogy", "foil", "parallelism", "hyperbole"] },
+        { "text": "乌蒙磅礴走泥丸。", "pinyin": "wū méng páng bó zǒu ní wán", "zh": "气势磅礴的乌蒙山，也不过像脚下滚动的泥丸。", "en": "The mighty Wumeng Mountains roll past like clay balls.", "rhetoric": ["metaphor-analogy", "foil", "parallelism", "hyperbole"] },
         { "text": "金沙水拍云崖暖，", "pinyin": "jīn shā shuǐ pāi yún yá nuǎn", "zh": "金沙江的水拍打着高耸入云的山崖，使人感到温暖。", "en": "Waters of the Jinsha lap warm against cloud-high cliffs.", "rhetoric": ["parallelism", "foil"] },
         { "text": "大渡桥横铁索寒。", "pinyin": "dà dù qiáo héng tiě suǒ hán", "zh": "大渡河上横跨的泸定桥，铁索高悬，令人胆寒。", "en": "Over the Dadu the bridge's iron chains hang cold.", "rhetoric": ["parallelism", "foil"] },
         { "text": "更喜岷山千里雪，", "pinyin": "gèng xǐ mín shān qiān lǐ xuě", "zh": "更让人欢喜的是翻过了千里皑皑白雪的岷山。", "en": "More gladdening still: the thousand-li snows of Min Mountain." },
@@ -425,8 +425,8 @@
           "en": "The ending draws on the Cowherd-Weaver myth and the legend of riding a raft up to the heavenly river."
         },
         "rhetoric": {
-          "zh": "前两句写实，气势磅礴；后两句驰骋想象，由黄河直上银河，浪漫豪迈。",
-          "en": "The first couplet is grandly realistic; the second leaps to imagination, soaring from the river to the Milky Way."
+          "zh": "前两句写实，气势磅礴；后两句驰骋想象，由黄河直上银河，并用典牵牛织女的传说，浪漫豪迈。",
+          "en": "The first couplet is grandly realistic; the second leaps to imagination, soaring from the river to the Milky Way and alluding to the legend of the Cowherd and Weaver Maid, romantic and bold."
         }
       },
       "sandhi": [
@@ -777,8 +777,8 @@
           "en": "The 'five marquises' originally meant Han imperial in-laws, here standing for the favoured nobility of Tang."
         },
         "rhetoric": {
-          "zh": "前两句写全城春景，后两句以“传蜡烛”“入五侯家”含蓄讽刺特权，借古讽今。",
-          "en": "It paints the city in spring, then gently satirizes privilege through the imperial candles reaching only the powerful."
+          "zh": "首句“无处不飞花”以双重否定夸张满城飞花之盛；后两句以“传蜡烛”“入五侯家”含蓄讽刺特权，借古讽今。",
+          "en": "The opening's double negative—nowhere are there not flying blossoms—exaggerates a city entirely filled with drifting petals; the closing lines then gently satirize privilege through the imperial candles reaching only the powerful."
         }
       },
       "sandhi": [
@@ -863,8 +863,8 @@
           "en": "The Cowherd and Weaving Maid stars, separated by the Milky Way, are the root of the Qixi (Double Seventh) legend."
         },
         "rhetoric": {
-          "zh": "全诗六组叠词（迢迢、皎皎等）回环往复，借物拟人，情景交融，含蓄动人。",
-          "en": "Six pairs of reduplicated words give it a musical rhythm, blending scene and feeling through personification."
+          "zh": "全诗六组叠词（迢迢、皎皎等）回环往复，借物拟人；“相去复几许”以反问轻叹咫尺天涯，情景交融，含蓄动人。",
+          "en": "Six pairs of reduplicated words give it a musical rhythm, blending scene and feeling through personification; how far apart, after all, are they? sighs a rhetorical question at a gap both tiny and unbridgeable."
         }
       },
       "sandhi": [
@@ -992,8 +992,8 @@
           "en": "Fine horses traditionally symbolize talented people, and the wish for a 'Bole' to recognize them."
         },
         "rhetoric": {
-          "zh": "前两句写边塞景象起兴，后两句用反问托物言志，借马自喻。",
-          "en": "The frontier scene sets the mood, then a rhetorical question makes the horse a vehicle for the poet's own ambition."
+          "zh": "首联“沙如雪”“月似钩”比喻工整对仗，写边塞景象起兴；后两句用反问托物言志，借马自喻。",
+          "en": "The opening couplet's matched similes—sand like snow, moon like a hook—set the frontier scene in parallel form; the closing lines then use a rhetorical question to make the horse a vehicle for the poet's own ambition."
         }
       },
       "sandhi": [
@@ -1059,8 +1059,8 @@
           "en": "An object-as-emblem poem, it makes lime a symbol of steadfast purity and willing sacrifice."
         },
         "rhetoric": {
-          "zh": "全诗用拟人和双关，“清白”既指石灰之色，又指人的高洁品格，层层递进。",
-          "en": "Through personification and a pun, 'pure white' means both the colour of lime and the poet's moral integrity."
+          "zh": "首句“千锤万凿”夸张历炼之多，两联对偶工整；全诗用拟人和双关，“清白”既指石灰之色，又指人的高洁品格，层层递进。",
+          "en": "The opening a thousand hammer-blows, ten thousand chisels exaggerates the ordeal, in couplets of neat parallelism; throughout, personification and a pun make 'pure white' mean both the colour of lime and the poet's moral integrity."
         }
       },
       "sandhi": [
@@ -1127,8 +1127,8 @@
           "en": "Bamboo symbolizes integrity and humility, and with plum, orchid, and chrysanthemum forms the 'Four Gentlemen'."
         },
         "rhetoric": {
-          "zh": "全诗托物言志，用“咬定”“立根”等拟人词写竹石的顽强，借竹喻人，表现坚毅不屈的品格。",
-          "en": "Personifying the bamboo with words like 'bite fast', it praises through the plant a person's unyielding strength of character."
+          "zh": "全诗托物言志，用“咬定”“立根”等拟人词写竹石的顽强，“千磨万击”夸张历炼之烈，两联对偶工整，借竹喻人，表现坚毅不屈的品格。",
+          "en": "Personifying the bamboo with words like 'bite fast,' and exaggerating its trials with a thousand grindings, ten thousand blows, all in neat parallel couplets, the poem praises through the plant a person's unyielding strength of character."
         }
       },
       "sandhi": [
@@ -1315,8 +1315,8 @@
           "en": "It reflects the ancients' spirit of inquiry into nature; even the learned Confucius honestly admits he cannot decide."
         },
         "rhetoric": {
-          "zh": "全文用对比和反问，借两小儿各执一词，说明知识无穷、学无止境，也赞扬实事求是的态度。",
-          "en": "Through contrast and rhetorical questions, it shows that knowledge is boundless and praises honesty about the limits of what one knows."
+          "zh": "两小儿各以“大如车盖”“如盘盂”“如探汤”等比喻申说己见，句式对仗工整；全文用对比和反问，说明知识无穷、学无止境，也赞扬实事求是的态度。",
+          "en": "The two children each argue their case with similes—big as a carriage canopy, like a plate, like reaching into hot water—in matching parallel phrasing; through contrast and rhetorical questions throughout, the piece shows that knowledge is boundless and praises honesty about the limits of what one knows."
         }
       },
       "sandhi": [

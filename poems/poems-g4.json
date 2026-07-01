@@ -326,8 +326,8 @@
           "en": "The 'Flying General' is the Han general Li Guang, who guarded the frontier against the Xiongnu."
         },
         "rhetoric": {
-          "zh": "“秦时明月汉时关”用互文,跨越古今,表达对良将和和平的渴望。",
-          "en": "Interlocking phrasing spans dynasties, voicing longing for great generals and peace."
+          "zh": "“秦时明月汉时关”用互文,跨越古今；“万里长征”夸张极言征途之远,表达对良将和和平的渴望。",
+          "en": "Interlocking phrasing spans dynasties; a ten-thousand-li march exaggerates the distance of campaign, voicing longing for great generals and peace."
         }
       },
       "sandhi": [
@@ -393,8 +393,8 @@
           "en": "Glowing-jade cups and grape wine came from the Western Regions, evoking the Tang frontier."
         },
         "rhetoric": {
-          "zh": "以华美宴饮反衬战争的残酷,豪迈中含悲凉，旷达中见沉痛。",
-          "en": "Lavish feasting offsets war's cruelty; bravado masks deep sorrow."
+          "zh": "以华美宴饮反衬战争的残酷,末句“古来征战几人回”以反问道尽沉痛,豪迈中含悲凉，旷达中见沉痛。",
+          "en": "Lavish feasting offsets war's cruelty; the closing rhetorical question—how few of those who fought returned—voices the full weight of sorrow beneath the bravado."
         }
       },
       "sandhi": [
@@ -522,8 +522,8 @@
           "en": "Unlike most sorrowful farewell poems, this one offers bold, heartening encouragement."
         },
         "rhetoric": {
-          "zh": "前两句写苍凉之景，后两句反笔激励，意境由悲转壮。",
-          "en": "Bleak scenery turns, in the last lines, to rousing encouragement."
+          "zh": "前两句以“千里”夸张、“纷纷”叠词写苍凉之景，后两句以“天下谁人不识君”反问反笔激励，意境由悲转壮。",
+          "en": "The opening exaggerates with a thousand li and the reduplicated fēnfēn (swirling) to paint bleak scenery; the closing rhetorical question—who under heaven does not know you—turns to rousing encouragement, the mood shifting from sorrow to resolve."
         }
       },
       "sandhi": [
@@ -544,8 +544,8 @@
       "grade": 4,
       "volume": "上",
       "lines": [
-        { "text": "云母屏风烛影深，", "pinyin": "yún mǔ píng fēng zhú yǐng shēn", "zh": "云母装饰的屏风上，烛光的影子渐渐暗淡，", "en": "On the mica screen the candle's shadow deepens," },
-        { "text": "长河渐落晓星沉。", "pinyin": "cháng hé jiàn luò xiǎo xīng chén", "zh": "银河慢慢西落，晨星也渐渐隐没。", "en": "The Milky Way sinks low, the dawn stars fade." },
+        { "text": "云母屏风烛影深，", "pinyin": "yún mǔ píng fēng zhú yǐng shēn", "zh": "云母装饰的屏风上，烛光的影子渐渐暗淡，", "en": "On the mica screen the candle's shadow deepens,", "rhetoric": ["foil"] },
+        { "text": "长河渐落晓星沉。", "pinyin": "cháng hé jiàn luò xiǎo xīng chén", "zh": "银河慢慢西落，晨星也渐渐隐没。", "en": "The Milky Way sinks low, the dawn stars fade.", "rhetoric": ["foil"] },
         { "text": "嫦娥应悔偷灵药，", "pinyin": "cháng é yīng huǐ tōu líng yào", "zh": "嫦娥应该后悔当初偷吃了长生不死的仙药，", "en": "Chang'e must regret stealing the elixir,", "rhetoric": ["allusion"] },
         { "text": "碧海青天夜夜心。", "pinyin": "bì hǎi qīng tiān yè yè xīn", "zh": "如今面对碧海青天，夜夜都是孤寂的心情。", "en": "Facing blue sea and sky, lonely night after night.", "rhetoric": ["allusion", "repetition"] }
       ],
@@ -588,8 +588,8 @@
           "en": "Chang'e stole Houyi's elixir and flew to the moon to dwell alone, a famous Chinese myth."
         },
         "rhetoric": {
-          "zh": "借景抒情、用典寄慨，以清冷的夜景烘托嫦娥（与诗人）的孤寂。",
-          "en": "Scene, allusion, and chill night imagery convey Chang'e's (and the poet's) solitude."
+          "zh": "借景抒情、用典寄慨，以清冷的夜景烘托嫦娥（与诗人）的孤寂；末句“夜夜”叠词加深长夜难眠之感。",
+          "en": "Scene, allusion, and chill night imagery convey Chang'e's (and the poet's) solitude; the closing reduplication night after night deepens the sense of endless sleepless nights."
         }
       },
       "sandhi": [
@@ -657,8 +657,8 @@
           "en": "Yang Wanli, one of the Four Masters of the Southern Song, famed for his fresh, natural 'Chengzhai style.'"
         },
         "rhetoric": {
-          "zh": "前两句静景，后两句动景，动静结合，以儿童追蝶之趣收束。",
-          "en": "Still scenery is paired with lively motion, ending on the charm of children chasing a butterfly."
+          "zh": "首句叠词“疏疏”状篱笆稀落之态；前两句静景，后两句动景，动静结合，以儿童追蝶之趣收束。",
+          "en": "The opening reduplication shūshū (sparse) pictures the thin hedge; still scenery is paired with lively motion, ending on the charm of children chasing a butterfly."
         }
       },
       "sandhi": [
@@ -1275,8 +1275,8 @@
           "en": "'Busuanzi' is the tune pattern and 'Yongmei' the title; the plum symbolizes steadfast purity in Chinese culture."
         },
         "rhetoric": {
-          "zh": "运用拟人，赞美梅花在严寒中报春而不争春、谦逊乐观的品格。",
-          "en": "Personification praises the plum that heralds spring without vying for it, modest and optimistic."
+          "zh": "上片“风雨送春归，飞雪迎春到”对偶工整，“百丈冰”夸张极写严寒；“犹有花枝俏”与“俏也不争春”顶真相连；全词运用拟人，赞美梅花在严寒中报春而不争春、谦逊乐观的品格。",
+          "en": "The parallel opening—wind and rain send spring away, flying snow welcomes it back—and the hyperbole of ice a hundred fathoms deep set the severity of winter; still the branches are fair chains into fair, yet it does not vie by anadiplosis; throughout, personification praises the plum that heralds spring without vying for it, modest and optimistic."
         }
       },
       "sandhi": [

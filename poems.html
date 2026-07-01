@@ -109,6 +109,7 @@
   .app-head h1{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:30px;margin:0;letter-spacing:2px}
   .app-head .sub{color:var(--muted);font-size:14px}
   .overall{margin-left:auto;color:var(--muted);font-size:13px}
+  .empty-state{text-align:center;color:var(--muted);font-size:14px;padding:60px 20px}
 
   .grade{margin:0 0 26px}
   .grade-head{display:flex;align-items:center;gap:12px;margin:0 0 10px}
@@ -276,7 +277,7 @@ let CATEGORIES=[];      // [{key,zh,en,group,desc_zh,desc_en,count}]
 let RHETORIC=[];        // [{key,zh,en,desc_zh,desc_en}] rhetorical devices
 let viewed=loadViewed();
 let showPinyin=localStorage.getItem(PREF_KEY)==="1";
-let indexMode=localStorage.getItem(VIEWMODE_KEY)||"grades";  // "grades" | "themes" | "rhetoric"
+let indexMode=localStorage.getItem(VIEWMODE_KEY)||"grades";  // "grades" | "themes" | "rhetoric" | "read"
 const expandedCats=new Set();
 const expandedRhet=new Set();
 
@@ -407,6 +408,7 @@ function renderIndex(){
   root.appendChild(buildHead());
   if(indexMode==="themes" && CATEGORIES.length) renderThemes();
   else if(indexMode==="rhetoric" && RHETORIC.length) renderRhetoricView();
+  else if(indexMode==="read") renderReadView();
   else renderGrades();
   renderCreditsFooter();
 }
@@ -416,7 +418,7 @@ function buildHead(){
   const head=el("div","app-head");
   head.appendChild(el("h1","","小学生必背古诗"));
   head.appendChild(el("span","sub","Classical Chinese Poems · 诵读"));
-  if(CATEGORIES.length || RHETORIC.length){
+  {
     const seg=el("div","seg");
     const mk=(mode,label)=>{
       const b=el("button","seg-btn"+(indexMode===mode?" on":""),label);
@@ -426,6 +428,7 @@ function buildHead(){
     seg.appendChild(mk("grades","按年级"));
     if(CATEGORIES.length) seg.appendChild(mk("themes","按主题"));
     if(RHETORIC.length) seg.appendChild(mk("rhetoric","修辞手法"));
+    seg.appendChild(mk("read","已读"));
     head.appendChild(seg);
   }
   head.appendChild(el("span","overall",`已读 ${seen} / ${total}`));
@@ -469,6 +472,43 @@ function renderGrades(){
   if(focusCard){
     focusCard.classList.add("focus");
     requestAnimationFrame(()=>focusCard.scrollIntoView({block:"center",behavior:"smooth"}));
+  }
+}
+
+/* ---- read (已读) view: only viewed poems, grouped by grade ---- */
+function renderReadView(){
+  if(!ORDER.some(id=>viewed.has(id))){
+    root.appendChild(el("div","empty-state","还没有标记为已读的古诗。在诗歌页面点击“标记已读”即可收录于此。"));
+    return;
+  }
+  for(const g of GRADES){
+    const ps=g.poems.filter(p=>viewed.has(p.id));
+    if(!ps.length) continue;
+    const sec=el("section","grade");
+    const gh=el("div","grade-head");
+    gh.appendChild(el("h2","",GRADE_LABEL[g.grade]||("Grade "+g.grade)));
+    const bar=el("div","bar"); const fill=el("i"); fill.style.width=(g.poems.length?ps.length/g.poems.length*100:0)+"%"; bar.appendChild(fill);
+    gh.appendChild(bar);
+    gh.appendChild(el("span","count",`${ps.length}/${g.poems.length}`));
+    sec.appendChild(gh);
+
+    let curVol=null, grid=null;
+    for(const p of ps){
+      if(p.volume!==curVol){
+        curVol=p.volume;
+        sec.appendChild(el("div","vol",VOL_LABEL[curVol]||curVol||""));
+        grid=el("div","grid"); sec.appendChild(grid);
+      }
+      const card=el("div","pcard viewed");
+      card.appendChild(el("div","t",p.title));
+      card.appendChild(el("div","a",`${p.author}　${p.dynasty?("〔"+p.dynasty+"〕"):""}`));
+      card.appendChild(el("div","seen","✓ 已读"));
+      const mb=mediaButtons(p.id,true);
+      if(mb.length){ const mr=el("div","cardmedia"); for(const b of mb) mr.appendChild(b); card.appendChild(mr); }
+      card.onclick=()=>{ location.hash="poem/"+encodeURIComponent(p.id); };
+      grid.appendChild(card);
+    }
+    root.appendChild(sec);
   }
 }
 
