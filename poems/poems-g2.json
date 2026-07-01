@@ -27,10 +27,10 @@
       "grade": 2,
       "volume": "上",
       "lines": [
-        { "text": "白日依山尽，", "pinyin": "bái rì yī shān jìn", "zh": "夕阳依傍着群山缓缓落下。", "en": "The bright sun sets behind the mountains," },
-        { "text": "黄河入海流。", "pinyin": "huáng hé rù hǎi liú", "zh": "黄河奔腾着流入大海。", "en": "the Yellow River flows on into the sea." },
-        { "text": "欲穷千里目，", "pinyin": "yù qióng qiān lǐ mù", "zh": "想要看到千里之外的景色，", "en": "If you wish to see a thousand miles," },
-        { "text": "更上一层楼。", "pinyin": "gèng shàng yī céng lóu", "zh": "就要再登上更高的一层楼。", "en": "climb one more flight of the tower." }
+        { "text": "白日依山尽，", "pinyin": "bái rì yī shān jìn", "zh": "夕阳依傍着群山缓缓落下。", "en": "The bright sun sets behind the mountains,", "rhetoric": ["parallelism"] },
+        { "text": "黄河入海流。", "pinyin": "huáng hé rù hǎi liú", "zh": "黄河奔腾着流入大海。", "en": "the Yellow River flows on into the sea.", "rhetoric": ["parallelism"] },
+        { "text": "欲穷千里目，", "pinyin": "yù qióng qiān lǐ mù", "zh": "想要看到千里之外的景色，", "en": "If you wish to see a thousand miles,", "rhetoric": ["parallelism", "hyperbole"] },
+        { "text": "更上一层楼。", "pinyin": "gèng shàng yī céng lóu", "zh": "就要再登上更高的一层楼。", "en": "climb one more flight of the tower.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "登", "pinyin": "dēng", "zh": "登上，攀登。", "en": "to climb / ascend" },
@@ -90,9 +90,9 @@
       "volume": "上",
       "lines": [
         { "text": "日照香炉生紫烟，", "pinyin": "rì zhào xiāng lú shēng zǐ yān", "zh": "阳光照在香炉峰上，升起紫色的云烟。", "en": "Sunlight on Incense Burner Peak raises a purple haze," },
-        { "text": "遥看瀑布挂前川。", "pinyin": "yáo kàn pù bù guà qián chuān", "zh": "远远望去，瀑布像挂在山前的河流。", "en": "from afar the waterfall hangs like a river before the cliff." },
-        { "text": "飞流直下三千尺，", "pinyin": "fēi liú zhí xià sān qiān chǐ", "zh": "水流飞泻而下，仿佛有三千尺高。", "en": "The torrent plunges straight down three thousand feet," },
-        { "text": "疑是银河落九天。", "pinyin": "yí shì yín hé luò jiǔ tiān", "zh": "让人怀疑是银河从九重天上落了下来。", "en": "as if the Milky Way had tumbled from the highest heaven." }
+        { "text": "遥看瀑布挂前川。", "pinyin": "yáo kàn pù bù guà qián chuān", "zh": "远远望去，瀑布像挂在山前的河流。", "en": "from afar the waterfall hangs like a river before the cliff.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "飞流直下三千尺，", "pinyin": "fēi liú zhí xià sān qiān chǐ", "zh": "水流飞泻而下，仿佛有三千尺高。", "en": "The torrent plunges straight down three thousand feet,", "rhetoric": ["hyperbole"] },
+        { "text": "疑是银河落九天。", "pinyin": "yí shì yín hé luò jiǔ tiān", "zh": "让人怀疑是银河从九重天上落了下来。", "en": "as if the Milky Way had tumbled from the highest heaven.", "rhetoric": ["metaphor-analogy", "hyperbole"] }
       ],
       "chars": [
         { "char": "望", "pinyin": "wàng", "zh": "远望，眺望。", "en": "to gaze / look afar" },
@@ -159,10 +159,10 @@
       "grade": 2,
       "volume": "上",
       "lines": [
-        { "text": "危楼高百尺，", "pinyin": "wēi lóu gāo bǎi chǐ", "zh": "山上的高楼有一百尺那么高。", "en": "The lofty tower rises a hundred feet high," },
-        { "text": "手可摘星辰。", "pinyin": "shǒu kě zhāi xīng chén", "zh": "好像伸手就能摘到天上的星星。", "en": "so high I could pluck the stars with my hand." },
-        { "text": "不敢高声语，", "pinyin": "bù gǎn gāo shēng yǔ", "zh": "我不敢大声说话，", "en": "I dare not speak aloud," },
-        { "text": "恐惊天上人。", "pinyin": "kǒng jīng tiān shàng rén", "zh": "怕惊动了天上的神仙。", "en": "for fear of startling the people of heaven." }
+        { "text": "危楼高百尺，", "pinyin": "wēi lóu gāo bǎi chǐ", "zh": "山上的高楼有一百尺那么高。", "en": "The lofty tower rises a hundred feet high,", "rhetoric": ["hyperbole"] },
+        { "text": "手可摘星辰。", "pinyin": "shǒu kě zhāi xīng chén", "zh": "好像伸手就能摘到天上的星星。", "en": "so high I could pluck the stars with my hand.", "rhetoric": ["hyperbole"] },
+        { "text": "不敢高声语，", "pinyin": "bù gǎn gāo shēng yǔ", "zh": "我不敢大声说话，", "en": "I dare not speak aloud,", "rhetoric": ["foil"] },
+        { "text": "恐惊天上人。", "pinyin": "kǒng jīng tiān shàng rén", "zh": "怕惊动了天上的神仙。", "en": "for fear of startling the people of heaven.", "rhetoric": ["foil"] }
       ],
       "chars": [
         { "char": "夜", "pinyin": "yè", "zh": "夜晚。", "en": "night" },
@@ -211,7 +211,7 @@
         { "text": "敢高", "rule": "半上声", "base": "gǎn", "read": "gǎn", "value": "211", "markChange": false, "where": "不敢高声语，", "pos": 1, "zh": "\"敢\"是上声，在非上声\"高\"前读\"半上\"（调值211），拼音不变：gǎn。", "en": "敢 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 高; the written pinyin stays gǎn." },
         { "text": "恐惊", "rule": "半上声", "base": "kǒng", "read": "kǒng", "value": "211", "markChange": false, "where": "恐惊天上人。", "pos": 0, "zh": "\"恐\"是上声，在非上声\"惊\"前读\"半上\"（调值211），拼音不变：kǒng。", "en": "恐 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 惊; the written pinyin stays kǒng." }
       ],
-      "tags": ["landscape"]
+      "tags": []
     },
     {
       "id": "g2u-04-chilege",
@@ -224,8 +224,8 @@
       "volume": "上",
       "lines": [
         { "text": "敕勒川，阴山下。", "pinyin": "chì lè chuān yīn shān xià", "zh": "敕勒族居住的大平原，就在阴山脚下。", "en": "The Chilek plain lies at the foot of the Yin Mountains." },
-        { "text": "天似穹庐，笼盖四野。", "pinyin": "tiān sì qióng lú lǒng gài sì yě", "zh": "天空像一顶巨大的毡帐，笼罩着辽阔的原野。", "en": "The sky is like a round felt tent, covering the wilds on every side." },
-        { "text": "天苍苍，野茫茫，", "pinyin": "tiān cāng cāng yě máng máng", "zh": "天空湛蓝辽阔，原野苍茫无边。", "en": "The sky is deep blue, the wilds are vast and boundless," },
+        { "text": "天似穹庐，笼盖四野。", "pinyin": "tiān sì qióng lú lǒng gài sì yě", "zh": "天空像一顶巨大的毡帐，笼罩着辽阔的原野。", "en": "The sky is like a round felt tent, covering the wilds on every side.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "天苍苍，野茫茫，", "pinyin": "tiān cāng cāng yě máng máng", "zh": "天空湛蓝辽阔，原野苍茫无边。", "en": "The sky is deep blue, the wilds are vast and boundless,", "rhetoric": ["parallelism", "repetition"] },
         { "text": "风吹草低见牛羊。", "pinyin": "fēng chuī cǎo dī xiàn niú yáng", "zh": "风吹过草地，草伏下去，露出了成群的牛羊。", "en": "the wind bends the grass low, and herds of cattle and sheep appear." }
       ],
       "chars": [
@@ -275,7 +275,7 @@
         { "text": "野茫", "rule": "半上声", "base": "yě", "read": "yě", "value": "211", "markChange": false, "where": "天苍苍，野茫茫，", "pos": 3, "zh": "\"野\"是上声，在非上声\"茫\"前读\"半上\"（调值211），拼音不变：yě。", "en": "野 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 茫; the written pinyin stays yě." },
         { "text": "草低", "rule": "半上声", "base": "cǎo", "read": "cǎo", "value": "211", "markChange": false, "where": "风吹草低见牛羊。", "pos": 2, "zh": "\"草\"是上声，在非上声\"低\"前读\"半上\"（调值211），拼音不变：cǎo。", "en": "草 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 低; the written pinyin stays cǎo." }
       ],
-      "tags": ["pastoral"]
+      "tags": ["landscape"]
     },
     {
       "id": "g2u-05-meihua",
@@ -288,9 +288,9 @@
       "volume": "上",
       "lines": [
         { "text": "墙角数枝梅，", "pinyin": "qiáng jiǎo shù zhī méi", "zh": "墙角处有几枝梅花。", "en": "In a corner of the wall, a few sprigs of plum," },
-        { "text": "凌寒独自开。", "pinyin": "líng hán dú zì kāi", "zh": "它们冒着严寒独自开放。", "en": "braving the cold, they bloom alone." },
-        { "text": "遥知不是雪，", "pinyin": "yáo zhī bù shì xuě", "zh": "远远看去就知道那不是雪，", "en": "From afar I know they are not snow," },
-        { "text": "为有暗香来。", "pinyin": "wèi yǒu àn xiāng lái", "zh": "因为有淡淡的清香飘来。", "en": "for a faint fragrance drifts this way." }
+        { "text": "凌寒独自开。", "pinyin": "líng hán dú zì kāi", "zh": "它们冒着严寒独自开放。", "en": "braving the cold, they bloom alone.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "遥知不是雪，", "pinyin": "yáo zhī bù shì xuě", "zh": "远远看去就知道那不是雪，", "en": "From afar I know they are not snow,", "rhetoric": ["foil"] },
+        { "text": "为有暗香来。", "pinyin": "wèi yǒu àn xiāng lái", "zh": "因为有淡淡的清香飘来。", "en": "for a faint fragrance drifts this way.", "rhetoric": ["foil"] }
       ],
       "chars": [
         { "char": "梅", "pinyin": "méi", "zh": "梅花，梅树。", "en": "plum / plum blossom" },
@@ -348,8 +348,8 @@
       "lines": [
         { "text": "蓬头稚子学垂纶，", "pinyin": "péng tóu zhì zǐ xué chuí lún", "zh": "一个头发蓬乱的小孩子在学钓鱼。", "en": "A tousle-haired little child is learning to fish," },
         { "text": "侧坐莓苔草映身。", "pinyin": "cè zuò méi tái cǎo yìng shēn", "zh": "他侧身坐在长满青苔的地方，野草遮映着身子。", "en": "sitting sideways on the mossy bank, grass half-hiding him." },
-        { "text": "路人借问遥招手，", "pinyin": "lù rén jiè wèn yáo zhāo shǒu", "zh": "有过路人远远地向他问路，他连忙招手示意。", "en": "When a passer-by calls out to ask the way, he waves from afar," },
-        { "text": "怕得鱼惊不应人。", "pinyin": "pà dé yú jīng bù yìng rén", "zh": "因为怕惊动了鱼，不敢出声答应。", "en": "afraid of startling the fish, he will not answer aloud." }
+        { "text": "路人借问遥招手，", "pinyin": "lù rén jiè wèn yáo zhāo shǒu", "zh": "有过路人远远地向他问路，他连忙招手示意。", "en": "When a passer-by calls out to ask the way, he waves from afar,", "rhetoric": ["plain-depiction"] },
+        { "text": "怕得鱼惊不应人。", "pinyin": "pà dé yú jīng bù yìng rén", "zh": "因为怕惊动了鱼，不敢出声答应。", "en": "afraid of startling the fish, he will not answer aloud.", "rhetoric": ["plain-depiction"] }
       ],
       "chars": [
         { "char": "小", "pinyin": "xiǎo", "zh": "小，年幼。", "en": "small / little" },
@@ -417,10 +417,10 @@
       "grade": 2,
       "volume": "上",
       "lines": [
-        { "text": "千山鸟飞绝，", "pinyin": "qiān shān niǎo fēi jué", "zh": "群山之中，飞鸟的踪影全都不见了。", "en": "Over a thousand hills, no birds in flight," },
-        { "text": "万径人踪灭。", "pinyin": "wàn jìng rén zōng miè", "zh": "所有的小路上，人的足迹也都消失了。", "en": "on ten thousand paths, no human trace." },
-        { "text": "孤舟蓑笠翁，", "pinyin": "gū zhōu suō lì wēng", "zh": "一叶孤舟上，有个披着蓑衣、戴着斗笠的老翁。", "en": "A lone boat, an old man in straw cape and hat," },
-        { "text": "独钓寒江雪。", "pinyin": "dú diào hán jiāng xuě", "zh": "他独自在寒冷的江面上，冒着大雪垂钓。", "en": "fishing alone in the cold river snow." }
+        { "text": "千山鸟飞绝，", "pinyin": "qiān shān niǎo fēi jué", "zh": "群山之中，飞鸟的踪影全都不见了。", "en": "Over a thousand hills, no birds in flight,", "rhetoric": ["parallelism", "hyperbole"] },
+        { "text": "万径人踪灭。", "pinyin": "wàn jìng rén zōng miè", "zh": "所有的小路上，人的足迹也都消失了。", "en": "on ten thousand paths, no human trace.", "rhetoric": ["parallelism", "hyperbole"] },
+        { "text": "孤舟蓑笠翁，", "pinyin": "gū zhōu suō lì wēng", "zh": "一叶孤舟上，有个披着蓑衣、戴着斗笠的老翁。", "en": "A lone boat, an old man in straw cape and hat,", "rhetoric": ["foil"] },
+        { "text": "独钓寒江雪。", "pinyin": "dú diào hán jiāng xuě", "zh": "他独自在寒冷的江面上，冒着大雪垂钓。", "en": "fishing alone in the cold river snow.", "rhetoric": ["foil"] }
       ],
       "chars": [
         { "char": "江", "pinyin": "jiāng", "zh": "江，江河。", "en": "river" },
@@ -475,7 +475,7 @@
       "volume": "下",
       "lines": [
         { "text": "草长莺飞二月天，", "pinyin": "cǎo zhǎng yīng fēi èr yuè tiān", "zh": "农历二月，青草渐渐发芽生长，黄莺飞来飞去。", "en": "In the second month, grass grows tall and orioles fly about," },
-        { "text": "拂堤杨柳醉春烟。", "pinyin": "fú dī yáng liǔ zuì chūn yān", "zh": "轻拂着堤岸的杨柳，仿佛沉醉在春日的烟雾之中。", "en": "Willows brushing the bank seem drunk on the misty spring." },
+        { "text": "拂堤杨柳醉春烟。", "pinyin": "fú dī yáng liǔ zuì chūn yān", "zh": "轻拂着堤岸的杨柳，仿佛沉醉在春日的烟雾之中。", "en": "Willows brushing the bank seem drunk on the misty spring.", "rhetoric": ["metaphor-analogy"] },
         { "text": "儿童散学归来早，", "pinyin": "ér tóng sàn xué guī lái zǎo", "zh": "村里的孩子们放学回来得早，", "en": "The children come home early from school," },
         { "text": "忙趁东风放纸鸢。", "pinyin": "máng chèn dōng fēng fàng zhǐ yuān", "zh": "急忙趁着东风把风筝放上天空。", "en": "and hurry, while the east wind blows, to fly their kites." }
       ],
@@ -542,10 +542,10 @@
       "grade": 2,
       "volume": "下",
       "lines": [
-        { "text": "碧玉妆成一树高，", "pinyin": "bì yù zhuāng chéng yī shù gāo", "zh": "高高的柳树仿佛是用碧玉装扮而成的。", "en": "The tall willow seems adorned all over with jade," },
-        { "text": "万条垂下绿丝绦。", "pinyin": "wàn tiáo chuí xià lǜ sī tāo", "zh": "千万条柳枝垂下来，像绿色的丝带。", "en": "its countless branches hanging like green silk ribbons." },
-        { "text": "不知细叶谁裁出，", "pinyin": "bù zhī xì yè shuí cái chū", "zh": "不知道这细细的柳叶是谁裁剪出来的，", "en": "Who, I wonder, cut out these delicate leaves?" },
-        { "text": "二月春风似剪刀。", "pinyin": "èr yuè chūn fēng sì jiǎn dāo", "zh": "原来是那二月的春风，好似一把剪刀。", "en": "It was the spring wind of the second month, like a pair of scissors." }
+        { "text": "碧玉妆成一树高，", "pinyin": "bì yù zhuāng chéng yī shù gāo", "zh": "高高的柳树仿佛是用碧玉装扮而成的。", "en": "The tall willow seems adorned all over with jade,", "rhetoric": ["metaphor-analogy"] },
+        { "text": "万条垂下绿丝绦。", "pinyin": "wàn tiáo chuí xià lǜ sī tāo", "zh": "千万条柳枝垂下来，像绿色的丝带。", "en": "its countless branches hanging like green silk ribbons.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "不知细叶谁裁出，", "pinyin": "bù zhī xì yè shuí cái chū", "zh": "不知道这细细的柳叶是谁裁剪出来的，", "en": "Who, I wonder, cut out these delicate leaves?", "rhetoric": ["rhetorical-question"] },
+        { "text": "二月春风似剪刀。", "pinyin": "èr yuè chūn fēng sì jiǎn dāo", "zh": "原来是那二月的春风，好似一把剪刀。", "en": "It was the spring wind of the second month, like a pair of scissors.", "rhetoric": ["rhetorical-question", "metaphor-analogy"] }
       ],
       "chars": [
         { "char": "碧", "pinyin": "bì", "zh": "青绿色。", "en": "jade-green" },
@@ -613,8 +613,8 @@
       "lines": [
         { "text": "毕竟西湖六月中，", "pinyin": "bì jìng xī hú liù yuè zhōng", "zh": "到底是六月中旬的西湖啊，", "en": "After all, it is West Lake in the middle of the sixth month—" },
         { "text": "风光不与四时同。", "pinyin": "fēng guāng bù yǔ sì shí tóng", "zh": "这里的风光与其他季节大不相同。", "en": "its scenery is unlike that of any other season." },
-        { "text": "接天莲叶无穷碧，", "pinyin": "jiē tiān lián yè wú qióng bì", "zh": "莲叶一直延伸到天边，无边无际的碧绿，", "en": "Lotus leaves reach the sky in boundless green," },
-        { "text": "映日荷花别样红。", "pinyin": "yìng rì hé huā bié yàng hóng", "zh": "在阳光的映照下，荷花显得格外鲜红。", "en": "and lotus blossoms, lit by the sun, are an extraordinary red." }
+        { "text": "接天莲叶无穷碧，", "pinyin": "jiē tiān lián yè wú qióng bì", "zh": "莲叶一直延伸到天边，无边无际的碧绿，", "en": "Lotus leaves reach the sky in boundless green,", "rhetoric": ["parallelism"] },
+        { "text": "映日荷花别样红。", "pinyin": "yìng rì hé huā bié yàng hóng", "zh": "在阳光的映照下，荷花显得格外鲜红。", "en": "and lotus blossoms, lit by the sun, are an extraordinary red.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "毕", "pinyin": "bì", "zh": "毕竟、到底。", "en": "after all" },
@@ -681,10 +681,10 @@
       "grade": 2,
       "volume": "下",
       "lines": [
-        { "text": "两个黄鹂鸣翠柳，", "pinyin": "liǎng gè huáng lí míng cuì liǔ", "zh": "两只黄鹂在翠绿的柳树间欢快地鸣叫，", "en": "Two golden orioles sing amid the green willows," },
-        { "text": "一行白鹭上青天。", "pinyin": "yī háng bái lù shàng qīng tiān", "zh": "一行白鹭飞上了高远的蓝天。", "en": "a row of white egrets rises into the blue sky." },
-        { "text": "窗含西岭千秋雪，", "pinyin": "chuāng hán xī lǐng qiān qiū xuě", "zh": "凭窗远望，西岭上覆盖着终年不化的积雪，", "en": "My window frames the western ridge's snow of a thousand autumns," },
-        { "text": "门泊东吴万里船。", "pinyin": "mén bó dōng wú wàn lǐ chuán", "zh": "门前停泊着来自东吴、行程万里的船只。", "en": "at my door are moored boats from Eastern Wu, ten thousand li away." }
+        { "text": "两个黄鹂鸣翠柳，", "pinyin": "liǎng gè huáng lí míng cuì liǔ", "zh": "两只黄鹂在翠绿的柳树间欢快地鸣叫，", "en": "Two golden orioles sing amid the green willows,", "rhetoric": ["parallelism"] },
+        { "text": "一行白鹭上青天。", "pinyin": "yī háng bái lù shàng qīng tiān", "zh": "一行白鹭飞上了高远的蓝天。", "en": "a row of white egrets rises into the blue sky.", "rhetoric": ["parallelism"] },
+        { "text": "窗含西岭千秋雪，", "pinyin": "chuāng hán xī lǐng qiān qiū xuě", "zh": "凭窗远望，西岭上覆盖着终年不化的积雪，", "en": "My window frames the western ridge's snow of a thousand autumns,", "rhetoric": ["parallelism", "hyperbole"] },
+        { "text": "门泊东吴万里船。", "pinyin": "mén bó dōng wú wàn lǐ chuán", "zh": "门前停泊着来自东吴、行程万里的船只。", "en": "at my door are moored boats from Eastern Wu, ten thousand li away.", "rhetoric": ["parallelism", "hyperbole"] }
       ],
       "chars": [
         { "char": "绝", "pinyin": "jué", "zh": "绝句：旧体诗的一种，每首四句。", "en": "(绝句) a four-line poem form" },
@@ -750,10 +750,10 @@
       "grade": 2,
       "volume": "下",
       "lines": [
-        { "text": "离离原上草，", "pinyin": "lí lí yuán shàng cǎo", "zh": "原野上的青草长得茂盛繁密，", "en": "Lush and thick, the grass upon the plain" },
-        { "text": "一岁一枯荣。", "pinyin": "yī suì yī kū róng", "zh": "每年都要经历一次枯萎和一次繁荣。", "en": "withers and flourishes once each year." },
-        { "text": "野火烧不尽，", "pinyin": "yě huǒ shāo bù jìn", "zh": "野火也无法把它烧光，", "en": "Wildfires cannot burn it away," },
-        { "text": "春风吹又生。", "pinyin": "chūn fēng chuī yòu shēng", "zh": "春风一吹它又重新生长出来。", "en": "for the spring breeze blows and it grows again." }
+        { "text": "离离原上草，", "pinyin": "lí lí yuán shàng cǎo", "zh": "原野上的青草长得茂盛繁密，", "en": "Lush and thick, the grass upon the plain", "rhetoric": ["repetition"] },
+        { "text": "一岁一枯荣。", "pinyin": "yī suì yī kū róng", "zh": "每年都要经历一次枯萎和一次繁荣。", "en": "withers and flourishes once each year.", "rhetoric": ["repetition"] },
+        { "text": "野火烧不尽，", "pinyin": "yě huǒ shāo bù jìn", "zh": "野火也无法把它烧光，", "en": "Wildfires cannot burn it away,", "rhetoric": ["parallelism"] },
+        { "text": "春风吹又生。", "pinyin": "chūn fēng chuī yòu shēng", "zh": "春风一吹它又重新生长出来。", "en": "for the spring breeze blows and it grows again.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "离", "pinyin": "lí", "zh": "离离形容草木茂盛的样子。", "en": "lush (reduplicated)" },
@@ -810,10 +810,10 @@
       "grade": 2,
       "volume": "下",
       "lines": [
-        { "text": "春种一粒粟，", "pinyin": "chūn zhòng yī lì sù", "zh": "春天种下一粒谷种，", "en": "In spring a single grain is sown," },
-        { "text": "秋收万颗子。", "pinyin": "qiū shōu wàn kē zǐ", "zh": "秋天就能收获成千上万颗粮食。", "en": "and in autumn ten thousand seeds are reaped." },
-        { "text": "四海无闲田，", "pinyin": "sì hǎi wú xián tián", "zh": "天下到处都没有闲置的田地，", "en": "Within the four seas no field lies idle," },
-        { "text": "农夫犹饿死。", "pinyin": "nóng fū yóu è sǐ", "zh": "可是种田的农民仍然会被饿死。", "en": "yet still the farmers starve to death." }
+        { "text": "春种一粒粟，", "pinyin": "chūn zhòng yī lì sù", "zh": "春天种下一粒谷种，", "en": "In spring a single grain is sown,", "rhetoric": ["parallelism", "hyperbole"] },
+        { "text": "秋收万颗子。", "pinyin": "qiū shōu wàn kē zǐ", "zh": "秋天就能收获成千上万颗粮食。", "en": "and in autumn ten thousand seeds are reaped.", "rhetoric": ["parallelism", "hyperbole"] },
+        { "text": "四海无闲田，", "pinyin": "sì hǎi wú xián tián", "zh": "天下到处都没有闲置的田地，", "en": "Within the four seas no field lies idle,", "rhetoric": ["foil", "hyperbole"] },
+        { "text": "农夫犹饿死。", "pinyin": "nóng fū yóu è sǐ", "zh": "可是种田的农民仍然会被饿死。", "en": "yet still the farmers starve to death.", "rhetoric": ["foil"] }
       ],
       "chars": [
         { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
@@ -869,9 +869,9 @@
       "volume": "下",
       "lines": [
         { "text": "月黑见渔灯，", "pinyin": "yuè hēi jiàn yú dēng", "zh": "漆黑的夜里没有月光，只见到一点渔船上的灯火。", "en": "On a moonless night I spy a fisherman's lamp," },
-        { "text": "孤光一点萤。", "pinyin": "gū guāng yī diǎn yíng", "zh": "那孤零零的光亮，像一只小小的萤火虫。", "en": "a lone speck of light like a single firefly." },
-        { "text": "微微风簇浪，", "pinyin": "wēi wēi fēng cù làng", "zh": "微风轻轻吹起，激起阵阵细浪，", "en": "A faint breeze gathers up the ripples," },
-        { "text": "散作满河星。", "pinyin": "sàn zuò mǎn hé xīng", "zh": "灯光随波散开，化作满河的繁星。", "en": "and the light scatters into a river full of stars." }
+        { "text": "孤光一点萤。", "pinyin": "gū guāng yī diǎn yíng", "zh": "那孤零零的光亮，像一只小小的萤火虫。", "en": "a lone speck of light like a single firefly.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "微微风簇浪，", "pinyin": "wēi wēi fēng cù làng", "zh": "微风轻轻吹起，激起阵阵细浪，", "en": "A faint breeze gathers up the ripples,", "rhetoric": ["repetition"] },
+        { "text": "散作满河星。", "pinyin": "sàn zuò mǎn hé xīng", "zh": "灯光随波散开，化作满河的繁星。", "en": "and the light scatters into a river full of stars.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "月", "pinyin": "yuè", "zh": "月亮、月光。", "en": "moon" },

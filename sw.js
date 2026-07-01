@@ -14,7 +14,7 @@
  *
  * Bump CACHE when you want to force-drop old caches.
  */
-const CACHE = 'learn-chinese-v6';
+const CACHE = 'learn-chinese-v7';
 const CORE_ASSETS = [
   './learnchinese.html',
   './poems.html',
@@ -28,6 +28,7 @@ const CORE_ASSETS = [
   './poems/poems-g6.json',
   './poems/poems-media.json',
   './poems/categories.json',
+  './poems/rhetoric.json',
 ];
 
 self.addEventListener('install', (e) => {

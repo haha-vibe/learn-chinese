@@ -1,0 +1,124 @@
+{
+  "_schema": "Rhetorical-device tags for the poems. Mirrors categories.json: each poem may carry a `rhetoric` array of these keys (multi-label). Poem counts, if ever surfaced, are computed on the fly by the app, not stored here.",
+  "devices": [
+    {
+      "key": "metaphor-analogy",
+      "zh": "比喻／比拟",
+      "en": "Metaphor & personification",
+      "desc_zh": "以彼物喻此物（比喻），或把物当作人、把人当作物来写（比拟，含拟人拟物）。",
+      "desc_en": "Comparing one thing to another (metaphor/simile), or treating an object as a person or vice versa (personification/objectification)."
+    },
+    {
+      "key": "metonymy",
+      "zh": "借代",
+      "en": "Metonymy",
+      "desc_zh": "不直接说出事物本名，而用与其密切相关的事物代替。",
+      "desc_en": "Referring to a thing by something closely associated with it, instead of naming it directly."
+    },
+    {
+      "key": "hyperbole",
+      "zh": "夸张",
+      "en": "Hyperbole",
+      "desc_zh": "故意言过其实，以强化情感或意象。",
+      "desc_en": "Deliberate exaggeration to intensify feeling or imagery."
+    },
+    {
+      "key": "parallelism",
+      "zh": "对偶／排比",
+      "en": "Parallelism",
+      "desc_zh": "上下句字数、结构相同或相近，意义相关或相对（对偶两句，排比三句以上）。",
+      "desc_en": "Two or more clauses with matching length and structure, related or contrasting in meaning."
+    },
+    {
+      "key": "image-listing",
+      "zh": "列锦",
+      "en": "Asyndetic image-listing",
+      "desc_zh": "纯用名词意象并列，不用动词连接，与对偶排比的谓语结构不同。",
+      "desc_en": "A string of noun images juxtaposed with no connecting verb — distinct from parallelism, which keeps a predicate."
+    },
+    {
+      "key": "repetition",
+      "zh": "反复／顶真",
+      "en": "Repetition & chain-linking",
+      "desc_zh": "重复相同词句以强调情感（反复），或前句末字接作后句首字（顶真，反复的链接式变体）。",
+      "desc_en": "Repeating words or phrases for emphasis (repetition), or chaining a clause's last word into the next clause's first word (anadiplosis)."
+    },
+    {
+      "key": "rhetorical-question",
+      "zh": "设问／反问",
+      "en": "Rhetorical question",
+      "desc_zh": "自问自答以引发思考（设问），或用疑问句式表达确定的意思以加强语气（反问）。",
+      "desc_en": "Asking and answering one's own question (self-answered), or phrasing a statement as a question for emphasis (no answer expected)."
+    },
+    {
+      "key": "allusion",
+      "zh": "用典",
+      "en": "Allusion",
+      "desc_zh": "引用历史故事、神话或前人诗句以增加含蓄与厚度。",
+      "desc_en": "Invoking a historical story, myth, or earlier line of verse to add depth and resonance."
+    },
+    {
+      "key": "wordplay",
+      "zh": "双关／拈连",
+      "en": "Pun & zeugma",
+      "desc_zh": "一词兼有字面与隐含双重意义（双关），或把适用甲事物的词语顺势用于乙事物（拈连）。",
+      "desc_en": "A word carrying two meanings at once (pun), or a word fitted for one thing carried over to govern another (zeugma)."
+    },
+    {
+      "key": "interlocking",
+      "zh": "互文",
+      "en": "Interlocking reference",
+      "desc_zh": "上下两句意义互相补充，须合起来理解，不可拆开按字面分别解读。",
+      "desc_en": "Two clauses whose meanings complete each other and must be read together, not parsed separately."
+    },
+    {
+      "key": "synaesthesia",
+      "zh": "通感",
+      "en": "Synaesthesia",
+      "desc_zh": "感官互通描写，如用视觉词语描写听觉感受。",
+      "desc_en": "Describing one sense in terms of another, e.g. a sound described in visual terms."
+    },
+    {
+      "key": "foil",
+      "zh": "衬托／反衬",
+      "en": "Foil: echo & contrast",
+      "desc_zh": "以一事物烘托另一事物：或顺势烘托、强化情感（正衬），或以反差对照取效，如乐景写哀情、哀景写乐情（反衬）。",
+      "desc_en": "Using one image or scene to set off another — either echoing it to reinforce a mood (正衬), or contrasting with it for effect, as in a cheerful scene setting off sorrow (反衬)."
+    },
+    {
+      "key": "gradation",
+      "zh": "层递",
+      "en": "Gradation",
+      "desc_zh": "按程度递增或递减排列，与排比的同级并列不同。",
+      "desc_en": "Arranging items in increasing or decreasing degree — unlike parallelism, which keeps items at the same level."
+    },
+    {
+      "key": "apostrophe",
+      "zh": "呼告",
+      "en": "Apostrophe",
+      "desc_zh": "直呼不在场的人、物或抽象对象，以加强情感。",
+      "desc_en": "Directly addressing an absent person, object, or abstraction to intensify emotion."
+    },
+    {
+      "key": "irony",
+      "zh": "反语",
+      "en": "Irony",
+      "desc_zh": "表面褒实则贬，或表面贬实则褒，以达到讽刺或强调效果。",
+      "desc_en": "Saying the opposite of what is meant, for satire or emphasis."
+    },
+    {
+      "key": "plain-depiction",
+      "zh": "白描",
+      "en": "Plain depiction",
+      "desc_zh": "不加渲染、不施比喻夸张，纯用朴素语言直接勾画人、事、景物的细节。",
+      "desc_en": "Depicting a person, action, or scene's details plainly and directly, with no figurative ornament such as metaphor or hyperbole."
+    },
+    {
+      "key": "real-imagined",
+      "zh": "虚实结合",
+      "en": "Real and imagined",
+      "desc_zh": "将眼前实见、实写之景与想象、推断、虚拟之景交织呈现，虚实相生。",
+      "desc_en": "Interweaving what is actually seen or stated with what is imagined, inferred, or conjectured beyond it."
+    }
+  ]
+}

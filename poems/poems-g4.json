@@ -28,8 +28,8 @@
       "volume": "上",
       "lines": [
         { "text": "空山不见人，", "pinyin": "kōng shān bù jiàn rén", "zh": "空旷的山中看不见一个人影，", "en": "On the empty mountain no one can be seen," },
-        { "text": "但闻人语响。", "pinyin": "dàn wén rén yǔ xiǎng", "zh": "只听见有人说话的声音回响。", "en": "Yet voices of people are heard echoing." },
-        { "text": "返景入深林，", "pinyin": "fǎn jǐng rù shēn lín", "zh": "夕阳的余晖返照进幽深的树林，", "en": "Returning sunlight enters the deep forest," },
+        { "text": "但闻人语响。", "pinyin": "dàn wén rén yǔ xiǎng", "zh": "只听见有人说话的声音回响。", "en": "Yet voices of people are heard echoing.", "rhetoric": ["foil"] },
+        { "text": "返景入深林，", "pinyin": "fǎn jǐng rù shēn lín", "zh": "夕阳的余晖返照进幽深的树林，", "en": "Returning sunlight enters the deep forest,", "rhetoric": ["foil"] },
         { "text": "复照青苔上。", "pinyin": "fù zhào qīng tái shàng", "zh": "又映照在青翠的苔藓之上。", "en": "And shines again upon the green moss." }
       ],
       "chars": [
@@ -75,7 +75,7 @@
         { "text": "景入", "rule": "半上声", "base": "jǐng", "read": "jǐng", "value": "211", "markChange": false, "where": "返景入深林，", "pos": 1, "zh": "\"景\"是上声，在非上声\"入\"前读\"半上\"（调值211），拼音不变：jǐng。", "en": "景 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 入; the written pinyin stays jǐng." },
         { "text": "复照", "rule": "半去声", "base": "fù", "read": "fù", "value": "53", "markChange": false, "where": "复照青苔上。", "pos": 0, "zh": "\"复\"是去声，在去声\"照\"前读\"半去\"（调值53），拼音不变：fù。", "en": "复 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 照; the written pinyin stays fù." }
       ],
-      "tags": ["landscape"]
+      "tags": ["recluse"]
     },
     {
       "id": "g4u-02-mujiangyin",
@@ -88,9 +88,9 @@
       "volume": "上",
       "lines": [
         { "text": "一道残阳铺水中，", "pinyin": "yī dào cán yáng pū shuǐ zhōng", "zh": "一道夕阳的余晖铺洒在江水之中，", "en": "A ray of the setting sun spreads across the water," },
-        { "text": "半江瑟瑟半江红。", "pinyin": "bàn jiāng sè sè bàn jiāng hóng", "zh": "半边江面碧绿如玉，半边江面映成红色。", "en": "Half the river jade-green, half the river red." },
+        { "text": "半江瑟瑟半江红。", "pinyin": "bàn jiāng sè sè bàn jiāng hóng", "zh": "半边江面碧绿如玉，半边江面映成红色。", "en": "Half the river jade-green, half the river red.", "rhetoric": ["parallelism", "repetition"] },
         { "text": "可怜九月初三夜，", "pinyin": "kě lián jiǔ yuè chū sān yè", "zh": "最可爱的是这九月初三的夜晚，", "en": "How lovely this night of the third of the ninth month," },
-        { "text": "露似真珠月似弓。", "pinyin": "lù sì zhēn zhū yuè sì gōng", "zh": "露珠像珍珠一样晶莹，新月像一张弯弓。", "en": "Dew like pearls, the moon like a bent bow." }
+        { "text": "露似真珠月似弓。", "pinyin": "lù sì zhēn zhū yuè sì gōng", "zh": "露珠像珍珠一样晶莹，新月像一张弯弓。", "en": "Dew like pearls, the moon like a bent bow.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "一", "pinyin": "yī", "zh": "数词，一。", "en": "one" },
@@ -152,8 +152,8 @@
       "grade": 4,
       "volume": "上",
       "lines": [
-        { "text": "横看成岭侧成峰，", "pinyin": "héng kàn chéng lǐng cè chéng fēng", "zh": "从正面横看庐山是连绵的山岭，从侧面看却是高耸的山峰，", "en": "Seen head-on it's a ridge, from the side a peak," },
-        { "text": "远近高低各不同。", "pinyin": "yuǎn jìn gāo dī gè bù tóng", "zh": "从远、近、高、低不同的角度看，景象各不相同。", "en": "Far, near, high, low — each view differs." },
+        { "text": "横看成岭侧成峰，", "pinyin": "héng kàn chéng lǐng cè chéng fēng", "zh": "从正面横看庐山是连绵的山岭，从侧面看却是高耸的山峰，", "en": "Seen head-on it's a ridge, from the side a peak,", "rhetoric": ["parallelism"] },
+        { "text": "远近高低各不同。", "pinyin": "yuǎn jìn gāo dī gè bù tóng", "zh": "从远、近、高、低不同的角度看，景象各不相同。", "en": "Far, near, high, low — each view differs.", "rhetoric": ["parallelism"] },
         { "text": "不识庐山真面目，", "pinyin": "bù shí lú shān zhēn miàn mù", "zh": "我认不清庐山真正的面貌，", "en": "I cannot know the true face of Mount Lu," },
         { "text": "只缘身在此山中。", "pinyin": "zhǐ yuán shēn zài cǐ shān zhōng", "zh": "只因为我自己就身处在这座山里。", "en": "Only because I am within the mountain itself." }
       ],
@@ -217,10 +217,10 @@
       "grade": 4,
       "volume": "上",
       "lines": [
-        { "text": "梅雪争春未肯降，", "pinyin": "méi xuě zhēng chūn wèi kěn xiáng", "zh": "梅花和雪花都争着报春，谁也不肯认输，", "en": "Plum and snow vie for spring, neither will yield," },
+        { "text": "梅雪争春未肯降，", "pinyin": "méi xuě zhēng chūn wèi kěn xiáng", "zh": "梅花和雪花都争着报春，谁也不肯认输，", "en": "Plum and snow vie for spring, neither will yield,", "rhetoric": ["metaphor-analogy"] },
         { "text": "骚人阁笔费评章。", "pinyin": "sāo rén gé bǐ fèi píng zhāng", "zh": "诗人放下笔，为评判它们的高下而费尽心思。", "en": "The poet lays down his brush, hard-pressed to judge them." },
-        { "text": "梅须逊雪三分白，", "pinyin": "méi xū xùn xuě sān fēn bái", "zh": "论洁白，梅花要逊色于雪花三分，", "en": "In whiteness plum yields to snow three parts," },
-        { "text": "雪却输梅一段香。", "pinyin": "xuě què shū méi yī duàn xiāng", "zh": "论清香，雪花却比不上梅花的一缕芬芳。", "en": "But snow loses to plum a measure of fragrance." }
+        { "text": "梅须逊雪三分白，", "pinyin": "méi xū xùn xuě sān fēn bái", "zh": "论洁白，梅花要逊色于雪花三分，", "en": "In whiteness plum yields to snow three parts,", "rhetoric": ["parallelism"] },
+        { "text": "雪却输梅一段香。", "pinyin": "xuě què shū méi yī duàn xiāng", "zh": "论清香，雪花却比不上梅花的一缕芬芳。", "en": "But snow loses to plum a measure of fragrance.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "梅", "pinyin": "méi", "zh": "梅花。", "en": "plum blossom" },
@@ -283,8 +283,8 @@
       "grade": 4,
       "volume": "上",
       "lines": [
-        { "text": "秦时明月汉时关，", "pinyin": "qín shí míng yuè hàn shí guān", "zh": "依旧是秦汉时的明月和秦汉时的边关，", "en": "The bright moon of Qin, the passes of Han," },
-        { "text": "万里长征人未还。", "pinyin": "wàn lǐ cháng zhēng rén wèi huán", "zh": "出征万里的将士至今还没有归来。", "en": "Soldiers on the long march ten thousand li have not returned." },
+        { "text": "秦时明月汉时关，", "pinyin": "qín shí míng yuè hàn shí guān", "zh": "依旧是秦汉时的明月和秦汉时的边关，", "en": "The bright moon of Qin, the passes of Han,", "rhetoric": ["interlocking"] },
+        { "text": "万里长征人未还。", "pinyin": "wàn lǐ cháng zhēng rén wèi huán", "zh": "出征万里的将士至今还没有归来。", "en": "Soldiers on the long march ten thousand li have not returned.", "rhetoric": ["hyperbole"] },
         { "text": "但使龙城飞将在，", "pinyin": "dàn shǐ lóng chéng fēi jiàng zài", "zh": "只要镇守龙城的飞将军李广还在，", "en": "If only the Flying General of Dragon City were here," },
         { "text": "不教胡马度阴山。", "pinyin": "bù jiào hú mǎ dù yīn shān", "zh": "绝不会让敌人的战马越过阴山。", "en": "He would not let the foe's horses cross Mount Yin." }
       ],
@@ -348,10 +348,10 @@
       "grade": 4,
       "volume": "上",
       "lines": [
-        { "text": "葡萄美酒夜光杯，", "pinyin": "pú táo měi jiǔ yè guāng bēi", "zh": "甘美的葡萄酒盛满了夜光杯，", "en": "Fine grape wine in cups of glowing jade," },
+        { "text": "葡萄美酒夜光杯，", "pinyin": "pú táo měi jiǔ yè guāng bēi", "zh": "甘美的葡萄酒盛满了夜光杯，", "en": "Fine grape wine in cups of glowing jade,", "rhetoric": ["foil"] },
         { "text": "欲饮琵琶马上催。", "pinyin": "yù yǐn pí pá mǎ shàng cuī", "zh": "正想开怀畅饮，马上的琵琶声却在催人出征。", "en": "About to drink, the pipa on horseback urges us on." },
         { "text": "醉卧沙场君莫笑，", "pinyin": "zuì wò shā chǎng jūn mò xiào", "zh": "即使醉倒在战场上，您也不要见笑，", "en": "If I lie drunk on the battlefield, do not laugh," },
-        { "text": "古来征战几人回。", "pinyin": "gǔ lái zhēng zhàn jǐ rén huí", "zh": "自古以来出征作战的人有几个能活着回来呢？", "en": "Since ancient times, how few of those who fought returned?" }
+        { "text": "古来征战几人回。", "pinyin": "gǔ lái zhēng zhàn jǐ rén huí", "zh": "自古以来出征作战的人有几个能活着回来呢？", "en": "Since ancient times, how few of those who fought returned?", "rhetoric": ["foil", "rhetorical-question"] }
       ],
       "chars": [
         { "char": "葡", "pinyin": "pú", "zh": "葡萄。", "en": "grape (1st char)" },
@@ -419,10 +419,10 @@
       "grade": 4,
       "volume": "上",
       "lines": [
-        { "text": "生当作人杰，", "pinyin": "shēng dāng zuò rén jié", "zh": "活着就应当做人中的豪杰，", "en": "In life one should be a hero among men," },
-        { "text": "死亦为鬼雄。", "pinyin": "sǐ yì wéi guǐ xióng", "zh": "死了也要做鬼中的英雄。", "en": "In death, a champion among ghosts." },
-        { "text": "至今思项羽，", "pinyin": "zhì jīn sī xiàng yǔ", "zh": "直到今天人们还思念项羽，", "en": "To this day we still think of Xiang Yu," },
-        { "text": "不肯过江东。", "pinyin": "bù kěn guò jiāng dōng", "zh": "因为他宁死也不肯逃回江东。", "en": "Who would not cross back to Jiangdong." }
+        { "text": "生当作人杰，", "pinyin": "shēng dāng zuò rén jié", "zh": "活着就应当做人中的豪杰，", "en": "In life one should be a hero among men,", "rhetoric": ["parallelism"] },
+        { "text": "死亦为鬼雄。", "pinyin": "sǐ yì wéi guǐ xióng", "zh": "死了也要做鬼中的英雄。", "en": "In death, a champion among ghosts.", "rhetoric": ["parallelism"] },
+        { "text": "至今思项羽，", "pinyin": "zhì jīn sī xiàng yǔ", "zh": "直到今天人们还思念项羽，", "en": "To this day we still think of Xiang Yu,", "rhetoric": ["allusion"] },
+        { "text": "不肯过江东。", "pinyin": "bù kěn guò jiāng dōng", "zh": "因为他宁死也不肯逃回江东。", "en": "Who would not cross back to Jiangdong.", "rhetoric": ["allusion"] }
       ],
       "chars": [
         { "char": "生", "pinyin": "shēng", "zh": "活着，生存。", "en": "to live" },
@@ -478,10 +478,10 @@
       "grade": 4,
       "volume": "上",
       "lines": [
-        { "text": "千里黄云白日曛，", "pinyin": "qiān lǐ huáng yún bái rì xūn", "zh": "千里长空布满黄云，白天的太阳也变得昏暗，", "en": "Yellow clouds for a thousand li, the day's sun dimmed," },
-        { "text": "北风吹雁雪纷纷。", "pinyin": "běi fēng chuī yàn xuě fēn fēn", "zh": "北风吹送着大雁，雪花纷纷扬扬地飘落。", "en": "North wind drives the geese amid swirling snow." },
+        { "text": "千里黄云白日曛，", "pinyin": "qiān lǐ huáng yún bái rì xūn", "zh": "千里长空布满黄云，白天的太阳也变得昏暗，", "en": "Yellow clouds for a thousand li, the day's sun dimmed,", "rhetoric": ["hyperbole"] },
+        { "text": "北风吹雁雪纷纷。", "pinyin": "běi fēng chuī yàn xuě fēn fēn", "zh": "北风吹送着大雁，雪花纷纷扬扬地飘落。", "en": "North wind drives the geese amid swirling snow.", "rhetoric": ["repetition"] },
         { "text": "莫愁前路无知己，", "pinyin": "mò chóu qián lù wú zhī jǐ", "zh": "不要担心前方的路上没有知心的朋友，", "en": "Do not grieve that the road ahead lacks a true friend," },
-        { "text": "天下谁人不识君。", "pinyin": "tiān xià shuí rén bù shí jūn", "zh": "普天之下有谁不认识你呢？", "en": "Who under heaven does not know you?" }
+        { "text": "天下谁人不识君。", "pinyin": "tiān xià shuí rén bù shí jūn", "zh": "普天之下有谁不认识你呢？", "en": "Who under heaven does not know you?", "rhetoric": ["rhetorical-question"] }
       ],
       "chars": [
         { "char": "千", "pinyin": "qiān", "zh": "数词，千。", "en": "thousand" },
@@ -532,7 +532,7 @@
         { "text": "北风", "rule": "半上声", "base": "běi", "read": "běi", "value": "211", "markChange": false, "where": "北风吹雁雪纷纷。", "pos": 0, "zh": "\"北\"是上声，在非上声\"风\"前读\"半上\"（调值211），拼音不变：běi。", "en": "北 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 风; the written pinyin stays běi." },
         { "text": "雪纷", "rule": "半上声", "base": "xuě", "read": "xuě", "value": "211", "markChange": false, "where": "北风吹雁雪纷纷。", "pos": 4, "zh": "\"雪\"是上声，在非上声\"纷\"前读\"半上\"（调值211），拼音不变：xuě。", "en": "雪 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 纷; the written pinyin stays xuě." }
       ],
-      "tags": ["farewell", "kinship", "season-winter"]
+      "tags": ["farewell", "season-winter"]
     },
     {
       "id": "g4u-09-change",
@@ -546,8 +546,8 @@
       "lines": [
         { "text": "云母屏风烛影深，", "pinyin": "yún mǔ píng fēng zhú yǐng shēn", "zh": "云母装饰的屏风上，烛光的影子渐渐暗淡，", "en": "On the mica screen the candle's shadow deepens," },
         { "text": "长河渐落晓星沉。", "pinyin": "cháng hé jiàn luò xiǎo xīng chén", "zh": "银河慢慢西落，晨星也渐渐隐没。", "en": "The Milky Way sinks low, the dawn stars fade." },
-        { "text": "嫦娥应悔偷灵药，", "pinyin": "cháng é yīng huǐ tōu líng yào", "zh": "嫦娥应该后悔当初偷吃了长生不死的仙药，", "en": "Chang'e must regret stealing the elixir," },
-        { "text": "碧海青天夜夜心。", "pinyin": "bì hǎi qīng tiān yè yè xīn", "zh": "如今面对碧海青天，夜夜都是孤寂的心情。", "en": "Facing blue sea and sky, lonely night after night." }
+        { "text": "嫦娥应悔偷灵药，", "pinyin": "cháng é yīng huǐ tōu líng yào", "zh": "嫦娥应该后悔当初偷吃了长生不死的仙药，", "en": "Chang'e must regret stealing the elixir,", "rhetoric": ["allusion"] },
+        { "text": "碧海青天夜夜心。", "pinyin": "bì hǎi qīng tiān yè yè xīn", "zh": "如今面对碧海青天，夜夜都是孤寂的心情。", "en": "Facing blue sea and sky, lonely night after night.", "rhetoric": ["allusion", "repetition"] }
       ],
       "chars": [
         { "char": "云", "pinyin": "yún", "zh": "云母，一种矿石。", "en": "mica (1st char)" },
@@ -613,7 +613,7 @@
       "grade": 4,
       "volume": "下",
       "lines": [
-        { "text": "篱落疏疏一径深，", "pinyin": "lí luò shū shū yī jìng shēn", "zh": "稀疏的篱笆旁有一条小路伸向远方。", "en": "A sparse hedge lines a path winding far into the distance." },
+        { "text": "篱落疏疏一径深，", "pinyin": "lí luò shū shū yī jìng shēn", "zh": "稀疏的篱笆旁有一条小路伸向远方。", "en": "A sparse hedge lines a path winding far into the distance.", "rhetoric": ["repetition"] },
         { "text": "树头新绿未成阴。", "pinyin": "shù tóu xīn lǜ wèi chéng yīn", "zh": "树枝上刚长出的嫩叶还没有形成浓密的树荫。", "en": "The fresh green on the branches has not yet grown into shade." },
         { "text": "儿童急走追黄蝶，", "pinyin": "ér tóng jí zǒu zhuī huáng dié", "zh": "小孩子飞快地奔跑去追赶黄色的蝴蝶。", "en": "Children run swiftly, chasing a yellow butterfly." },
         { "text": "飞入菜花无处寻。", "pinyin": "fēi rù cài huā wú chù xún", "zh": "蝴蝶飞进金黄的菜花丛中，再也找不到了。", "en": "It flies into the rape blossoms and can be found no more." }
@@ -677,10 +677,10 @@
       "grade": 4,
       "volume": "下",
       "lines": [
-        { "text": "梅子金黄杏子肥，", "pinyin": "méi zǐ jīn huáng xìng zǐ féi", "zh": "梅子已经金黄成熟，杏子也长得又大又肥。", "en": "The plums have turned golden ripe and the apricots grown plump." },
-        { "text": "麦花雪白菜花稀。", "pinyin": "mài huā xuě bái cài huā xī", "zh": "麦子的花一片雪白，油菜的花却已稀疏。", "en": "Wheat blossoms are snowy white while the rape flowers grow thin." },
-        { "text": "日长篱落无人过，", "pinyin": "rì cháng lí luò wú rén guò", "zh": "白天渐渐变长，篱笆边没有人经过。", "en": "The days grow long; no one passes by the hedge." },
-        { "text": "惟有蜻蜓蛱蝶飞。", "pinyin": "wéi yǒu qīng tíng jiá dié fēi", "zh": "只有蜻蜓和蝴蝶在空中飞来飞去。", "en": "Only dragonflies and butterflies are flitting about." }
+        { "text": "梅子金黄杏子肥，", "pinyin": "méi zǐ jīn huáng xìng zǐ féi", "zh": "梅子已经金黄成熟，杏子也长得又大又肥。", "en": "The plums have turned golden ripe and the apricots grown plump.", "rhetoric": ["parallelism"] },
+        { "text": "麦花雪白菜花稀。", "pinyin": "mài huā xuě bái cài huā xī", "zh": "麦子的花一片雪白，油菜的花却已稀疏。", "en": "Wheat blossoms are snowy white while the rape flowers grow thin.", "rhetoric": ["parallelism"] },
+        { "text": "日长篱落无人过，", "pinyin": "rì cháng lí luò wú rén guò", "zh": "白天渐渐变长，篱笆边没有人经过。", "en": "The days grow long; no one passes by the hedge.", "rhetoric": ["foil"] },
+        { "text": "惟有蜻蜓蛱蝶飞。", "pinyin": "wéi yǒu qīng tíng jiá dié fēi", "zh": "只有蜻蜓和蝴蝶在空中飞来飞去。", "en": "Only dragonflies and butterflies are flitting about.", "rhetoric": ["foil"] }
       ],
       "chars": [
         { "char": "梅", "pinyin": "méi", "zh": "梅子，梅树的果实。", "en": "plum" },
@@ -746,10 +746,10 @@
         { "text": "溪上青青草。", "pinyin": "xī shàng qīng qīng cǎo", "zh": "小溪边长满了青翠的小草。", "en": "By the stream the grass grows green and lush." },
         { "text": "醉里吴音相媚好，", "pinyin": "zuì lǐ wú yīn xiāng mèi hǎo", "zh": "微带醉意的吴地方言听起来温柔动听。", "en": "Tipsy voices in soft Wu dialect tease tenderly to and fro." },
         { "text": "白发谁家翁媪？", "pinyin": "bái fà shuí jiā wēng ǎo", "zh": "那白发苍苍的老翁老妇是谁家的呢？", "en": "Whose white-haired old man and woman might these be?" },
-        { "text": "大儿锄豆溪东，", "pinyin": "dà ér chú dòu xī dōng", "zh": "大儿子在小溪东边的豆田里锄草。", "en": "The eldest son hoes beans east of the stream." },
-        { "text": "中儿正织鸡笼。", "pinyin": "zhōng ér zhèng zhī jī lóng", "zh": "二儿子正在编织鸡笼。", "en": "The middle son is busy weaving a chicken coop." },
+        { "text": "大儿锄豆溪东，", "pinyin": "dà ér chú dòu xī dōng", "zh": "大儿子在小溪东边的豆田里锄草。", "en": "The eldest son hoes beans east of the stream.", "rhetoric": ["plain-depiction"] },
+        { "text": "中儿正织鸡笼。", "pinyin": "zhōng ér zhèng zhī jī lóng", "zh": "二儿子正在编织鸡笼。", "en": "The middle son is busy weaving a chicken coop.", "rhetoric": ["plain-depiction"] },
         { "text": "最喜小儿亡赖，", "pinyin": "zuì xǐ xiǎo ér wú lài", "zh": "最讨人喜欢的是顽皮淘气的小儿子。", "en": "Most delightful is the youngest, a playful little scamp," },
-        { "text": "溪头卧剥莲蓬。", "pinyin": "xī tóu wò bāo lián péng", "zh": "他趴在溪边剥着莲蓬玩。", "en": "Lying by the stream, peeling open a lotus pod." }
+        { "text": "溪头卧剥莲蓬。", "pinyin": "xī tóu wò bāo lián péng", "zh": "他趴在溪边剥着莲蓬玩。", "en": "Lying by the stream, peeling open a lotus pod.", "rhetoric": ["plain-depiction"] }
       ],
       "chars": [
         { "char": "茅", "pinyin": "máo", "zh": "茅草。", "en": "thatch / reed" },
@@ -825,9 +825,9 @@
       "volume": "下",
       "lines": [
         { "text": "黄四娘家花满蹊，", "pinyin": "huáng sì niáng jiā huā mǎn xī", "zh": "黄四娘家的小路上开满了鲜花。", "en": "At Madam Huang's home, flowers fill the little path." },
-        { "text": "千朵万朵压枝低。", "pinyin": "qiān duǒ wàn duǒ yā zhī dī", "zh": "千朵万朵的花把枝条都压弯了。", "en": "Thousands upon thousands weigh the branches low." },
-        { "text": "留连戏蝶时时舞，", "pinyin": "liú lián xì dié shí shí wǔ", "zh": "流连花间嬉戏的蝴蝶时时翩翩起舞。", "en": "Lingering, frolicking butterflies dance now and then." },
-        { "text": "自在娇莺恰恰啼。", "pinyin": "zì zài jiāo yīng qià qià tí", "zh": "自由自在的黄莺娇声啼鸣，恰恰悦耳。", "en": "Carefree, the lovely orioles sing just so." }
+        { "text": "千朵万朵压枝低。", "pinyin": "qiān duǒ wàn duǒ yā zhī dī", "zh": "千朵万朵的花把枝条都压弯了。", "en": "Thousands upon thousands weigh the branches low.", "rhetoric": ["hyperbole"] },
+        { "text": "留连戏蝶时时舞，", "pinyin": "liú lián xì dié shí shí wǔ", "zh": "流连花间嬉戏的蝴蝶时时翩翩起舞。", "en": "Lingering, frolicking butterflies dance now and then.", "rhetoric": ["repetition", "parallelism"] },
+        { "text": "自在娇莺恰恰啼。", "pinyin": "zì zài jiāo yīng qià qià tí", "zh": "自由自在的黄莺娇声啼鸣，恰恰悦耳。", "en": "Carefree, the lovely orioles sing just so.", "rhetoric": ["repetition", "parallelism"] }
       ],
       "chars": [
         { "char": "黄", "pinyin": "huáng", "zh": "黄，姓氏。", "en": "Huang (surname)" },
@@ -892,7 +892,7 @@
         { "text": "不论平地与山尖，", "pinyin": "bù lùn píng dì yǔ shān jiān", "zh": "无论是平原还是高高的山顶。", "en": "Whether on level ground or mountain peak," },
         { "text": "无限风光尽被占。", "pinyin": "wú xiàn fēng guāng jìn bèi zhàn", "zh": "无边的美好春光都被蜜蜂占尽了。", "en": "Boundless beauty is all claimed by the bees." },
         { "text": "采得百花成蜜后，", "pinyin": "cǎi dé bǎi huā chéng mì hòu", "zh": "采集了百花酿成蜂蜜以后。", "en": "After gathering a hundred flowers into honey," },
-        { "text": "为谁辛苦为谁甜？", "pinyin": "wèi shuí xīn kǔ wèi shuí tián", "zh": "到底是为谁辛劳，又是为谁酿出甜蜜呢？", "en": "For whom the toil, and for whom the sweetness?" }
+        { "text": "为谁辛苦为谁甜？", "pinyin": "wèi shuí xīn kǔ wèi shuí tián", "zh": "到底是为谁辛劳，又是为谁酿出甜蜜呢？", "en": "For whom the toil, and for whom the sweetness?", "rhetoric": ["rhetorical-question", "parallelism", "repetition"] }
       ],
       "chars": [
         { "char": "不", "pinyin": "bù", "zh": "不。", "en": "not" },
@@ -956,10 +956,10 @@
       "grade": 4,
       "volume": "下",
       "lines": [
-        { "text": "众鸟高飞尽，", "pinyin": "zhòng niǎo gāo fēi jìn", "zh": "成群的鸟儿都高高地飞走，无影无踪。", "en": "Flocks of birds fly high and vanish away." },
-        { "text": "孤云独去闲。", "pinyin": "gū yún dú qù xián", "zh": "一片孤独的白云也悠然飘去。", "en": "A lone cloud drifts off idly on its own." },
-        { "text": "相看两不厌，", "pinyin": "xiāng kàn liǎng bù yàn", "zh": "我和敬亭山互相对望，怎么也看不够。", "en": "Gazing at each other, neither ever tires—" },
-        { "text": "只有敬亭山。", "pinyin": "zhǐ yǒu jìng tíng shān", "zh": "如今相伴的只有这座敬亭山了。", "en": "There is only Jingting Mountain and me." }
+        { "text": "众鸟高飞尽，", "pinyin": "zhòng niǎo gāo fēi jìn", "zh": "成群的鸟儿都高高地飞走，无影无踪。", "en": "Flocks of birds fly high and vanish away.", "rhetoric": ["parallelism"] },
+        { "text": "孤云独去闲。", "pinyin": "gū yún dú qù xián", "zh": "一片孤独的白云也悠然飘去。", "en": "A lone cloud drifts off idly on its own.", "rhetoric": ["parallelism"] },
+        { "text": "相看两不厌，", "pinyin": "xiāng kàn liǎng bù yàn", "zh": "我和敬亭山互相对望，怎么也看不够。", "en": "Gazing at each other, neither ever tires—", "rhetoric": ["metaphor-analogy"] },
+        { "text": "只有敬亭山。", "pinyin": "zhǐ yǒu jìng tíng shān", "zh": "如今相伴的只有这座敬亭山了。", "en": "There is only Jingting Mountain and me.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "众", "pinyin": "zhòng", "zh": "众多。", "en": "many / flock" },
@@ -1004,7 +1004,7 @@
         { "text": "只有", "rule": "上上变调", "base": "zhǐ", "read": "zhí", "value": "35", "markChange": true, "where": "只有敬亭山。", "pos": 0, "zh": "\"只\"在上声\"有\"前变读阳平（第二声）：zhǐ→zhí。", "en": "只 comes before the third-tone 有, so it is read in second tone: zhǐ → zhí." },
         { "text": "有敬", "rule": "半上声", "base": "yǒu", "read": "yǒu", "value": "211", "markChange": false, "where": "只有敬亭山。", "pos": 1, "zh": "\"有\"是上声，在非上声\"敬\"前读\"半上\"（调值211），拼音不变：yǒu。", "en": "有 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 敬; the written pinyin stays yǒu." }
       ],
-      "tags": ["landscape"]
+      "tags": ["recluse"]
     },
     {
       "id": "g4d-07-furonglousongxinjian",
@@ -1017,9 +1017,9 @@
       "volume": "下",
       "lines": [
         { "text": "寒雨连江夜入吴，", "pinyin": "hán yǔ lián jiāng yè rù wú", "zh": "迷蒙的寒雨连着江面，趁夜笼罩了吴地。", "en": "Cold rain over the river entered Wu by night." },
-        { "text": "平明送客楚山孤。", "pinyin": "píng míng sòng kè chǔ shān gū", "zh": "清晨送别友人，只见楚地的山孤零零的。", "en": "At dawn I see my friend off; the Chu hills stand alone." },
+        { "text": "平明送客楚山孤。", "pinyin": "píng míng sòng kè chǔ shān gū", "zh": "清晨送别友人，只见楚地的山孤零零的。", "en": "At dawn I see my friend off; the Chu hills stand alone.", "rhetoric": ["metaphor-analogy"] },
         { "text": "洛阳亲友如相问，", "pinyin": "luò yáng qīn yǒu rú xiāng wèn", "zh": "洛阳的亲友如果向你问起我。", "en": "If kin and friends in Luoyang should ask after me," },
-        { "text": "一片冰心在玉壶。", "pinyin": "yī piàn bīng xīn zài yù hú", "zh": "就说我的心依然像冰一样清澈，存放在晶莹的玉壶里。", "en": "Say my heart is ice-pure, kept in a jade jar." }
+        { "text": "一片冰心在玉壶。", "pinyin": "yī piàn bīng xīn zài yù hú", "zh": "就说我的心依然像冰一样清澈，存放在晶莹的玉壶里。", "en": "Say my heart is ice-pure, kept in a jade jar.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "寒", "pinyin": "hán", "zh": "寒冷。", "en": "cold" },
@@ -1146,9 +1146,9 @@
       "volume": "下",
       "lines": [
         { "text": "我家洗砚池头树，", "pinyin": "wǒ jiā xǐ yàn chí tóu shù", "zh": "我家洗笔砚的水池边长着一棵梅树。", "en": "By the inkstone-washing pool at my home grows a tree," },
-        { "text": "朵朵花开淡墨痕。", "pinyin": "duǒ duǒ huā kāi dàn mò hén", "zh": "朵朵盛开的梅花都带着淡淡的墨色痕迹。", "en": "Each blossom opens with traces of pale ink." },
-        { "text": "不要人夸好颜色，", "pinyin": "bù yào rén kuā hǎo yán sè", "zh": "它不需要别人夸赞它的颜色好看。", "en": "It seeks no one's praise for its lovely colour," },
-        { "text": "只留清气满乾坤。", "pinyin": "zhǐ liú qīng qì mǎn qián kūn", "zh": "只愿把清香之气留满整个天地之间。", "en": "Wishing only to fill heaven and earth with pure fragrance." }
+        { "text": "朵朵花开淡墨痕。", "pinyin": "duǒ duǒ huā kāi dàn mò hén", "zh": "朵朵盛开的梅花都带着淡淡的墨色痕迹。", "en": "Each blossom opens with traces of pale ink.", "rhetoric": ["repetition"] },
+        { "text": "不要人夸好颜色，", "pinyin": "bù yào rén kuā hǎo yán sè", "zh": "它不需要别人夸赞它的颜色好看。", "en": "It seeks no one's praise for its lovely colour,", "rhetoric": ["metaphor-analogy"] },
+        { "text": "只留清气满乾坤。", "pinyin": "zhǐ liú qīng qì mǎn qián kūn", "zh": "只愿把清香之气留满整个天地之间。", "en": "Wishing only to fill heaven and earth with pure fragrance.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "我", "pinyin": "wǒ", "zh": "我。", "en": "I / my" },
@@ -1216,14 +1216,14 @@
       "grade": 4,
       "volume": "下",
       "lines": [
-        { "text": "风雨送春归，", "pinyin": "fēng yǔ sòng chūn guī", "zh": "风雨送走了春天，", "en": "Wind and rain send the spring on its way," },
-        { "text": "飞雪迎春到。", "pinyin": "fēi xuě yíng chūn dào", "zh": "飞舞的大雪又迎来了春天的到来。", "en": "Flying snow welcomes the spring's return." },
-        { "text": "已是悬崖百丈冰，", "pinyin": "yǐ shì xuán yá bǎi zhàng bīng", "zh": "悬崖上已经结了百丈高的坚冰，", "en": "Already cliffs are sheathed in a hundred fathoms of ice," },
-        { "text": "犹有花枝俏。", "pinyin": "yóu yǒu huā zhī qiào", "zh": "却仍然有梅花俏丽地绽放在枝头。", "en": "Yet plum branches still bloom bright and fair." },
-        { "text": "俏也不争春，", "pinyin": "qiào yě bù zhēng chūn", "zh": "梅花虽然俏丽，却不去争抢春光，", "en": "Fair, yet it does not vie for spring," },
-        { "text": "只把春来报。", "pinyin": "zhǐ bǎ chūn lái bào", "zh": "只是来向人们报告春天的消息。", "en": "It only heralds the coming of spring." },
+        { "text": "风雨送春归，", "pinyin": "fēng yǔ sòng chūn guī", "zh": "风雨送走了春天，", "en": "Wind and rain send the spring on its way,", "rhetoric": ["parallelism", "metaphor-analogy"] },
+        { "text": "飞雪迎春到。", "pinyin": "fēi xuě yíng chūn dào", "zh": "飞舞的大雪又迎来了春天的到来。", "en": "Flying snow welcomes the spring's return.", "rhetoric": ["parallelism", "metaphor-analogy"] },
+        { "text": "已是悬崖百丈冰，", "pinyin": "yǐ shì xuán yá bǎi zhàng bīng", "zh": "悬崖上已经结了百丈高的坚冰，", "en": "Already cliffs are sheathed in a hundred fathoms of ice,", "rhetoric": ["hyperbole"] },
+        { "text": "犹有花枝俏。", "pinyin": "yóu yǒu huā zhī qiào", "zh": "却仍然有梅花俏丽地绽放在枝头。", "en": "Yet plum branches still bloom bright and fair.", "rhetoric": ["repetition"] },
+        { "text": "俏也不争春，", "pinyin": "qiào yě bù zhēng chūn", "zh": "梅花虽然俏丽，却不去争抢春光，", "en": "Fair, yet it does not vie for spring,", "rhetoric": ["metaphor-analogy", "repetition"] },
+        { "text": "只把春来报。", "pinyin": "zhǐ bǎ chūn lái bào", "zh": "只是来向人们报告春天的消息。", "en": "It only heralds the coming of spring.", "rhetoric": ["metaphor-analogy"] },
         { "text": "待到山花烂漫时，", "pinyin": "dài dào shān huā làn màn shí", "zh": "等到漫山遍野的鲜花灿烂盛开的时候，", "en": "When the mountain flowers bloom in riotous splendor," },
-        { "text": "她在丛中笑。", "pinyin": "tā zài cóng zhōng xiào", "zh": "她便在花丛中欣慰地微笑。", "en": "She will smile among the blossoms." }
+        { "text": "她在丛中笑。", "pinyin": "tā zài cóng zhōng xiào", "zh": "她便在花丛中欣慰地微笑。", "en": "She will smile among the blossoms.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },

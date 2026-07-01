@@ -128,7 +128,6 @@
   .pcard .a{color:var(--muted);font-size:12.5px;margin-top:4px}
   .pcard .seen{position:absolute;top:9px;right:10px;color:var(--good);font-size:14px;opacity:0}
   .pcard.viewed .seen{opacity:1}
-  .pcard.viewed .t{color:#6f6757}
   .pcard.focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(240,168,104,.5),var(--shadow);animation:pulse 1.6s ease 2}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(240,168,104,.25),var(--shadow)}50%{box-shadow:0 0 0 5px rgba(240,168,104,.6),var(--shadow)}}
 
@@ -140,9 +139,17 @@
   .ptitle-py{text-align:center;color:var(--muted);font-size:14px;letter-spacing:1px;margin-bottom:4px;display:none}
   body.pinyin .ptitle-py{display:block}
   .pauthor{text-align:center;color:var(--muted);font-size:14px;margin-bottom:6px}
+  .pcats{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:0 0 8px}
+  .pchip{display:inline-flex;align-items:center;height:26px;box-sizing:border-box;font-size:12px;line-height:1;padding:0 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--accent2);cursor:pointer;white-space:nowrap}
+  .pchip:hover{border-color:var(--accent2);background:rgba(11,114,133,.08)}
+  .pchip.grade{color:var(--accent)}
+  .pchip.grade:hover{border-color:var(--accent);background:rgba(181,101,29,.08)}
+  .pchip .pchip-en{color:var(--muted);margin-left:4px;font-size:11px}
   .media{display:flex;gap:10px;justify-content:center;margin:8px 0 4px;min-height:4px}
 
   .body{margin:20px auto 6px;max-width:100%;overflow-x:auto}
+  .line-wrap{display:flex;justify-content:center}
+  .line-inner{position:relative}
   .poem-line{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:2px 4px;padding:5px 0}
   .char{display:inline-flex;flex-direction:column;align-items:center;justify-content:flex-end}
   .char .py{font-size:0;height:0;color:var(--muted);transition:none;white-space:nowrap;font-variant:none}
@@ -150,6 +157,9 @@
   .char .hz{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:30px;line-height:1.25}
   .punct{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:30px;line-height:1.25;align-self:flex-end;color:#9c917f}
   .char[title]{cursor:help}
+  .rbadges{position:absolute;left:100%;top:0;bottom:0;margin-left:8px;display:flex;flex-direction:row;align-items:center;gap:3px}
+  .rbadge{font-family:system-ui,sans-serif;font-size:11px;line-height:1.4;color:var(--accent2);border:1px solid var(--accent2);border-radius:8px;padding:1px 6px;white-space:nowrap;cursor:help;opacity:.55;transition:opacity .15s}
+  .rbadge:hover{opacity:1}
   /* sandhi (only meaningful when pinyin shown) */
   body.pinyin .py.s-mark{color:var(--mark);font-weight:700}
   body.pinyin .py.s-value{color:var(--value);border-bottom:2px dotted var(--value)}
@@ -228,12 +238,15 @@
   .cat-row .rt{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:16px;font-weight:700;flex:0 0 14em;line-height:1.3}
   .cat-row .ra{flex:0 0 5em;color:var(--muted);font-size:12.5px;white-space:nowrap}
   .cat-row .rl{flex:1 1 0;min-width:0;color:#8d8273;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cat-row .rv{flex:0 0 auto;color:var(--good);font-size:12px}
   .cmp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;padding-top:6px}
-  .cmp-card{border:1px solid var(--line);border-radius:12px;padding:14px 12px;background:var(--bg);cursor:pointer;text-align:center;transition:transform .12s,border-color .12s}
+  .cmp-card{position:relative;border:1px solid var(--line);border-radius:12px;padding:14px 12px;background:var(--bg);cursor:pointer;text-align:center;transition:transform .12s,border-color .12s}
   .cmp-card:hover{transform:translateY(-2px);border-color:var(--ring)}
   .cmp-card .ct{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:19px;font-weight:700;letter-spacing:1px}
   .cmp-card .ca{color:var(--muted);font-size:12px;margin:2px 0 8px}
   .cmp-card .cmp-text{font-family:"Kaiti SC","STKaiti","KaiTi","楷体",serif;font-size:16px;line-height:1.75}
+  .cmp-card .seen{position:absolute;top:6px;right:9px;color:var(--good);font-size:12px;opacity:0}
+  .cmp-card.viewed .seen{opacity:1}
   @media(max-width:520px){
     .ptitle{font-size:26px}.char .hz,.punct{font-size:26px}
     .pcard .t{font-size:18px}
@@ -260,10 +273,12 @@ let ORDER=[];           // ids in display order
 let MEDIA={};           // id -> {audio,audioStart,video,videoStart}
 let CREDITS=[];         // [{name,url,note}] external media credits
 let CATEGORIES=[];      // [{key,zh,en,group,desc_zh,desc_en,count}]
+let RHETORIC=[];        // [{key,zh,en,desc_zh,desc_en}] rhetorical devices
 let viewed=loadViewed();
 let showPinyin=localStorage.getItem(PREF_KEY)==="1";
-let indexMode=localStorage.getItem(VIEWMODE_KEY)||"grades";  // "grades" | "themes"
+let indexMode=localStorage.getItem(VIEWMODE_KEY)||"grades";  // "grades" | "themes" | "rhetoric"
 const expandedCats=new Set();
+const expandedRhet=new Set();
 
 const root=document.getElementById("root");
 const audioEl=document.getElementById("audio");
@@ -272,17 +287,18 @@ let activeAudioId=null;
 /* ============================ storage ============================ */
 function loadViewed(){ try{return new Set(JSON.parse(localStorage.getItem(VIEW_KEY)||"[]"));}catch(e){return new Set();} }
 function saveViewed(){ try{localStorage.setItem(VIEW_KEY,JSON.stringify([...viewed]));}catch(e){} }
-function cacheData(grades,media,cats){ try{localStorage.setItem(DATA_KEY,JSON.stringify({grades,media,cats}));}catch(e){} }
+function cacheData(grades,media,cats,rhet){ try{localStorage.setItem(DATA_KEY,JSON.stringify({grades,media,cats,rhet}));}catch(e){} }
 function readCache(){ try{return JSON.parse(localStorage.getItem(DATA_KEY)||"null");}catch(e){return null;} }
 function resetData(){ try{localStorage.removeItem(DATA_KEY);}catch(e){} location.reload(); }
 
-function setData(grades,media,cats){
+function setData(grades,media,cats,rhet){
   GRADES=grades.slice().sort((a,b)=>a.grade-b.grade);
   BYID={}; ORDER=[]; MEDIA={};
   for(const g of GRADES) for(const p of g.poems){ p.grade=g.grade; BYID[p.id]=p; ORDER.push(p.id); }
   if(media) for(const k in media){ if(k[0]==="_") continue; const m=media[k]; if(m&&(m.audio||m.video)) MEDIA[k]=m; }
   CREDITS = (media && Array.isArray(media._credits)) ? media._credits : [];
   CATEGORIES = Array.isArray(cats) ? cats : [];
+  RHETORIC = Array.isArray(rhet) ? rhet : [];
 }
 
 /* ============================ load ============================ */
@@ -295,11 +311,13 @@ async function loadData(){
     try{ const mr=await fetch("poems/poems-media.json",{cache:"reload"}); if(mr.ok) media=await mr.json(); }catch(e){}
     let cats=[];
     try{ const cr=await fetch("poems/categories.json",{cache:"reload"}); if(cr.ok){ const cj=await cr.json(); cats=cj.categories||[]; } }catch(e){}
+    let rhet=[];
+    try{ const rr=await fetch("poems/rhetoric.json",{cache:"reload"}); if(rr.ok){ const rj=await rr.json(); rhet=rj.devices||[]; } }catch(e){}
     const grades=arr.map(d=>({grade:d.meta.grade, poems:d.poems}));
-    setData(grades,media,cats); cacheData(grades,media,cats); return true;
+    setData(grades,media,cats,rhet); cacheData(grades,media,cats,rhet); return true;
   }catch(e){
     const cached=readCache();
-    if(cached&&cached.grades){ setData(cached.grades,cached.media||{},cached.cats||[]); return true; }
+    if(cached&&cached.grades){ setData(cached.grades,cached.media||{},cached.cats||[],cached.rhet||[]); return true; }
     return false;
   }
 }
@@ -308,20 +326,21 @@ function renderImport(){
   root.innerHTML=`<div class="app-head"><h1>小学生必背古诗</h1></div>
     <div class="import">
       <p>无法自动载入诗歌数据（直接打开本地文件时浏览器会阻止读取）。<br>
-      请选择 <b>poems-g1.json … poems-g6.json</b>（可一次多选，亦可加入 poems-media.json、categories.json）。</p>
+      请选择 <b>poems-g1.json … poems-g6.json</b>（可一次多选，亦可加入 poems-media.json、categories.json、rhetoric.json）。</p>
       <p><label class="btn"><input id="fi" type="file" accept=".json,application/json" multiple style="display:none">📂 选择 JSON 文件</label></p>
       <p class="hint">提示：将本页与 JSON 文件一起放到网站（如 GitHub Pages）即可自动载入。</p>
     </div>`;
   document.getElementById("fi").onchange=async e=>{
-    const grades=[]; let media={}, cats=[];
+    const grades=[]; let media={}, cats=[], rhet=[];
     for(const f of e.target.files){
       let j; try{ j=JSON.parse(await f.text()); }catch(_){ continue; }
       if(j&&Array.isArray(j.poems)) grades.push({grade:(j.meta&&j.meta.grade)||(j.poems[0]&&j.poems[0].grade)||0, poems:j.poems});
       else if(j&&Array.isArray(j.categories)) cats=j.categories;
+      else if(j&&Array.isArray(j.devices)) rhet=j.devices;
       else if(j&&typeof j==="object") media={...media,...j};
     }
     if(!grades.length){ alert("没有找到诗歌数据文件（应包含 poems 数组）。"); return; }
-    setData(grades,media,cats); cacheData(grades,media,cats); location.hash=""; renderIndex();
+    setData(grades,media,cats,rhet); cacheData(grades,media,cats,rhet); location.hash=""; renderIndex();
   };
 }
 
@@ -337,6 +356,11 @@ function charMeaning(poem,ch){
 }
 function sandhiMap(poem,where){
   const m={}; for(const s of poem.sandhi||[]) if(s.where===where) m[s.pos]=s; return m;
+}
+function deviceByKey(key){ return RHETORIC.find(d=>d.key===key); }
+function deviceTip(key){
+  const d=deviceByKey(key); if(!d) return key;
+  return `${d.zh}${d.en?(" "+d.en):""}\n${d.desc_zh||""}`;
 }
 function el(tag,cls,txt){ const e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; }
 /* YouTube logo SVG — scales with font-size via em units */
@@ -382,6 +406,7 @@ function renderIndex(){
   root.innerHTML="";
   root.appendChild(buildHead());
   if(indexMode==="themes" && CATEGORIES.length) renderThemes();
+  else if(indexMode==="rhetoric" && RHETORIC.length) renderRhetoricView();
   else renderGrades();
   renderCreditsFooter();
 }
@@ -391,7 +416,7 @@ function buildHead(){
   const head=el("div","app-head");
   head.appendChild(el("h1","","小学生必背古诗"));
   head.appendChild(el("span","sub","Classical Chinese Poems · 诵读"));
-  if(CATEGORIES.length){
+  if(CATEGORIES.length || RHETORIC.length){
     const seg=el("div","seg");
     const mk=(mode,label)=>{
       const b=el("button","seg-btn"+(indexMode===mode?" on":""),label);
@@ -399,7 +424,8 @@ function buildHead(){
       return b;
     };
     seg.appendChild(mk("grades","按年级"));
-    seg.appendChild(mk("themes","按主题"));
+    if(CATEGORIES.length) seg.appendChild(mk("themes","按主题"));
+    if(RHETORIC.length) seg.appendChild(mk("rhetoric","修辞手法"));
     head.appendChild(seg);
   }
   head.appendChild(el("span","overall",`已读 ${seen} / ${total}`));
@@ -486,7 +512,8 @@ function renderCatBody(cat,ps,body){
   if(open){
     const grid=el("div","cmp-grid");
     for(const p of ps){
-      const c=el("div","cmp-card");
+      const c=el("div","cmp-card"+(viewed.has(p.id)?" viewed":""));
+      c.appendChild(el("div","seen","✓"));
       c.appendChild(el("div","ct",p.title));
       c.appendChild(el("div","ca",(p.dynasty?("〔"+p.dynasty+"〕"):"")+p.author));
       const txt=el("div","cmp-text");
@@ -499,15 +526,76 @@ function renderCatBody(cat,ps,body){
   }else{
     const list=el("div","cat-list");
     for(const p of ps){
-      const row=el("div","cat-row");
+      const row=el("div","cat-row"+(viewed.has(p.id)?" viewed":""));
       row.appendChild(el("span","rt",p.title));
       row.appendChild(el("span","ra",p.author));
       row.appendChild(el("span","rl",p.lines[0]?p.lines[0].text:""));
+      if(viewed.has(p.id)) row.appendChild(el("span","rv","✓"));
       row.onclick=()=>{ location.hash="poem/"+encodeURIComponent(p.id); };
       list.appendChild(row);
     }
     body.appendChild(list);
   }
+}
+
+/* ---- rhetoric (修辞手法) view ----
+   Unlike themes (poem-level tags), rhetoric devices are tagged per line, so
+   each device lists the specific poems + sentences that carry it, not whole
+   poems. List-only (no full-text compare grid — the point here is the exact
+   sentence, which the list already shows). */
+function linesForDevice(key){
+  const out=[];
+  for(const id of ORDER){
+    const p=BYID[id];
+    const matched=(p.lines||[]).filter(ln=>ln.rhetoric && ln.rhetoric.indexOf(key)>=0);
+    if(matched.length) out.push({poem:p, lines:matched});
+  }
+  return out;
+}
+
+function renderRhetoricView(){
+  const wrap=el("div","themes");
+  for(const dev of RHETORIC){
+    const items=linesForDevice(dev.key);
+    const block=el("div","cat-block");
+    const head=el("div","cat-head");
+    const top=el("div","cat-top");
+    const chev=el("span","chev",expandedRhet.has(dev.key)?"▾":"▸");
+    top.appendChild(chev);
+    const lab=el("span","clabel"); lab.innerHTML=dev.zh+' <span class="cen">'+(dev.en||"")+'</span>';
+    top.appendChild(lab);
+    top.appendChild(el("span","ccount",String(items.length)));
+    head.appendChild(top);
+    if(dev.desc_zh) head.appendChild(el("div","cdesc",dev.desc_zh));
+    const body=el("div","cat-body");
+    head.onclick=()=>{
+      if(expandedRhet.has(dev.key)) expandedRhet.delete(dev.key); else expandedRhet.add(dev.key);
+      chev.textContent=expandedRhet.has(dev.key)?"▾":"▸";
+      renderRhetBody(dev,items,body);
+    };
+    block.appendChild(head); block.appendChild(body);
+    renderRhetBody(dev,items,body);
+    wrap.appendChild(block);
+  }
+  root.appendChild(wrap);
+}
+
+function renderRhetBody(dev,items,body){
+  const open=expandedRhet.has(dev.key);
+  body.className="cat-body"+(open?" open":"");
+  body.innerHTML="";
+  if(!open) return;
+  const list=el("div","cat-list");
+  for(const {poem,lines} of items){
+    const row=el("div","cat-row"+(viewed.has(poem.id)?" viewed":""));
+    row.appendChild(el("span","rt",poem.title));
+    row.appendChild(el("span","ra",poem.author));
+    row.appendChild(el("span","rl",lines.map(l=>l.text).join("／")));
+    if(viewed.has(poem.id)) row.appendChild(el("span","rv","✓"));
+    row.onclick=()=>{ location.hash="poem/"+encodeURIComponent(poem.id); };
+    list.appendChild(row);
+  }
+  body.appendChild(list);
 }
 
 function renderCreditsFooter(){
@@ -538,7 +626,6 @@ function renderCreditsFooter(){
 function renderPoem(id){
   const poem=BYID[id];
   if(!poem){ location.hash=""; return; }
-  if(!viewed.has(id)){ viewed.add(id); saveViewed(); }
   stopAudio();
   document.title=poem.title+" · "+poem.author;
   root.innerHTML="";
@@ -548,6 +635,16 @@ function renderPoem(id){
   const back=el("button","btn"); back.innerHTML="← 返回目录"; back.onclick=()=>{location.hash="";};
   tb.appendChild(back);
   tb.appendChild(el("span","spacer"));
+  const readBtn=el("button","btn"+(viewed.has(id)?" on":""));
+  readBtn.textContent=viewed.has(id)?"✓ 已读":"标记已读";
+  readBtn.onclick=()=>{
+    if(viewed.has(id)) viewed.delete(id); else viewed.add(id);
+    saveViewed();
+    const on=viewed.has(id);
+    readBtn.classList.toggle("on",on);
+    readBtn.textContent=on?"✓ 已读":"标记已读";
+  };
+  tb.appendChild(readBtn);
   const pyBtn=el("button","btn"+(showPinyin?" on":"")); pyBtn.id="pyBtn";
   pyBtn.innerHTML=showPinyin?"✓ 拼音 (空格)":"拼音 (空格)";
   pyBtn.onclick=()=>togglePinyin();
@@ -558,6 +655,36 @@ function renderPoem(id){
   card.appendChild(el("div","ptitle",poem.title));
   card.appendChild(el("div","ptitle-py",poem.titlePinyin||""));
   card.appendChild(el("div","pauthor",`${poem.dynasty?("〔"+poem.dynasty+"〕 "):""}${poem.author}`));
+
+  /* grade + theme labels */
+  {
+    const chips=el("div","pcats");
+    if(poem.grade){
+      const gl=(GRADE_LABEL[poem.grade]||("Grade "+poem.grade))+(poem.volume?("·"+(VOL_LABEL[poem.volume]||poem.volume)):"");
+      const gchip=el("button","pchip grade");
+      gchip.textContent=gl;
+      gchip.title="按年级查看";
+      gchip.onclick=()=>{
+        indexMode="grades"; try{localStorage.setItem(VIEWMODE_KEY,"grades");}catch(e){}
+        location.hash="";
+      };
+      chips.appendChild(gchip);
+    }
+    for(const key of (poem.tags||[])){
+      const cat=CATEGORIES.find(c=>c.key===key);
+      if(!cat) continue;
+      const chip=el("button","pchip");
+      chip.innerHTML=cat.zh+(cat.en?(' <span class="pchip-en">'+cat.en+'</span>'):"");
+      chip.title=cat.desc_zh||"";
+      chip.onclick=()=>{
+        indexMode="themes"; try{localStorage.setItem(VIEWMODE_KEY,"themes");}catch(e){}
+        expandedCats.clear(); expandedCats.add(key);
+        location.hash="";
+      };
+      chips.appendChild(chip);
+    }
+    if(chips.childElementCount) card.appendChild(chips);
+  }
 
   /* media */
   const media=el("div","media");
@@ -641,7 +768,20 @@ function buildLine(poem,ln){
       line.appendChild(el("span","punct",ch));
     }
   }
-  return line;
+  if(!(ln.rhetoric && ln.rhetoric.length)) return line;
+  const wrap=el("div","line-wrap");
+  const inner=el("div","line-inner");
+  inner.appendChild(line);
+  const badges=el("div","rbadges");
+  for(const k of ln.rhetoric){
+    const d=deviceByKey(k);
+    const badge=el("span","rbadge",d?d.zh:k);
+    badge.setAttribute("data-tip",deviceTip(k));
+    badges.appendChild(badge);
+  }
+  inner.appendChild(badges);
+  wrap.appendChild(inner);
+  return wrap;
 }
 
 /* ============================ pinyin + audio ============================ */

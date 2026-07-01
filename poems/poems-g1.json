@@ -27,10 +27,10 @@
       "grade": 1,
       "volume": "上",
       "lines": [
-        { "text": "鹅，鹅，鹅，", "pinyin": "é, é, é,", "zh": "鹅啊，鹅啊，鹅啊，", "en": "Goose, goose, goose," },
+        { "text": "鹅，鹅，鹅，", "pinyin": "é, é, é,", "zh": "鹅啊，鹅啊，鹅啊，", "en": "Goose, goose, goose,", "rhetoric": ["repetition"] },
         { "text": "曲项向天歌。", "pinyin": "qū xiàng xiàng tiān gē.", "zh": "弯着脖子向着天空高声歌唱。", "en": "bends its neck and sings to the sky." },
-        { "text": "白毛浮绿水，", "pinyin": "bái máo fú lǜ shuǐ,", "zh": "白色的羽毛漂浮在碧绿的水面上，", "en": "White feathers float on green water," },
-        { "text": "红掌拨清波。", "pinyin": "hóng zhǎng bō qīng bō.", "zh": "红色的脚掌拨动着清澈的水波。", "en": "red webbed feet stir the clear ripples." }
+        { "text": "白毛浮绿水，", "pinyin": "bái máo fú lǜ shuǐ,", "zh": "白色的羽毛漂浮在碧绿的水面上，", "en": "White feathers float on green water,", "rhetoric": ["parallelism"] },
+        { "text": "红掌拨清波。", "pinyin": "hóng zhǎng bō qīng bō.", "zh": "红色的脚掌拨动着清澈的水波。", "en": "red webbed feet stir the clear ripples.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "鹅", "pinyin": "é", "zh": "鹅，一种家禽。", "en": "goose" },
@@ -80,13 +80,13 @@
       "grade": 1,
       "volume": "上",
       "lines": [
-        { "text": "江南可采莲，", "pinyin": "jiāng nán kě cǎi lián,", "zh": "江南到了可以采摘莲蓬的季节，", "en": "In the south of the river it is time to gather lotus," },
-        { "text": "莲叶何田田。", "pinyin": "lián yè hé tián tián.", "zh": "莲叶长得多么茂盛繁密。", "en": "and how lush and crowded the lotus leaves are!" },
+        { "text": "江南可采莲，", "pinyin": "jiāng nán kě cǎi lián,", "zh": "江南到了可以采摘莲蓬的季节，", "en": "In the south of the river it is time to gather lotus,", "rhetoric": ["repetition"] },
+        { "text": "莲叶何田田。", "pinyin": "lián yè hé tián tián.", "zh": "莲叶长得多么茂盛繁密。", "en": "and how lush and crowded the lotus leaves are!", "rhetoric": ["repetition"] },
         { "text": "鱼戏莲叶间。", "pinyin": "yú xì lián yè jiān.", "zh": "鱼儿在莲叶间嬉戏游动。", "en": "Fish play among the lotus leaves." },
-        { "text": "鱼戏莲叶东，", "pinyin": "yú xì lián yè dōng,", "zh": "鱼儿在莲叶东边游戏，", "en": "Fish play east of the lotus leaves," },
-        { "text": "鱼戏莲叶西，", "pinyin": "yú xì lián yè xī,", "zh": "鱼儿在莲叶西边游戏，", "en": "fish play west of the lotus leaves," },
-        { "text": "鱼戏莲叶南，", "pinyin": "yú xì lián yè nán,", "zh": "鱼儿在莲叶南边游戏，", "en": "fish play south of the lotus leaves," },
-        { "text": "鱼戏莲叶北。", "pinyin": "yú xì lián yè běi.", "zh": "鱼儿在莲叶北边游戏。", "en": "fish play north of the lotus leaves." }
+        { "text": "鱼戏莲叶东，", "pinyin": "yú xì lián yè dōng,", "zh": "鱼儿在莲叶东边游戏，", "en": "Fish play east of the lotus leaves,", "rhetoric": ["parallelism", "repetition"] },
+        { "text": "鱼戏莲叶西，", "pinyin": "yú xì lián yè xī,", "zh": "鱼儿在莲叶西边游戏，", "en": "fish play west of the lotus leaves,", "rhetoric": ["parallelism", "repetition"] },
+        { "text": "鱼戏莲叶南，", "pinyin": "yú xì lián yè nán,", "zh": "鱼儿在莲叶南边游戏，", "en": "fish play south of the lotus leaves,", "rhetoric": ["parallelism", "repetition"] },
+        { "text": "鱼戏莲叶北。", "pinyin": "yú xì lián yè běi.", "zh": "鱼儿在莲叶北边游戏。", "en": "fish play north of the lotus leaves.", "rhetoric": ["parallelism", "repetition"] }
       ],
       "chars": [
         { "char": "江", "pinyin": "jiāng", "zh": "江河，这里指长江。", "en": "river" },
@@ -122,7 +122,7 @@
         { "text": "可采", "rule": "上上变调", "base": "kě", "read": "ké", "value": "35", "markChange": true, "where": "江南可采莲，", "pos": 2, "zh": "\"可\"在上声\"采\"前变读阳平（第二声）：kě→ké。", "en": "可 comes before the third-tone 采, so it is read in second tone: kě → ké." },
         { "text": "采莲", "rule": "半上声", "base": "cǎi", "read": "cǎi", "value": "211", "markChange": false, "where": "江南可采莲，", "pos": 3, "zh": "\"采\"是上声，在非上声\"莲\"前读\"半上\"（调值211），拼音不变：cǎi。", "en": "采 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 莲; the written pinyin stays cǎi." }
       ],
-      "tags": ["pastoral", "season-summer"]
+      "tags": ["season-summer"]
     },
     {
       "id": "g1u-03-hua",
@@ -134,10 +134,10 @@
       "grade": 1,
       "volume": "上",
       "lines": [
-        { "text": "远看山有色，", "pinyin": "yuǎn kàn shān yǒu sè,", "zh": "远远望去，山有鲜明的颜色，", "en": "Seen from afar, the mountains have colour," },
-        { "text": "近听水无声。", "pinyin": "jìn tīng shuǐ wú shēng.", "zh": "走近去听，水却没有声音。", "en": "drawn near, the water makes no sound." },
-        { "text": "春去花还在，", "pinyin": "chūn qù huā hái zài,", "zh": "春天过去了，花儿却依然开着，", "en": "Spring departs, yet the flowers remain," },
-        { "text": "人来鸟不惊。", "pinyin": "rén lái niǎo bù jīng.", "zh": "人走近了，鸟儿也不受惊吓。", "en": "people approach, but the birds take no fright." }
+        { "text": "远看山有色，", "pinyin": "yuǎn kàn shān yǒu sè,", "zh": "远远望去，山有鲜明的颜色，", "en": "Seen from afar, the mountains have colour,", "rhetoric": ["parallelism"] },
+        { "text": "近听水无声。", "pinyin": "jìn tīng shuǐ wú shēng.", "zh": "走近去听，水却没有声音。", "en": "drawn near, the water makes no sound.", "rhetoric": ["parallelism"] },
+        { "text": "春去花还在，", "pinyin": "chūn qù huā hái zài,", "zh": "春天过去了，花儿却依然开着，", "en": "Spring departs, yet the flowers remain,", "rhetoric": ["parallelism"] },
+        { "text": "人来鸟不惊。", "pinyin": "rén lái niǎo bù jīng.", "zh": "人走近了，鸟儿也不受惊吓。", "en": "people approach, but the birds take no fright.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "画", "pinyin": "huà", "zh": "图画。", "en": "painting" },
@@ -182,7 +182,7 @@
         { "text": "水无", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "近听水无声。", "pos": 2, "zh": "\"水\"是上声，在非上声\"无\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 无; the written pinyin stays shuǐ." },
         { "text": "鸟不", "rule": "半上声", "base": "niǎo", "read": "niǎo", "value": "211", "markChange": false, "where": "人来鸟不惊。", "pos": 2, "zh": "\"鸟\"是上声，在非上声\"不\"前读\"半上\"（调值211），拼音不变：niǎo。", "en": "鸟 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 不; the written pinyin stays niǎo." }
       ],
-      "tags": ["landscape"]
+      "tags": []
     },
     {
       "id": "g1u-04-minnong2",
@@ -196,8 +196,8 @@
       "lines": [
         { "text": "锄禾日当午，", "pinyin": "chú hé rì dāng wǔ,", "zh": "农民在正午烈日下锄地除草，", "en": "Hoeing the grain under the noonday sun," },
         { "text": "汗滴禾下土。", "pinyin": "hàn dī hé xià tǔ.", "zh": "汗水滴落在禾苗下的泥土里。", "en": "sweat drips onto the soil beneath the seedlings." },
-        { "text": "谁知盘中餐，", "pinyin": "shéi zhī pán zhōng cān,", "zh": "有谁知道盘中的饭食，", "en": "Who knows that the food in the bowl," },
-        { "text": "粒粒皆辛苦。", "pinyin": "lì lì jiē xīn kǔ.", "zh": "每一粒都饱含着辛勤的劳苦。", "en": "grain by grain, is all hard-won toil?" }
+        { "text": "谁知盘中餐，", "pinyin": "shéi zhī pán zhōng cān,", "zh": "有谁知道盘中的饭食，", "en": "Who knows that the food in the bowl,", "rhetoric": ["rhetorical-question"] },
+        { "text": "粒粒皆辛苦。", "pinyin": "lì lì jiē xīn kǔ.", "zh": "每一粒都饱含着辛勤的劳苦。", "en": "grain by grain, is all hard-won toil?", "rhetoric": ["rhetorical-question", "repetition"] }
       ],
       "chars": [
         { "char": "悯", "pinyin": "mǐn", "zh": "怜悯、同情。", "en": "to pity / sympathize" },
@@ -252,9 +252,9 @@
       "volume": "上",
       "lines": [
         { "text": "小时不识月，", "pinyin": "xiǎo shí bù shí yuè,", "zh": "小时候不认识月亮，", "en": "As a child I did not know the moon," },
-        { "text": "呼作白玉盘。", "pinyin": "hū zuò bái yù pán.", "zh": "把它叫作白玉的圆盘。", "en": "and called it a plate of white jade." },
-        { "text": "又疑瑶台镜，", "pinyin": "yòu yí yáo tái jìng,", "zh": "又怀疑它是瑶台上的明镜，", "en": "Then I wondered if it were the mirror of the Jade Terrace," },
-        { "text": "飞在青云端。", "pinyin": "fēi zài qīng yún duān.", "zh": "飞悬在青云的顶端。", "en": "flying at the edge of the blue clouds." }
+        { "text": "呼作白玉盘。", "pinyin": "hū zuò bái yù pán.", "zh": "把它叫作白玉的圆盘。", "en": "and called it a plate of white jade.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "又疑瑶台镜，", "pinyin": "yòu yí yáo tái jìng,", "zh": "又怀疑它是瑶台上的明镜，", "en": "Then I wondered if it were the mirror of the Jade Terrace,", "rhetoric": ["metaphor-analogy"] },
+        { "text": "飞在青云端。", "pinyin": "fēi zài qīng yún duān.", "zh": "飞悬在青云的顶端。", "en": "flying at the edge of the blue clouds.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "古", "pinyin": "gǔ", "zh": "古代、古老。", "en": "ancient" },
@@ -312,10 +312,10 @@
       "grade": 1,
       "volume": "上",
       "lines": [
-        { "text": "解落三秋叶，", "pinyin": "jiě luò sān qiū yè,", "zh": "风能吹落深秋的树叶，", "en": "It can strip the leaves of late autumn," },
-        { "text": "能开二月花。", "pinyin": "néng kāi èr yuè huā.", "zh": "也能催开早春二月的鲜花。", "en": "and coax open the flowers of spring." },
-        { "text": "过江千尺浪，", "pinyin": "guò jiāng qiān chǐ làng,", "zh": "吹过江面掀起千尺巨浪，", "en": "Crossing the river it raises waves a thousand feet high," },
-        { "text": "入竹万竿斜。", "pinyin": "rù zhú wàn gān xié.", "zh": "吹入竹林使万竿翠竹倾斜。", "en": "entering the bamboo, it bends ten thousand stalks aslant." }
+        { "text": "解落三秋叶，", "pinyin": "jiě luò sān qiū yè,", "zh": "风能吹落深秋的树叶，", "en": "It can strip the leaves of late autumn,", "rhetoric": ["parallelism"] },
+        { "text": "能开二月花。", "pinyin": "néng kāi èr yuè huā.", "zh": "也能催开早春二月的鲜花。", "en": "and coax open the flowers of spring.", "rhetoric": ["parallelism"] },
+        { "text": "过江千尺浪，", "pinyin": "guò jiāng qiān chǐ làng,", "zh": "吹过江面掀起千尺巨浪，", "en": "Crossing the river it raises waves a thousand feet high,", "rhetoric": ["parallelism", "hyperbole"] },
+        { "text": "入竹万竿斜。", "pinyin": "rù zhú wàn gān xié.", "zh": "吹入竹林使万竿翠竹倾斜。", "en": "entering the bamboo, it bends ten thousand stalks aslant.", "rhetoric": ["parallelism", "hyperbole"] }
       ],
       "chars": [
         { "char": "风", "pinyin": "fēng", "zh": "风。", "en": "wind" },
@@ -372,9 +372,9 @@
       "volume": "下",
       "lines": [
         { "text": "春眠不觉晓，", "pinyin": "chūn mián bù jué xiǎo,", "zh": "春夜睡得香甜，不知不觉天已亮了，", "en": "In spring I sleep, unaware of the dawn," },
-        { "text": "处处闻啼鸟。", "pinyin": "chù chù wén tí niǎo.", "zh": "到处都能听到鸟儿的啼鸣。", "en": "everywhere I hear the birds singing." },
+        { "text": "处处闻啼鸟。", "pinyin": "chù chù wén tí niǎo.", "zh": "到处都能听到鸟儿的啼鸣。", "en": "everywhere I hear the birds singing.", "rhetoric": ["repetition"] },
         { "text": "夜来风雨声，", "pinyin": "yè lái fēng yǔ shēng,", "zh": "回想昨夜的阵阵风雨声，", "en": "Last night came the sound of wind and rain," },
-        { "text": "花落知多少。", "pinyin": "huā luò zhī duō shǎo.", "zh": "不知道有多少花儿被打落了。", "en": "who knows how many blossoms fell?" }
+        { "text": "花落知多少。", "pinyin": "huā luò zhī duō shǎo.", "zh": "不知道有多少花儿被打落了。", "en": "who knows how many blossoms fell?", "rhetoric": ["rhetorical-question"] }
       ],
       "chars": [
         { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
@@ -429,8 +429,8 @@
       "lines": [
         { "text": "李白乘舟将欲行，", "pinyin": "lǐ bái chéng zhōu jiāng yù xíng,", "zh": "李白乘船正要出发离开，", "en": "Li Bai aboard a boat, about to set off," },
         { "text": "忽闻岸上踏歌声。", "pinyin": "hū wén àn shàng tà gē shēng.", "zh": "忽然听见岸上传来踏歌的声音。", "en": "suddenly hears foot-stamping songs from the shore." },
-        { "text": "桃花潭水深千尺，", "pinyin": "táo huā tán shuǐ shēn qiān chǐ,", "zh": "桃花潭的水即使深达千尺，", "en": "Though Peach Blossom Pool is a thousand feet deep," },
-        { "text": "不及汪伦送我情。", "pinyin": "bù jí wāng lún sòng wǒ qíng.", "zh": "也比不上汪伦送别我的深情。", "en": "it cannot match the love with which Wang Lun sees me off." }
+        { "text": "桃花潭水深千尺，", "pinyin": "táo huā tán shuǐ shēn qiān chǐ,", "zh": "桃花潭的水即使深达千尺，", "en": "Though Peach Blossom Pool is a thousand feet deep,", "rhetoric": ["hyperbole"] },
+        { "text": "不及汪伦送我情。", "pinyin": "bù jí wāng lún sòng wǒ qíng.", "zh": "也比不上汪伦送别我的深情。", "en": "it cannot match the love with which Wang Lun sees me off.", "rhetoric": ["foil"] }
       ],
       "chars": [
         { "char": "赠", "pinyin": "zèng", "zh": "赠送，这里指赠诗。", "en": "to present / dedicate" },
@@ -483,7 +483,7 @@
         { "text": "水深", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "桃花潭水深千尺，", "pos": 3, "zh": "\"水\"是上声，在非上声\"深\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 深; the written pinyin stays shuǐ." },
         { "text": "我情", "rule": "半上声", "base": "wǒ", "read": "wǒ", "value": "211", "markChange": false, "where": "不及汪伦送我情。", "pos": 5, "zh": "\"我\"是上声，在非上声\"情\"前读\"半上\"（调值211），拼音不变：wǒ。", "en": "我 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 情; the written pinyin stays wǒ." }
       ],
-      "tags": ["farewell", "kinship"]
+      "tags": ["farewell"]
     },
     {
       "id": "g1d-03-jingyesi",
@@ -496,9 +496,9 @@
       "volume": "下",
       "lines": [
         { "text": "床前明月光，", "pinyin": "chuáng qián míng yuè guāng,", "zh": "床前洒下一片明亮的月光，", "en": "Before my bed, the bright moonlight," },
-        { "text": "疑是地上霜。", "pinyin": "yí shì dì shàng shuāng.", "zh": "好像是地上结了一层白霜。", "en": "I wonder if it is frost on the ground." },
-        { "text": "举头望明月，", "pinyin": "jǔ tóu wàng míng yuè,", "zh": "抬起头来望着天上的明月，", "en": "I lift my head and gaze at the bright moon," },
-        { "text": "低头思故乡。", "pinyin": "dī tóu sī gù xiāng.", "zh": "低下头来思念自己的家乡。", "en": "I lower my head and long for home." }
+        { "text": "疑是地上霜。", "pinyin": "yí shì dì shàng shuāng.", "zh": "好像是地上结了一层白霜。", "en": "I wonder if it is frost on the ground.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "举头望明月，", "pinyin": "jǔ tóu wàng míng yuè,", "zh": "抬起头来望着天上的明月，", "en": "I lift my head and gaze at the bright moon,", "rhetoric": ["parallelism"] },
+        { "text": "低头思故乡。", "pinyin": "dī tóu sī gù xiāng.", "zh": "低下头来思念自己的家乡。", "en": "I lower my head and long for home.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "静", "pinyin": "jìng", "zh": "安静。", "en": "quiet" },
@@ -555,7 +555,7 @@
         { "text": "松下问童子，", "pinyin": "sōng xià wèn tóng zǐ,", "zh": "在松树下询问隐者的小徒弟，", "en": "Beneath the pines I ask the boy," },
         { "text": "言师采药去。", "pinyin": "yán shī cǎi yào qù.", "zh": "他说师父采药去了。", "en": "he says his master has gone to gather herbs." },
         { "text": "只在此山中，", "pinyin": "zhǐ zài cǐ shān zhōng,", "zh": "只知道就在这座山里，", "en": "He is only somewhere in this mountain," },
-        { "text": "云深不知处。", "pinyin": "yún shēn bù zhī chù.", "zh": "可是云雾深浓，不知道具体在哪里。", "en": "but the clouds are deep—who knows just where?" }
+        { "text": "云深不知处。", "pinyin": "yún shēn bù zhī chù.", "zh": "可是云雾深浓，不知道具体在哪里。", "en": "but the clouds are deep—who knows just where?", "rhetoric": ["foil"] }
       ],
       "chars": [
         { "char": "寻", "pinyin": "xún", "zh": "寻找。", "en": "to seek" },
@@ -605,7 +605,7 @@
         { "text": "只在", "rule": "半上声", "base": "zhǐ", "read": "zhǐ", "value": "211", "markChange": false, "where": "只在此山中，", "pos": 0, "zh": "\"只\"是上声，在非上声\"在\"前读\"半上\"（调值211），拼音不变：zhǐ。", "en": "只 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 在; the written pinyin stays zhǐ." },
         { "text": "此山", "rule": "半上声", "base": "cǐ", "read": "cǐ", "value": "211", "markChange": false, "where": "只在此山中，", "pos": 2, "zh": "\"此\"是上声，在非上声\"山\"前读\"半上\"（调值211），拼音不变：cǐ。", "en": "此 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 山; the written pinyin stays cǐ." }
       ],
-      "tags": ["landscape"]
+      "tags": ["recluse"]
     },
     {
       "id": "g1d-05-chishang",
@@ -618,9 +618,9 @@
       "volume": "下",
       "lines": [
         { "text": "小娃撑小艇，", "pinyin": "xiǎo wá chēng xiǎo tǐng,", "zh": "小孩子撑着一只小船，", "en": "A little child punts a little boat," },
-        { "text": "偷采白莲回。", "pinyin": "tōu cǎi bái lián huí.", "zh": "偷偷采了白莲蓬回来。", "en": "secretly picks white lotus and returns." },
-        { "text": "不解藏踪迹，", "pinyin": "bù jiě cáng zōng jì,", "zh": "他不懂得隐藏自己的踪迹，", "en": "Not knowing how to hide his tracks," },
-        { "text": "浮萍一道开。", "pinyin": "fú píng yī dào kāi.", "zh": "水面的浮萍被船划开一道痕迹。", "en": "the duckweed parts in a tell-tale trail." }
+        { "text": "偷采白莲回。", "pinyin": "tōu cǎi bái lián huí.", "zh": "偷偷采了白莲蓬回来。", "en": "secretly picks white lotus and returns.", "rhetoric": ["plain-depiction"] },
+        { "text": "不解藏踪迹，", "pinyin": "bù jiě cáng zōng jì,", "zh": "他不懂得隐藏自己的踪迹，", "en": "Not knowing how to hide his tracks,", "rhetoric": ["plain-depiction"] },
+        { "text": "浮萍一道开。", "pinyin": "fú píng yī dào kāi.", "zh": "水面的浮萍被船划开一道痕迹。", "en": "the duckweed parts in a tell-tale trail.", "rhetoric": ["plain-depiction"] }
       ],
       "chars": [
         { "char": "池", "pinyin": "chí", "zh": "池塘。", "en": "pond" },
@@ -678,10 +678,10 @@
       "grade": 1,
       "volume": "下",
       "lines": [
-        { "text": "泉眼无声惜细流，", "pinyin": "quán yǎn wú shēng xī xì liú,", "zh": "泉眼悄无声息，仿佛舍不得让细水流出，", "en": "The spring's mouth, silent, seems to grudge its thin trickle," },
-        { "text": "树阴照水爱晴柔。", "pinyin": "shù yīn zhào shuǐ ài qíng róu.", "zh": "树荫倒映在水面上，喜爱这晴日的柔和。", "en": "tree shade mirrored on the water loves the soft, fine day." },
-        { "text": "小荷才露尖尖角，", "pinyin": "xiǎo hé cái lù jiān jiān jiǎo,", "zh": "嫩荷刚刚露出尖尖的小角，", "en": "The young lotus has just shown its sharp little tips," },
-        { "text": "早有蜻蜓立上头。", "pinyin": "zǎo yǒu qīng tíng lì shàng tóu.", "zh": "早就有蜻蜓立在它的上头了。", "en": "and already a dragonfly has perched on top." }
+        { "text": "泉眼无声惜细流，", "pinyin": "quán yǎn wú shēng xī xì liú,", "zh": "泉眼悄无声息，仿佛舍不得让细水流出，", "en": "The spring's mouth, silent, seems to grudge its thin trickle,", "rhetoric": ["metaphor-analogy"] },
+        { "text": "树阴照水爱晴柔。", "pinyin": "shù yīn zhào shuǐ ài qíng róu.", "zh": "树荫倒映在水面上，喜爱这晴日的柔和。", "en": "tree shade mirrored on the water loves the soft, fine day.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "小荷才露尖尖角，", "pinyin": "xiǎo hé cái lù jiān jiān jiǎo,", "zh": "嫩荷刚刚露出尖尖的小角，", "en": "The young lotus has just shown its sharp little tips,", "rhetoric": ["parallelism"] },
+        { "text": "早有蜻蜓立上头。", "pinyin": "zǎo yǒu qīng tíng lì shàng tóu.", "zh": "早就有蜻蜓立在它的上头了。", "en": "and already a dragonfly has perched on top.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "小", "pinyin": "xiǎo", "zh": "小。", "en": "small" },
@@ -751,7 +751,7 @@
         { "text": "头上红冠不用裁，", "pinyin": "tóu shàng hóng guān bù yòng cái,", "zh": "头上鲜红的鸡冠不用裁剪就天生美丽，", "en": "The red comb on its head needs no cutting to shape," },
         { "text": "满身雪白走将来。", "pinyin": "mǎn shēn xuě bái zǒu jiāng lái.", "zh": "一身雪白的羽毛，昂首走来。", "en": "snow-white all over, it comes strutting along." },
         { "text": "平生不敢轻言语，", "pinyin": "píng shēng bù gǎn qīng yán yǔ,", "zh": "它平生不敢随便地啼叫，", "en": "All its life it dares not crow lightly," },
-        { "text": "一叫千门万户开。", "pinyin": "yī jiào qiān mén wàn hù kāi.", "zh": "可是一旦啼叫，千家万户都打开门来。", "en": "but at a single cry, a thousand gates swing open." }
+        { "text": "一叫千门万户开。", "pinyin": "yī jiào qiān mén wàn hù kāi.", "zh": "可是一旦啼叫，千家万户都打开门来。", "en": "but at a single cry, a thousand gates swing open.", "rhetoric": ["hyperbole"] }
       ],
       "chars": [
         { "char": "画", "pinyin": "huà", "zh": "图画，这里指题画。", "en": "painting" },

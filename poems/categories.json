@@ -10,24 +10,24 @@
     },
     {
       "key": "homesick",
-      "zh": "思乡怀人",
+      "zh": "思乡",
       "en": "Homesickness",
-      "desc_zh": "思念家乡。",
-      "desc_en": "Longing for home."
+      "desc_zh": "思念家乡、故土（写地，非写某个人）。",
+      "desc_en": "Longing for one's home or native place."
     },
     {
-      "key": "kinship",
-      "zh": "亲情·相思",
-      "en": "Kinship & longing",
-      "desc_zh": "亲情、友情与离别相思之情。",
-      "desc_en": "Family love, friendship, and longing between separated people."
+      "key": "huairen",
+      "zh": "怀人",
+      "en": "Longing for someone",
+      "desc_zh": "思念某个具体的人（父母、友人、爱人），不在送别场景中。",
+      "desc_en": "Missing a specific person (parent, friend, lover) while apart — not at a parting scene."
     },
     {
       "key": "landscape",
       "zh": "山水写景",
       "en": "Landscape",
-      "desc_zh": "纯写自然景色（无更具体主题时才归入此类）。",
-      "desc_en": "Pure natural scenery — the catch-all, used only when no more specific theme fits."
+      "desc_zh": "以描绘山水自然景色为主旨的写景诗。",
+      "desc_en": "Poems whose subject is natural scenery — mountains, rivers, views."
     },
     {
       "key": "pastoral",
@@ -37,11 +37,18 @@
       "desc_en": "Countryside and farm life."
     },
     {
+      "key": "recluse",
+      "zh": "隐逸·山居",
+      "en": "Reclusion",
+      "desc_zh": "归隐山林、远离尘世的志趣与生活。",
+      "desc_en": "Withdrawal from the world — living apart in nature."
+    },
+    {
       "key": "object",
       "zh": "咏物言志",
-      "en": "Object-chanting",
+      "en": "Self through object",
       "desc_zh": "借物抒情、托物言志。",
-      "desc_en": "Chanting an object to voice character or feeling."
+      "desc_en": "Describing an object whose qualities mirror the poet's own character or resolve."
     },
     {
       "key": "frontier",

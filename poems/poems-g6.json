@@ -29,8 +29,8 @@
       "lines": [
         { "text": "移舟泊烟渚，", "pinyin": "yí zhōu bó yān zhǔ", "zh": "把船划过去，停靠在雾气笼罩的小洲边。", "en": "I move my boat to moor by a mist-veiled islet." },
         { "text": "日暮客愁新。", "pinyin": "rì mù kè chóu xīn", "zh": "天色将晚，旅人的愁绪又涌上心头。", "en": "As dusk falls, a traveler's sorrow comes anew." },
-        { "text": "野旷天低树，", "pinyin": "yě kuàng tiān dī shù", "zh": "原野空旷辽阔，远处的天空仿佛比树还低。", "en": "The plain is so vast the sky hangs below the trees." },
-        { "text": "江清月近人。", "pinyin": "jiāng qīng yuè jìn rén", "zh": "江水清澈，水中的月影离人格外亲近。", "en": "The river is so clear the moon draws near to me." }
+        { "text": "野旷天低树，", "pinyin": "yě kuàng tiān dī shù", "zh": "原野空旷辽阔，远处的天空仿佛比树还低。", "en": "The plain is so vast the sky hangs below the trees.", "rhetoric": ["foil", "parallelism"] },
+        { "text": "江清月近人。", "pinyin": "jiāng qīng yuè jìn rén", "zh": "江水清澈，水中的月影离人格外亲近。", "en": "The river is so clear the moon draws near to me.", "rhetoric": ["foil", "parallelism"] }
       ],
       "chars": [
         { "char": "宿", "pinyin": "sù", "zh": "住宿、过夜（多音字：xiǔ 量词，如一宿；xiù 星宿）。", "en": "to lodge overnight" },
@@ -89,10 +89,10 @@
       "grade": 6,
       "volume": "上",
       "lines": [
-        { "text": "黑云翻墨未遮山，", "pinyin": "hēi yún fān mò wèi zhē shān", "zh": "乌黑的云像打翻的墨汁，还没遮住山头。", "en": "Black clouds spill like upset ink, not yet hiding the hills." },
-        { "text": "白雨跳珠乱入船。", "pinyin": "bái yǔ tiào zhū luàn rù chuán", "zh": "白亮的雨点像跳动的珍珠，纷乱地溅进船里。", "en": "Bright rain leaps like pearls, scattering into the boat." },
+        { "text": "黑云翻墨未遮山，", "pinyin": "hēi yún fān mò wèi zhē shān", "zh": "乌黑的云像打翻的墨汁，还没遮住山头。", "en": "Black clouds spill like upset ink, not yet hiding the hills.", "rhetoric": ["metaphor-analogy", "parallelism"] },
+        { "text": "白雨跳珠乱入船。", "pinyin": "bái yǔ tiào zhū luàn rù chuán", "zh": "白亮的雨点像跳动的珍珠，纷乱地溅进船里。", "en": "Bright rain leaps like pearls, scattering into the boat.", "rhetoric": ["metaphor-analogy", "parallelism"] },
         { "text": "卷地风来忽吹散，", "pinyin": "juǎn dì fēng lái hū chuī sàn", "zh": "席卷大地的狂风忽然吹来，把乌云骤雨一下吹散。", "en": "A wind sweeps the ground and suddenly blows it all away." },
-        { "text": "望湖楼下水如天。", "pinyin": "wàng hú lóu xià shuǐ rú tiān", "zh": "望湖楼下的湖水，澄澈得如同蓝天一般。", "en": "Below Lake-View Tower the water is clear as sky." }
+        { "text": "望湖楼下水如天。", "pinyin": "wàng hú lóu xià shuǐ rú tiān", "zh": "望湖楼下的湖水，澄澈得如同蓝天一般。", "en": "Below Lake-View Tower the water is clear as sky.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "六", "pinyin": "liù", "zh": "数字六。", "en": "six" },
@@ -165,12 +165,12 @@
       "grade": 6,
       "volume": "上",
       "lines": [
-        { "text": "明月别枝惊鹊，", "pinyin": "míng yuè bié zhī jīng què", "zh": "明亮的月光惊动了栖息在斜枝上的喜鹊。", "en": "Bright moonlight startles magpies from a slanting branch." },
-        { "text": "清风半夜鸣蝉。", "pinyin": "qīng fēng bàn yè míng chán", "zh": "半夜里清凉的风中传来蝉的鸣叫。", "en": "In the cool midnight breeze cicadas are crying." },
+        { "text": "明月别枝惊鹊，", "pinyin": "míng yuè bié zhī jīng què", "zh": "明亮的月光惊动了栖息在斜枝上的喜鹊。", "en": "Bright moonlight startles magpies from a slanting branch.", "rhetoric": ["parallelism"] },
+        { "text": "清风半夜鸣蝉。", "pinyin": "qīng fēng bàn yè míng chán", "zh": "半夜里清凉的风中传来蝉的鸣叫。", "en": "In the cool midnight breeze cicadas are crying.", "rhetoric": ["parallelism"] },
         { "text": "稻花香里说丰年，", "pinyin": "dào huā xiāng lǐ shuō fēng nián", "zh": "稻花的香气里，人们谈论着丰收的年景。", "en": "Amid the fragrance of rice flowers they speak of a good harvest." },
         { "text": "听取蛙声一片。", "pinyin": "tīng qǔ wā shēng yī piàn", "zh": "听到一片此起彼伏的蛙鸣声。", "en": "Listen—a chorus of frogs rises all around." },
-        { "text": "七八个星天外，", "pinyin": "qī bā gè xīng tiān wài", "zh": "天边稀疏地挂着七八颗星星。", "en": "Seven or eight stars hang at the edge of the sky." },
-        { "text": "两三点雨山前。", "pinyin": "liǎng sān diǎn yǔ shān qián", "zh": "山前飘落两三点雨。", "en": "Two or three raindrops fall before the hills." },
+        { "text": "七八个星天外，", "pinyin": "qī bā gè xīng tiān wài", "zh": "天边稀疏地挂着七八颗星星。", "en": "Seven or eight stars hang at the edge of the sky.", "rhetoric": ["parallelism"] },
+        { "text": "两三点雨山前。", "pinyin": "liǎng sān diǎn yǔ shān qián", "zh": "山前飘落两三点雨。", "en": "Two or three raindrops fall before the hills.", "rhetoric": ["parallelism"] },
         { "text": "旧时茅店社林边，", "pinyin": "jiù shí máo diàn shè lín biān", "zh": "从前那座茅草店就在土地庙树林的旁边。", "en": "The old thatched inn stood by the woods near the village shrine." },
         { "text": "路转溪桥忽见。", "pinyin": "lù zhuǎn xī qiáo hū xiàn", "zh": "山路一转，过了溪上的小桥，茅店忽然出现在眼前。", "en": "The path turns past the brook's bridge—suddenly there it appears." }
       ],
@@ -272,10 +272,10 @@
       "lines": [
         { "text": "红军不怕远征难，", "pinyin": "hóng jūn bù pà yuǎn zhēng nán", "zh": "红军不怕万里长征路上的种种艰难。", "en": "The Red Army fears not the trials of the long march." },
         { "text": "万水千山只等闲。", "pinyin": "wàn shuǐ qiān shān zhǐ děng xián", "zh": "千山万水在他们眼里不过是平平常常的事。", "en": "Countless rivers and peaks are nothing to them." },
-        { "text": "五岭逶迤腾细浪，", "pinyin": "wǔ lǐng wēi yí téng xì làng", "zh": "绵延起伏的五岭，在红军看来只像翻腾的细小波浪。", "en": "The rolling Five Ridges seem mere ripples." },
-        { "text": "乌蒙磅礴走泥丸。", "pinyin": "wū méng páng bó zǒu ní wán", "zh": "气势磅礴的乌蒙山，也不过像脚下滚动的泥丸。", "en": "The mighty Wumeng Mountains roll past like clay balls." },
-        { "text": "金沙水拍云崖暖，", "pinyin": "jīn shā shuǐ pāi yún yá nuǎn", "zh": "金沙江的水拍打着高耸入云的山崖，使人感到温暖。", "en": "Waters of the Jinsha lap warm against cloud-high cliffs." },
-        { "text": "大渡桥横铁索寒。", "pinyin": "dà dù qiáo héng tiě suǒ hán", "zh": "大渡河上横跨的泸定桥，铁索高悬，令人胆寒。", "en": "Over the Dadu the bridge's iron chains hang cold." },
+        { "text": "五岭逶迤腾细浪，", "pinyin": "wǔ lǐng wēi yí téng xì làng", "zh": "绵延起伏的五岭，在红军看来只像翻腾的细小波浪。", "en": "The rolling Five Ridges seem mere ripples.", "rhetoric": ["metaphor-analogy", "foil", "parallelism"] },
+        { "text": "乌蒙磅礴走泥丸。", "pinyin": "wū méng páng bó zǒu ní wán", "zh": "气势磅礴的乌蒙山，也不过像脚下滚动的泥丸。", "en": "The mighty Wumeng Mountains roll past like clay balls.", "rhetoric": ["metaphor-analogy", "foil", "parallelism"] },
+        { "text": "金沙水拍云崖暖，", "pinyin": "jīn shā shuǐ pāi yún yá nuǎn", "zh": "金沙江的水拍打着高耸入云的山崖，使人感到温暖。", "en": "Waters of the Jinsha lap warm against cloud-high cliffs.", "rhetoric": ["parallelism", "foil"] },
+        { "text": "大渡桥横铁索寒。", "pinyin": "dà dù qiáo héng tiě suǒ hán", "zh": "大渡河上横跨的泸定桥，铁索高悬，令人胆寒。", "en": "Over the Dadu the bridge's iron chains hang cold.", "rhetoric": ["parallelism", "foil"] },
         { "text": "更喜岷山千里雪，", "pinyin": "gèng xǐ mín shān qiān lǐ xuě", "zh": "更让人欢喜的是翻过了千里皑皑白雪的岷山。", "en": "More gladdening still: the thousand-li snows of Min Mountain." },
         { "text": "三军过后尽开颜。", "pinyin": "sān jūn guò hòu jìn kāi yán", "zh": "红军将士翻越过去之后，个个喜笑颜开。", "en": "Once the whole army crossed, every face broke into a smile." }
       ],
@@ -381,8 +381,8 @@
       "lines": [
         { "text": "九曲黄河万里沙，", "pinyin": "jiǔ qū huáng hé wàn lǐ shā", "zh": "黄河弯弯曲曲，挟带着万里黄沙奔流。", "en": "The winding Yellow River carries sand for ten thousand li." },
         { "text": "浪淘风簸自天涯。", "pinyin": "làng táo fēng bǒ zì tiān yá", "zh": "波浪冲刷、狂风颠簸，仿佛是从天边奔涌而来。", "en": "Waves scour and winds toss it, as if from the world's far edge." },
-        { "text": "如今直上银河去，", "pinyin": "rú jīn zhí shàng yín hé qù", "zh": "如今我要沿着黄河一直上到天上的银河去，", "en": "Now let me ride straight up to the Silver River in the sky," },
-        { "text": "同到牵牛织女家。", "pinyin": "tóng dào qiān niú zhī nǚ jiā", "zh": "一同到牛郎织女居住的人家做客。", "en": "and visit together the homes of the Cowherd and Weaver Maid." }
+        { "text": "如今直上银河去，", "pinyin": "rú jīn zhí shàng yín hé qù", "zh": "如今我要沿着黄河一直上到天上的银河去，", "en": "Now let me ride straight up to the Silver River in the sky,", "rhetoric": ["real-imagined"] },
+        { "text": "同到牵牛织女家。", "pinyin": "tóng dào qiān niú zhī nǚ jiā", "zh": "一同到牛郎织女居住的人家做客。", "en": "and visit together the homes of the Cowherd and Weaver Maid.", "rhetoric": ["real-imagined", "allusion"] }
       ],
       "chars": [
         { "char": "浪", "pinyin": "làng", "zh": "波浪；又为词牌“浪淘沙”用字。", "en": "wave" },
@@ -447,10 +447,10 @@
       "grade": 6,
       "volume": "上",
       "lines": [
-        { "text": "千里莺啼绿映红，", "pinyin": "qiān lǐ yīng tí lǜ yìng hóng", "zh": "辽阔的江南到处黄莺啼鸣，绿叶映衬着红花。", "en": "For a thousand li orioles sing, green sets off red." },
+        { "text": "千里莺啼绿映红，", "pinyin": "qiān lǐ yīng tí lǜ yìng hóng", "zh": "辽阔的江南到处黄莺啼鸣，绿叶映衬着红花。", "en": "For a thousand li orioles sing, green sets off red.", "rhetoric": ["hyperbole", "foil"] },
         { "text": "水村山郭酒旗风。", "pinyin": "shuǐ cūn shān guō jiǔ qí fēng", "zh": "依水的村庄、靠山的城郭，酒店的旗子在风中飘扬。", "en": "By riverside hamlets and hill-girt towns, tavern flags flutter in the breeze." },
-        { "text": "南朝四百八十寺，", "pinyin": "nán cháo sì bǎi bā shí sì", "zh": "南朝时修建的众多佛寺，", "en": "The four hundred eighty temples of the Southern Dynasties—" },
-        { "text": "多少楼台烟雨中。", "pinyin": "duō shǎo lóu tái yān yǔ zhōng", "zh": "如今有多少楼台亭阁笼罩在迷蒙的烟雨之中。", "en": "how many towers now stand veiled in misty rain." }
+        { "text": "南朝四百八十寺，", "pinyin": "nán cháo sì bǎi bā shí sì", "zh": "南朝时修建的众多佛寺，", "en": "The four hundred eighty temples of the Southern Dynasties—", "rhetoric": ["real-imagined"] },
+        { "text": "多少楼台烟雨中。", "pinyin": "duō shǎo lóu tái yān yǔ zhōng", "zh": "如今有多少楼台亭阁笼罩在迷蒙的烟雨之中。", "en": "how many towers now stand veiled in misty rain.", "rhetoric": ["real-imagined"] }
       ],
       "chars": [
         { "char": "江", "pinyin": "jiāng", "zh": "江南，长江以南地区。", "en": "(in 江南) river / south region" },
@@ -521,8 +521,8 @@
       "lines": [
         { "text": "茅檐长扫净无苔，", "pinyin": "máo yán cháng sǎo jìng wú tái", "zh": "茅草屋檐下经常打扫，洁净得没有一点青苔。", "en": "The thatched eaves, often swept, are clean and free of moss." },
         { "text": "花木成畦手自栽。", "pinyin": "huā mù chéng qí shǒu zì zāi", "zh": "花草树木一畦一畦，都是主人亲手栽种的。", "en": "Flowers and trees in neat beds, all planted by his own hand." },
-        { "text": "一水护田将绿绕，", "pinyin": "yī shuǐ hù tián jiāng lǜ rào", "zh": "一道溪水护卫着农田，把绿色的田地环绕起来。", "en": "A stream guards the fields, encircling the green all around." },
-        { "text": "两山排闼送青来。", "pinyin": "liǎng shān pái tà sòng qīng lái", "zh": "两座青山推门而入，把青翠的颜色送到眼前。", "en": "Two hills, flinging the door wide, deliver their blue-green in." }
+        { "text": "一水护田将绿绕，", "pinyin": "yī shuǐ hù tián jiāng lǜ rào", "zh": "一道溪水护卫着农田，把绿色的田地环绕起来。", "en": "A stream guards the fields, encircling the green all around.", "rhetoric": ["metaphor-analogy", "parallelism"] },
+        { "text": "两山排闼送青来。", "pinyin": "liǎng shān pái tà sòng qīng lái", "zh": "两座青山推门而入，把青翠的颜色送到眼前。", "en": "Two hills, flinging the door wide, deliver their blue-green in.", "rhetoric": ["metaphor-analogy", "parallelism"] }
       ],
       "chars": [
         { "char": "书", "pinyin": "shū", "zh": "书写、题写。", "en": "to write / inscribe" },
@@ -581,7 +581,7 @@
         { "text": "水护", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "一水护田将绿绕，", "pos": 1, "zh": "\"水\"是上声，在非上声\"护\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 护; the written pinyin stays shuǐ." },
         { "text": "两山", "rule": "半上声", "base": "liǎng", "read": "liǎng", "value": "211", "markChange": false, "where": "两山排闼送青来。", "pos": 0, "zh": "\"两\"是上声，在非上声\"山\"前读\"半上\"（调值211），拼音不变：liǎng。", "en": "两 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 山; the written pinyin stays liǎng." }
       ],
-      "tags": ["pastoral"]
+      "tags": ["recluse"]
     },
     {
       "id": "g6u-08-huixiangoushu",
@@ -593,8 +593,8 @@
       "grade": 6,
       "volume": "上",
       "lines": [
-        { "text": "少小离家老大回，", "pinyin": "shào xiǎo lí jiā lǎo dà huí", "zh": "年少时离开家乡，年老了才回来。", "en": "Young I left home, old I now return." },
-        { "text": "乡音无改鬓毛衰。", "pinyin": "xiāng yīn wú gǎi bìn máo cuī", "zh": "家乡的口音没有改变，鬓边的头发却已稀疏花白。", "en": "My hometown accent unchanged, but the hair at my temples has thinned." },
+        { "text": "少小离家老大回，", "pinyin": "shào xiǎo lí jiā lǎo dà huí", "zh": "年少时离开家乡，年老了才回来。", "en": "Young I left home, old I now return.", "rhetoric": ["parallelism"] },
+        { "text": "乡音无改鬓毛衰。", "pinyin": "xiāng yīn wú gǎi bìn máo cuī", "zh": "家乡的口音没有改变，鬓边的头发却已稀疏花白。", "en": "My hometown accent unchanged, but the hair at my temples has thinned.", "rhetoric": ["parallelism"] },
         { "text": "儿童相见不相识，", "pinyin": "ér tóng xiāng jiàn bù xiāng shí", "zh": "村里的孩子见了我却都不认识，", "en": "The children meet me but do not know me," },
         { "text": "笑问客从何处来。", "pinyin": "xiào wèn kè cóng hé chù lái", "zh": "笑着问我这位客人是从哪里来的。", "en": "and ask with a smile: 'Where, sir, do you come from?'" }
       ],
@@ -665,7 +665,7 @@
         { "text": "胜日寻芳泗水滨，", "pinyin": "shèng rì xún fāng sì shuǐ bīn", "zh": "在风和日丽的日子里，到泗水之滨去观赏春花。", "en": "On a fine day I seek spring's blooms by the Si River's shore." },
         { "text": "无边光景一时新。", "pinyin": "wú biān guāng jǐng yī shí xīn", "zh": "无边无际的风光景物，一时间都焕然一新。", "en": "Boundless scenery all at once is fresh and new." },
         { "text": "等闲识得东风面，", "pinyin": "děng xián shí dé dōng fēng miàn", "zh": "轻易就能认出春风的面貌，", "en": "With ease one knows the face of the east wind;" },
-        { "text": "万紫千红总是春。", "pinyin": "wàn zǐ qiān hóng zǒng shì chūn", "zh": "那万紫千红的景象，全都是春天带来的。", "en": "Ten thousand purples and a thousand reds—all of it is spring." }
+        { "text": "万紫千红总是春。", "pinyin": "wàn zǐ qiān hóng zǒng shì chūn", "zh": "那万紫千红的景象，全都是春天带来的。", "en": "Ten thousand purples and a thousand reds—all of it is spring.", "rhetoric": ["image-listing", "hyperbole"] }
       ],
       "chars": [
         { "char": "春", "pinyin": "chūn", "zh": "春天。", "en": "spring" },
@@ -732,10 +732,10 @@
       "grade": 6,
       "volume": "下",
       "lines": [
-        { "text": "春城无处不飞花，", "pinyin": "chūn chéng wú chù bù fēi huā", "zh": "暮春时节，长安城中处处柳絮飞舞、落红无数。", "en": "In the spring city there is nowhere the blossoms do not fly." },
+        { "text": "春城无处不飞花，", "pinyin": "chūn chéng wú chù bù fēi huā", "zh": "暮春时节，长安城中处处柳絮飞舞、落红无数。", "en": "In the spring city there is nowhere the blossoms do not fly.", "rhetoric": ["hyperbole"] },
         { "text": "寒食东风御柳斜。", "pinyin": "hán shí dōng fēng yù liǔ xié", "zh": "寒食节里东风吹拂，皇宫御苑中的柳枝随风斜垂。", "en": "At Cold Food, the east wind bends the palace willows aslant." },
         { "text": "日暮汉宫传蜡烛，", "pinyin": "rì mù hàn gōng chuán là zhú", "zh": "黄昏时分，皇宫里传送着赏赐的蜡烛。", "en": "At dusk the Han palace passes out candles," },
-        { "text": "轻烟散入五侯家。", "pinyin": "qīng yān sàn rù wǔ hóu jiā", "zh": "袅袅轻烟飘散，进入权贵宠臣的家中。", "en": "and light smoke drifts into the homes of the five marquises." }
+        { "text": "轻烟散入五侯家。", "pinyin": "qīng yān sàn rù wǔ hóu jiā", "zh": "袅袅轻烟飘散，进入权贵宠臣的家中。", "en": "and light smoke drifts into the homes of the five marquises.", "rhetoric": ["irony"] }
       ],
       "chars": [
         { "char": "春", "pinyin": "chūn", "zh": "春天，这里指暮春。", "en": "spring" },
@@ -799,16 +799,16 @@
       "grade": 6,
       "volume": "下",
       "lines": [
-        { "text": "迢迢牵牛星，", "pinyin": "tiáo tiáo qiān niú xīng", "zh": "遥远的牵牛星啊，", "en": "Far, far away shines the Cowherd star," },
-        { "text": "皎皎河汉女。", "pinyin": "jiǎo jiǎo hé hàn nǚ", "zh": "明亮的银河边的织女星。", "en": "bright, bright the Weaving Maid by the River of Heaven." },
-        { "text": "纤纤擢素手，", "pinyin": "xiān xiān zhuó sù shǒu", "zh": "她伸出柔美洁白的双手，", "en": "Slender, she lifts her pale white hands," },
-        { "text": "札札弄机杼。", "pinyin": "zhá zhá nòng jī zhù", "zh": "札札地摆弄着织布机的梭子。", "en": "clack-clack she works the loom and shuttle." },
+        { "text": "迢迢牵牛星，", "pinyin": "tiáo tiáo qiān niú xīng", "zh": "遥远的牵牛星啊，", "en": "Far, far away shines the Cowherd star,", "rhetoric": ["repetition"] },
+        { "text": "皎皎河汉女。", "pinyin": "jiǎo jiǎo hé hàn nǚ", "zh": "明亮的银河边的织女星。", "en": "bright, bright the Weaving Maid by the River of Heaven.", "rhetoric": ["repetition"] },
+        { "text": "纤纤擢素手，", "pinyin": "xiān xiān zhuó sù shǒu", "zh": "她伸出柔美洁白的双手，", "en": "Slender, she lifts her pale white hands,", "rhetoric": ["repetition", "metaphor-analogy"] },
+        { "text": "札札弄机杼。", "pinyin": "zhá zhá nòng jī zhù", "zh": "札札地摆弄着织布机的梭子。", "en": "clack-clack she works the loom and shuttle.", "rhetoric": ["repetition"] },
         { "text": "终日不成章，", "pinyin": "zhōng rì bù chéng zhāng", "zh": "织了一整天也织不成一段布纹，", "en": "All day she weaves but finishes no pattern," },
-        { "text": "泣涕零如雨。", "pinyin": "qì tì líng rú yǔ", "zh": "眼泪零落，像雨一样落下。", "en": "her tears fall scattered like the rain." },
+        { "text": "泣涕零如雨。", "pinyin": "qì tì líng rú yǔ", "zh": "眼泪零落，像雨一样落下。", "en": "her tears fall scattered like the rain.", "rhetoric": ["metaphor-analogy"] },
         { "text": "河汉清且浅，", "pinyin": "hé hàn qīng qiě qiǎn", "zh": "那银河既清澈又浅显，", "en": "The River of Heaven is clear and shallow," },
-        { "text": "相去复几许？", "pinyin": "xiāng qù fù jǐ xǔ", "zh": "两人相隔又能有多远呢？", "en": "and how far apart, after all, are they?" },
-        { "text": "盈盈一水间，", "pinyin": "yíng yíng yī shuǐ jiān", "zh": "只隔着一道清浅的河水，", "en": "Just one stretch of brimming water lies between," },
-        { "text": "脉脉不得语。", "pinyin": "mò mò bù dé yǔ", "zh": "却只能含情相望，不能互诉衷肠。", "en": "yet, gazing in silence, they cannot speak." }
+        { "text": "相去复几许？", "pinyin": "xiāng qù fù jǐ xǔ", "zh": "两人相隔又能有多远呢？", "en": "and how far apart, after all, are they?", "rhetoric": ["rhetorical-question"] },
+        { "text": "盈盈一水间，", "pinyin": "yíng yíng yī shuǐ jiān", "zh": "只隔着一道清浅的河水，", "en": "Just one stretch of brimming water lies between,", "rhetoric": ["repetition"] },
+        { "text": "脉脉不得语。", "pinyin": "mò mò bù dé yǔ", "zh": "却只能含情相望，不能互诉衷肠。", "en": "yet, gazing in silence, they cannot speak.", "rhetoric": ["repetition", "metaphor-analogy"] }
       ],
       "chars": [
         { "char": "迢", "pinyin": "tiáo", "zh": "迢迢，遥远的样子。", "en": "distant" },
@@ -877,7 +877,7 @@
         { "text": "水间", "rule": "半上声", "base": "shuǐ", "read": "shuǐ", "value": "211", "markChange": false, "where": "盈盈一水间，", "pos": 3, "zh": "\"水\"是上声，在非上声\"间\"前读\"半上\"（调值211），拼音不变：shuǐ。", "en": "水 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 间; the written pinyin stays shuǐ." },
         { "text": "脉脉", "rule": "半去声", "base": "mò", "read": "mò", "value": "53", "markChange": false, "where": "脉脉不得语。", "pos": 0, "zh": "\"脉\"是去声，在去声\"脉\"前读\"半去\"（调值53），拼音不变：mò。", "en": "脉 (fourth tone) is shortened to a half-fourth tone (pitch 53) before the fourth-tone 脉; the written pinyin stays mò." }
       ],
-      "tags": ["kinship"]
+      "tags": ["huairen"]
     },
     {
       "id": "g6d-03-shiwuyewangyue",
@@ -892,7 +892,7 @@
         { "text": "中庭地白树栖鸦，", "pinyin": "zhōng tíng dì bái shù qī yā", "zh": "庭院中地面洒满月光一片银白，树上栖息着乌鸦。", "en": "In the courtyard the ground is white, crows roost in the trees," },
         { "text": "冷露无声湿桂花。", "pinyin": "lěng lù wú shēng shī guì huā", "zh": "清冷的露水悄无声息地打湿了桂花。", "en": "and cold dew silently dampens the osmanthus blossoms." },
         { "text": "今夜月明人尽望，", "pinyin": "jīn yè yuè míng rén jìn wàng", "zh": "今夜明月当空，人们都在抬头望月，", "en": "Tonight the moon is bright and all gaze up at it," },
-        { "text": "不知秋思落谁家？", "pinyin": "bù zhī qiū sī luò shuí jiā", "zh": "不知这秋天的思念会落到谁家呢？", "en": "but who knows whose home this autumn longing falls upon?" }
+        { "text": "不知秋思落谁家？", "pinyin": "bù zhī qiū sī luò shuí jiā", "zh": "不知这秋天的思念会落到谁家呢？", "en": "but who knows whose home this autumn longing falls upon?", "rhetoric": ["rhetorical-question"] }
       ],
       "chars": [
         { "char": "中", "pinyin": "zhōng", "zh": "中间，中庭即庭院之中（多音字：zhòng 指击中）。", "en": "middle" },
@@ -955,10 +955,10 @@
       "grade": 6,
       "volume": "下",
       "lines": [
-        { "text": "大漠沙如雪，", "pinyin": "dà mò shā rú xuě", "zh": "茫茫大沙漠中，沙子洁白得像雪一样。", "en": "On the great desert the sand is white as snow," },
-        { "text": "燕山月似钩。", "pinyin": "yān shān yuè sì gōu", "zh": "燕山上一弯新月像弯钩一样高挂。", "en": "over the Yan Mountains the moon hangs like a hook." },
-        { "text": "何当金络脑，", "pinyin": "hé dāng jīn luò nǎo", "zh": "什么时候才能戴上黄金打造的笼头，", "en": "When will it wear a golden bridle on its head," },
-        { "text": "快走踏清秋。", "pinyin": "kuài zǒu tà qīng qiū", "zh": "在清爽的秋天里纵情奔驰、施展才能呢？", "en": "and gallop swiftly through the clear autumn air?" }
+        { "text": "大漠沙如雪，", "pinyin": "dà mò shā rú xuě", "zh": "茫茫大沙漠中，沙子洁白得像雪一样。", "en": "On the great desert the sand is white as snow,", "rhetoric": ["metaphor-analogy", "parallelism"] },
+        { "text": "燕山月似钩。", "pinyin": "yān shān yuè sì gōu", "zh": "燕山上一弯新月像弯钩一样高挂。", "en": "over the Yan Mountains the moon hangs like a hook.", "rhetoric": ["metaphor-analogy", "parallelism"] },
+        { "text": "何当金络脑，", "pinyin": "hé dāng jīn luò nǎo", "zh": "什么时候才能戴上黄金打造的笼头，", "en": "When will it wear a golden bridle on its head,", "rhetoric": ["rhetorical-question"] },
+        { "text": "快走踏清秋。", "pinyin": "kuài zǒu tà qīng qiū", "zh": "在清爽的秋天里纵情奔驰、施展才能呢？", "en": "and gallop swiftly through the clear autumn air?", "rhetoric": ["rhetorical-question"] }
       ],
       "chars": [
         { "char": "大", "pinyin": "dà", "zh": "广大，大漠即大沙漠（多音字：dài 指大夫）。", "en": "great / big" },
@@ -1014,10 +1014,10 @@
       "grade": 6,
       "volume": "下",
       "lines": [
-        { "text": "千锤万凿出深山，", "pinyin": "qiān chuí wàn záo chū shēn shān", "zh": "石灰石经过千万次的锤打和开凿，才从深山中开采出来。", "en": "Through a thousand hammer-blows and ten thousand chisels it comes out of the deep mountains," },
-        { "text": "烈火焚烧若等闲。", "pinyin": "liè huǒ fén shāo ruò děng xián", "zh": "面对熊熊烈火的焚烧，它却看得平平常常、毫不在意。", "en": "and it treats the raging fire that burns it as an everyday thing." },
-        { "text": "粉骨碎身浑不怕，", "pinyin": "fěn gǔ suì shēn hún bù pà", "zh": "即使被烧得粉身碎骨，也全然不怕，", "en": "Though ground to powder and shattered to bits, it is not afraid at all," },
-        { "text": "要留清白在人间。", "pinyin": "yào liú qīng bái zài rén jiān", "zh": "只为把清白纯洁留存在人世间。", "en": "for it wishes only to leave its purity behind in the world of men." }
+        { "text": "千锤万凿出深山，", "pinyin": "qiān chuí wàn záo chū shēn shān", "zh": "石灰石经过千万次的锤打和开凿，才从深山中开采出来。", "en": "Through a thousand hammer-blows and ten thousand chisels it comes out of the deep mountains,", "rhetoric": ["hyperbole", "parallelism"] },
+        { "text": "烈火焚烧若等闲。", "pinyin": "liè huǒ fén shāo ruò děng xián", "zh": "面对熊熊烈火的焚烧，它却看得平平常常、毫不在意。", "en": "and it treats the raging fire that burns it as an everyday thing.", "rhetoric": ["parallelism"] },
+        { "text": "粉骨碎身浑不怕，", "pinyin": "fěn gǔ suì shēn hún bù pà", "zh": "即使被烧得粉身碎骨，也全然不怕，", "en": "Though ground to powder and shattered to bits, it is not afraid at all,", "rhetoric": ["metaphor-analogy", "parallelism"] },
+        { "text": "要留清白在人间。", "pinyin": "yào liú qīng bái zài rén jiān", "zh": "只为把清白纯洁留存在人世间。", "en": "for it wishes only to leave its purity behind in the world of men.", "rhetoric": ["wordplay", "parallelism"] }
       ],
       "chars": [
         { "char": "千", "pinyin": "qiān", "zh": "千，形容次数极多。", "en": "thousand" },
@@ -1070,7 +1070,7 @@
         { "text": "骨碎", "rule": "半上声", "base": "gǔ", "read": "gǔ", "value": "211", "markChange": false, "where": "粉骨碎身浑不怕，", "pos": 1, "zh": "\"骨\"是上声，在非上声\"碎\"前读\"半上\"（调值211），拼音不变：gǔ。", "en": "骨 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 碎; the written pinyin stays gǔ." },
         { "text": "不怕", "rule": "不字变调", "base": "bù", "read": "bú", "value": "35", "markChange": true, "where": "粉骨碎身浑不怕，", "pos": 5, "zh": "\"不\"在去声\"怕\"前变读阳平（第二声）：bù→bú。", "en": "不 before the fourth-tone 怕 changes to second tone: bù → bú." }
       ],
-      "tags": ["object", "insight"]
+      "tags": ["object"]
     },
     {
       "id": "g6d-06-zhushi",
@@ -1082,10 +1082,10 @@
       "grade": 6,
       "volume": "下",
       "lines": [
-        { "text": "咬定青山不放松，", "pinyin": "yǎo dìng qīng shān bù fàng sōng", "zh": "竹子牢牢地咬定青山，绝不放松。", "en": "Biting fast into the green mountain it will not let go," },
-        { "text": "立根原在破岩中。", "pinyin": "lì gēn yuán zài pò yán zhōng", "zh": "它把根深深扎在破裂的岩石缝隙之中。", "en": "its roots set firmly in the cracks of broken rock." },
-        { "text": "千磨万击还坚劲，", "pinyin": "qiān mó wàn jī hái jiān jìng", "zh": "历经千万次的磨难和打击，依然坚定强劲，", "en": "Through a thousand grindings and ten thousand blows it stays strong," },
-        { "text": "任尔东西南北风。", "pinyin": "rèn ěr dōng xī nán běi fēng", "zh": "任凭你东西南北各个方向的狂风吹打。", "en": "let the winds blow from east, west, south, or north as they will." }
+        { "text": "咬定青山不放松，", "pinyin": "yǎo dìng qīng shān bù fàng sōng", "zh": "竹子牢牢地咬定青山，绝不放松。", "en": "Biting fast into the green mountain it will not let go,", "rhetoric": ["metaphor-analogy", "parallelism"] },
+        { "text": "立根原在破岩中。", "pinyin": "lì gēn yuán zài pò yán zhōng", "zh": "它把根深深扎在破裂的岩石缝隙之中。", "en": "its roots set firmly in the cracks of broken rock.", "rhetoric": ["metaphor-analogy", "parallelism"] },
+        { "text": "千磨万击还坚劲，", "pinyin": "qiān mó wàn jī hái jiān jìng", "zh": "历经千万次的磨难和打击，依然坚定强劲，", "en": "Through a thousand grindings and ten thousand blows it stays strong,", "rhetoric": ["hyperbole", "parallelism"] },
+        { "text": "任尔东西南北风。", "pinyin": "rèn ěr dōng xī nán běi fēng", "zh": "任凭你东西南北各个方向的狂风吹打。", "en": "let the winds blow from east, west, south, or north as they will.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "咬", "pinyin": "yǎo", "zh": "咬住，比喻竹根紧紧抓住。", "en": "to bite / grip" },
@@ -1137,7 +1137,7 @@
         { "text": "尔东", "rule": "半上声", "base": "ěr", "read": "ěr", "value": "211", "markChange": false, "where": "任尔东西南北风。", "pos": 1, "zh": "\"尔\"是上声，在非上声\"东\"前读\"半上\"（调值211），拼音不变：ěr。", "en": "尔 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 东; the written pinyin stays ěr." },
         { "text": "北风", "rule": "半上声", "base": "běi", "read": "běi", "value": "211", "markChange": false, "where": "任尔东西南北风。", "pos": 5, "zh": "\"北\"是上声，在非上声\"风\"前读\"半上\"（调值211），拼音不变：běi。", "en": "北 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 风; the written pinyin stays běi." }
       ],
-      "tags": ["object", "insight"]
+      "tags": ["object"]
     },
     {
       "id": "g6d-07-xueyi",
@@ -1151,11 +1151,11 @@
       "lines": [
         { "text": "弈秋，通国之善弈者也。", "pinyin": "yì qiū tōng guó zhī shàn yì zhě yě", "zh": "弈秋，是全国最擅长下棋的人。", "en": "Yi Qiu was the best chess player in the whole country." },
         { "text": "使弈秋诲二人弈，", "pinyin": "shǐ yì qiū huì èr rén yì", "zh": "让弈秋教两个人下棋，", "en": "Suppose Yi Qiu were made to teach two people chess:" },
-        { "text": "其一人专心致志，惟弈秋之为听；", "pinyin": "qí yī rén zhuān xīn zhì zhì wéi yì qiū zhī wéi tīng", "zh": "其中一个人专心致志，只听弈秋的教导；", "en": "one of them concentrates completely and listens only to Yi Qiu;" },
-        { "text": "一人虽听之，一心以为有鸿鹄将至，思援弓缴而射之。", "pinyin": "yī rén suī tīng zhī yī xīn yǐ wéi yǒu hóng hú jiāng zhì sī yuán gōng zhuó ér shè zhī", "zh": "另一个人虽然也在听，却一心以为有天鹅将要飞来，想着拉弓搭箭去射它。", "en": "the other, though listening, keeps thinking a swan is about to come, and plans to draw his bow and shoot it down." },
+        { "text": "其一人专心致志，惟弈秋之为听；", "pinyin": "qí yī rén zhuān xīn zhì zhì wéi yì qiū zhī wéi tīng", "zh": "其中一个人专心致志，只听弈秋的教导；", "en": "one of them concentrates completely and listens only to Yi Qiu;", "rhetoric": ["foil"] },
+        { "text": "一人虽听之，一心以为有鸿鹄将至，思援弓缴而射之。", "pinyin": "yī rén suī tīng zhī yī xīn yǐ wéi yǒu hóng hú jiāng zhì sī yuán gōng zhuó ér shè zhī", "zh": "另一个人虽然也在听，却一心以为有天鹅将要飞来，想着拉弓搭箭去射它。", "en": "the other, though listening, keeps thinking a swan is about to come, and plans to draw his bow and shoot it down.", "rhetoric": ["foil"] },
         { "text": "虽与之俱学，弗若之矣。", "pinyin": "suī yǔ zhī jù xué fú ruò zhī yǐ", "zh": "虽然和前一个人一起学习，棋艺却比不上他了。", "en": "Though he studies alongside the first, he is not his equal." },
-        { "text": "为是其智弗若与？", "pinyin": "wéi shì qí zhì fú ruò yú", "zh": "能说是因为他的智力不如前一个人吗？", "en": "Is this because his intelligence is inferior?" },
-        { "text": "曰：非然也。", "pinyin": "yuē fēi rán yě", "zh": "回答说：不是这样的。", "en": "The answer is: no, it is not." }
+        { "text": "为是其智弗若与？", "pinyin": "wéi shì qí zhì fú ruò yú", "zh": "能说是因为他的智力不如前一个人吗？", "en": "Is this because his intelligence is inferior?", "rhetoric": ["rhetorical-question"] },
+        { "text": "曰：非然也。", "pinyin": "yuē fēi rán yě", "zh": "回答说：不是这样的。", "en": "The answer is: no, it is not.", "rhetoric": ["rhetorical-question"] }
       ],
       "chars": [
         { "char": "弈", "pinyin": "yì", "zh": "下棋；这里指围棋。", "en": "to play chess / weiqi" },
@@ -1242,12 +1242,12 @@
       "lines": [
         { "text": "孔子东游，见两小儿辩斗，", "pinyin": "kǒng zǐ dōng yóu jiàn liǎng xiǎo ér biàn dòu", "zh": "孔子到东方游历，看见两个小孩在争辩，", "en": "Confucius, travelling east, saw two children arguing," },
         { "text": "问其故。", "pinyin": "wèn qí gù", "zh": "便问他们争辩的原因。", "en": "and asked them the reason." },
-        { "text": "一儿曰：“我以日始出时去人近，而日中时远也。”", "pinyin": "yī ér yuē wǒ yǐ rì shǐ chū shí qù rén jìn ér rì zhōng shí yuǎn yě", "zh": "一个小孩说：“我认为太阳刚出来时离人近，而正午时离人远。”", "en": "One child said: 'I think the sun is near at sunrise and far at noon.'" },
-        { "text": "一儿以日初出远，而日中时近。", "pinyin": "yī ér yǐ rì chū chū yuǎn ér rì zhōng shí jìn", "zh": "另一个小孩认为太阳刚出来时离人远，而正午时离人近。", "en": "The other thought the sun was far at sunrise and near at noon." },
-        { "text": "一儿曰：“日初出大如车盖，及日中则如盘盂，此不为远者小而近者大乎？”", "pinyin": "yī ér yuē rì chū chū dà rú chē gài jí rì zhōng zé rú pán yú cǐ bù wéi yuǎn zhě xiǎo ér jìn zhě dà hū", "zh": "一个小孩说：“太阳刚出来时大得像车盖，到了正午却像盘子，这不正是远的小、近的大吗？”", "en": "One child said: 'At sunrise the sun is big as a carriage canopy, but at noon it is like a plate or bowl; isn't this because what is far looks small and what is near looks big?'" },
-        { "text": "一儿曰：“日初出沧沧凉凉，及其日中如探汤，此不为近者热而远者凉乎？”", "pinyin": "yī ér yuē rì chū chū cāng cāng liáng liáng jí qí rì zhōng rú tàn tāng cǐ bù wéi jìn zhě rè ér yuǎn zhě liáng hū", "zh": "另一个小孩说：“太阳刚出来时清清凉凉，到了正午却热得像把手伸进热水里，这不正是近的热、远的凉吗？”", "en": "The other said: 'At sunrise it is cool and chilly, but at noon it feels like reaching into hot water; isn't this because what is near is hot and what is far is cool?'" },
+        { "text": "一儿曰：“我以日始出时去人近，而日中时远也。”", "pinyin": "yī ér yuē wǒ yǐ rì shǐ chū shí qù rén jìn ér rì zhōng shí yuǎn yě", "zh": "一个小孩说：“我认为太阳刚出来时离人近，而正午时离人远。”", "en": "One child said: 'I think the sun is near at sunrise and far at noon.'", "rhetoric": ["foil"] },
+        { "text": "一儿以日初出远，而日中时近。", "pinyin": "yī ér yǐ rì chū chū yuǎn ér rì zhōng shí jìn", "zh": "另一个小孩认为太阳刚出来时离人远，而正午时离人近。", "en": "The other thought the sun was far at sunrise and near at noon.", "rhetoric": ["foil"] },
+        { "text": "一儿曰：“日初出大如车盖，及日中则如盘盂，此不为远者小而近者大乎？”", "pinyin": "yī ér yuē rì chū chū dà rú chē gài jí rì zhōng zé rú pán yú cǐ bù wéi yuǎn zhě xiǎo ér jìn zhě dà hū", "zh": "一个小孩说：“太阳刚出来时大得像车盖，到了正午却像盘子，这不正是远的小、近的大吗？”", "en": "One child said: 'At sunrise the sun is big as a carriage canopy, but at noon it is like a plate or bowl; isn't this because what is far looks small and what is near looks big?'", "rhetoric": ["metaphor-analogy", "rhetorical-question", "parallelism"] },
+        { "text": "一儿曰：“日初出沧沧凉凉，及其日中如探汤，此不为近者热而远者凉乎？”", "pinyin": "yī ér yuē rì chū chū cāng cāng liáng liáng jí qí rì zhōng rú tàn tāng cǐ bù wéi jìn zhě rè ér yuǎn zhě liáng hū", "zh": "另一个小孩说：“太阳刚出来时清清凉凉，到了正午却热得像把手伸进热水里，这不正是近的热、远的凉吗？”", "en": "The other said: 'At sunrise it is cool and chilly, but at noon it feels like reaching into hot water; isn't this because what is near is hot and what is far is cool?'", "rhetoric": ["metaphor-analogy", "rhetorical-question", "parallelism"] },
         { "text": "孔子不能决也。", "pinyin": "kǒng zǐ bù néng jué yě", "zh": "孔子也不能判断谁对谁错。", "en": "Confucius could not decide who was right." },
-        { "text": "两小儿笑曰：“孰为汝多知乎？”", "pinyin": "liǎng xiǎo ér xiào yuē shú wèi rǔ duō zhì hū", "zh": "两个小孩笑着说：“谁说你知识渊博呢？”", "en": "The two children laughed and said: 'Who says you are so learned?'" }
+        { "text": "两小儿笑曰：“孰为汝多知乎？”", "pinyin": "liǎng xiǎo ér xiào yuē shú wèi rǔ duō zhì hū", "zh": "两个小孩笑着说：“谁说你知识渊博呢？”", "en": "The two children laughed and said: 'Who says you are so learned?'", "rhetoric": ["rhetorical-question"] }
       ],
       "chars": [
         { "char": "孔", "pinyin": "kǒng", "zh": "孔子，指孔丘。", "en": "Kong (Confucius)" },

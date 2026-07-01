@@ -30,7 +30,7 @@
         { "text": "远上寒山石径斜，", "pinyin": "yuǎn shàng hán shān shí jìng xié", "zh": "一条石头小路弯弯曲曲地伸向远处深秋的山上。", "en": "A stone path winds far up the cold autumn mountain." },
         { "text": "白云生处有人家。", "pinyin": "bái yún shēng chù yǒu rén jiā", "zh": "在白云升起飘浮的地方，隐约有几户人家。", "en": "Where the white clouds rise, a few houses can be seen." },
         { "text": "停车坐爱枫林晚，", "pinyin": "tíng chē zuò ài fēng lín wǎn", "zh": "停下车来，是因为喜爱这傍晚时分的枫树林。", "en": "I stop my carriage, charmed by the maple grove at dusk." },
-        { "text": "霜叶红于二月花。", "pinyin": "shuāng yè hóng yú èr yuè huā", "zh": "经霜的枫叶比二月里盛开的鲜花还要红艳。", "en": "Frosted leaves are redder than flowers in spring." }
+        { "text": "霜叶红于二月花。", "pinyin": "shuāng yè hóng yú èr yuè huā", "zh": "经霜的枫叶比二月里盛开的鲜花还要红艳。", "en": "Frosted leaves are redder than flowers in spring.", "rhetoric": ["foil"] }
       ],
       "chars": [
         { "char": "远", "pinyin": "yuǎn", "zh": "遥远；距离长。", "en": "far / distant" },
@@ -94,10 +94,10 @@
       "grade": 3,
       "volume": "上",
       "lines": [
-        { "text": "荷尽已无擎雨盖，", "pinyin": "hé jìn yǐ wú qíng yǔ gài", "zh": "荷花凋谢了，再也没有像伞一样高举着挡雨的荷叶。", "en": "The lotuses are gone, no leaves left to hold up against the rain." },
-        { "text": "菊残犹有傲霜枝。", "pinyin": "jú cán yóu yǒu ào shuāng zhī", "zh": "菊花凋残了，却还有那傲对寒霜挺立的花枝。", "en": "The chrysanthemums wither, yet their stems still defy the frost." },
+        { "text": "荷尽已无擎雨盖，", "pinyin": "hé jìn yǐ wú qíng yǔ gài", "zh": "荷花凋谢了，再也没有像伞一样高举着挡雨的荷叶。", "en": "The lotuses are gone, no leaves left to hold up against the rain.", "rhetoric": ["parallelism", "foil"] },
+        { "text": "菊残犹有傲霜枝。", "pinyin": "jú cán yóu yǒu ào shuāng zhī", "zh": "菊花凋残了，却还有那傲对寒霜挺立的花枝。", "en": "The chrysanthemums wither, yet their stems still defy the frost.", "rhetoric": ["parallelism", "foil"] },
         { "text": "一年好景君须记，", "pinyin": "yī nián hǎo jǐng jūn xū jì", "zh": "一年中最美好的景致你一定要记住，", "en": "The finest scene of the whole year, you must remember," },
-        { "text": "最是橙黄橘绿时。", "pinyin": "zuì shì chéng huáng jú lǜ shí", "zh": "那正是橙子金黄、橘子青绿的初冬时节啊。", "en": "It is when oranges glow gold and tangerines turn green." }
+        { "text": "最是橙黄橘绿时。", "pinyin": "zuì shì chéng huáng jú lǜ shí", "zh": "那正是橙子金黄、橘子青绿的初冬时节啊。", "en": "It is when oranges glow gold and tangerines turn green.", "rhetoric": ["image-listing"] }
       ],
       "chars": [
         { "char": "荷", "pinyin": "hé", "zh": "荷花（多音字：hè 指负荷）。", "en": "lotus" },
@@ -165,10 +165,10 @@
       "grade": 3,
       "volume": "上",
       "lines": [
-        { "text": "萧萧梧叶送寒声，", "pinyin": "xiāo xiāo wú yè sòng hán shēng", "zh": "瑟瑟的秋风吹动梧桐叶，送来阵阵寒意的声响，", "en": "Rustling paulownia leaves carry a chilly sound." },
+        { "text": "萧萧梧叶送寒声，", "pinyin": "xiāo xiāo wú yè sòng hán shēng", "zh": "瑟瑟的秋风吹动梧桐叶，送来阵阵寒意的声响，", "en": "Rustling paulownia leaves carry a chilly sound.", "rhetoric": ["repetition"] },
         { "text": "江上秋风动客情。", "pinyin": "jiāng shàng qiū fēng dòng kè qíng", "zh": "江面上的秋风更勾起了游子的思乡之情。", "en": "Autumn wind on the river stirs a traveler's longing for home." },
-        { "text": "知有儿童挑促织，", "pinyin": "zhī yǒu ér tóng tiǎo cù zhī", "zh": "料想有孩子正在拨弄蟋蟀、逗它斗玩，", "en": "I know children are out poking crickets to play." },
-        { "text": "夜深篱落一灯明。", "pinyin": "yè shēn lí luò yī dēng míng", "zh": "因为夜深时分，篱笆旁还亮着一盏灯。", "en": "Late at night, one lamp glows by the fence." }
+        { "text": "知有儿童挑促织，", "pinyin": "zhī yǒu ér tóng tiǎo cù zhī", "zh": "料想有孩子正在拨弄蟋蟀、逗它斗玩，", "en": "I know children are out poking crickets to play.", "rhetoric": ["foil"] },
+        { "text": "夜深篱落一灯明。", "pinyin": "yè shēn lí luò yī dēng míng", "zh": "因为夜深时分，篱笆旁还亮着一盏灯。", "en": "Late at night, one lamp glows by the fence.", "rhetoric": ["foil"] }
       ],
       "chars": [
         { "char": "萧", "pinyin": "xiāo", "zh": "萧萧，形容风声。", "en": "rustling (sound)" },
@@ -235,7 +235,7 @@
         { "text": "天门中断楚江开，", "pinyin": "tiān mén zhōng duàn chǔ jiāng kāi", "zh": "天门山被长江从中冲断，江水奔流而过把它劈开，", "en": "Tianmen is split in two, cleaved open by the Chu River." },
         { "text": "碧水东流至此回。", "pinyin": "bì shuǐ dōng liú zhì cǐ huí", "zh": "碧绿的江水向东奔流，到这里又回旋折转。", "en": "Green waters flowing east swirl back when they reach here." },
         { "text": "两岸青山相对出，", "pinyin": "liǎng àn qīng shān xiāng duì chū", "zh": "两岸的青山隔江相对，迎面矗立而出，", "en": "Green peaks on both banks rise to face each other." },
-        { "text": "孤帆一片日边来。", "pinyin": "gū fān yī piàn rì biān lái", "zh": "一叶孤单的小船正从太阳升起的天边驶来。", "en": "A lone sail comes drifting in from where the sun rises." }
+        { "text": "孤帆一片日边来。", "pinyin": "gū fān yī piàn rì biān lái", "zh": "一叶孤单的小船正从太阳升起的天边驶来。", "en": "A lone sail comes drifting in from where the sun rises.", "rhetoric": ["metonymy"] }
       ],
       "chars": [
         { "char": "天", "pinyin": "tiān", "zh": "天；天门山。", "en": "sky / Heaven" },
@@ -300,10 +300,10 @@
       "grade": 3,
       "volume": "上",
       "lines": [
-        { "text": "水光潋滟晴方好，", "pinyin": "shuǐ guāng liàn yàn qíng fāng hǎo", "zh": "晴天里西湖水波闪闪发光，正显得明媚美好，", "en": "Sunlit ripples shimmer, the lake at its loveliest in clear weather." },
-        { "text": "山色空蒙雨亦奇。", "pinyin": "shān sè kōng méng yǔ yì qí", "zh": "雨天里远山笼罩在迷蒙的烟雨中，也别有一番奇妙。", "en": "Hills veiled in misty rain are wondrous too." },
-        { "text": "欲把西湖比西子，", "pinyin": "yù bǎ xī hú bǐ xī zǐ", "zh": "若要把美丽的西湖比作绝代佳人西施，", "en": "If I would liken West Lake to the beauty Xizi," },
-        { "text": "淡妆浓抹总相宜。", "pinyin": "dàn zhuāng nóng mǒ zǒng xiāng yí", "zh": "那么无论淡雅还是浓艳的妆扮，都同样美丽合宜。", "en": "Light or heavy makeup, she is always just right." }
+        { "text": "水光潋滟晴方好，", "pinyin": "shuǐ guāng liàn yàn qíng fāng hǎo", "zh": "晴天里西湖水波闪闪发光，正显得明媚美好，", "en": "Sunlit ripples shimmer, the lake at its loveliest in clear weather.", "rhetoric": ["parallelism"] },
+        { "text": "山色空蒙雨亦奇。", "pinyin": "shān sè kōng méng yǔ yì qí", "zh": "雨天里远山笼罩在迷蒙的烟雨中，也别有一番奇妙。", "en": "Hills veiled in misty rain are wondrous too.", "rhetoric": ["parallelism"] },
+        { "text": "欲把西湖比西子，", "pinyin": "yù bǎ xī hú bǐ xī zǐ", "zh": "若要把美丽的西湖比作绝代佳人西施，", "en": "If I would liken West Lake to the beauty Xizi,", "rhetoric": ["metaphor-analogy"] },
+        { "text": "淡妆浓抹总相宜。", "pinyin": "dàn zhuāng nóng mǒ zǒng xiāng yí", "zh": "那么无论淡雅还是浓艳的妆扮，都同样美丽合宜。", "en": "Light or heavy makeup, she is always just right.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "水", "pinyin": "shuǐ", "zh": "湖水。", "en": "water" },
@@ -371,9 +371,9 @@
       "volume": "上",
       "lines": [
         { "text": "湖光秋月两相和，", "pinyin": "hú guāng qiū yuè liǎng xiāng hé", "zh": "洞庭湖的水光与秋天的月色交相辉映，十分和谐，", "en": "Lake sheen and autumn moon blend in perfect harmony." },
-        { "text": "潭面无风镜未磨。", "pinyin": "tán miàn wú fēng jìng wèi mó", "zh": "湖面没有一丝风，平静得像一面没有磨亮的铜镜。", "en": "No wind on the water — like a mirror not yet polished." },
+        { "text": "潭面无风镜未磨。", "pinyin": "tán miàn wú fēng jìng wèi mó", "zh": "湖面没有一丝风，平静得像一面没有磨亮的铜镜。", "en": "No wind on the water — like a mirror not yet polished.", "rhetoric": ["metaphor-analogy"] },
         { "text": "遥望洞庭山水翠，", "pinyin": "yáo wàng dòng tíng shān shuǐ cuì", "zh": "远远望去，洞庭湖的山水一片青翠苍茫，", "en": "Gazing afar, Dongting's hills and waters are all green." },
-        { "text": "白银盘里一青螺。", "pinyin": "bái yín pán lǐ yī qīng luó", "zh": "就像一只白银的盘子里，盛着一枚青青的田螺。", "en": "Like one green snail set in a silver plate." }
+        { "text": "白银盘里一青螺。", "pinyin": "bái yín pán lǐ yī qīng luó", "zh": "就像一只白银的盘子里，盛着一枚青青的田螺。", "en": "Like one green snail set in a silver plate.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "湖", "pinyin": "hú", "zh": "湖，指洞庭湖。", "en": "lake" },
@@ -440,9 +440,9 @@
       "volume": "上",
       "lines": [
         { "text": "朝辞白帝彩云间，", "pinyin": "zhāo cí bái dì cǎi yún jiān", "zh": "清晨我告别了高耸在彩云之间的白帝城，", "en": "At dawn I leave Baidi amid the rosy clouds." },
-        { "text": "千里江陵一日还。", "pinyin": "qiān lǐ jiāng líng yī rì huán", "zh": "千里之外的江陵，只用一天就能顺流返回。", "en": "A thousand li to Jiangling, returned in a single day." },
-        { "text": "两岸猿声啼不住，", "pinyin": "liǎng àn yuán shēng tí bù zhù", "zh": "两岸的猿猴不停地啼叫，声声相连，", "en": "Apes on both banks cry without cease." },
-        { "text": "轻舟已过万重山。", "pinyin": "qīng zhōu yǐ guò wàn chóng shān", "zh": "轻快的小船已经驶过了千山万岭。", "en": "The light boat has already passed ten thousand peaks." }
+        { "text": "千里江陵一日还。", "pinyin": "qiān lǐ jiāng líng yī rì huán", "zh": "千里之外的江陵，只用一天就能顺流返回。", "en": "A thousand li to Jiangling, returned in a single day.", "rhetoric": ["hyperbole"] },
+        { "text": "两岸猿声啼不住，", "pinyin": "liǎng àn yuán shēng tí bù zhù", "zh": "两岸的猿猴不停地啼叫，声声相连，", "en": "Apes on both banks cry without cease.", "rhetoric": ["foil"] },
+        { "text": "轻舟已过万重山。", "pinyin": "qīng zhōu yǐ guò wàn chóng shān", "zh": "轻快的小船已经驶过了千山万岭。", "en": "The light boat has already passed ten thousand peaks.", "rhetoric": ["foil", "hyperbole"] }
       ],
       "chars": [
         { "char": "朝", "pinyin": "zhāo", "zh": "早晨（多音字：cháo 指朝向、朝代）。", "en": "morning / dawn" },
@@ -509,8 +509,8 @@
       "grade": 3,
       "volume": "上",
       "lines": [
-        { "text": "荷叶罗裙一色裁，", "pinyin": "hé yè luó qún yī sè cái", "zh": "采莲女的绿罗裙和荷叶仿佛是用同一种颜色裁成的，", "en": "Lotus leaves and silk skirts seem cut from the same green." },
-        { "text": "芙蓉向脸两边开。", "pinyin": "fú róng xiàng liǎn liǎng biān kāi", "zh": "荷花朝着采莲女的脸庞在两旁竞相开放。", "en": "Lotus blossoms open on both sides toward her face." },
+        { "text": "荷叶罗裙一色裁，", "pinyin": "hé yè luó qún yī sè cái", "zh": "采莲女的绿罗裙和荷叶仿佛是用同一种颜色裁成的，", "en": "Lotus leaves and silk skirts seem cut from the same green.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "芙蓉向脸两边开。", "pinyin": "fú róng xiàng liǎn liǎng biān kāi", "zh": "荷花朝着采莲女的脸庞在两旁竞相开放。", "en": "Lotus blossoms open on both sides toward her face.", "rhetoric": ["metaphor-analogy"] },
         { "text": "乱入池中看不见，", "pinyin": "luàn rù chí zhōng kàn bù jiàn", "zh": "她们划入荷塘深处，便与花叶融在一起看不见了，", "en": "They slip into the pond and vanish among the blooms." },
         { "text": "闻歌始觉有人来。", "pinyin": "wén gē shǐ jué yǒu rén lái", "zh": "直到听见歌声，才发觉原来有人正划船过来。", "en": "Only her song reveals that someone is there." }
       ],
@@ -569,7 +569,7 @@
         { "text": "始觉", "rule": "半上声", "base": "shǐ", "read": "shǐ", "value": "211", "markChange": false, "where": "闻歌始觉有人来。", "pos": 2, "zh": "\"始\"是上声，在非上声\"觉\"前读\"半上\"（调值211），拼音不变：shǐ。", "en": "始 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 觉; the written pinyin stays shǐ." },
         { "text": "有人", "rule": "半上声", "base": "yǒu", "read": "yǒu", "value": "211", "markChange": false, "where": "闻歌始觉有人来。", "pos": 4, "zh": "\"有\"是上声，在非上声\"人\"前读\"半上\"（调值211），拼音不变：yǒu。", "en": "有 (third tone) is shortened to a half-third tone (pitch 211) before the non-third-tone 人; the written pinyin stays yǒu." }
       ],
-      "tags": ["season-summer", "pastoral"]
+      "tags": ["season-summer"]
     },
     {
       "id": "g3d-01-jueju",
@@ -581,10 +581,10 @@
       "grade": 3,
       "volume": "下",
       "lines": [
-        { "text": "迟日江山丽，", "pinyin": "chí rì jiāng shān lì", "zh": "春日的阳光照耀着江山，使它格外美丽。", "en": "Under the long spring sun the rivers and hills are beautiful." },
-        { "text": "春风花草香。", "pinyin": "chūn fēng huā cǎo xiāng", "zh": "春风送来花草的芳香。", "en": "The spring breeze carries the fragrance of flowers and grass." },
-        { "text": "泥融飞燕子，", "pinyin": "ní róng fēi yàn zi", "zh": "泥土湿润松软，燕子衔泥飞来飞去筑巢。", "en": "The mud has thawed, and swallows fly about building nests." },
-        { "text": "沙暖睡鸳鸯。", "pinyin": "shā nuǎn shuì yuān yāng", "zh": "沙滩温暖，鸳鸯静静地睡在上面。", "en": "The sand is warm, and mandarin ducks sleep upon it." }
+        { "text": "迟日江山丽，", "pinyin": "chí rì jiāng shān lì", "zh": "春日的阳光照耀着江山，使它格外美丽。", "en": "Under the long spring sun the rivers and hills are beautiful.", "rhetoric": ["parallelism"] },
+        { "text": "春风花草香。", "pinyin": "chūn fēng huā cǎo xiāng", "zh": "春风送来花草的芳香。", "en": "The spring breeze carries the fragrance of flowers and grass.", "rhetoric": ["parallelism"] },
+        { "text": "泥融飞燕子，", "pinyin": "ní róng fēi yàn zi", "zh": "泥土湿润松软，燕子衔泥飞来飞去筑巢。", "en": "The mud has thawed, and swallows fly about building nests.", "rhetoric": ["parallelism"] },
+        { "text": "沙暖睡鸳鸯。", "pinyin": "shā nuǎn shuì yuān yāng", "zh": "沙滩温暖，鸳鸯静静地睡在上面。", "en": "The sand is warm, and mandarin ducks sleep upon it.", "rhetoric": ["parallelism"] }
       ],
       "chars": [
         { "char": "迟", "pinyin": "chí", "zh": "迟日，指春天太阳落得晚、白昼渐长。", "en": "long / late" },
@@ -639,9 +639,9 @@
       "volume": "下",
       "lines": [
         { "text": "竹外桃花三两枝，", "pinyin": "zhú wài táo huā sān liǎng zhī", "zh": "竹林外面桃花开了三两枝。", "en": "Beyond the bamboo, two or three sprigs of peach blossoms have opened." },
-        { "text": "春江水暖鸭先知。", "pinyin": "chūn jiāng shuǐ nuǎn yā xiān zhī", "zh": "春天江水变暖，鸭子最先感知到。", "en": "When the spring river warms, the ducks are the first to know." },
+        { "text": "春江水暖鸭先知。", "pinyin": "chūn jiāng shuǐ nuǎn yā xiān zhī", "zh": "春天江水变暖，鸭子最先感知到。", "en": "When the spring river warms, the ducks are the first to know.", "rhetoric": ["real-imagined"] },
         { "text": "蒌蒿满地芦芽短，", "pinyin": "lóu hāo mǎn dì lú yá duǎn", "zh": "蒌蒿长满了地面，芦苇的嫩芽还很短。", "en": "Wormwood fills the ground, and the reed shoots are still short." },
-        { "text": "正是河豚欲上时。", "pinyin": "zhèng shì hé tún yù shàng shí", "zh": "正是河豚将要逆流而上的时候。", "en": "This is just the time when the pufferfish are about to swim upstream." }
+        { "text": "正是河豚欲上时。", "pinyin": "zhèng shì hé tún yù shàng shí", "zh": "正是河豚将要逆流而上的时候。", "en": "This is just the time when the pufferfish are about to swim upstream.", "rhetoric": ["real-imagined"] }
       ],
       "chars": [
         { "char": "竹", "pinyin": "zhú", "zh": "竹子。", "en": "bamboo" },
@@ -708,7 +708,7 @@
       "grade": 3,
       "volume": "下",
       "lines": [
-        { "text": "梅子黄时日日晴，", "pinyin": "méi zi huáng shí rì rì qíng", "zh": "梅子变黄成熟的时节，天天都是晴天。", "en": "In the season when plums ripen yellow, every day is clear." },
+        { "text": "梅子黄时日日晴，", "pinyin": "méi zi huáng shí rì rì qíng", "zh": "梅子变黄成熟的时节，天天都是晴天。", "en": "In the season when plums ripen yellow, every day is clear.", "rhetoric": ["repetition"] },
         { "text": "小溪泛尽却山行。", "pinyin": "xiǎo xī fàn jìn què shān xíng", "zh": "乘小船到小溪的尽头，再改走山路前行。", "en": "Having boated to the stream's end, I then travel on by mountain path." },
         { "text": "绿阴不减来时路，", "pinyin": "lǜ yīn bù jiǎn lái shí lù", "zh": "山路上绿树成荫，不比来时的路逊色。", "en": "The green shade is no less than on the path by which I came." },
         { "text": "添得黄鹂四五声。", "pinyin": "tiān dé huáng lí sì wǔ shēng", "zh": "还增添了黄鹂鸟的四五声啼鸣。", "en": "And there are added four or five calls of the oriole." }
@@ -775,9 +775,9 @@
       "lines": [
         { "text": "江南好，", "pinyin": "jiāng nán hǎo", "zh": "江南的风光多么美好。", "en": "The land south of the river is fine." },
         { "text": "风景旧曾谙。", "pinyin": "fēng jǐng jiù céng ān", "zh": "那里的风景我从前就很熟悉。", "en": "Its scenery I knew well long ago." },
-        { "text": "日出江花红胜火，", "pinyin": "rì chū jiāng huā hóng shèng huǒ", "zh": "太阳升起时，江边的花红得胜过火焰。", "en": "At sunrise the riverside blossoms are redder than fire." },
-        { "text": "春来江水绿如蓝。", "pinyin": "chūn lái jiāng shuǐ lǜ rú lán", "zh": "春天到来，江水碧绿得像蓝草一样。", "en": "When spring comes, the river water is green as indigo." },
-        { "text": "能不忆江南？", "pinyin": "néng bù yì jiāng nán", "zh": "怎能不让人怀念江南呢？", "en": "How could one not recall the southland?" }
+        { "text": "日出江花红胜火，", "pinyin": "rì chū jiāng huā hóng shèng huǒ", "zh": "太阳升起时，江边的花红得胜过火焰。", "en": "At sunrise the riverside blossoms are redder than fire.", "rhetoric": ["foil", "parallelism"] },
+        { "text": "春来江水绿如蓝。", "pinyin": "chūn lái jiāng shuǐ lǜ rú lán", "zh": "春天到来，江水碧绿得像蓝草一样。", "en": "When spring comes, the river water is green as indigo.", "rhetoric": ["metaphor-analogy", "parallelism"] },
+        { "text": "能不忆江南？", "pinyin": "néng bù yì jiāng nán", "zh": "怎能不让人怀念江南呢？", "en": "How could one not recall the southland?", "rhetoric": ["rhetorical-question"] }
       ],
       "chars": [
         { "char": "江", "pinyin": "jiāng", "zh": "江；江南指长江以南地区。", "en": "river" },
@@ -837,7 +837,7 @@
       "lines": [
         { "text": "爆竹声中一岁除，", "pinyin": "bào zhú shēng zhōng yī suì chú", "zh": "在阵阵爆竹声中，旧的一年过去了。", "en": "Amid the sound of firecrackers, the old year passes away." },
         { "text": "春风送暖入屠苏。", "pinyin": "chūn fēng sòng nuǎn rù tú sū", "zh": "春风送来暖意，人们畅饮屠苏酒。", "en": "The spring breeze brings warmth as people drink Tusu wine." },
-        { "text": "千门万户曈曈日，", "pinyin": "qiān mén wàn hù tóng tóng rì", "zh": "初升的太阳照耀着千家万户。", "en": "The rising sun shines bright on every household." },
+        { "text": "千门万户曈曈日，", "pinyin": "qiān mén wàn hù tóng tóng rì", "zh": "初升的太阳照耀着千家万户。", "en": "The rising sun shines bright on every household.", "rhetoric": ["hyperbole"] },
         { "text": "总把新桃换旧符。", "pinyin": "zǒng bǎ xīn táo huàn jiù fú", "zh": "人们总是用新的桃符换下旧的桃符。", "en": "Everyone replaces old peachwood charms with new ones." }
       ],
       "chars": [
@@ -903,10 +903,10 @@
       "grade": 3,
       "volume": "下",
       "lines": [
-        { "text": "清明时节雨纷纷，", "pinyin": "qīng míng shí jié yǔ fēn fēn", "zh": "清明节这天，细雨纷纷地下个不停。", "en": "At the Qingming season the rain falls thick and fast." },
-        { "text": "路上行人欲断魂。", "pinyin": "lù shàng xíng rén yù duàn hún", "zh": "路上赶路的行人个个伤心欲绝。", "en": "Travelers on the road feel their hearts breaking with grief." },
-        { "text": "借问酒家何处有？", "pinyin": "jiè wèn jiǔ jiā hé chù yǒu", "zh": "请问哪里有酒家可以歇脚饮酒？", "en": "May I ask where a tavern can be found?" },
-        { "text": "牧童遥指杏花村。", "pinyin": "mù tóng yáo zhǐ xìng huā cūn", "zh": "放牛的孩子远远地指向杏花盛开的村庄。", "en": "The herdboy points afar to a village amid apricot blossoms." }
+        { "text": "清明时节雨纷纷，", "pinyin": "qīng míng shí jié yǔ fēn fēn", "zh": "清明节这天，细雨纷纷地下个不停。", "en": "At the Qingming season the rain falls thick and fast.", "rhetoric": ["repetition"] },
+        { "text": "路上行人欲断魂。", "pinyin": "lù shàng xíng rén yù duàn hún", "zh": "路上赶路的行人个个伤心欲绝。", "en": "Travelers on the road feel their hearts breaking with grief.", "rhetoric": ["hyperbole"] },
+        { "text": "借问酒家何处有？", "pinyin": "jiè wèn jiǔ jiā hé chù yǒu", "zh": "请问哪里有酒家可以歇脚饮酒？", "en": "May I ask where a tavern can be found?", "rhetoric": ["rhetorical-question"] },
+        { "text": "牧童遥指杏花村。", "pinyin": "mù tóng yáo zhǐ xìng huā cūn", "zh": "放牛的孩子远远地指向杏花盛开的村庄。", "en": "The herdboy points afar to a village amid apricot blossoms.", "rhetoric": ["rhetorical-question"] }
       ],
       "chars": [
         { "char": "清", "pinyin": "qīng", "zh": "清明，二十四节气之一。", "en": "clear; Qingming" },
@@ -971,7 +971,7 @@
       "grade": 3,
       "volume": "下",
       "lines": [
-        { "text": "独在异乡为异客，", "pinyin": "dú zài yì xiāng wéi yì kè", "zh": "我独自一人在他乡做客。", "en": "Alone in a strange land, I am a stranger and guest." },
+        { "text": "独在异乡为异客，", "pinyin": "dú zài yì xiāng wéi yì kè", "zh": "我独自一人在他乡做客。", "en": "Alone in a strange land, I am a stranger and guest.", "rhetoric": ["repetition"] },
         { "text": "每逢佳节倍思亲。", "pinyin": "měi féng jiā jié bèi sī qīn", "zh": "每逢美好的节日就更加思念亲人。", "en": "Each festival doubles my longing for my kin." },
         { "text": "遥知兄弟登高处，", "pinyin": "yáo zhī xiōng dì dēng gāo chù", "zh": "我在远方料想，兄弟们登上了高处。", "en": "From afar I know my brothers have climbed to the heights." },
         { "text": "遍插茱萸少一人。", "pinyin": "biàn chā zhū yú shǎo yī rén", "zh": "他们都插戴茱萸，却唯独少了我一个人。", "en": "All wearing dogwood sprigs, they are one person short." }
@@ -1106,10 +1106,10 @@
       "grade": 3,
       "volume": "下",
       "lines": [
-        { "text": "人间四月芳菲尽，", "pinyin": "rén jiān sì yuè fāng fēi jìn", "zh": "四月里，山下的花儿都已凋谢了。", "en": "In the human world the April blossoms have all faded." },
-        { "text": "山寺桃花始盛开。", "pinyin": "shān sì táo huā shǐ shèng kāi", "zh": "山上寺庙里的桃花才刚刚盛开。", "en": "But at the mountain temple the peach flowers have just bloomed." },
-        { "text": "长恨春归无觅处，", "pinyin": "cháng hèn chūn guī wú mì chù", "zh": "我常常遗憾春天归去后再也找不到它。", "en": "I had long lamented that spring, once gone, could not be found." },
-        { "text": "不知转入此中来。", "pinyin": "bù zhī zhuǎn rù cǐ zhōng lái", "zh": "却没想到它竟悄悄转移到这山中来了。", "en": "Not knowing it had quietly come into this place." }
+        { "text": "人间四月芳菲尽，", "pinyin": "rén jiān sì yuè fāng fēi jìn", "zh": "四月里，山下的花儿都已凋谢了。", "en": "In the human world the April blossoms have all faded.", "rhetoric": ["foil", "parallelism"] },
+        { "text": "山寺桃花始盛开。", "pinyin": "shān sì táo huā shǐ shèng kāi", "zh": "山上寺庙里的桃花才刚刚盛开。", "en": "But at the mountain temple the peach flowers have just bloomed.", "rhetoric": ["foil", "parallelism"] },
+        { "text": "长恨春归无觅处，", "pinyin": "cháng hèn chūn guī wú mì chù", "zh": "我常常遗憾春天归去后再也找不到它。", "en": "I had long lamented that spring, once gone, could not be found.", "rhetoric": ["metaphor-analogy"] },
+        { "text": "不知转入此中来。", "pinyin": "bù zhī zhuǎn rù cǐ zhōng lái", "zh": "却没想到它竟悄悄转移到这山中来了。", "en": "Not knowing it had quietly come into this place.", "rhetoric": ["metaphor-analogy"] }
       ],
       "chars": [
         { "char": "人", "pinyin": "rén", "zh": "人；人间指山下的尘世。", "en": "human" },
