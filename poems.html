@@ -111,6 +111,13 @@
   .overall{margin-left:auto;color:var(--muted);font-size:13px}
   .empty-state{text-align:center;color:var(--muted);font-size:14px;padding:60px 20px}
 
+  .searchbar{display:flex;align-items:center;gap:8px;margin:0 0 18px;flex-wrap:wrap}
+  .search-input{flex:1 1 240px;min-width:0;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:15px;background:var(--card);color:inherit;font-family:inherit}
+  .search-input:focus{outline:none;border-color:var(--ring)}
+  .search-input::-webkit-search-cancel-button{cursor:pointer}
+  .search-msg{color:var(--accent2);font-size:13px}
+  .search-hint{color:var(--muted);font-size:13px;margin:0 0 8px}
+
   .grade{margin:0 0 26px}
   .grade-head{display:flex;align-items:center;gap:12px;margin:0 0 10px}
   .grade-head h2{font-size:19px;margin:0;font-weight:700}
@@ -406,11 +413,17 @@ function renderIndex(){
   document.title="小学生必背古诗 · 诵读";
   root.innerHTML="";
   root.appendChild(buildHead());
-  if(indexMode==="themes" && CATEGORIES.length) renderThemes();
-  else if(indexMode==="rhetoric" && RHETORIC.length) renderRhetoricView();
-  else if(indexMode==="read") renderReadView();
-  else renderGrades();
+  root.appendChild(buildSearchBar());
+  const normalWrap=el("div"); normalWrap.id="normalContent";
+  const resultsWrap=el("div"); resultsWrap.id="searchResults";
+  root.appendChild(normalWrap);
+  root.appendChild(resultsWrap);
+  if(indexMode==="themes" && CATEGORIES.length) renderThemes(normalWrap);
+  else if(indexMode==="rhetoric" && RHETORIC.length) renderRhetoricView(normalWrap);
+  else if(indexMode==="read") renderReadView(normalWrap);
+  else renderGrades(normalWrap);
   renderCreditsFooter();
+  updateSearchResults();
 }
 
 function buildHead(){
@@ -422,7 +435,7 @@ function buildHead(){
     const seg=el("div","seg");
     const mk=(mode,label)=>{
       const b=el("button","seg-btn"+(indexMode===mode?" on":""),label);
-      b.onclick=()=>{ if(indexMode!==mode){ indexMode=mode; try{localStorage.setItem(VIEWMODE_KEY,mode);}catch(e){} renderIndex(); } };
+      b.onclick=()=>{ if(indexMode!==mode){ indexMode=mode; try{localStorage.setItem(VIEWMODE_KEY,mode);}catch(e){} searchQuery=""; renderIndex(); } };
       return b;
     };
     seg.appendChild(mk("grades","按年级"));
@@ -437,7 +450,153 @@ function buildHead(){
   return head;
 }
 
-function renderGrades(){
+/* ============================ search (text + voice) ============================ */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+let searchQuery="";
+let voiceRecognizer=null, voiceListening=false;
+
+const stripPunctChars=/[，,。.？?！!、；;：:""''""''《》〈〉…—\-\s]/g;
+function normalizeZh(s){ return (s||"").replace(stripPunctChars,""); }
+
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  if(!m) return n; if(!n) return m;
+  const dp=new Array(n+1);
+  for(let j=0;j<=n;j++) dp[j]=j;
+  for(let i=1;i<=m;i++){
+    let prev=dp[0]; dp[0]=i;
+    for(let j=1;j<=n;j++){
+      const tmp=dp[j];
+      dp[j]= a[i-1]===b[j-1] ? prev : 1+Math.min(prev,dp[j],dp[j-1]);
+      prev=tmp;
+    }
+  }
+  return dp[n];
+}
+function textSimilarity(a,b){
+  if(!a.length && !b.length) return 1;
+  if(!a.length || !b.length) return 0;
+  return 1-levenshtein(a,b)/Math.max(a.length,b.length);
+}
+/* Best match for one poem: checks title, author, and every line; substring hits score
+   highest (weighted by how much of the longer string the match covers), otherwise falls
+   back to whole-string edit-distance similarity (tolerant of speech-recognition slips). */
+function bestMatchForPoem(query,poem){
+  let best={score:0,line:null};
+  const consider=(text,weight)=>{
+    if(!text) return;
+    let s;
+    if(text.includes(query) || query.includes(text)){
+      s=0.92 + (Math.min(text.length,query.length)/Math.max(text.length,query.length))*0.08;
+    }else{
+      s=textSimilarity(query,text);
+    }
+    s*=weight;
+    if(s>best.score) best={score:s,line:text};
+  };
+  consider(normalizeZh(poem.title),0.97);
+  consider(normalizeZh(poem.author),0.6);
+  for(const ln of poem.lines) consider(normalizeZh(ln.text),1);
+  return best;
+}
+
+function buildSearchBar(){
+  const bar=el("div","searchbar");
+  const input=el("input","search-input");
+  input.type="search";
+  input.autocomplete="off";
+  input.placeholder="输入或说出一句诗，查一查是哪首…";
+  input.value=searchQuery;
+  input.oninput=()=>{ searchQuery=input.value; updateSearchResults(); };
+  bar.appendChild(input);
+  if(searchQuery){
+    const clear=el("button","btn icon-btn"); clear.type="button"; clear.textContent="✕"; clear.title="清除搜索";
+    clear.onclick=()=>{ searchQuery=""; input.value=""; updateSearchResults(); input.focus(); };
+    bar.appendChild(clear);
+  }
+  if(SR){
+    const mic=el("button","btn icon-btn"); mic.type="button"; mic.textContent="🎤";
+    mic.title="语音搜索（说出一句诗）";
+    mic.onclick=()=>toggleVoiceSearch(mic);
+    bar.appendChild(mic);
+  }
+  bar.appendChild(el("span","search-msg"));
+  return bar;
+}
+
+function showSearchMessage(msg){
+  const m=document.querySelector(".searchbar .search-msg"); if(!m) return;
+  m.textContent=msg;
+  clearTimeout(showSearchMessage._t);
+  showSearchMessage._t=setTimeout(()=>{ m.textContent=""; },3000);
+}
+
+function toggleVoiceSearch(mic){
+  if(!SR) return;
+  if(voiceListening){ voiceRecognizer&&voiceRecognizer.stop(); return; }
+  try{
+    voiceRecognizer=new SR();
+    voiceRecognizer.lang="zh-CN";
+    voiceRecognizer.interimResults=false;
+    voiceRecognizer.maxAlternatives=1;
+    voiceListening=true;
+    mic.textContent="⏹"; mic.classList.add("on"); mic.title="正在聆听…点击停止";
+    voiceRecognizer.onresult=(e)=>{
+      searchQuery=e.results[0][0].transcript;
+      voiceListening=false;
+      renderIndex();
+    };
+    voiceRecognizer.onerror=(e)=>{
+      voiceListening=false; mic.textContent="🎤"; mic.classList.remove("on"); mic.title="语音搜索（说出一句诗）";
+      const msg = e.error==="not-allowed" ? "麦克风权限被拒绝" : e.error==="no-speech" ? "没有听到声音，请再试一次" : "语音识别出错，请重试";
+      showSearchMessage(msg);
+    };
+    voiceRecognizer.onend=()=>{
+      voiceListening=false;
+      if(mic.isConnected){ mic.textContent="🎤"; mic.classList.remove("on"); }
+    };
+    voiceRecognizer.start();
+  }catch(e){ voiceListening=false; showSearchMessage("此浏览器不支持语音识别"); }
+}
+
+function updateSearchResults(){
+  const normalWrap=document.getElementById("normalContent");
+  const resultsWrap=document.getElementById("searchResults");
+  if(!normalWrap || !resultsWrap) return;
+  const q=normalizeZh(searchQuery);
+  resultsWrap.innerHTML="";
+  if(!q){
+    normalWrap.style.display="";
+    resultsWrap.style.display="none";
+    return;
+  }
+  normalWrap.style.display="none";
+  resultsWrap.style.display="";
+  const matches=ORDER.map(id=>BYID[id])
+    .map(p=>({poem:p, ...bestMatchForPoem(q,p)}))
+    .filter(m=>m.score>=0.45)
+    .sort((a,b)=>b.score-a.score)
+    .slice(0,12);
+  resultsWrap.appendChild(el("div","search-hint",matches.length?`找到 ${matches.length} 个可能的结果：`:""));
+  if(!matches.length){
+    resultsWrap.appendChild(el("div","empty-state","没有找到匹配的诗句，换个说法再试试？"));
+    return;
+  }
+  const list=el("div","cat-list");
+  for(const m of matches){
+    const row=el("div","cat-row"+(viewed.has(m.poem.id)?" viewed":""));
+    row.appendChild(el("span","rt",m.poem.title));
+    row.appendChild(el("span","ra",m.poem.author));
+    row.appendChild(el("span","rl",m.line||""));
+    if(viewed.has(m.poem.id)) row.appendChild(el("span","rv","✓"));
+    row.onclick=()=>{ location.hash="poem/"+encodeURIComponent(m.poem.id); };
+    list.appendChild(row);
+  }
+  resultsWrap.appendChild(list);
+}
+
+function renderGrades(target){
+  target=target||root;
   let focusCard=null;
   for(const g of GRADES){
     const ids=g.poems.map(p=>p.id);
@@ -467,7 +626,7 @@ function renderGrades(){
       grid.appendChild(card);
       if(!focusCard && !viewed.has(p.id)) focusCard=card;
     }
-    root.appendChild(sec);
+    target.appendChild(sec);
   }
   if(focusCard){
     focusCard.classList.add("focus");
@@ -476,9 +635,10 @@ function renderGrades(){
 }
 
 /* ---- read (已读) view: only viewed poems, grouped by grade ---- */
-function renderReadView(){
+function renderReadView(target){
+  target=target||root;
   if(!ORDER.some(id=>viewed.has(id))){
-    root.appendChild(el("div","empty-state","还没有标记为已读的古诗。在诗歌页面点击“标记已读”即可收录于此。"));
+    target.appendChild(el("div","empty-state","还没有标记为已读的古诗。在诗歌页面点击“标记已读”即可收录于此。"));
     return;
   }
   for(const g of GRADES){
@@ -508,14 +668,15 @@ function renderReadView(){
       card.onclick=()=>{ location.hash="poem/"+encodeURIComponent(p.id); };
       grid.appendChild(card);
     }
-    root.appendChild(sec);
+    target.appendChild(sec);
   }
 }
 
 /* ---- theme (category) view ---- */
 function poemsForCat(key){ return ORDER.map(id=>BYID[id]).filter(p=>p.tags && p.tags.indexOf(key)>=0); }
 
-function renderThemes(){
+function renderThemes(target){
+  target=target||root;
   const wrap=el("div","themes");
   let curGroup=null;
   for(const cat of CATEGORIES){
@@ -542,7 +703,7 @@ function renderThemes(){
     renderCatBody(cat,ps,body);
     wrap.appendChild(block);
   }
-  root.appendChild(wrap);
+  target.appendChild(wrap);
 }
 
 function renderCatBody(cat,ps,body){
@@ -593,7 +754,8 @@ function linesForDevice(key){
   return out;
 }
 
-function renderRhetoricView(){
+function renderRhetoricView(target){
+  target=target||root;
   const wrap=el("div","themes");
   for(const dev of RHETORIC){
     const items=linesForDevice(dev.key);
@@ -617,7 +779,7 @@ function renderRhetoricView(){
     renderRhetBody(dev,items,body);
     wrap.appendChild(block);
   }
-  root.appendChild(wrap);
+  target.appendChild(wrap);
 }
 
 function renderRhetBody(dev,items,body){
