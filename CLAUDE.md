@@ -203,6 +203,7 @@ for editing here, `←` is the in-field "go back" shortcut.
 | `poems/poems-media.json` | Maps poem id → `{ audio, audioStart, video, videoStart }`. Top-level `_credits` array declares allowed sources in priority order. |
 | `poems/fetch-playlist-videos.py` | Syncs `poems-media.json` video links from credited YouTube playlists. Requires `yt-dlp` and `zhconv` on PATH / installed. |
 | `poems/playlist-cache/<ID>.html` | Browser-exported playlist HTML used as fallback when yt-dlp cannot enumerate all items (e.g. members-only content). |
+| `poems/playlist-cache/<ALBUM_ID>.xml` | Cached podcast RSS feed for a ximalaya audio album credited in `poems-media.json` (e.g. `224846.xml` for 白云出岫's 《小学生必背古诗词》) — a local snapshot of the feed's per-episode `<enclosure>` URLs, kept alongside the YouTube playlist caches above. |
 
 ### `_credits` structure
 
@@ -220,6 +221,14 @@ Each entry in the `_credits` array of `poems-media.json`:
 - Entries are processed in order; first match wins.
 - `titleOnly: true` skips the author check (used for playlists whose video titles don't include the poet's name, e.g. 可可读课本).
 - Classical-text authors stored as `《孟子》` have their brackets stripped before matching.
+
+### Audio sources
+
+`audio` in `poems-media.json` comes from one of two credited sources, distinguished by URL domain (see `audioSourceLabel()` in `poems.html`, which sets the 🎙️ button's tooltip accordingly):
+
+- **香港教育局** (`edb.gov.hk`) — the official curriculum mp3s; audio numbers are looked up by grepping the cached `poems/playlist-cache/jilei.html`-style page (see "Updating video links" workflow) for the poem's title, since titles don't map to a predictable file number.
+- **白云出岫《小学生必背古诗词》** (`ximalaya.com` / `xmcdn.com`, m4a) — supplements poems the EDB list doesn't cover. There is no script for this yet (unlike video); episodes are matched by hand against `poems/playlist-cache/224846.xml` (the album's RSS feed, snapshotted locally since Ximalaya's live track-list API blocks scripted access with an anti-bot `webtk` check). When parsing that XML, match CDATA content up to the first literal `]]>`, not the first `]` — some episode titles contain a literal `]` (e.g. `[常记溪亭]`) that breaks naive `[^\]]*`-style regexes and silently drops the item. Convert titles traditional→simplified (`zhconv`) before matching authors — the feed mixes scripts (e.g. 曾幾 vs 曾几).
+- **Any new audio host must be added to `poems.html`'s CSP `media-src` allowlist** or playback fails silently (no HTTP error — the browser blocks the request outright; `curl` checks won't catch this).
 
 ### Matching logic (`fetch-playlist-videos.py`)
 

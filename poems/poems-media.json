@@ -1,10 +1,15 @@
 {
-  "_schema": "poemId -> { audio?, audioStart?, video?, videoStart? }. 'audio' = 香港教育局《積累與感興》普通話真人朗读 (mp3, plays inline; default audioStart is 4 seconds for www.edb.gov.hk; auto-plays when pinyin is toggled on; the page also offers TTS as fallback). 'video' = a YouTube link limited to the series 千秋诗颂 / 熊猫天天学诗词 / 婷婷唱古文 (preference order; default videoStart is 5 seconds for YouTube). Empty/missing = not linked.",
+  "_schema": "poemId -> { audio?, audioStart?, video?, videoStart? }. 'audio' = 香港教育局《積累與感興》普通話真人朗读 (mp3, plays inline; default audioStart is 4 seconds for www.edb.gov.hk; auto-plays when pinyin is toggled on; the page also offers TTS as fallback), OR — for poems the EDB list doesn't cover — an episode from the 白云出岫《小学生必背古诗词》ximalaya podcast (m4a, audioStart currently a provisional 3.5s guess, not yet ear-verified). 'video' = a YouTube link limited to the credited channel list (preference order; default videoStart is 5 seconds for YouTube). Empty/missing = not linked.",
   "_credits": [
     {
       "name": "香港教育局 ·《積累與感興：小學古詩文誦讀材料》（普通話朗讀）",
       "url": "https://www.edb.gov.hk/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei.html",
       "note": "真人普通话朗读音频"
+    },
+    {
+      "name": "白云出岫《小学生必背古诗词》（喜马拉雅）",
+      "url": "https://www.ximalaya.com/album/224846",
+      "note": "真人朗读音频；补充香港教育局清单未收录的篇目。RSS: https://www.ximalaya.com/album/224846.xml；亦见于 Apple Podcasts: https://podcasts.apple.com/us/podcast/%E5%B0%8F%E5%AD%A6%E7%94%9F%E5%BF%85%E8%83%8C%E5%8F%A4%E8%AF%97%E8%AF%8D/id1795648765"
     },
     {
       "name": "千秋诗颂（YouTube）",
@@ -82,7 +87,9 @@
   },
   "g1u-05-gulangyuexing": {
     "video": "https://www.youtube.com/watch?v=Tu05Fes_szA",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjFsIEjnQfpgDAAfRIIlA6xw707-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662230&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8C/B6/wKgKjFsIEjnQfpgDAAfRIIlA6xw707-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g1u-06-feng": {
     "video": "https://www.youtube.com/watch?v=dU9EuyYx_ro",
@@ -114,7 +121,9 @@
   },
   "g1d-05-chishang": {
     "video": "https://www.youtube.com/watch?v=iLOw1SD8l9U",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKkVsIEkTQYfm3AAPxG7E2YKg680.m4a?channel=rss&album_id=15804266&track_id=90662210&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8D/57/wKgKkVsIEkTQYfm3AAPxG7E2YKg680.m4a",
+    "audioStart": 3.5
   },
   "g1d-06-xiaochi": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/085_jilei_shi(putonghua).mp3",
@@ -142,7 +151,9 @@
   },
   "g2u-03-yesushansi": {
     "video": "https://www.youtube.com/watch?v=x05fU5C6QFk",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIJIFESI4AASYcwDhw7vS-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=30350602&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/b884-audiofreehighqps/DA/DC/CKwRIJIFESI4AASYcwDhw7vS-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g2u-04-chilege": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/010_jilei_shi(putonghua).mp3",
@@ -158,7 +169,9 @@
   },
   "g2u-06-xiaoerchuidiao": {
     "video": "https://www.youtube.com/watch?v=uT2l-CDrcME",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjFsIEkWT3hlzAATnzmd1HdA572-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662208&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8C/BB/wKgKjFsIEkWT3hlzAATnzmd1HdA572-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g2u-07-jiangxue": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/057_jilei_shi(putonghua).mp3",
@@ -198,11 +211,15 @@
   },
   "g2d-06-minnong": {
     "video": "https://www.youtube.com/watch?v=6O_d9xbQ2XM",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjVskVJ6TstXHAAR-EfUA62s611-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662605&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M0A/AB/29/wKgKjVskVJ6TstXHAAR-EfUA62s611-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g2d-07-zhouyeshusuojian": {
     "video": "https://www.youtube.com/watch?v=iGeBFVdKsXI",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIJEFEO9XAARn_wDhrgVn-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=30492254&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/453e-audiofreehighqps/71/28/CKwRIJEFEO9XAARn_wDhrgVn-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g3u-01-shanxing": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/063_jilei_shi(putonghua).mp3",
@@ -218,11 +235,15 @@
   },
   "g3u-03-yeshusuojian": {
     "video": "https://www.youtube.com/watch?v=78cKehIQtXQ",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIDoFEMTbAAUZrQDhoBSl-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=30454783&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/2875-audiofreehighqps/19/23/CKwRIDoFEMTbAAUZrQDhoBSl-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g3u-04-wangtianmenshan": {
     "video": "https://www.youtube.com/watch?v=Z9c7D3YNjOU",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKkVsIEjzBCDg9AAXoxsMuL1w402-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662225&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8D/53/wKgKkVsIEjzBCDg9AAXoxsMuL1w402-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g3u-05-yinhushangchuqinghouyu": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/078_jilei_shi(putonghua).mp3",
@@ -232,7 +253,9 @@
   },
   "g3u-06-wangdongting": {
     "video": "https://www.youtube.com/watch?v=woSlEvaOGhM",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKkVsIEkLBLuG-AAW4UrvAAYc673-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662213&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8D/56/wKgKkVsIEkLBLuG-AAW4UrvAAYc673-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g3u-07-zaofabaidicheng": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/038_jilei_shi(putonghua).mp3",
@@ -246,7 +269,9 @@
   },
   "g3d-01-jueju": {
     "video": "https://www.youtube.com/watch?v=BopftRq5MQI&list=PLkWWcTwDGs4Z5yB3f-ZLC3XNWLJtkZQZu&index=19",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKkVsIEj7xx7_cAARiLhe_48A030.m4a?channel=rss&album_id=15804266&track_id=90662221&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8D/54/wKgKkVsIEj7xx7_cAARiLhe_48A030.m4a",
+    "audioStart": 3.5
   },
   "g3d-02-huichongchunjiangwanjing": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/080_jilei_shi(putonghua).mp3",
@@ -256,11 +281,15 @@
   },
   "g3d-03-sanqudaozhong": {
     "video": "https://www.youtube.com/watch?v=YsHEiiE_Rl0",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKklsIEnqyoDuhAATTPeaf0MU644.m4a?channel=rss&album_id=15804266&track_id=90662624&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M00/8C/AC/wKgKklsIEnqyoDuhAATTPeaf0MU644.m4a",
+    "audioStart": 3.5
   },
   "g3d-04-yijiangnan": {
     "video": "https://www.youtube.com/watch?v=rriJYe0Ukx4",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjFsIEkWjqgDlAAUysqUIwqo628-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662209&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8C/BB/wKgKjFsIEkWjqgDlAAUysqUIwqo628-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g3d-05-yuanri": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/074_jilei_shi(putonghua).mp3",
@@ -326,15 +355,21 @@
   },
   "g4u-07-xiarijueju": {
     "video": "https://www.youtube.com/watch?v=R4Iq8ahm3Zo",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjVsIEnnyyJzeAARlHZKPgdI667.m4a?channel=rss&album_id=15804266&track_id=90662623&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M00/8E/5D/wKgKjVsIEnnyyJzeAARlHZKPgdI667.m4a",
+    "audioStart": 3.5
   },
   "g4u-08-biedongda": {
     "video": "https://www.youtube.com/watch?v=b-fdXEIdS3Q",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjFsIEjzi75U4AAWfWpqh0dw288-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662224&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8C/B7/wKgKjFsIEjzi75U4AAWfWpqh0dw288-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g4u-09-change": {
     "video": "https://www.youtube.com/watch?v=qhD4-tFIODo",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIasFEQkBAAUrSwDht9rY-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=30380833&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/3af2-audiofreehighqps/6F/DA/CKwRIasFEQkBAAUrSwDht9rY-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g4d-01-suxinshixugongdian": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/086_jilei_shi(putonghua).mp3",
@@ -344,7 +379,9 @@
   },
   "g4d-02-sishitianyuanzaxing": {
     "video": "https://www.youtube.com/watch?v=kZIgVAdMK4s",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKklskUwbSkmEtAAUfmEu94UQ618.m4a?channel=rss&album_id=15804266&track_id=90662629&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M05/A9/53/wKgKklskUwbSkmEtAAUfmEu94UQ618.m4a",
+    "audioStart": 3.5
   },
   "g4d-03-qingpingyuecunju": {
     "video": "https://www.youtube.com/watch?v=x-S7tKwGU9Y",
@@ -352,11 +389,15 @@
   },
   "g4d-04-jiangpandubuxunhua": {
     "video": "https://www.youtube.com/watch?v=DFCdmnLKq9w",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIJEFEQNsAAUGlwDhtZb1-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=30351408&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/220b-audiofreehighqps/49/43/CKwRIJEFEQNsAAUGlwDhtZb1-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g4d-05-feng": {
     "video": "https://www.youtube.com/watch?v=nja5PgVjVTE",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjVsIEnSxpCN0AASzJioNhww695-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662613&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M00/8E/5A/wKgKjVsIEnSxpCN0AASzJioNhww695-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g4d-06-duzuojingtingshan": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/036_jilei_shi(putonghua).mp3",
@@ -366,11 +407,15 @@
   },
   "g4d-07-furonglousongxinjian": {
     "video": "https://www.youtube.com/watch?v=DiOFIpTsXFA",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjFsIEjWD9UvZAAW-MIc5o8s898-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662235&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8C/B4/wKgKjFsIEjWD9UvZAAW-MIc5o8s898-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g4d-08-saixiaqu": {
     "video": "https://www.youtube.com/watch?v=t-rgwRVIS-0",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIDoFEN2SAATEgQDhp7j6.m4a?channel=rss&album_id=224846&track_id=1466600&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/cc94-audiofreehighqps/5D/54/CKwRIDoFEN2SAATEgQDhp7j6.m4a",
+    "audioStart": 3.5
   },
   "g4d-09-momei": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/094_jilei_shi(putonghua).mp3",
@@ -384,15 +429,21 @@
   },
   "g5u-01-chan": {
     "video": "https://www.youtube.com/watch?v=c_fEz0qMlB4",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIUEFERV0AAPfcADhvVmV-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=30408020&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/5105-audiofreehighqps/16/F4/CKwRIUEFERV0AAPfcADhvVmV-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g5u-02-qiqiao": {
     "video": "https://www.youtube.com/watch?v=LY_qlyvgW1s",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIJIFEQpaAATNUgDhuGyM-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=30382991&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/535a-audiofreehighqps/14/1C/CKwRIJIFEQpaAATNUgDhuGyM-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g5u-03-shier": {
     "video": "https://www.youtube.com/watch?v=vh-2GoZdnCQ",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjVsIEnqiRZbhAAUZ8D116gA315.m4a?channel=rss&album_id=15804266&track_id=90662625&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M00/8E/5D/wKgKjVsIEnqiRZbhAAUZ8D116gA315.m4a",
+    "audioStart": 3.5
   },
   "g5u-04-tilinandi": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/090_jilei_shi(putonghua).mp3",
@@ -402,11 +453,15 @@
   },
   "g5u-05-jihaizashi": {
     "video": "https://www.youtube.com/watch?v=8bXz-Mb0qpg",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjVskV0PTzn5uAATtrXEPZbQ333.m4a?channel=rss&album_id=15804266&track_id=90662642&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M06/AB/5C/wKgKjVskV0PTzn5uAATtrXEPZbQ333.m4a",
+    "audioStart": 3.5
   },
   "g5u-06-shanjuqiuming": {
     "video": "https://www.youtube.com/watch?v=0-BYBcXv9Q8",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKklsNw0Gh1Vk4AARZXRetgeI431-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=91427355&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M03/1C/C3/wKgKklsNw0Gh1Vk4AARZXRetgeI431-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g5u-07-fengqiaoyebo": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/045_jilei_shi(putonghua).mp3",
@@ -416,11 +471,15 @@
   },
   "g5u-08-changxiangsi": {
     "video": "https://www.youtube.com/watch?v=VHQcdQKBk-c",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRINsFEP5dAAbMVwDhs4hT-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=30492253&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/7bd9-audiofreehighqps/2C/98/CKwRINsFEP5dAAbMVwDhs4hT-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g5u-09-yugezi": {
     "video": "https://www.youtube.com/watch?v=6BH8i-UjFKM",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKkVsIEkHyabXQAAWg0oqNiQA986-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662215&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8D/55/wKgKkVsIEkHyabXQAAWg0oqNiQA986-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g5u-10-guanshuyougan": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/087_jilei_shi(putonghua).mp3",
@@ -430,7 +489,9 @@
   },
   "g5d-01-sishitianyuanzaxing": {
     "video": "https://www.youtube.com/watch?v=kZIgVAdMK4s",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgLgFx-HUHgch0KAAUifjk6UTM026.m4a?channel=rss&album_id=15804266&track_id=90662628&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group56/M06/AB/9B/wKgLgFx-HUHgch0KAAUifjk6UTM026.m4a",
+    "audioStart": 3.5
   },
   "g5d-03-cunwan": {
     "video": "https://www.youtube.com/watch?v=_wnpaq4fzK8",
@@ -438,15 +499,21 @@
   },
   "g5d-04-congjunxing": {
     "video": "https://www.youtube.com/watch?v=XWOzixKl_AY",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIDoFEQAZAAW-IwDhtE6a.m4a?channel=rss&album_id=224846&track_id=1466520&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/16d5-audiofreehighqps/8E/C1/CKwRIDoFEQAZAAW-IwDhtE6a.m4a",
+    "audioStart": 3.5
   },
   "g5d-05-qiuyejiangxiao": {
     "video": "https://www.youtube.com/watch?v=WoD9hzyaLeY",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjVsIEnvhE0D6AAVNIeVffM4393.m4a?channel=rss&album_id=15804266&track_id=90662627&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M00/8E/5E/wKgKjVsIEnvhE0D6AAVNIeVffM4393.m4a",
+    "audioStart": 3.5
   },
   "g5d-06-wenguanjunshouhenanhebei": {
     "video": "https://www.youtube.com/watch?v=iKLr1SAMMxI",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRINsFEQAbAAmNMADhtE9z-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=1466537&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/16b2-audiofreehighqps/5C/B7/CKwRINsFEQAbAAmNMADhtE9z-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g5d-07-huanghelousongmenghaoran": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/033_jilei_shi(putonghua).mp3",
@@ -462,11 +529,15 @@
   },
   "g5d-09-xiangcunsiyue": {
     "video": "https://www.youtube.com/watch?v=U-SPqD2Hzx0",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKklsIEoCDyiIQAAUFLdn1a0A521.m4a?channel=rss&album_id=15804266&track_id=90662636&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M00/8C/B0/wKgKklsIEoCDyiIQAAUFLdn1a0A521.m4a",
+    "audioStart": 3.5
   },
   "g5d-10-niaomingjian": {
     "video": "https://www.youtube.com/watch?v=ya3pZSWAI0s",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIRwFEQYUAAQzIQDhtrD0-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=30382987&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/6b3d-audiofreehighqps/13/71/CKwRIRwFEQYUAAQzIQDhtrD0-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g5d-11-youziyin": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/048_jilei_shi(putonghua).mp3",
@@ -476,11 +547,15 @@
   },
   "g6u-01-sujiandejiang": {
     "video": "https://www.youtube.com/watch?v=yMb4hnkF7L8",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIUEFEOpMAATXmwDhrDh1-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=1466517&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/0fd9-audiofreehighqps/F8/2C/CKwRIUEFEOpMAATXmwDhrDh1-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g6u-02-liuyueershiqiriwanghuloizuishu": {
     "video": "https://www.youtube.com/watch?v=mbj9nrzpJwI",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKklsIEnfBiiENAAVHP3-KTf8936-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662618&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M00/8C/AA/wKgKklsIEnfBiiENAAVHP3-KTf8936-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g6u-03-xijiangyueyexinghuangshadaozhong": {
     "video": "https://www.youtube.com/watch?v=QN5mKYxXN4k",
@@ -492,7 +567,9 @@
   },
   "g6u-05-langtaoshaqiyi": {
     "video": "https://www.youtube.com/watch?v=Eyacw36WRig",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKjFsIEkPys9zBAAUIrADPxmE354-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662212&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8C/BA/wKgKjFsIEkPys9zBAAUIrADPxmE354-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g6u-06-jiangnanchun": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/065_jilei_shi(putonghua).mp3",
@@ -520,7 +597,9 @@
   },
   "g6d-01-hanshi": {
     "video": "https://www.youtube.com/watch?v=97lYii7oSjY",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIMAFEO9WAAUcnADhrgTb-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=1466597&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/5603-audiofreehighqps/E4/A2/CKwRIMAFEO9WAAUcnADhrgTb-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g6d-02-tiaotiaoqianniuxing": {
     "video": "https://www.youtube.com/watch?v=6tBSvQtttpA",
@@ -532,7 +611,9 @@
   },
   "g6d-04-mashi": {
     "video": "https://www.youtube.com/watch?v=D9ewfzUZX6Q",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//CKwRIJIFWEMUAAPfcADzYm4J.m4a?channel=rss&album_id=224846&track_id=30408022&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/84e2-audiofreehighqps/3B/D6/CKwRIJIFWEMUAAPfcADzYm4J.m4a",
+    "audioStart": 3.5
   },
   "g6d-05-shihuiyin": {
     "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/096_jilei_shi(putonghua).mp3",
@@ -578,9 +659,13 @@
   },
   "g6d-10-chunyexiyu": {
     "video": "https://www.youtube.com/watch?v=jC4iDy4AXb0",
-    "videoStart": 5
+    "videoStart": 5,
+    "audio": "https://jt.ximalaya.com//wKgKkVsIEj-gV6rJAAguSH5QdM4558-aacv2-48K.m4a?channel=rss&album_id=15804266&track_id=90662222&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group44/M07/8D/54/wKgKkVsIEj-gV6rJAAguSH5QdM4558-aacv2-48K.m4a",
+    "audioStart": 3.5
   },
   "g3u-09-suojian": {
+    "audio": "https://jt.ximalaya.com//wKgKjVsIEoLhgjvbAAPPVh-Vd54095.m4a?channel=rss&album_id=15804266&track_id=90662640&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M00/8E/62/wKgKjVsIEoLhgjvbAAPPVh-Vd54095.m4a",
+    "audioStart": 3.5,
     "video": "https://www.youtube.com/watch?v=J8K7olPfiLI",
     "videoStart": 5
   },
@@ -591,6 +676,8 @@
     "videoStart": 5
   },
   "g6d-11-jiangshangyuzhe": {
+    "audio": "https://jt.ximalaya.com//wKgKklsIEnWhyWFmAAQxtmaddt8026.m4a?channel=rss&album_id=15804266&track_id=90662614&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/group43/M00/8C/A9/wKgKklsIEnWhyWFmAAQxtmaddt8026.m4a",
+    "audioStart": 3.5,
     "video": "https://www.youtube.com/watch?v=Nv2ewPwKMZk",
     "videoStart": 5
   },
