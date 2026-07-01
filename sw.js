@@ -14,7 +14,7 @@
  *
  * Bump CACHE when you want to force-drop old caches.
  */
-const CACHE = 'learn-chinese-v7';
+const CACHE = 'learn-chinese-v8';
 const CORE_ASSETS = [
   './learnchinese.html',
   './poems.html',
@@ -48,8 +48,13 @@ self.addEventListener('message', (e) => {
 });
 
 // Compare each cached CORE_ASSET against the server by ETag/Last-Modified.
-// Read-only (never mutates the cache) — the user's reload does the refresh via
-// the network-first fetch handler. Notifies all clients if anything changed.
+// Never mutates the cache itself — the user's reload does the refresh via the
+// network-first fetch handler. Does track which tag we've already notified
+// about per URL (in memory, cleared on SW restart), so a single real change
+// triggers the banner once, not on every subsequent 30-min/tab-focus check
+// until the user actually reloads. Notifies all clients if anything *new*
+// (beyond what was already flagged) has changed.
+const notifiedTags = {};
 async function checkCoreUpdates() {
   const cache = await caches.open(CACHE);
   const tagOf = (res) => res && (res.headers.get('ETag') || res.headers.get('Last-Modified'));
@@ -62,7 +67,10 @@ async function checkCoreUpdates() {
       const head = await fetch(url, { method: 'HEAD', cache: 'no-store' });
       if (!head || !head.ok) return;
       const newTag = tagOf(head);
-      if (newTag && newTag !== oldTag) changed.push(url);
+      if (newTag && newTag !== oldTag && notifiedTags[url] !== newTag) {
+        changed.push(url);
+        notifiedTags[url] = newTag;
+      }
     } catch (_) { /* offline / network error → ignore */ }
   }));
   if (changed.length) {
