@@ -30,15 +30,39 @@
   var swReg = null, updating = false;
 
   navigator.serviceWorker.addEventListener("controllerchange", function () {
+    console.log("[page] controllerchange event, updating flag =", updating);
     if (!updating) return;            // ignore first-install claim; reload only after opt-in
-    updating = false; location.reload();
+    updating = false;
+    console.log("[page] controllerchange: reloading (opted in via SKIP_WAITING)");
+    location.reload();
   });
+  // Durable (localStorage, not SW memory) record of {url: lastNotifiedTag}.
+  // The SW is stateless and reports every current diff on every check; it's
+  // the page's job to only surface a banner for tags it hasn't shown before,
+  // since an idle SW can be silently killed and restarted by the browser
+  // between checks (routine, and much more frequent than the 30-min/tab-focus
+  // check interval) — an in-memory dedup on the SW side would get wiped right
+  // along with it and re-show the same already-seen change forever.
+  var NOTIFIED_KEY = "sw-notified-tags";
+  function readNotifiedTags() { try { return JSON.parse(localStorage.getItem(NOTIFIED_KEY) || "{}"); } catch (e) { return {}; } }
+  function writeNotifiedTags(obj) { try { localStorage.setItem(NOTIFIED_KEY, JSON.stringify(obj)); } catch (e) {} }
+
   navigator.serviceWorker.addEventListener("message", function (e) {
-    if (e.data && e.data.type === "DATA_CHANGED") showBar("内容已更新 · Content updated");
+    console.log("[page] message from SW:", e.data);
+    if (!e.data || e.data.type !== "DATA_CHANGED") return;
+    var files = e.data.files || [];
+    var known = readNotifiedTags();
+    var fresh = files.filter(function (f) { return known[f.url] !== f.tag; });
+    console.log("[page] DATA_CHANGED: received", files.length, "| already notified (skip):", files.length - fresh.length, "| fresh:", fresh);
+    if (!fresh.length) return;
+    fresh.forEach(function (f) { known[f.url] = f.tag; });
+    writeNotifiedTags(known);
+    showBar("内容已更新 · Content updated", "DATA_CHANGED (new): " + JSON.stringify(fresh.map(function (f) { return f.url; })));
   });
 
-  function showBar(label) {
-    if (document.getElementById("sw-update-bar")) return;
+  function showBar(label, reason) {
+    if (document.getElementById("sw-update-bar")) { console.log("[page] showBar: already showing, skip. reason =", reason); return; }
+    console.log("[page] showBar:", label, "| reason:", reason);
     var bar = document.createElement("div");
     bar.id = "sw-update-bar";
     bar.setAttribute("style", "position:fixed;left:0;right:0;bottom:0;z-index:99999;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px 16px;background:#2b2520;color:#fdf6e9;font:14px/1.4 system-ui,-apple-system,sans-serif;box-shadow:0 -2px 12px rgba(0,0,0,.25)");
@@ -47,12 +71,13 @@
     btn.setAttribute("style", "border:0;border-radius:999px;padding:6px 16px;cursor:pointer;background:#f0a868;color:#2b2520;font:600 14px system-ui,sans-serif");
     btn.onclick = function () {
       btn.disabled = true; btn.textContent = "…";
+      console.log("[page] Reload clicked. swReg.waiting =", !!(swReg && swReg.waiting));
       if (swReg && swReg.waiting) { updating = true; swReg.waiting.postMessage({ type: "SKIP_WAITING" }); }
       else { location.reload(); }
     };
     var x = document.createElement("button"); x.textContent = "✕"; x.title = "稍后";
     x.setAttribute("style", "border:0;background:transparent;color:#fdf6e9;cursor:pointer;font-size:16px;opacity:.7");
-    x.onclick = function () { bar.remove(); };
+    x.onclick = function () { console.log("[page] banner dismissed by user"); bar.remove(); };
     bar.appendChild(msg); bar.appendChild(btn); bar.appendChild(x);
     document.body.appendChild(bar);
   }
@@ -60,21 +85,27 @@
   window.addEventListener("load", function () {
     navigator.serviceWorker.register("sw.js").then(function (reg) {
       swReg = reg;
-      if (reg.waiting && navigator.serviceWorker.controller) showBar("发现新版本 · New version available");
+      console.log("[page] SW registered. reg.waiting =", !!reg.waiting, "| controller =", !!navigator.serviceWorker.controller);
+      if (reg.waiting && navigator.serviceWorker.controller) showBar("发现新版本 · New version available", "reg.waiting already set on register");
       reg.addEventListener("updatefound", function () {
+        console.log("[page] updatefound event");
         var nw = reg.installing; if (!nw) return;
         nw.addEventListener("statechange", function () {
-          if (nw.state === "installed" && navigator.serviceWorker.controller) showBar("发现新版本 · New version available");
+          console.log("[page] installing worker statechange:", nw.state);
+          if (nw.state === "installed" && navigator.serviceWorker.controller) showBar("发现新版本 · New version available", "installing worker reached 'installed'");
         });
       });
-      var check = function () {
-        reg.update().catch(function () {});                                       // code / sw.js change
-        if (navigator.serviceWorker.controller)
+      var check = function (why) {
+        console.log("[page] check() triggered by:", why, "| reg.waiting =", !!reg.waiting, "| controller =", !!navigator.serviceWorker.controller);
+        reg.update().catch(function (err) { console.log("[page] reg.update() failed:", err && err.message); });   // code / sw.js change
+        if (navigator.serviceWorker.controller) {
+          console.log("[page] posting CHECK_UPDATES to controller");
           navigator.serviceWorker.controller.postMessage({ type: "CHECK_UPDATES" }); // data change
+        }
       };
-      setInterval(check, 30 * 60 * 1000);
-      document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible") check(); });
-    }).catch(function () {});
+      setInterval(function () { check("30-min timer"); }, 30 * 60 * 1000);
+      document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible") check("tab-focus"); });
+    }).catch(function (err) { console.log("[page] SW registration failed:", err && err.message); });
   });
 })();
 </script>

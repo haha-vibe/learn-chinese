@@ -9,7 +9,7 @@
     {
       "name": "白云出岫《小学生必背古诗词》（喜马拉雅）",
       "url": "https://www.ximalaya.com/album/224846",
-      "note": "真人朗读音频；补充香港教育局清单未收录的篇目。RSS: https://www.ximalaya.com/album/224846.xml；亦见于 Apple Podcasts: https://podcasts.apple.com/us/podcast/%E5%B0%8F%E5%AD%A6%E7%94%9F%E5%BF%85%E8%83%8C%E5%8F%A4%E8%AF%97%E8%AF%8D/id1795648765"
+      "note": "真人朗读音频；补充香港教育局清单未收录的篇目。RSS: https://www.ximalaya.com/album/224846.xml；亦见于 Apple Podcasts: https://podcasts.apple.com/us/podcast/小学生必背古诗词/id1795648765"
     },
     {
       "name": "千秋诗颂（YouTube）",
@@ -646,8 +646,8 @@
     "videoStart": 5
   },
   "g6d-09-qibushi": {
-    "audio": "https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/chi-edu/resources/primary/lang/jilei/007_jilei_shi(putonghua).mp3",
-    "audioStart": 3.5,
+    "audio": "https://jt.ximalaya.com//CKwRINsFEQ9QAAZ7kQDhuqHe-aacv2-48K.m4a?channel=rss&album_id=224846&track_id=1466508&uid=4228109&jt=https://aod.cos.tx.xmcdn.com/storages/c61a-audiofreehighqps/29/C7/CKwRINsFEQ9QAAZ7kQDhuqHe-aacv2-48K.m4a",
+    "audioStart": 0.5,
     "video": "https://www.youtube.com/watch?v=vY3uJR6Y6iQ&list=PLH2XUr3ltUZ1cXpyW1ZkjCP8yGSKUnmVE&index=74",
     "videoStart": 5
   },

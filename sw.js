@@ -14,7 +14,7 @@
  *
  * Bump CACHE when you want to force-drop old caches.
  */
-const CACHE = 'learn-chinese-v8';
+const CACHE = 'learn-chinese-v10';
 const CORE_ASSETS = [
   './learnchinese.html',
   './poems.html',
@@ -32,30 +32,37 @@ const CORE_ASSETS = [
 ];
 
 self.addEventListener('install', (e) => {
+  console.log('[sw] install', CACHE);
   // Precache shells/data, but do NOT skipWaiting here: let the new worker wait
   // so the open page can detect it and prompt the user to reload. The page asks
   // us to activate by posting {type:'SKIP_WAITING'} (see the message handler).
   e.waitUntil((async () => {
     const cache = await caches.open(CACHE);
     await cache.addAll(CORE_ASSETS);
+    console.log('[sw] install: precached', CORE_ASSETS.length, 'assets');
   })());
 });
 
 self.addEventListener('message', (e) => {
   const data = e.data || {};
-  if (data.type === 'SKIP_WAITING') { self.skipWaiting(); return; }
+  console.log('[sw] message received:', data.type, 'from', e.source && e.source.url);
+  if (data.type === 'SKIP_WAITING') { console.log('[sw] skipWaiting()'); self.skipWaiting(); return; }
   if (data.type === 'CHECK_UPDATES') { e.waitUntil(checkCoreUpdates()); return; }
 });
 
 // Compare each cached CORE_ASSET against the server by ETag/Last-Modified.
 // Never mutates the cache itself — the user's reload does the refresh via the
-// network-first fetch handler. Does track which tag we've already notified
-// about per URL (in memory, cleared on SW restart), so a single real change
-// triggers the banner once, not on every subsequent 30-min/tab-focus check
-// until the user actually reloads. Notifies all clients if anything *new*
-// (beyond what was already flagged) has changed.
-const notifiedTags = {};
+// network-first fetch handler. Stateless by design: reports every file whose
+// live tag differs from the cached one, every time it's asked. Dedup against
+// "did I already tell the user about this exact version" is the *page's* job
+// (see poems.html), using localStorage — NOT an in-memory SW variable, which
+// would get silently wiped whenever the browser terminates the idle worker
+// (routine, and far more frequent than the 30-min/tab-focus check interval,
+// which is exactly what made the old in-memory-only attempt at this
+// re-surface the same already-seen change over and over).
 async function checkCoreUpdates() {
+  const t0 = Date.now();
+  console.log('[sw] checkCoreUpdates: start, cache =', CACHE);
   const cache = await caches.open(CACHE);
   const tagOf = (res) => res && (res.headers.get('ETag') || res.headers.get('Last-Modified'));
   const changed = [];
@@ -63,26 +70,29 @@ async function checkCoreUpdates() {
     try {
       const cached = await cache.match(url);
       const oldTag = tagOf(cached);
-      if (!oldTag) return;                       // nothing cached yet, or no validator → skip
+      if (!oldTag) { console.log('[sw]  ', url, '-> no cached tag (not yet cached / no validator), skipping'); return; }
       const head = await fetch(url, { method: 'HEAD', cache: 'no-store' });
-      if (!head || !head.ok) return;
+      if (!head || !head.ok) { console.log('[sw]  ', url, '-> HEAD failed, status', head && head.status); return; }
       const newTag = tagOf(head);
-      if (newTag && newTag !== oldTag && notifiedTags[url] !== newTag) {
-        changed.push(url);
-        notifiedTags[url] = newTag;
-      }
-    } catch (_) { /* offline / network error → ignore */ }
+      console.log('[sw]  ', url, { oldTag, newTag });
+      if (newTag && newTag !== oldTag) changed.push({ url, tag: newTag });
+    } catch (err) { console.log('[sw]  ', url, '-> error (offline?):', err && err.message); }
   }));
+  console.log('[sw] checkCoreUpdates: done in', Date.now() - t0, 'ms, changed =', changed);
   if (changed.length) {
     const clients = await self.clients.matchAll({ includeUncontrolled: true });
+    console.log('[sw] posting DATA_CHANGED to', clients.length, 'client(s)');
     clients.forEach((c) => c.postMessage({ type: 'DATA_CHANGED', files: changed }));
   }
 }
 
 self.addEventListener('activate', (e) => {
+  console.log('[sw] activate', CACHE);
   e.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)));
+    const stale = keys.filter((k) => k !== CACHE);
+    if (stale.length) console.log('[sw] activate: dropping stale caches', stale);
+    await Promise.all(stale.map((k) => caches.delete(k)));
     await self.clients.claim();
   })());
 });
